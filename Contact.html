@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Alone Game</title>
+    <!-- Polices Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- HEADER -->
+<header class="navbar">
+  <div class="imagelogo">
+    <img src="../alonegame-site/ACCUEIL/logoAlone game.gif" alt="Logo Alone Game">
+    <div class="music-btn-wrapper">
+      <button class="music-toggle-btn" id="play-music-btn" aria-label="Activer/Désactiver la musique">
+        <img src="../alonegame-site/ACCUEIL/btn play.png" alt="Bouton ON/OFF musique" />
+      </button>
+    </div>
+  </div>
+  <nav class="navbar-links">
+    <a href="index.html">Accueil</a>
+    <a href="apropos.html">A propos</a>
+    <a href="Nos aventures.html">Nos aventures</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<audio id="site-music" src="../alonegame-site/MUSIC/ALONE GONE.mp4"></audio>
+
+<!-- HERO CONTACT -->
+<div class="flip-image-section">
+  <div class="flip-image-card" id="flipImageCard">
+    <!-- Face 1 -->
+    <div class="flip-face flip-front" id="face1">
+      <img src="../alonegame-site/CONTACT/nouscontacter1.jpg" alt="Nous contacter" class="flip-img"/>
+      <div class="flip-text front-text">"NOUS CONTACTER"</div>
+    </div>
+    <!-- Face 2 -->
+    <div class="flip-face flip-back" id="face2">
+      <img src="../alonegame-site/CONTACT/nouscontacter2.gif" alt="Tu as intérêt" class="flip-img"/>
+      <div class="flip-text back-text">TU AS INTÉRÊT!!!</div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-container">
+    <h2 class="faq-title">Foire Aux Questions (FAQ) - Alone Game</h2>
+    <div class="accordion" id="faqAccordion">
+      <!-- Question 1 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-1">
+          <button class="accordion-button faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq-1" aria-expanded="true" aria-controls="faq-1">
+            Qu'est-ce qu'un escape game ?
+          </button>
+        </h2>
+        <div id="faq-1" class="accordion-collapse collapse show" aria-labelledby="faq-heading-1" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Un escape game est un jeu d'aventure où les participants sont enfermés dans une salle à thème et doivent résoudre une série d'énigmes pour en sortir dans un temps imparti, généralement 60 minutes. Le jeu fait appel à l'observation, à la réflexion et au travail d'équipe.
+          </div>
+        </div>
+      </div>
+      <!-- Question 2 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-2">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-2" aria-expanded="false" aria-controls="faq-2">
+            Qu'est-ce que "Alone Game" ?
+          </button>
+        </h2>
+        <div id="faq-2" class="accordion-collapse collapse" aria-labelledby="faq-heading-2" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Alone Game est un escape game immersif où les participants doivent résoudre des énigmes pour progresser dans une histoire captivante, tout en étant isolés ou limités dans leurs interactions. Ce concept crée une expérience intense et unique, souvent en solo ou en groupes restreints.
+          </div>
+        </div>
+      </div>
+      <!-- Question 3 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-3">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-3" aria-expanded="false" aria-controls="faq-3">
+            Faut-il une expérience préalable pour participer à un escape game ?
+          </button>
+        </h2>
+        <div id="faq-3" class="accordion-collapse collapse" aria-labelledby="faq-heading-3" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Aucune expérience n'est nécessaire. Les jeux sont conçus pour être accessibles à tous les niveaux.
+          </div>
+        </div>
+      </div>
+      <!-- Question 4 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-4">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-4" aria-expanded="false" aria-controls="faq-4">
+            Comment réserver une session de jeu ?
+          </button>
+        </h2>
+        <div id="faq-4" class="accordion-collapse collapse" aria-labelledby="faq-heading-4" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Les réservations se font via notre site internet, en choisissant la date, l'heure et le scénario de votre choix. Un paiement en ligne sécurisé est requis pour confirmer votre réservation.
+          </div>
+        </div>
+      </div>
+      <!-- Question 5 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-5">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-5" aria-expanded="false" aria-controls="faq-5">
+            Quels sont les modes de paiement acceptés ?
+          </button>
+        </h2>
+        <div id="faq-5" class="accordion-collapse collapse" aria-labelledby="faq-heading-5" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Nous acceptons les paiements par carte bancaire (Visa, MasterCard) via notre plateforme en ligne. Aucun paiement en espèces n'est possible sur place.
+          </div>
+        </div>
+      </div>
+      <!-- Question 6 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-6">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-6" aria-expanded="false" aria-controls="faq-6">
+            Puis-je modifier ou annuler ma réservation ?
+          </button>
+        </h2>
+        <div id="faq-6" class="accordion-collapse collapse" aria-labelledby="faq-heading-6" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Oui, il est possible de modifier ou d'annuler une réservation sous réserve de notre politique d'annulation précisée sur le site.
+          </div>
+        </div>
+      </div>
+      <!-- Question 7 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-7">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-7" aria-expanded="false" aria-controls="faq-7">
+            Que se passe-t-il si nous arrivons en retard ?
+          </button>
+        </h2>
+        <div id="faq-7" class="accordion-collapse collapse" aria-labelledby="faq-heading-7" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Il est recommandé d'arriver 15 minutes avant l'heure de votre réservation. En cas de retard, le temps de jeu pourra être écourté. Aucun remboursement ne sera accordé en cas de retard.
+          </div>
+        </div>
+      </div>
+      <!-- Question 8 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-8">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-8" aria-expanded="false" aria-controls="faq-8">
+            Y a-t-il des contre-indications médicales ?
+          </button>
+        </h2>
+        <div id="faq-8" class="accordion-collapse collapse" aria-labelledby="faq-heading-8" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Certaines personnes peuvent être sensibles aux espaces confinés ou aux effets spéciaux comme les lumières clignotantes. Nous conseillons à ces joueurs de nous contacter à l'avance pour évaluer la faisabilité de leur participation.
+          </div>
+        </div>
+      </div>
+      <!-- Question 9 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-9">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-9" aria-expanded="false" aria-controls="faq-9">
+            Quelle est la durée d'un escape game ?
+          </button>
+        </h2>
+        <div id="faq-9" class="accordion-collapse collapse" aria-labelledby="faq-heading-9" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            La durée d'une session est généralement de 60 minutes. Merci de vérifier la durée sur la fiche du scénario choisi.
+          </div>
+        </div>
+      </div>
+      <!-- Question 10 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-10">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-10" aria-expanded="false" aria-controls="faq-10">
+            Pouvons-nous sortir de la salle avant la fin du temps imparti ?
+          </button>
+        </h2>
+        <div id="faq-10" class="accordion-collapse collapse" aria-labelledby="faq-heading-10" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Oui, si un joueur ne se sent pas bien ou souhaite quitter la salle pour une autre raison, il peut le faire à tout moment. Il est important de signaler toute difficulté au game master.
+          </div>
+        </div>
+      </div>
+      <!-- Question 11 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-11">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-11" aria-expanded="false" aria-controls="faq-11">
+            Quelles sont les règles à respecter pendant le jeu ?
+          </button>
+        </h2>
+        <div id="faq-11" class="accordion-collapse collapse" aria-labelledby="faq-heading-11" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Aucune force physique n'est nécessaire pour résoudre les énigmes. Il est interdit de casser, forcer ou déplacer les éléments non destinés à être manipulés. L'utilisation des téléphones portables est interdite durant le jeu. Écoutez bien les consignes du game master avant de commencer.
+          </div>
+        </div>
+      </div>
+      <!-- Question 12 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-12">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-12" aria-expanded="false" aria-controls="faq-12">
+            Proposez-vous des cartes-cadeaux ?
+          </button>
+        </h2>
+        <div id="faq-12" class="accordion-collapse collapse" aria-labelledby="faq-heading-12" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Oui, nous proposons des cartes-cadeaux disponibles à l’achat sur notre site. Elles sont valables pendant un an à partir de la date d’achat et peuvent être utilisées pour réserver n’importe quel scénario.
+          </div>
+        </div>
+      </div>
+      <!-- Question 13 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-13">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-13" aria-expanded="false" aria-controls="faq-13">
+            Puis-je venir déguisé ou avec des accessoires ?
+          </button>
+        </h2>
+        <div id="faq-13" class="accordion-collapse collapse" aria-labelledby="faq-heading-13" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Les déguisements et accessoires sont autorisés et même encouragés pour créer une ambiance encore plus immersive, à condition qu'ils n'entravent pas le bon déroulement du jeu.
+          </div>
+        </div>
+      </div>
+      <!-- Question 14 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq-heading-14">
+          <button class="accordion-button faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-14" aria-expanded="false" aria-controls="faq-14">
+            Offrez-vous des expériences personnalisées pour des événements privés ?
+          </button>
+        </h2>
+        <div id="faq-14" class="accordion-collapse collapse" aria-labelledby="faq-heading-14" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Oui, nous organisons des événements privés tels que des anniversaires, des enterrements de vie de célibataire ou des team buildings. Contactez-nous pour plus d'informations sur les options de personnalisation et les tarifs.<br>
+            Si vous avez d'autres questions, n’hésitez pas à nous contacter directement via notre formulaire de contact ou par téléphone.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHRASE + IMAGE CONTACT -->
+<section class="contact-parent-section">
+  <div class="contact-flex">
+    <!-- Colonne gauche : image ou formulaire -->
+    <div class="contact-left" id="contactLeft">
+      <img 
+        src="../alonegame-site/CONTACT/contact-phone.jpg"
+        alt="Téléphone appel"
+        id="callImage"
+        class="contact-call-img"
+        style="display:block;"
+      >
+      <form action="" method="post" id="contactForm" class="contact-formulaire" style="display:none;">
+        <h2>Formulaire de<br>contacte</h2>
+        <div class="contact-form-row">
+          <div class="contact-form-group">
+            <label for="name">NOM</label>
+            <input type="text" name="name" id="name" required>
+          </div>
+          <div class="contact-form-group">
+            <label for="firstName">PRENOM</label>
+            <input type="text" name="firstName" id="firstName" required>
+          </div>
+        </div>
+        <div class="contact-form-group">
+          <label for="email">E-mail</label>
+          <input type="email" name="email" id="email" required>
+        </div>
+        <div class="contact-form-group">
+          <label for="objet">Objet</label>
+          <input type="text" name="objet" id="objet">
+        </div>
+        <div class="contact-form-group">
+          <label for="message">Message</label>
+          <textarea name="message" id="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="contact-btn">J'ENVOIE LE MESSAGE</button>
+      </form>
+    </div>
+    <!-- Colonne droite : citation + image glitch -->
+    <div class="contact-right">
+      <div class="contact-quote">
+        « SI TU VEUX NOUS CONTACTER, RÉPONDS VITE À CET APPEL…SINON, IL POURRAIT ÊTRE TROP TARD. »
+      </div>
+      <img src="../alonegame-site/CONTACT/Alone game logo 2.gif" alt="glitch" class="contact-glitch-img">
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="contact-faq-section">
+  <div class="contact-faq-grid">
+    <!-- Bloc question/FAQ -->
+    <div class="contact-faq-left">
+      <div class="faq-question-title">Une question&nbsp;?</div>
+      <div class="faq-question-desc">
+        Nous avons surement la réponse : consultez notre FAQ
+      </div>
+      <a href="#faq" class="faq-link">
+        <span>FAQ</span>
+        <div class="faq-underline"></div>
+      </a>
+    </div>
+    <!-- Bloc contact/map -->
+    <div class="contact-faq-center">
+      <div class="contact-find-title">Nous trouver</div>
+      <div class="contact-find-address">
+        7, rue Daumesnil. 75012 PARIS
+      </div>
+      <div class="contact-find-row">
+        <div class="contact-find-col">
+          <span class="contact-find-label">Mail</span>
+          <div class="contact-find-underline"></div>
+        </div>
+        <div class="contact-find-col">
+          <span class="contact-find-label">Téléphone</span>
+          <div class="contact-find-underline"></div>
+        </div>
+      </div>
+      <div class="contact-social-row">
+        <a href="#" class="contact-social-icon" aria-label="Facebook">
+          <img src="facebook.svg" alt="Facebook">
+        </a>
+        <a href="#" class="contact-social-icon" aria-label="Instagram">
+          <img src="instagram.svg" alt="Instagram">
+        </a>
+        <a href="#" class="contact-social-icon" aria-label="TikTok">
+          <img src="tiktok.svg" alt="TikTok">
+        </a>
+      </div>
+    </div>
+    <!-- Bloc carte -->
+    <div class="contact-faq-map">
+      <img src="../alonegame-site/CONTACT/MAP.JPEG" alt="Carte Paris Escape Game">
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo-block">
+      <img src="../alonegame-site/ACCUEIL/logoAlone game.gif" alt="Logo Alone Game" class="footer-logo" />
+      <div class="footer-logo-line"></div>
+    </div>
+    <nav class="footer-menu">
+      <ul>
+        <li><a href="apropos.html">A Propos</a></li>
+        <li><a href="Nos aventures.html">Nos Aventures</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tarifs.html">Tarif</a></li>
+      </ul>
+    </nav>
+    <div class="footer-right">
+      <div class="footer-social">
+        <a href="https://facebook.com" target="_blank"><img src="../alonegame-site/ACCUEIL/FACEBOOK.png" alt="Facebook" /></a>
+        <a href="https://instagram.com" target="_blank"><img src="../alonegame-site/ACCUEIL/INSTAGRAM.png" alt="Instagram" /></a>
+        <a href="https://tiktok.com" target="_blank"><img src="../alonegame-site/ACCUEIL/TIC-TOC.png" alt="TikTok" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <p>Prototype Alone Game © 2025 — Créé pour un exercice de formation, usage non commercial.<br>
+      © 2025 Nadia.B — Ce site est un projet pédagogique réalisé dans le cadre d’une formation. Toute utilisation commerciale est interdite.
+    </p>
+    <div class="footer-nadia-logo">
+      <img src="../alonegame-site/ACCUEIL/animiertes-gif-von-online-umwandeln-de copie.gif" alt="Logo Nadia B" />
+    </div>
+  </div>
+</footer>
+
+<!-- AUDIO -->
+<audio id="contact-music" src="../Nadia.b site Alone Game/MUSIC/ALONE GONE.mp4" loop autoplay style="display:none"></audio>
+
+<!-- SCRIPTS -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Apparition scroll
+  function revealOnScroll() {
+    var elements = document.querySelectorAll('.scroll-reveal');
+    elements.forEach(function(element) {
+      var rect = element.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 60) {
+        element.classList.add('visible');
+      } else {
+        element.classList.remove('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
+
+  // Bouton ON/OFF musique (réutilisé depuis index)
+  const musicBtn = document.getElementById('play-music-btn');
+  const music = document.getElementById('site-music');
+  let isPlaying = false;
+  if(musicBtn && music) {
+    musicBtn.addEventListener('click', function() {
+      if (!isPlaying) {
+        music.play();
+        isPlaying = true;
+        musicBtn.querySelector('img').style.filter = "drop-shadow(0 0 12px #FF3300) brightness(1.3)";
+      } else {
+        music.pause();
+        isPlaying = false;
+        musicBtn.querySelector('img').style.filter = "";
+      }
+    });
+    music.addEventListener('ended', function() {
+      isPlaying = false;
+      musicBtn.querySelector('img').style.filter = "";
+    });
+  }
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const card = document.getElementById('flipImageCard');
+  card.addEventListener('click', function() {
+    card.classList.toggle('flipped');
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const faqBtns = document.querySelectorAll('.faq-question');
+  faqBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      faqBtns.forEach(b => b.classList.remove('active'));
+      setTimeout(() => {
+        if (!btn.classList.contains('collapsed')) {
+          btn.classList.add('active');
+        }
+      }, 200);
+    });
+  });
+  // Active la première question ouverte au démarrage
+  const first = document.querySelector('.faq-question:not(.collapsed)');
+  if(first) first.classList.add('active');
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const callImg = document.getElementById('callImage');
+  const form = document.getElementById('contactForm');
+  if (callImg && form) {
+    callImg.addEventListener('click', function() {
+      callImg.style.display = "none";
+      form.style.display = "block";
+      form.scrollIntoView({behavior:"smooth", block:"center"});
+    });
+  }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
