@@ -2,35 +2,35 @@
 <style>
 @import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
 
-/* ═══ THÈMES ═══ */
+/* ═══ THÈMES ═══ palette Alone Game (rouge sang + orange vif) */
 :root,
-[data-theme="light"] {
-  --navy:#132241;
-  --blue:#8993E8;
-  --cream:#F7F5F0;
-  --gold:#F4BC43;
-  --bg:#F7F5F0;
-  --txt:#132241;
-  --txt-muted:#132241;
-  --txt-faint:#132241;
-  --border:rgba(19,34,65,0.6);
-  --border-2:rgba(19,34,65,0.25);
-  --border-3:rgba(19,34,65,0.12);
-  --dot-bg:rgba(19,34,65,0.2);
-}
 [data-theme="dark"] {
-  --navy:#F7F5F0;
-  --blue:#8993E8;
+  --navy:#FDFAF7;
+  --blue:#B22222;
   --cream:#1A1208;
-  --gold:#F4BC43;
-  --bg:#0E0D0B;
-  --txt:#F7F5F0;
-  --txt-muted:#F7F5F0;
-  --txt-faint:#F7F5F0;
-  --border:rgba(247,245,240,0.55);
-  --border-2:rgba(247,245,240,0.2);
-  --border-3:rgba(247,245,240,0.1);
-  --dot-bg:rgba(247,245,240,0.2);
+  --gold:#FF7518;
+  --bg:#0A0A0A;
+  --txt:#FDFAF7;
+  --txt-muted:rgba(253,250,247,0.7);
+  --txt-faint:rgba(253,250,247,0.45);
+  --border:rgba(253,250,247,0.5);
+  --border-2:rgba(253,250,247,0.2);
+  --border-3:rgba(253,250,247,0.1);
+  --dot-bg:rgba(253,250,247,0.2);
+}
+[data-theme="light"] {
+  --navy:#1D1D1B;
+  --blue:#B22222;
+  --cream:#FDFAF7;
+  --gold:#FF7518;
+  --bg:#FDFAF7;
+  --txt:#1D1D1B;
+  --txt-muted:rgba(29,29,27,0.7);
+  --txt-faint:rgba(29,29,27,0.45);
+  --border:rgba(29,29,27,0.5);
+  --border-2:rgba(29,29,27,0.2);
+  --border-3:rgba(29,29,27,0.1);
+  --dot-bg:rgba(29,29,27,0.2);
 }
 
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; cursor:none!important; transition:background-color .35s, color .35s, border-color .35s; }
@@ -90,7 +90,7 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
 .meta-lbl { font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); }
 .meta-val { font-size:15px; color:var(--navy); }
 
-/* CTA — tailles +20% */
+/* CTA */
 .cta { position:relative; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; text-decoration:none; background:transparent; }
 .cta--lg { width:127px; height:127px; }
 .cta--sm { width:109px; height:109px; }
@@ -101,7 +101,7 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
 .cta .lbl { position:relative; z-index:2; font-size:0.52rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--navy); text-align:center; line-height:1.2; padding:0 6px; pointer-events:none; }
 .cta:hover .lbl { color:var(--gold)!important; }
 .cta:hover .r1 { border-color:var(--gold)!important; }
-.cta:hover .r2 { border-color:rgba(244,188,67,.4)!important; }
+.cta:hover .r2 { border-color:rgba(255,117,24,.4)!important; }
 
 /* Sections */
 .section { padding:80px 5vw; }
@@ -115,6 +115,10 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
 .row { display:flex; gap:20px; }
 .row-lbl { font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue); min-width:90px; flex-shrink:0; }
 .row-val { font-size:16px; color:var(--navy); line-height:1.6; }
+
+/* Palette swatches */
+.swatches { display:flex; gap:10px; margin-top:24px; flex-wrap:wrap; }
+.swatch { width:44px; height:44px; border-radius:6px; border:1px solid var(--border-3); }
 
 /* Étapes */
 .etapes { margin-top:28px; }
@@ -132,8 +136,17 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
 .ritem:nth-child(even) .rnum { color:var(--blue); }
 .rtitle { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:4px; }
 .rdesc { font-size:14px; font-weight:300; color:var(--txt-faint); }
-.bq { padding-left:20px; border-left:3px solid var(--gold); margin:28px 0; }
+.bq { padding-left:20px; border-left:3px solid var(--blue); margin:28px 0; }
 .bq p { font-size:clamp(14px,1.5vw,18px); font-style:italic; font-weight:300; line-height:1.65; color:var(--navy); }
+
+/* Copyright badge */
+.copyright {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 16px; border:1px solid var(--blue); border-radius:2px;
+  font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--blue); margin-top:24px;
+}
+.copyright::before { content:'©'; font-size:14px; }
 
 /* Reveal */
 .rvl { opacity:0; transform:translateY(16px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1)!important; }
@@ -154,12 +167,12 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
 
 /* Carousel */
 .car-block { padding:48px 36px 60px; }
-.car-stage { position:relative; width:100%; aspect-ratio:4/3; border-radius:20px; overflow:hidden; background:var(--navy); }
+.car-stage { position:relative; width:100%; aspect-ratio:4/3; border-radius:20px; overflow:hidden; background:#1A1208; }
 .car-slide { position:absolute; inset:0; opacity:0; transform:scale(1.05); transition:opacity .95s cubic-bezier(.16,1,.3,1), transform .95s cubic-bezier(.16,1,.3,1)!important; pointer-events:none; }
 .car-slide.active { opacity:1!important; transform:scale(1)!important; pointer-events:auto; }
 .car-slide img { width:100%; height:100%; object-fit:cover; display:block; }
 .car-bar { position:absolute; bottom:0; left:0; height:3px; background:var(--gold); width:0; z-index:10; }
-.car-num { position:absolute; top:16px; right:20px; z-index:10; font-size:11px; font-weight:600; letter-spacing:0.12em; color:rgba(247,245,240,0.7); font-family:'Poppins',sans-serif; }
+.car-num { position:absolute; top:16px; right:20px; z-index:10; font-size:11px; font-weight:600; letter-spacing:0.12em; color:rgba(253,250,247,0.7); font-family:'Poppins',sans-serif; }
 .car-footer { margin-top:20px; display:flex; align-items:flex-end; justify-content:space-between; gap:20px; }
 .car-title { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(24px,2.8vw,40px); line-height:0.95; color:var(--navy); }
 .car-title em { font-style:italic; font-weight:400; color:var(--blue); }
@@ -223,7 +236,7 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
 
   <!-- ═══ GAUCHE ═══ -->
   <div class="col-L">
-    <a href="https://nadiaui.fr" class="back">
+    <a href="https://nadiaui.fr/#portfolio" class="back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Tous les projets
     </a>
@@ -236,7 +249,7 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
       <div class="hero-bottom">
         <div class="hero-meta">
           <div class="meta-item"><span class="meta-lbl">Services</span><span class="meta-val">UX · UI · Figma · HTML/CSS</span></div>
-          <div class="meta-item"><span class="meta-lbl">Outils</span><span class="meta-val">Figma · Photoshop · VS Code</span></div>
+          <div class="meta-item"><span class="meta-lbl">Outils</span><span class="meta-val">Figma · Photoshop · Illustrator · VS Code</span></div>
           <div class="meta-item"><span class="meta-lbl">Année</span><span class="meta-val">2025</span></div>
         </div>
         <a href="https://www.alonegame.nadiaui.fr" target="_blank" class="cta cta--lg" id="cta1">
@@ -253,10 +266,10 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
     <div class="section">
       <span class="slabel rvl">Le contexte</span>
       <h2 class="stitle rvl d1">Un escape game d'horreur<em>pensé pour Halloween</em></h2>
-      <p class="stext rvl d2">Alone Game est un projet fictif imaginé pour Halloween — un escape game d'horreur immersif ancré dans l'ambiance d'une maison hantée du 18ème siècle. L'histoire suit Élise, une jeune femme disparue en 1820 dont l'esprit hante une demeure abandonnée.</p>
+      <p class="stext rvl d2">Alone Game est un projet fictif conçu pour Halloween — un escape game d'horreur immersif ancré dans l'ambiance d'une maison hantée du 18ème siècle. L'histoire suit Élise, une jeune femme disparue en 1820 dont l'esprit hante une demeure abandonnée.</p>
       <p class="stext rvl d2">Ce projet personnel m'a permis d'explorer toute la chaîne de conception — du moodboard aux wireframes, jusqu'à l'intégration complète en HTML/CSS. Un travail de A à Z, pensé pour être vendu à un vrai opérateur d'escape game.</p>
       <div class="rows rvl d3">
-        <div class="row"><span class="row-lbl">Type</span><span class="row-val">Projet fictif · À vendre clé en main</span></div>
+        <div class="row"><span class="row-lbl">Type</span><span class="row-val">Projet fictif · À vendre</span></div>
         <div class="row"><span class="row-lbl">Univers</span><span class="row-val">Horreur gothique · Maison hantée · 18ème siècle</span></div>
         <div class="row"><span class="row-lbl">Livrables</span><span class="row-val">Moodboard · Wireframes · Maquettes · Site intégré</span></div>
         <div class="row"><span class="row-lbl">Statut</span><span class="row-val">Concept original — Nadia Boussaïd © 2025</span></div>
@@ -264,9 +277,23 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
     </div>
 
     <div class="section">
+      <span class="slabel rvl">Moodboard & Identité visuelle</span>
+      <h2 class="stitle rvl d1">Une palette<em>née de la terreur</em></h2>
+      <p class="stext rvl d2">J'ai défini une palette chromatique précise : noir profond, rouge sang, gris fumé, pourpre sombre et orange vif — pour créer une tension visuelle entre la mort et le vivant.</p>
+      <p class="stext rvl d2">Les typographies ont été choisies pour leur pouvoir immersif : Creepster pour les titres d'horreur, Lora pour les textes élégants, et Special Elite pour les accents typewriter façon journal effrayant.</p>
+      <div class="swatches rvl d3">
+        <div class="swatch" style="background:#B22222;" title="Rouge sang #B22222"></div>
+        <div class="swatch" style="background:#2F2F2F;" title="Gris fumé #2F2F2F"></div>
+        <div class="swatch" style="background:#4B0082;" title="Pourpre #4B0082"></div>
+        <div class="swatch" style="background:#FF7518;" title="Orange vif #FF7518"></div>
+        <div class="swatch" style="background:#000000;" title="Noir profond #000000"></div>
+      </div>
+    </div>
+
+    <div class="section">
       <span class="slabel rvl">Ma démarche</span>
       <h2 class="stitle rvl d1">Du concept<em>à l'expérience complète</em></h2>
-      <p class="stext rvl d2">Recherche approfondie sur l'univers d'horreur, palette chromatique précise, wireframes Figma, puis intégration HTML/CSS/JS pour livrer un site immersif de A à Z.</p>
+      <p class="stext rvl d2">Recherche approfondie, moodboard, wireframes Figma puis intégration HTML/CSS/JS — un travail complet, du concept à la mise en ligne.</p>
       <div class="etapes rvl d3">
         <div class="etape"><span class="en">01</span><span class="ename">Recherche & Concept</span></div>
         <div class="etape"><span class="en">02</span><span class="ename">Moodboard & Identité</span></div>
@@ -280,12 +307,13 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
       <h2 class="stitle rvl d1">Un concept à vendre<em>clé en main</em></h2>
       <div class="results rvl d2">
         <div class="ritem"><span class="rnum">5</span><div class="rtitle">Pages conçues</div><p class="rdesc">Accueil, aventures, à propos, tarifs, contact.</p></div>
-        <div class="ritem"><span class="rnum">4</span><div class="rtitle">Aventures scénarisées</div><p class="rdesc">Manoir, Tombeau, Forêt, Catacombes.</p></div>
+        <div class="ritem"><span class="rnum">4</span><div class="rtitle">Aventures scénarisées</div><p class="rdesc">Le Manoir, Le Tombeau, La Forêt, Les Catacombes.</p></div>
         <div class="ritem"><span class="rnum">100%</span><div class="rtitle">Fait maison</div><p class="rdesc">De l'idée au code, sans template.</p></div>
         <div class="ritem"><div class="rtitle">Vendable</div><p class="rdesc">Prêt pour un vrai opérateur.</p></div>
       </div>
       <div class="bq rvl d3"><p>"Créer la peur par le design — chaque détail est pensé pour immerger le visiteur avant même qu'il franchisse la porte."</p></div>
-      <a href="https://www.alonegame.nadiaui.fr" target="_blank" class="cta cta--sm" id="cta2" style="margin-top:24px;">
+      <div class="copyright">Concept original — Nadia Boussaïd © 2025</div>
+      <a href="https://www.alonegame.nadiaui.fr" target="_blank" class="cta cta--sm" id="cta2" style="margin-top:32px;">
         <div class="r r1"></div><div class="r r2"></div><div class="r r3"></div>
         <span class="lbl">Voir<br>le site</span>
       </a>
@@ -359,11 +387,11 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
 
 <script>
 (function(){
-  /* ─── Toggle thème ─── */
+  /* ─── Toggle thème (dark par défaut pour Alone Game) ─── */
   var html = document.documentElement;
   var btn  = document.getElementById('nb-theme-toggle');
   var KEY  = 'nb-theme';
-  var saved = localStorage.getItem(KEY) || 'light';
+  var saved = localStorage.getItem(KEY) || 'dark';
   html.setAttribute('data-theme', saved);
   btn.addEventListener('click', function(){
     var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -379,13 +407,12 @@ html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'
   function loop(){ rings.forEach(function(r,i){ angles[i]+=r.s; r.el.style.transform='rotate('+angles[i]+'deg)'; }); requestAnimationFrame(loop); }
   addCta('cta1'); addCta('cta2'); loop();
 
-  /* ─── Reveal : root:null = viewport ─── */
+  /* ─── Reveal ─── */
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(x){ if(x.isIntersecting) x.target.classList.add('on'); });
   }, { root:null, threshold:0.05 });
   document.querySelectorAll('.rvl').forEach(function(el){ obs.observe(el); });
 
-  /* Fallback 800ms */
   setTimeout(function(){
     document.querySelectorAll('.rvl:not(.on)').forEach(function(el){ el.classList.add('on'); });
     if(window.innerWidth <= 1100){
