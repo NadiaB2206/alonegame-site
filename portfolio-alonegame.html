@@ -2,551 +2,422 @@
 <style>
 @import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
 
-  :root, [data-theme="dark"] {
-    --pt-text:         #FDFAF7;
-    --pt-muted:        rgba(253,250,247,0.35);
-    --pt-muted-hover:  rgba(253,250,247,0.7);
-    --pt-sub:          rgba(253,250,247,0.45);
-    --pt-border:       rgba(253,250,247,0.08);
-    --pt-border-hover: rgba(253,250,247,0.2);
-    --pt-arrow:        rgba(253,250,247,0.25);
-    --pt-arrow-hover:  rgba(253,250,247,0.9);
-    --pt-label:        rgba(253,250,247,0.4);
-    --pt-accent:       #B22222;
-    --pt-accent2:      #FF7518;
-    --pt-purple:       #4B0082;
-    --pt-bg:           #0A0A0A;
-  }
+/* ═══ THÈMES ═══ */
+:root,
+[data-theme="light"] {
+  --navy:#132241;
+  --blue:#8993E8;
+  --cream:#F7F5F0;
+  --gold:#F4BC43;
+  --bg:#F7F5F0;
+  --txt:#132241;
+  --txt-muted:#132241;
+  --txt-faint:#132241;
+  --border:rgba(19,34,65,0.6);
+  --border-2:rgba(19,34,65,0.25);
+  --border-3:rgba(19,34,65,0.12);
+  --dot-bg:rgba(19,34,65,0.2);
+}
+[data-theme="dark"] {
+  --navy:#F7F5F0;
+  --blue:#8993E8;
+  --cream:#1A1208;
+  --gold:#F4BC43;
+  --bg:#0E0D0B;
+  --txt:#F7F5F0;
+  --txt-muted:#F7F5F0;
+  --txt-faint:#F7F5F0;
+  --border:rgba(247,245,240,0.55);
+  --border-2:rgba(247,245,240,0.2);
+  --border-3:rgba(247,245,240,0.1);
+  --dot-bg:rgba(247,245,240,0.2);
+}
 
-  [data-theme="light"] {
-    --pt-text:         #1D1D1B;
-    --pt-muted:        rgba(29,29,27,0.4);
-    --pt-muted-hover:  rgba(29,29,27,0.8);
-    --pt-sub:          rgba(29,29,27,0.55);
-    --pt-border:       rgba(29,29,27,0.1);
-    --pt-border-hover: rgba(29,29,27,0.25);
-    --pt-arrow:        rgba(29,29,27,0.25);
-    --pt-arrow-hover:  rgba(29,29,27,0.9);
-    --pt-label:        rgba(29,29,27,0.4);
-    --pt-accent:       #B22222;
-    --pt-accent2:      #FF7518;
-    --pt-purple:       #4B0082;
-    --pt-bg:           #FDFAF7;
-  }
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; cursor:none!important; transition:background-color .35s, color .35s, border-color .35s; }
+html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'Poppins',sans-serif; color:var(--navy); }
 
-  .nb-projet, .nb-projet * {
-    transition: color .45s ease, background-color .45s ease,
-                border-color .45s ease, opacity .35s ease !important;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  .nb-projet { width: 100%; font-family: 'Poppins', sans-serif; color: var(--pt-text); background: transparent; overflow-x: hidden; }
+/* ═══ TOGGLE ═══ */
+#nb-theme-toggle {
+  position:fixed; top:20px; right:24px; z-index:9999;
+  width:40px; height:40px; border-radius:50%;
+  border:1px solid var(--border-2);
+  background:var(--bg);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer!important;
+}
+#nb-theme-toggle:hover { border-color:var(--gold); }
+#nb-theme-toggle svg { color:var(--navy); }
+[data-theme="dark"]  .nb-icon-dark  { display:none; }
+[data-theme="dark"]  .nb-icon-light { display:block; }
+[data-theme="light"] .nb-icon-light { display:none; }
+[data-theme="light"] .nb-icon-dark  { display:block; }
+.nb-icon-light,.nb-icon-dark { display:none; }
+@keyframes nb-spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+.nb-spinning svg { animation:nb-spin .4s ease; }
 
-  .nb-back {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 40px 5vw 0; font-size: 11px; font-weight: 600;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--pt-text); text-decoration: none;
-    position: relative; z-index: 10; transition: color 0.3s !important;
-  }
-  .nb-back:hover { color: var(--pt-muted) !important; }
-  .nb-back svg { width: 16px; height: 16px; }
+/* ═══ STRUCTURE ═══ */
+.page-wrap { width:100%; background:var(--bg); }
+.split-cols {
+  display:grid; grid-template-columns:1fr 1fr;
+  height:100vh; overflow:hidden;
+  transition:grid-template-columns .65s cubic-bezier(.16,1,.3,1)!important;
+}
+.split-cols:has(.col-L:hover) { grid-template-columns:1.55fr 1fr; }
+.split-cols:has(.col-R:hover) { grid-template-columns:1fr 1.55fr; }
 
-  /* HERO */
-  .nb-hero {
-    position: relative; width: 100%; min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden;
-  }
-  .nb-hero__bg {
-    position: absolute; inset: 0; z-index: 0;
-    background: url('http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.37-scaled.png') center / cover no-repeat;
-  }
-  .nb-hero__bg::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(10,0,0,0.4) 0%, rgba(10,0,0,0.2) 30%, rgba(10,0,0,0.65) 65%, rgba(10,0,0,0.95) 100%);
-  }
-  .nb-hero__header {
-    position: relative; z-index: 10;
-    display: grid; grid-template-columns: 1fr auto;
-    gap: 60px; align-items: end;
-    padding: 0 5vw 64px;
-    border-bottom: 1px solid rgba(178,34,34,0.2);
-  }
-  .nb-hero__eyebrow {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--pt-accent); margin-bottom: 28px;
-    display: flex; align-items: center; gap: 12px;
-    opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
-  }
-  .nb-hero__eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--pt-accent); display: block; }
-  .nb-hero__h1 {
-    font-family: 'Clash Display', sans-serif;
-    font-weight: 700; font-size: clamp(52px, 7vw, 110px);
-    line-height: 0.92; letter-spacing: -0.02em; color: #fff;
-    opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.4s forwards;
-  }
-  .nb-hero__h1 em {
-    font-style: italic; font-weight: 400; color: rgba(255,255,255,0.9);
-    display: block; transition: color 0.4s !important; cursor: default;
-  }
-  .nb-hero__h1 em:hover { color: var(--pt-accent) !important; }
-  .nb-hero__meta-col {
-    display: flex; flex-direction: column; gap: 28px; padding-bottom: 8px; min-width: 180px;
-    opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards;
-  }
-  .nb-hero__meta-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 5px; display: block; }
-  .nb-hero__meta-value { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.8); line-height: 1.4; }
-  .nb-hero__visit {
-    position: relative; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    width: 100px; height: 100px;
-    text-decoration: none; background: transparent; border: none;
-    cursor: pointer; -webkit-tap-highlight-color: transparent; transition: all 0.3s ease !important;
-  }
-  .nb-hero__visit .nb-ring { position: absolute; border-radius: 50%; transition: border-color 0.3s !important; }
-  .nb-hero__visit .nb-r1 { inset: 0;    border: 1.5px solid rgba(255,255,255,0.9); }
-  .nb-hero__visit .nb-r2 { inset: 8px;  border: 1px solid rgba(255,255,255,0.4); }
-  .nb-hero__visit .nb-r3 { inset: 16px; border: 1px dashed rgba(255,255,255,0.2); }
-  .nb-hero__visit .nb-lbl {
-    position: relative; z-index: 2; font-family: 'Poppins', sans-serif;
-    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
-    color: rgba(255,255,255,0.9); text-align: center; line-height: 1.2; padding: 0 10px; pointer-events: none;
-  }
-  .nb-hero__visit:hover .nb-lbl { color: var(--pt-accent) !important; }
-  .nb-hero__visit:hover .nb-r1  { border-color: var(--pt-accent) !important; }
-  .nb-hero__visit:hover .nb-r2  { border-color: rgba(178,34,34,0.4) !important; }
-  .nb-hero__visit:hover .nb-r3  { border-color: rgba(178,34,34,0.15) !important; }
-  .nb-hero__img-caption {
-    position: relative; z-index: 10;
-    font-size: 11px; color: rgba(255,255,255,0.25);
-    padding: 14px 5vw; letter-spacing: 0.05em;
-    border-bottom: 1px solid rgba(178,34,34,0.15);
-    background: rgba(10,0,0,0.5);
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  }
+.col-L, .col-R {
+  height:100vh; overflow-y:auto;
+  display:flex; flex-direction:column;
+  background:var(--bg);
+  scrollbar-width:none; -ms-overflow-style:none;
+}
+.col-L::-webkit-scrollbar, .col-R::-webkit-scrollbar { display:none; }
 
-  /* SECTIONS */
-  .nb-section { padding: 100px 5vw; border-bottom: 1px solid var(--pt-border); }
-  .nb-section:last-of-type { border-bottom: none; }
-  .nb-section__label {
-    font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--pt-label); margin-bottom: 52px; display: flex; align-items: center; gap: 16px;
-  }
-  .nb-section__label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--pt-border); }
-  .nb-editorial { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .nb-section__title {
-    font-family: 'Clash Display', sans-serif; font-weight: 700;
-    font-size: clamp(34px, 4vw, 56px); line-height: 1.05; color: var(--pt-text);
-  }
-  .nb-section__title em { font-style: italic; font-weight: 400; color: var(--pt-muted); display: block; cursor: default; transition: color 0.35s !important; }
-  .nb-section__title em:hover { color: var(--pt-accent) !important; }
-  .nb-section__text { font-size: 15px; font-weight: 300; color: var(--pt-text); line-height: 1.9; margin-bottom: 20px; transition: color 0.3s !important; }
-  .nb-section__text:hover { color: var(--pt-accent) !important; }
+/* Back */
+.back { display:inline-flex; align-items:center; gap:8px; padding:36px 5vw; font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--blue); text-decoration:none; flex-shrink:0; transition:color .3s!important; }
+.back:hover { color:var(--gold)!important; }
+.back svg { width:13px; height:13px; }
 
-  .nb-info-list { margin-top: 40px; }
-  .nb-info-row { display: flex; align-items: baseline; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--pt-border); }
-  .nb-info-row:first-child { border-top: 1px solid var(--pt-border); }
-  .nb-info-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pt-muted); min-width: 90px; flex-shrink: 0; }
-  .nb-info-value { font-size: 14px; font-weight: 400; color: var(--pt-text); line-height: 1.5; }
+/* Hero */
+.hero-txt { margin-top:auto; padding:0 5vw 72px; min-height:calc(100vh - 80px); display:flex; flex-direction:column; justify-content:flex-end; }
+.eyebrow { font-size:12px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--blue); margin-bottom:24px; display:block; opacity:0; animation:up .8s cubic-bezier(.16,1,.3,1) .2s forwards; }
+.h1 { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(60px,7vw,120px); line-height:0.88; letter-spacing:-0.025em; color:var(--navy); margin-bottom:20px; opacity:0; animation:up .9s cubic-bezier(.16,1,.3,1) .35s forwards; }
+.subtitle { font-family:'Clash Display',sans-serif; font-weight:400; font-style:italic; font-size:clamp(26px,3.2vw,50px); line-height:1.1; color:var(--txt-muted); margin-bottom:40px; opacity:0; animation:up .9s cubic-bezier(.16,1,.3,1) .5s forwards; }
+.hero-desc { font-size:17px; font-weight:300; line-height:1.85; color:var(--txt); max-width:420px; margin-bottom:48px; opacity:0; animation:up .9s cubic-bezier(.16,1,.3,1) .65s forwards; }
+.hero-bottom { display:flex; align-items:center; gap:40px; opacity:0; animation:up .9s cubic-bezier(.16,1,.3,1) .8s forwards; }
+.hero-meta { display:flex; gap:28px; }
+.meta-item { display:flex; flex-direction:column; gap:3px; }
+.meta-lbl { font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); }
+.meta-val { font-size:15px; color:var(--navy); }
 
-  /* Moodboard grid */
-  .nb-moodboard {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
-    margin-top: 40px;
-  }
-  .nb-moodboard__item {
-    aspect-ratio: 4/3; overflow: hidden; position: relative;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(178,34,34,0.05);
-  }
-  .nb-moodboard__item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: filter 0.4s, transform 0.4s !important; }
-  .nb-moodboard__item:hover img { filter: grayscale(0%) !important; transform: scale(1.05) !important; }
-  .nb-moodboard__label {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 8px 12px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: rgba(255,255,255,0.6); background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(4px);
-  }
+/* CTA — tailles +20% */
+.cta { position:relative; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; text-decoration:none; background:transparent; }
+.cta--lg { width:127px; height:127px; }
+.cta--sm { width:109px; height:109px; }
+.cta .r { position:absolute; border-radius:50%; transition:border-color .3s!important; }
+.cta .r1 { inset:0; border:1.5px solid var(--border); }
+.cta .r2 { inset:7px; border:1px solid var(--border-2); }
+.cta .r3 { inset:14px; border:1px dashed var(--border-3); }
+.cta .lbl { position:relative; z-index:2; font-size:0.52rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--navy); text-align:center; line-height:1.2; padding:0 6px; pointer-events:none; }
+.cta:hover .lbl { color:var(--gold)!important; }
+.cta:hover .r1 { border-color:var(--gold)!important; }
+.cta:hover .r2 { border-color:rgba(244,188,67,.4)!important; }
 
-  /* Démarche */
-  .nb-demarche { margin-top: 40px; }
-  .nb-etape {
-    display: flex; align-items: center; gap: 24px; padding: 20px 0;
-    border-top: 1px solid var(--pt-border); position: relative; cursor: default;
-    background: transparent; transition: all 0.3s ease !important;
-  }
-  .nb-etape:last-child { border-bottom: 1px solid var(--pt-border); }
-  .nb-etape:hover { border-color: var(--pt-border-hover) !important; }
-  .nb-etape:nth-child(odd):hover  .nb-etape__num  { color: var(--pt-accent) !important; }
-  .nb-etape:nth-child(odd):hover  .nb-etape__name { color: var(--pt-accent) !important; }
-  .nb-etape:nth-child(odd):hover  .nb-etape__desc { color: rgba(178,34,34,0.7) !important; }
-  .nb-etape:nth-child(even):hover .nb-etape__num  { color: var(--pt-accent2) !important; }
-  .nb-etape:nth-child(even):hover .nb-etape__name { color: var(--pt-accent2) !important; }
-  .nb-etape:nth-child(even):hover .nb-etape__desc { color: rgba(255,117,24,0.7) !important; }
-  .nb-etape:hover .nb-etape__desc { opacity: 1 !important; transform: translateX(0) !important; }
-  .nb-etape__num { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 400; color: var(--pt-muted); letter-spacing: 0.1em; min-width: 32px; flex-shrink: 0; align-self: center; transition: color 0.3s !important; }
-  .nb-etape__name { font-family: 'Clash Display', sans-serif; font-weight: 700; font-size: clamp(42px, 5.5vw, 80px); line-height: 1.0; flex: 1; transition: color 0.35s !important; color: var(--pt-text); }
-  .nb-etape__desc { font-size: 16px; font-weight: 300; color: var(--pt-sub); max-width: 280px; line-height: 1.6; text-align: right; opacity: 0; transform: translateX(12px); transition: opacity 0.3s ease, transform 0.35s ease !important; align-self: center; flex-shrink: 0; }
+/* Sections */
+.section { padding:80px 5vw; }
+.slabel { font-size:11px; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:28px; display:block; }
+.stitle { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(38px,4.5vw,64px); line-height:0.95; letter-spacing:-0.02em; color:var(--navy); margin-bottom:36px; }
+.stitle em { font-style:italic; font-weight:400; color:var(--blue); display:block; }
+.stext { font-size:17px; font-weight:300; line-height:1.88; color:var(--txt); margin-bottom:16px; max-width:520px; }
 
-  /* Images */
-  .nb-fullwidth { width: 100%; }
-  .nb-fullwidth__img { width: 100%; aspect-ratio: 16/8; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; background: rgba(178,34,34,0.05); }
-  .nb-fullwidth__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .nb-fullwidth__caption { font-size: 11px; color: var(--pt-muted); letter-spacing: 0.04em; padding: 12px 5vw; border-bottom: 1px solid var(--pt-border); }
+/* Rows */
+.rows { margin-top:36px; display:flex; flex-direction:column; gap:20px; }
+.row { display:flex; gap:20px; }
+.row-lbl { font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue); min-width:90px; flex-shrink:0; }
+.row-val { font-size:16px; color:var(--navy); line-height:1.6; }
 
-  .nb-img-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-  .nb-img-duo__item { aspect-ratio: 4/3; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; background: rgba(178,34,34,0.05); }
-  .nb-img-duo__item img { width: 100%; height: 100%; object-fit: cover; }
+/* Étapes */
+.etapes { margin-top:28px; }
+.etape { display:flex; align-items:center; gap:20px; padding:20px 0; }
+.etape:nth-child(odd):hover .en, .etape:nth-child(odd):hover .ename { color:var(--gold)!important; }
+.etape:nth-child(even):hover .en, .etape:nth-child(even):hover .ename { color:var(--blue)!important; }
+.en { font-size:10px; color:var(--blue); min-width:28px; transition:color .3s!important; }
+.ename { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(22px,2.8vw,38px); line-height:1; color:var(--navy); flex:1; transition:color .3s!important; }
 
-  /* Copyright badge */
-  .nb-copyright {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 16px; border: 1px solid var(--pt-accent);
-    border-radius: 2px; font-size: 11px; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--pt-accent); margin-top: 20px;
-  }
-  .nb-copyright::before { content: '©'; font-size: 14px; }
+/* Résultats */
+.results { display:grid; grid-template-columns:1fr 1fr; gap:36px; margin:32px 0; }
+.ritem:nth-child(odd):hover .rnum, .ritem:nth-child(odd):hover .rtitle { color:var(--gold)!important; }
+.ritem:nth-child(even):hover .rnum, .ritem:nth-child(even):hover .rtitle { color:var(--blue)!important; }
+.rnum { font-family:'Clash Display',sans-serif; font-size:clamp(36px,5vw,56px); font-weight:700; line-height:0.9; color:var(--navy); display:block; margin-bottom:6px; }
+.ritem:nth-child(even) .rnum { color:var(--blue); }
+.rtitle { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:4px; }
+.rdesc { font-size:14px; font-weight:300; color:var(--txt-faint); }
+.bq { padding-left:20px; border-left:3px solid var(--gold); margin:28px 0; }
+.bq p { font-size:clamp(14px,1.5vw,18px); font-style:italic; font-weight:300; line-height:1.65; color:var(--navy); }
 
-  /* Résultats */
-  .nb-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--pt-border); margin-bottom: 60px; }
-  .nb-result-item { padding: 48px 36px; border-right: 1px solid var(--pt-border); transition: background 0.3s !important; cursor: default; }
-  .nb-result-item:last-child { border-right: none; }
-  .nb-result-item:hover { background: rgba(178,34,34,0.05) !important; }
-  .nb-result__num { font-family: 'Clash Display', sans-serif; font-size: clamp(44px, 5vw, 68px); font-weight: 700; line-height: 0.9; color: var(--pt-text); display: block; margin-bottom: 14px; transition: color 0.3s !important; }
-  .nb-result-item:nth-child(even) .nb-result__num { color: var(--pt-muted); }
-  .nb-result-item:nth-child(odd):hover  .nb-result__num   { color: var(--pt-accent) !important; }
-  .nb-result-item:nth-child(even):hover .nb-result__num   { color: var(--pt-accent2) !important; }
-  .nb-result-item:nth-child(odd):hover  .nb-result__title { color: var(--pt-accent) !important; }
-  .nb-result-item:nth-child(even):hover .nb-result__title { color: var(--pt-accent2) !important; }
-  .nb-result__title { font-family: 'Clash Display', sans-serif; font-size: 17px; font-weight: 600; color: var(--pt-text); margin-bottom: 8px; line-height: 1.2; transition: color 0.3s !important; }
-  .nb-result__desc { font-size: 13px; font-weight: 300; color: var(--pt-muted); line-height: 1.6; }
+/* Reveal */
+.rvl { opacity:0; transform:translateY(16px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1)!important; }
+.rvl.on { opacity:1!important; transform:translateY(0)!important; }
+.d1{transition-delay:.1s!important;} .d2{transition-delay:.2s!important;} .d3{transition-delay:.3s!important;}
 
-  /* Blockquote */
-  .nb-blockquote { padding: 0 0 0 28px; border-left: 2px solid var(--pt-accent); }
-  .nb-blockquote p { font-family: 'Clash Display', sans-serif; font-size: clamp(18px, 2vw, 24px); font-style: italic; font-weight: 400; line-height: 1.55; color: var(--pt-text); }
-  .nb-result__bottom { display: flex; align-items: center; gap: 48px; margin-top: 40px; }
-  .nb-result__bottom .nb-blockquote { flex: 1; margin: 0; }
+/* Droite */
+.hero-img-wrap { position:relative; height:100vh; overflow:hidden; flex-shrink:0; }
+.hero-img {
+  position:absolute; inset:0;
+  background:url('http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.37-scaled.png') center/cover no-repeat;
+  transform:scale(1.06); transition:transform 6s ease!important;
+}
+.col-R:hover .hero-img { transform:scale(1.0)!important; }
+.hero-img-bottom { padding:28px 36px 40px; flex-shrink:0; }
+.hero-img-lbl { font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:6px; }
+.hero-img-name { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(28px,3.2vw,48px); line-height:1.0; letter-spacing:-0.02em; color:var(--navy); display:block; }
 
-  .nb-result__circle-cta {
-    position: relative; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    width: 120px; height: 120px; flex-shrink: 0;
-    text-decoration: none; background: transparent; border: none;
-    cursor: pointer; -webkit-tap-highlight-color: transparent; transition: all 0.3s ease !important;
-  }
-  .nb-result__circle-cta .nb-ring { position: absolute; border-radius: 50%; transition: border-color 0.3s !important; }
-  .nb-result__circle-cta .nb-r1 { inset: 0;    border: 1.5px solid var(--pt-text); opacity: 0.9; }
-  .nb-result__circle-cta .nb-r2 { inset: 9px;  border: 1px solid var(--pt-muted); }
-  .nb-result__circle-cta .nb-r3 { inset: 18px; border: 1px dashed var(--pt-border); }
-  .nb-result__circle-cta .nb-lbl {
-    position: relative; z-index: 2; font-family: 'Poppins', sans-serif;
-    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--pt-text); text-align: center; line-height: 1.2; padding: 0 10px; pointer-events: none;
-  }
-  .nb-result__circle-cta:hover .nb-lbl { color: var(--pt-accent) !important; }
-  .nb-result__circle-cta:hover .nb-r1  { border-color: var(--pt-accent) !important; opacity: 1 !important; }
-  .nb-result__circle-cta:hover .nb-r2  { border-color: rgba(178,34,34,0.4) !important; }
-  .nb-result__circle-cta:hover .nb-r3  { border-color: rgba(178,34,34,0.15) !important; }
+/* Carousel */
+.car-block { padding:48px 36px 60px; }
+.car-stage { position:relative; width:100%; aspect-ratio:4/3; border-radius:20px; overflow:hidden; background:var(--navy); }
+.car-slide { position:absolute; inset:0; opacity:0; transform:scale(1.05); transition:opacity .95s cubic-bezier(.16,1,.3,1), transform .95s cubic-bezier(.16,1,.3,1)!important; pointer-events:none; }
+.car-slide.active { opacity:1!important; transform:scale(1)!important; pointer-events:auto; }
+.car-slide img { width:100%; height:100%; object-fit:cover; display:block; }
+.car-bar { position:absolute; bottom:0; left:0; height:3px; background:var(--gold); width:0; z-index:10; }
+.car-num { position:absolute; top:16px; right:20px; z-index:10; font-size:11px; font-weight:600; letter-spacing:0.12em; color:rgba(247,245,240,0.7); font-family:'Poppins',sans-serif; }
+.car-footer { margin-top:20px; display:flex; align-items:flex-end; justify-content:space-between; gap:20px; }
+.car-title { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(24px,2.8vw,40px); line-height:0.95; color:var(--navy); }
+.car-title em { font-style:italic; font-weight:400; color:var(--blue); }
+.car-dots { display:flex; gap:6px; align-self:center; }
+.car-dot { width:5px; height:5px; border-radius:50%; background:var(--dot-bg); transition:all .3s!important; }
+.car-dot.on { background:var(--gold); width:18px; border-radius:2.5px; }
 
-  /* Navigation */
-  .nb-nav-projets { border-top: 1px solid var(--pt-border); }
-  .nb-nav-projets__label { font-size: 11px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--pt-label); padding: 48px 5vw 20px; display: block; }
-  .nb-nav-list { list-style: none; }
-  .nb-nav-item { position: relative; display: flex; align-items: center; justify-content: center; padding: 24px 70px; border-top: 1px solid var(--pt-border); cursor: pointer; text-decoration: none; background: transparent; transition: border-color 0.3s !important; }
-  .nb-nav-item:last-child { border-bottom: 1px solid var(--pt-border); }
-  .nb-nav-item:hover { border-color: var(--pt-border-hover) !important; }
-  .nb-nav-item:hover .nb-nav-num   { color: var(--pt-muted-hover) !important; }
-  .nb-nav-item:hover .nb-nav-name  { transform: translateX(8px) !important; color: var(--pt-muted-hover) !important; }
-  .nb-nav-item:hover .nb-nav-role  { opacity: 1 !important; transform: translateY(0) !important; }
-  .nb-nav-item:hover .nb-nav-arrow { border-color: var(--pt-arrow-hover) !important; transform: translateY(calc(-50% - 3px)) !important; }
-  .nb-nav-num { font-size: 12px; font-weight: 400; color: var(--pt-muted); letter-spacing: 0.1em; position: absolute; left: 0; top: 50%; transform: translateY(-50%); transition: color 0.3s !important; min-width: 28px; }
-  .nb-nav-center { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
-  .nb-nav-name { font-family: 'Clash Display', sans-serif; font-weight: 700; font-size: clamp(32px, 4.5vw, 72px); line-height: 1; color: var(--pt-text); transition: color 0.35s, transform 0.4s cubic-bezier(0.16,1,0.3,1) !important; }
-  .nb-nav-role { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pt-sub); opacity: 0; transform: translateY(6px); transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s !important; }
-  .nb-nav-arrow { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--pt-arrow); display: flex; align-items: center; justify-content: center; transition: border-color 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1) !important; background: transparent; overflow: hidden; }
-  .nb-nav-arrow::before { content: '→'; position: absolute; font-size: 18px; color: var(--pt-arrow); opacity: 0; transform: translateX(-10px); transition: all 0.3s ease !important; }
-  .nb-nav-item:hover .nb-nav-arrow::before { opacity: 1 !important; transform: translateX(0) !important; color: var(--pt-arrow-hover) !important; }
+/* Carousels horizontaux */
+.c2s-strip { overflow:hidden; flex-shrink:0; width:100%; }
+.c2s-strip img { height:380px; width:auto; display:block; object-fit:cover; border-radius:14px; flex-shrink:0; }
+@keyframes scrollLeft { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+@keyframes up { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+/* Nav */
+.nav-full { background:var(--bg); padding:80px 5vw 60px; }
+.nav-full-lbl { font-size:11px; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:24px; }
+.nav-full-item { display:flex; align-items:center; gap:20px; padding:32px 0; text-decoration:none; }
+.nav-arr { font-size:11px; color:var(--blue); flex-shrink:0; width:24px; }
+.nav-full-item em { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(36px,5vw,80px); line-height:1; color:var(--navy); font-style:normal; display:block; transition:color .3s, transform .45s cubic-bezier(.16,1,.3,1)!important; }
+.nav-full-item:hover em { color:var(--gold)!important; transform:translateX(10px); }
 
-  @media (max-width: 1024px) {
-    .nb-hero__header { grid-template-columns: 1fr; gap: 32px; padding: 0 5vw 48px; }
-    .nb-editorial { grid-template-columns: 1fr; gap: 40px; }
-    .nb-results { grid-template-columns: 1fr 1fr; }
-    .nb-moodboard { grid-template-columns: 1fr 1fr; }
-    .nb-img-duo { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 768px) {
-    .nb-result__bottom { flex-direction: column; align-items: flex-start; gap: 32px; }
-    .nb-hero { min-height: 80vh; }
-    .nb-hero__header { padding: 0 5vw 40px; }
-    .nb-hero__h1 { font-size: clamp(36px, 9vw, 64px); }
-    .nb-section { padding: 64px 5vw; }
-    .nb-results { grid-template-columns: 1fr; }
-    .nb-moodboard { grid-template-columns: 1fr 1fr; }
-    .nb-etape { padding: 18px 0; } .nb-etape__desc { display: none; }
-    .nb-fullwidth__img { aspect-ratio: 4/3; }
-    .nb-nav-item { padding: 18px 52px; }
-    .nb-nav-name { font-size: clamp(28px, 8vw, 52px); }
-    .nb-nav-arrow { width: 36px; height: 36px; }
-  }
-  @media (max-width: 480px) {
-    .nb-hero__header { padding: 0 20px 36px; }
-    .nb-section { padding: 48px 20px; }
-    .nb-nav-item { padding: 16px 44px; }
-    .nb-moodboard { grid-template-columns: 1fr; }
-  }
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1100px){
+  html, body, .page-wrap, .split-cols, .col-L, .col-R { max-width:100vw!important; overflow-x:hidden!important; }
+  .split-cols { grid-template-columns:1fr!important; height:auto; overflow:visible; }
+  .col-L, .col-R { height:auto; overflow-y:visible; overflow-x:hidden; }
+  .hero-img-wrap { height:70vw; max-height:480px; }
+  .hero-txt { min-height:auto!important; padding:40px 6vw 56px; }
+  .eyebrow,.h1,.subtitle,.hero-desc,.hero-bottom { opacity:1!important; transform:none!important; animation:none!important; }
+  .c2s-strip { width:100vw!important; max-width:100vw!important; overflow:hidden!important; }
+  .c2s-strip img { height:180px!important; }
+}
+@media(max-width:768px){
+  .back { padding:24px 6vw; }
+  .section { padding:56px 6vw; }
+  .nav-full { padding:56px 6vw 48px; }
+  .hero-img-wrap { height:75vw; }
+  .hero-img-bottom { padding:20px 6vw 28px; }
+  .car-block { padding:32px 6vw 40px; }
+  .hero-bottom { flex-direction:column; align-items:flex-start; gap:24px; }
+  .hero-meta { flex-wrap:wrap; gap:16px; }
+  .results { grid-template-columns:1fr 1fr; gap:24px; }
+  .ename { font-size:clamp(18px,5vw,28px); }
+  .nav-full-item em { font-size:clamp(28px,7vw,56px); }
+}
+@media(max-width:480px){
+  .results { grid-template-columns:1fr; }
+  .hero-img-wrap { height:85vw; }
+  .car-block { padding:24px 5vw 32px; }
+  .car-stage { aspect-ratio:4/3; }
+}
 </style>
 
+<button id="nb-theme-toggle" aria-label="Basculer mode clair/sombre">
+  <svg class="nb-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="nb-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
 
-<div class="nb-projet">
+<div class="page-wrap">
+<div class="split-cols">
 
-  <a href="https://nadiaui.fr/#portfolio" class="nb-back">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Tous les projets
-  </a>
+  <!-- ═══ GAUCHE ═══ -->
+  <div class="col-L">
+    <a href="https://nadiaui.fr" class="back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Tous les projets
+    </a>
 
-  <!-- HERO -->
-  <div class="nb-hero">
-    <div class="nb-hero__bg"></div>
-    <div class="nb-hero__header">
-      <div>
-        <div class="nb-hero__eyebrow">Escape Game · Projet fictif · 2025</div>
-        <h1 class="nb-hero__h1">
-          Alone Game
-          <em>Osez entrer. Survivrez-vous ?</em>
-        </h1>
-      </div>
-      <div class="nb-hero__meta-col">
-        <div>
-          <span class="nb-hero__meta-label">Services</span>
-          <div class="nb-hero__meta-value" style="line-height:1.8">
-            UX Design<br>UI Design<br>Maquettes Figma<br>Intégration HTML/CSS
-          </div>
+    <div class="hero-txt">
+      <span class="eyebrow">Escape Game · Projet fictif · 2025</span>
+      <h1 class="h1">Alone<br>Game</h1>
+      <p class="subtitle">Osez entrer.<br>Survivrez-vous ?</p>
+      <p class="hero-desc">Conception complète d'un escape game d'horreur fictif — du moodboard aux wireframes, jusqu'à l'intégration HTML/CSS du site immersif.</p>
+      <div class="hero-bottom">
+        <div class="hero-meta">
+          <div class="meta-item"><span class="meta-lbl">Services</span><span class="meta-val">UX · UI · Figma · HTML/CSS</span></div>
+          <div class="meta-item"><span class="meta-lbl">Outils</span><span class="meta-val">Figma · Photoshop · VS Code</span></div>
+          <div class="meta-item"><span class="meta-lbl">Année</span><span class="meta-val">2025</span></div>
         </div>
-        <div>
-          <span class="nb-hero__meta-label">Outils</span>
-          <div class="nb-hero__meta-value">Figma · Photoshop · Illustrator · VS Code</div>
-        </div>
-        <a href="https://www.alonegame.nadiaui.fr" target="_blank" class="nb-hero__visit">
-          <div class="nb-ring nb-r1"></div>
-          <div class="nb-ring nb-r2"></div>
-          <div class="nb-ring nb-r3"></div>
-          <span class="nb-lbl">Voir<br>le site</span>
+        <a href="https://www.alonegame.nadiaui.fr" target="_blank" class="cta cta--lg" id="cta1">
+          <div class="r r1"></div><div class="r r2"></div><div class="r r3"></div>
+          <span class="lbl">Voir<br>le site</span>
         </a>
       </div>
     </div>
-    <p class="nb-hero__img-caption">Alone Game — La Malédiction de l'Âme Perdue · Concept original Nadia Boussaïd © 2025</p>
-  </div>
 
+    <div style="padding:0 5vw 0;width:100%;">
+      <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.58-scaled.png" alt="Moodboard Alone Game" style="width:87%;display:block;border-radius:20px;object-fit:cover;object-position:top center;aspect-ratio:3/4;margin:0 auto;"/>
+    </div>
 
-  <!-- CONTEXTE -->
-  <section class="nb-section">
-    <div class="nb-section__label">Le contexte</div>
-    <div class="nb-editorial">
-      <div>
-        <h2 class="nb-section__title">Un escape game d'horreur
-          <em>pensé pour Halloween</em>
-        </h2>
-      </div>
-      <div>
-        <p class="nb-section__text">Alone Game est un projet fictif conçu pour Halloween — un escape game d'horreur immersif ancré dans l'ambiance d'une maison hantée du 18ème siècle. L'histoire suit Élise, une jeune femme disparue en 1820 dont l'esprit hante une demeure abandonnée.</p>
-        <p class="nb-section__text">Ce projet personnel m'a permis d'explorer toute la chaîne de conception — du moodboard aux wireframes, jusqu'à l'intégration complète en HTML/CSS. Un travail de A à Z, pensé pour être vendu à un vrai opérateur d'escape game.</p>
-        <div class="nb-info-list">
-          <div class="nb-info-row"><span class="nb-info-label">Type</span><span class="nb-info-value">Projet fictif · À vendre</span></div>
-          <div class="nb-info-row"><span class="nb-info-label">Univers</span><span class="nb-info-value">Horreur gothique · Maison hantée · 18ème siècle</span></div>
-          <div class="nb-info-row"><span class="nb-info-label">Livrables</span><span class="nb-info-value">Moodboard · Wireframes · Maquettes · Site intégré</span></div>
-          <div class="nb-info-row"><span class="nb-info-label">Statut</span><span class="nb-info-value">Concept original — Nadia Boussaïd © 2025</span></div>
-        </div>
+    <div class="section">
+      <span class="slabel rvl">Le contexte</span>
+      <h2 class="stitle rvl d1">Un escape game d'horreur<em>pensé pour Halloween</em></h2>
+      <p class="stext rvl d2">Alone Game est un projet fictif imaginé pour Halloween — un escape game d'horreur immersif ancré dans l'ambiance d'une maison hantée du 18ème siècle. L'histoire suit Élise, une jeune femme disparue en 1820 dont l'esprit hante une demeure abandonnée.</p>
+      <p class="stext rvl d2">Ce projet personnel m'a permis d'explorer toute la chaîne de conception — du moodboard aux wireframes, jusqu'à l'intégration complète en HTML/CSS. Un travail de A à Z, pensé pour être vendu à un vrai opérateur d'escape game.</p>
+      <div class="rows rvl d3">
+        <div class="row"><span class="row-lbl">Type</span><span class="row-val">Projet fictif · À vendre clé en main</span></div>
+        <div class="row"><span class="row-lbl">Univers</span><span class="row-val">Horreur gothique · Maison hantée · 18ème siècle</span></div>
+        <div class="row"><span class="row-lbl">Livrables</span><span class="row-val">Moodboard · Wireframes · Maquettes · Site intégré</span></div>
+        <div class="row"><span class="row-lbl">Statut</span><span class="row-val">Concept original — Nadia Boussaïd © 2025</span></div>
       </div>
     </div>
-  </section>
 
-
-  <!-- MOODBOARD -->
-  <section class="nb-section">
-    <div class="nb-section__label">Moodboard & Identité visuelle</div>
-    <div class="nb-editorial" style="margin-bottom:40px">
-      <div>
-        <h2 class="nb-section__title">Une palette
-          <em>née de la terreur</em>
-        </h2>
-      </div>
-      <div>
-        <p class="nb-section__text">J'ai défini une palette chromatique précise : noir profond `#000000`, rouge sang `#B22222`, gris fumé `#2F2F2F`, pourpre sombre `#4B0082` et orange vif `#FF7518` — pour créer une tension visuelle entre la mort et le vivant.</p>
-        <p class="nb-section__text">Les typographies ont été choisies pour leur pouvoir immersif : Creepster pour les titres d'horreur, Lora pour les textes élégants, et Special Elite pour les accents typewriter façon journal effrayant.</p>
-        <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
-          <div style="width:48px;height:48px;background:#B22222;border-radius:4px;" title="Rouge sang #B22222"></div>
-          <div style="width:48px;height:48px;background:#2F2F2F;border-radius:4px;border:1px solid rgba(255,255,255,0.1);" title="Gris fumé #2F2F2F"></div>
-          <div style="width:48px;height:48px;background:#4B0082;border-radius:4px;" title="Pourpre #4B0082"></div>
-          <div style="width:48px;height:48px;background:#FF7518;border-radius:4px;" title="Orange vif #FF7518"></div>
-          <div style="width:48px;height:48px;background:#000000;border-radius:4px;border:1px solid rgba(255,255,255,0.1);" title="Noir profond #000000"></div>
-        </div>
+    <div class="section">
+      <span class="slabel rvl">Ma démarche</span>
+      <h2 class="stitle rvl d1">Du concept<em>à l'expérience complète</em></h2>
+      <p class="stext rvl d2">Recherche approfondie sur l'univers d'horreur, palette chromatique précise, wireframes Figma, puis intégration HTML/CSS/JS pour livrer un site immersif de A à Z.</p>
+      <div class="etapes rvl d3">
+        <div class="etape"><span class="en">01</span><span class="ename">Recherche & Concept</span></div>
+        <div class="etape"><span class="en">02</span><span class="ename">Moodboard & Identité</span></div>
+        <div class="etape"><span class="en">03</span><span class="ename">Wireframes UX</span></div>
+        <div class="etape"><span class="en">04</span><span class="ename">Intégration HTML/CSS</span></div>
       </div>
     </div>
-    <div class="nb-fullwidth">
-      <div class="nb-fullwidth__img">
-        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.58-scaled.png" alt="Moodboard Alone Game — Nadia Boussaïd">
+
+    <div class="section">
+      <span class="slabel rvl">Résultats</span>
+      <h2 class="stitle rvl d1">Un concept à vendre<em>clé en main</em></h2>
+      <div class="results rvl d2">
+        <div class="ritem"><span class="rnum">5</span><div class="rtitle">Pages conçues</div><p class="rdesc">Accueil, aventures, à propos, tarifs, contact.</p></div>
+        <div class="ritem"><span class="rnum">4</span><div class="rtitle">Aventures scénarisées</div><p class="rdesc">Manoir, Tombeau, Forêt, Catacombes.</p></div>
+        <div class="ritem"><span class="rnum">100%</span><div class="rtitle">Fait maison</div><p class="rdesc">De l'idée au code, sans template.</p></div>
+        <div class="ritem"><div class="rtitle">Vendable</div><p class="rdesc">Prêt pour un vrai opérateur.</p></div>
       </div>
+      <div class="bq rvl d3"><p>"Créer la peur par le design — chaque détail est pensé pour immerger le visiteur avant même qu'il franchisse la porte."</p></div>
+      <a href="https://www.alonegame.nadiaui.fr" target="_blank" class="cta cta--sm" id="cta2" style="margin-top:24px;">
+        <div class="r r1"></div><div class="r r2"></div><div class="r r3"></div>
+        <span class="lbl">Voir<br>le site</span>
+      </a>
     </div>
-    <p class="nb-fullwidth__caption">Moodboard & palette chromatique — Concept original Nadia Boussaïd © 2025</p>
-  </section>
 
-
-  <!-- DÉMARCHE UX -->
-  <section class="nb-section">
-    <div class="nb-section__label">Ma démarche UX</div>
-    <div class="nb-editorial" style="margin-bottom:40px">
-      <div>
-        <h2 class="nb-section__title">Du concept
-          <em>à l'expérience complète</em>
-        </h2>
+    <!-- Carousel L -->
+    <div class="c2s-strip" style="padding-bottom:60px;">
+      <div style="display:flex;gap:0;width:max-content;animation:scrollLeft 22s linear infinite;">
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.37-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.58-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.22.28-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.23.16-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.37-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.58-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.22.28-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.23.16-scaled.png" draggable="false"/>
       </div>
-      <div>
-        <p class="nb-section__text">J'ai démarré par une phase de recherche approfondie — univers d'horreur, escape games existants, expériences immersives — avant de concevoir l'architecture de l'information et les wireframes basse fidélité pour toutes les pages.</p>
-        <p class="nb-section__text">Chaque page a été pensée pour renforcer l'immersion : accueil, aventures, à propos, tarifs, et une page contact avec un concept d'interaction original et unique — que je garde jalousement.</p>
-      </div>
-    </div>
-    <div class="nb-demarche">
-      <div class="nb-etape"><span class="nb-etape__num">01</span><span class="nb-etape__name">Recherche & Concept</span><span class="nb-etape__desc">Univers horreur, benchmark escape games, définition du scénario.</span></div>
-      <div class="nb-etape"><span class="nb-etape__num">02</span><span class="nb-etape__name">Moodboard & Identité</span><span class="nb-etape__desc">Palette, typographies, visuels — Figma + Photoshop + Illustrator.</span></div>
-      <div class="nb-etape"><span class="nb-etape__num">03</span><span class="nb-etape__name">Wireframes UX</span><span class="nb-etape__desc">Architecture des 5 pages, wireframes squelettes puis colorés sur Figma.</span></div>
-      <div class="nb-etape"><span class="nb-etape__num">04</span><span class="nb-etape__name">Intégration</span><span class="nb-etape__desc">HTML · CSS · JavaScript — site complet intégré sur Visual Studio Code.</span></div>
-    </div>
-  </section>
-
-
-  <!-- WIREFRAMES -->
-  <div class="nb-fullwidth">
-    <div class="nb-fullwidth__img">
-      <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.22.28-scaled.png" alt="Wireframes Alone Game — Nadia Boussaïd">
-    </div>
-    <p class="nb-fullwidth__caption">Wireframes squelettes — Architecture UX · Concept original Nadia Boussaïd © 2025</p>
-  </div>
-
-
-  <!-- DUO IMAGES -->
-  <div class="nb-img-duo">
-    <div class="nb-img-duo__item">
-      <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.37-scaled.png" alt="Alone Game — Site final">
-    </div>
-    <div class="nb-img-duo__item">
-      <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.23.16-scaled.png" alt="Alone Game — Détail page">
     </div>
   </div>
-  <div class="nb-fullwidth__caption" style="border-top:1px solid var(--pt-border)">Site final — Vue desktop · Concept original Nadia Boussaïd © 2025</div>
 
+  <!-- ═══ DROITE ═══ -->
+  <div class="col-R">
+    <div class="hero-img-wrap"><div class="hero-img"></div></div>
+    <div class="hero-img-bottom">
+      <span class="hero-img-lbl">Escape Game · Halloween 2025</span>
+      <span class="hero-img-name">La Malédiction de l'Âme Perdue</span>
+    </div>
 
-  <!-- RÉSULTATS -->
-  <section class="nb-section">
-    <div class="nb-section__label">Résultats</div>
-    <div class="nb-results">
-      <div class="nb-result-item">
-        <span class="nb-result__num">5</span>
-        <div class="nb-result__title">Pages conçues</div>
-        <p class="nb-result__desc">Accueil, aventures, à propos, tarifs et une page contact au concept unique.</p>
+    <div class="car-block" id="carBlock">
+      <div class="car-stage">
+        <div class="car-slide active"><img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.37-scaled.png" alt="Alone Game — Accueil"/></div>
+        <div class="car-slide"><img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.58-scaled.png" alt="Alone Game — Moodboard"/></div>
+        <div class="car-slide"><img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.22.28-scaled.png" alt="Alone Game — Wireframes"/></div>
+        <div class="car-slide"><img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.23.16-scaled.png" alt="Alone Game — Détail"/></div>
+        <div class="car-bar" id="cbar"></div>
+        <span class="car-num" id="cnum">1 / 4</span>
       </div>
-      <div class="nb-result-item">
-        <span class="nb-result__num">4</span>
-        <div class="nb-result__title">Aventures scénarisées</div>
-        <p class="nb-result__desc">Le Manoir, Le Tombeau, La Forêt, Les Catacombes — chacune avec son univers.</p>
-      </div>
-      <div class="nb-result-item">
-        <span class="nb-result__num">100%</span>
-        <div class="nb-result__title">Fait maison</div>
-        <p class="nb-result__desc">De l'idée au code — Figma, Photoshop, Illustrator et Visual Studio Code.</p>
+      <div class="car-footer">
+        <h3 class="car-title">Le site<br><em>Alone Game</em></h3>
+        <div class="car-dots" id="cdots"></div>
       </div>
     </div>
-    <div class="nb-editorial">
-      <div>
-        <h2 class="nb-section__title">Un concept à vendre
-          <em>clé en main</em>
-        </h2>
-      </div>
-      <div>
-        <p class="nb-section__text">Alone Game est un projet complet, prêt à être adapté pour un vrai opérateur d'escape game. L'identité visuelle, les wireframes, les maquettes et le site intégré forment un package cohérent — de l'horreur avec élégance.</p>
-        <div class="nb-result__bottom">
-          <div class="nb-blockquote">
-            <p>"Créer la peur par le design — chaque détail est pensé pour immerger le visiteur avant même qu'il franchisse la porte."</p>
-          </div>
-          <a href="https://www.alonegame.nadiaui.fr" target="_blank" class="nb-result__circle-cta" id="nb-result-circle">
-            <div class="nb-ring nb-r1"></div>
-            <div class="nb-ring nb-r2"></div>
-            <div class="nb-ring nb-r3"></div>
-            <span class="nb-lbl">Voir<br>le site</span>
-          </a>
-        </div>
-        <div class="nb-copyright">Concept original — Nadia Boussaïd © 2025</div>
+
+    <!-- Carousel R -->
+    <div class="c2s-strip" style="margin-top:48px;padding-bottom:60px;">
+      <div style="display:flex;gap:0;width:max-content;animation:scrollLeft 26s linear infinite;">
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.22.28-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.23.16-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.37-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.58-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.22.28-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.23.16-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.37-scaled.png" draggable="false"/>
+        <img src="http://nadiaui.fr/wp-content/uploads/2026/03/Capture-decran-2026-03-26-a-16.21.58-scaled.png" draggable="false"/>
       </div>
     </div>
-  </section>
-
-
-  <!-- NAVIGATION -->
-  <div class="nb-nav-projets">
-    <span class="nb-nav-projets__label">Autres projets</span>
-    <ul class="nb-nav-list">
-      <li>
-        <a href="https://nadiaui.fr/index.php/femme-de-coeur/" class="nb-nav-item">
-          <span class="nb-nav-num">←</span>
-          <div class="nb-nav-center"><span class="nb-nav-name">Femme de cœur</span><span class="nb-nav-role">Brand Design · UI/UX · Airtable</span></div>
-          <span class="nb-nav-arrow"></span>
-        </a>
-      </li>
-      <li>
-        <a href="https://nadiaui.fr/index.php/cabinet-c2s/" class="nb-nav-item">
-          <span class="nb-nav-num">→</span>
-          <div class="nb-nav-center"><span class="nb-nav-name">Cabinet C2S</span><span class="nb-nav-role">UI/UX · Web Design · WordPress</span></div>
-          <span class="nb-nav-arrow"></span>
-        </a>
-      </li>
-    </ul>
   </div>
-
 </div>
 
+<!-- Nav pleine largeur -->
+<div class="nav-full">
+  <span class="nav-full-lbl">Autres projets</span>
+  <a href="https://nadiaui.fr/index.php/femme-de-coeur/" class="nav-full-item">
+    <span class="nav-arr">←</span><em>Femme de cœur</em>
+  </a>
+  <a href="https://nadiaui.fr/index.php/cabinet-c2s/" class="nav-full-item">
+    <span class="nav-arr">→</span><em>Cabinet C2S</em>
+  </a>
+</div>
+</div>
 
 <script>
-(function () {
+(function(){
+  /* ─── Toggle thème ─── */
   var html = document.documentElement;
-  var saved = localStorage.getItem('nb-theme') || 'dark';
-  if (!html.getAttribute('data-theme')) html.setAttribute('data-theme', saved);
+  var btn  = document.getElementById('nb-theme-toggle');
+  var KEY  = 'nb-theme';
+  var saved = localStorage.getItem(KEY) || 'light';
+  html.setAttribute('data-theme', saved);
+  btn.addEventListener('click', function(){
+    var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    btn.classList.remove('nb-spinning'); void btn.offsetWidth; btn.classList.add('nb-spinning');
+    btn.addEventListener('animationend', function(){ btn.classList.remove('nb-spinning'); }, {once:true});
+    html.setAttribute('data-theme', next);
+    localStorage.setItem(KEY, next);
+  });
 
-  var btnRings = [], btnAngles = [];
-  var speeds = [0.28, -0.18, 0.12];
-  var si = 0;
+  /* ─── Anneaux ─── */
+  var rings=[],angles=[],spd=[0.28,-0.18,0.12];
+  function addCta(id){ var el=document.getElementById(id); if(!el)return; var i=0; el.querySelectorAll('.r').forEach(function(r){ rings.push({el:r,s:spd[i++%3]}); angles.push(Math.random()*360); }); }
+  function loop(){ rings.forEach(function(r,i){ angles[i]+=r.s; r.el.style.transform='rotate('+angles[i]+'deg)'; }); requestAnimationFrame(loop); }
+  addCta('cta1'); addCta('cta2'); loop();
 
-  function initBtns() {
-    var visitBtn = document.querySelector('.nb-hero__visit');
-    if (visitBtn) {
-      visitBtn.querySelectorAll('.nb-ring').forEach(function (r) {
-        btnRings.push({ el: r, speed: speeds[si++ % speeds.length] });
-        btnAngles.push(Math.random() * 360);
+  /* ─── Reveal : root:null = viewport ─── */
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(x){ if(x.isIntersecting) x.target.classList.add('on'); });
+  }, { root:null, threshold:0.05 });
+  document.querySelectorAll('.rvl').forEach(function(el){ obs.observe(el); });
+
+  /* Fallback 800ms */
+  setTimeout(function(){
+    document.querySelectorAll('.rvl:not(.on)').forEach(function(el){ el.classList.add('on'); });
+    if(window.innerWidth <= 1100){
+      ['eyebrow','h1','subtitle','hero-desc','hero-bottom'].forEach(function(cls){
+        document.querySelectorAll('.'+cls).forEach(function(el){
+          el.style.opacity='1'; el.style.transform='none'; el.style.animation='none';
+        });
       });
     }
-    var resultBtn = document.getElementById('nb-result-circle');
-    if (resultBtn) {
-      si = 0;
-      resultBtn.querySelectorAll('.nb-ring').forEach(function (r) {
-        btnRings.push({ el: r, speed: speeds[si++ % speeds.length] });
-        btnAngles.push(Math.random() * 360);
-      });
-    }
-    loopBtns();
-  }
+  }, 800);
 
-  function loopBtns() {
-    btnRings.forEach(function (r, i) {
-      btnAngles[i] += r.speed;
-      r.el.style.transform = 'rotate(' + btnAngles[i] + 'deg)';
-    });
-    requestAnimationFrame(loopBtns);
+  /* ─── Carousel ─── */
+  var slides=document.querySelectorAll('.car-slide');
+  var bar=document.getElementById('cbar'), num=document.getElementById('cnum'), dotsEl=document.getElementById('cdots');
+  var n=slides.length, cur=0, timer;
+  for(var i=0;i<n;i++){
+    var d=document.createElement('div'); d.className='car-dot'+(i===0?' on':'');
+    (function(idx){ d.onclick=function(){ go(idx); }; })(i);
+    dotsEl.appendChild(d);
   }
+  function updateDots(){ dotsEl.querySelectorAll('.car-dot').forEach(function(d,i){ d.classList.toggle('on',i===cur); }); }
+  function startBar(){ bar.style.transition='none'; bar.style.width='0%'; requestAnimationFrame(function(){ requestAnimationFrame(function(){ bar.style.transition='width 5.5s linear'; bar.style.width='100%'; }); }); }
+  function go(idx){ slides[cur].classList.remove('active'); cur=(idx+n)%n; slides[cur].classList.add('active'); num.textContent=(cur+1)+' / '+n; updateDots(); startBar(); clearInterval(timer); timer=setInterval(function(){ go(cur+1); },6000); }
+  startBar(); timer=setInterval(function(){ go(cur+1); },6000);
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { setTimeout(initBtns, 200); });
-  } else {
-    setTimeout(initBtns, 50);
-  }
+  /* ─── Curseur ─── */
+  var c=document.createElement('div');
+  c.style.cssText='position:fixed;top:0;left:0;width:64px;height:64px;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);';
+  var ci=document.createElement('img');
+  ci.src='http://nadiaui.fr/wp-content/uploads/2026/03/SOURIS-ROUAGE-NADIA.B-1-scaled.png';
+  ci.style.cssText='width:64px;height:64px;object-fit:contain;';
+  c.appendChild(ci); document.body.appendChild(c);
+  document.addEventListener('mousemove',function(e){ c.style.left=e.clientX+'px'; c.style.top=e.clientY+'px'; });
 })();
 </script>
