@@ -1306,7 +1306,7 @@ a { color: inherit; text-decoration: none; }
 .apropos-hero {
   position: relative;
   z-index: 1;
-  padding: clamp(140px, 15vw, 220px) clamp(20px, 4vw, 56px) clamp(60px, 8vw, 120px);
+  padding: clamp(90px, 9vw, 140px) clamp(20px, 4vw, 56px) clamp(60px, 8vw, 120px);
   max-width: 1400px;
   margin: 0 auto;
   text-align: center;
