@@ -1325,13 +1325,14 @@ a { color: inherit; text-decoration: none; }
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 1;
+  opacity: 0.92;
   filter:
-    sepia(0.18)
-    saturate(1.15)
-    brightness(0.94)
-    hue-rotate(-4deg)
-    drop-shadow(0 0 80px rgba(244, 234, 208, 0.4));
+    saturate(0.88)
+    brightness(0.86)
+    contrast(0.95)
+    drop-shadow(0 0 60px rgba(244, 234, 208, 0.25));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, rgba(0, 0, 0, 0) 95%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 70%, rgba(0, 0, 0, 0) 95%);
   pointer-events: none;
   z-index: 0;
   will-change: transform;
