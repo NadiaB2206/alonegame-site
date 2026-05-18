@@ -1306,39 +1306,39 @@ a { color: inherit; text-decoration: none; }
 .apropos-hero {
   position: relative;
   z-index: 1;
-  padding: clamp(120px, 14vw, 200px) clamp(20px, 6vw, 80px) clamp(60px, 8vw, 120px);
-  max-width: var(--max-width);
+  padding: clamp(120px, 14vw, 200px) clamp(20px, 4vw, 56px) clamp(60px, 8vw, 120px);
+  max-width: 1400px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .apropos-hero-title {
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: clamp(22px, 3vw, 34px);
+  font-size: clamp(20px, 2.6vw, 32px);
   letter-spacing: 0.02em;
   color: #fff;
-  margin: 0 0 clamp(40px, 5vw, 72px);
+  margin: 0 0 clamp(24px, 3vw, 40px);
   line-height: 1.3;
 }
 
 .apropos-hero-stage {
   position: relative;
-  width: min(92vw, 900px);
+  width: 100%;
   margin: 0 auto;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 10;
+  border-radius: 6px;
+  overflow: hidden;
   isolation: isolate;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
 }
 
 .apropos-hero-bg {
   position: absolute;
   inset: 0;
-  border-radius: 24px;
   background-color: #2a3a32;
-  background-image: url("image-hero.jpg");
+  background-image: url("apropos-hero.jpg");
   background-size: cover;
   background-position: center;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
   z-index: 1;
 }
 
@@ -1346,68 +1346,91 @@ a { color: inherit; text-decoration: none; }
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(180deg, rgba(1, 18, 14, 0.2) 0%, rgba(1, 18, 14, 0.5) 100%);
+  background: linear-gradient(90deg, rgba(1, 18, 14, 0.35) 0%, rgba(1, 18, 14, 0) 30%, rgba(1, 18, 14, 0) 70%, rgba(1, 18, 14, 0.45) 100%);
   pointer-events: none;
 }
 
-.apropos-hero-moon {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 70%;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 35%,
-    #f4ead0 0%,
-    #d6c79c 35%,
-    #8a8268 65%,
-    #3a3a30 90%
-  );
-  box-shadow:
-    0 0 100px rgba(244, 234, 208, 0.45),
-    inset -25px -30px 50px rgba(0, 0, 0, 0.4);
-  z-index: 2;
-  opacity: 0.95;
-}
+/* ---- Venn diagram overlay ---- */
 
-.apropos-hero-orbs {
+.apropos-venn {
   position: absolute;
   inset: 0;
-  z-index: 3;
-  display: grid;
-  place-items: center;
+  z-index: 2;
 }
 
-.apropos-orb {
+.apropos-venn-circle {
   position: absolute;
-  width: 32%;
+  width: 38%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
+  background: rgba(244, 234, 208, 0.22);
+  mix-blend-mode: screen;
   display: grid;
   place-items: center;
-  font-family: var(--font-display);
-  font-size: clamp(20px, 2.8vw, 38px);
-  color: #fff;
-  text-align: center;
-  background: rgba(244, 234, 208, 0.35);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  mix-blend-mode: screen;
 }
 
-.apropos-orb em {
+.apropos-venn-circle > span {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3.2vw, 44px);
+  color: #fff;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  mix-blend-mode: normal;
+}
+
+.apropos-venn-circle em {
   font-style: normal;
   color: var(--accent);
 }
 
-.apropos-orb--spa  { top: 18%; left: 22%; }
-.apropos-orb--nous { top: 28%; left: 50%; transform: translateX(-50%); font-family: var(--font-body); font-weight: 400; }
-.apropos-orb--moon { top: 45%; left: 46%; }
+/* Three circles centered to form a Venn triangle */
+.apropos-venn-top {
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.apropos-venn-top > span {
+  margin-top: -32%;
+}
+
+.apropos-venn-left {
+  bottom: 8%;
+  left: 16%;
+}
+.apropos-venn-left > span {
+  margin-left: -32%;
+}
+
+.apropos-venn-right {
+  bottom: 8%;
+  right: 16%;
+}
+.apropos-venn-right > span {
+  margin-right: -32%;
+}
+
+.apropos-venn-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(20px, 3vw, 40px);
+  color: #fff;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+@media (max-width: 700px) {
+  .apropos-hero-stage { aspect-ratio: 4 / 5; }
+  .apropos-venn-circle { width: 50%; }
+  .apropos-venn-left  { bottom: 12%; left: 6%; }
+  .apropos-venn-right { bottom: 12%; right: 6%; }
+}
 
 /* ---- Team intro card ---- */
 
