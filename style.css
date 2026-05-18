@@ -1343,7 +1343,7 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   z-index: 2;
   text-align: center;
-  margin: clamp(36px, 4vw, 60px) auto 0;
+  margin: 0 auto clamp(36px, 4vw, 60px);
   max-width: 900px;
 }
 
