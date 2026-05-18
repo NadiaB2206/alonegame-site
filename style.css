@@ -1313,20 +1313,20 @@ a { color: inherit; text-decoration: none; }
   isolation: isolate;
 }
 
-/* Cream moon backdrop — peeks out at the top behind the title (moonrise effect) */
+/* Cream moon backdrop — peeks out at the top, same diameter as the JPG moon */
 .apropos-back-moon {
   position: absolute;
-  top: -8%;
+  top: -12%;
   left: 50%;
-  width: min(650px, 70vw);
+  width: min(880px, 85vw);
   aspect-ratio: 1 / 1;
   transform: translate(-50%, 0);
   background-image: url("apropos-lune.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.7;
-  filter: drop-shadow(0 0 80px rgba(244, 234, 208, 0.45));
+  opacity: 0.8;
+  filter: drop-shadow(0 0 100px rgba(244, 234, 208, 0.5));
   pointer-events: none;
   z-index: 0;
   will-change: transform;
@@ -1343,7 +1343,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.02em;
   color: #fff;
   text-align: center;
-  margin: 0 0 clamp(36px, 4vw, 60px);
+  margin: clamp(36px, 4vw, 60px) 0 0;
   line-height: 1.3;
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
 }
@@ -1351,6 +1351,7 @@ a { color: inherit; text-decoration: none; }
 .apropos-hero-stage {
   position: relative;
   width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
   aspect-ratio: 16 / 10;
   border-radius: 12px;
