@@ -29,9 +29,11 @@
     { el: document.querySelector(".parallax-stars"), speed: -0.15 },
     { el: document.querySelector(".parallax-moon"), speed: -0.45 },
     { el: document.querySelector(".cosmos-hero-bg"), speed: 0.25 },
-    // À propos page: giant cream moon behind the hero stage drifts slower
-    // than the page (negative speed) for a soft echo-parallax effect.
-    { el: document.querySelector(".apropos-back-moon"), speed: -0.3, baseY: "-28%", baseX: "-50%" },
+    // À propos page: three layers, each scrolling at a different speed for depth.
+    // Back-moon drifts slowest (deepest layer), title drifts mid, stage drifts least.
+    { el: document.querySelector(".apropos-back-moon"), speed: -0.35, baseY: "0", baseX: "-50%" },
+    { el: document.querySelector(".apropos-hero-title"), speed: -0.18 },
+    { el: document.querySelector(".apropos-hero-stage"), speed: -0.05 },
   ].filter((l) => l.el);
 
   // The signature image drifts inside its circular mask while the section is
