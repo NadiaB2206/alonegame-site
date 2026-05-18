@@ -911,27 +911,7 @@ a { color: inherit; text-decoration: none; }
   background-position: center;
   border-radius: 8px;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-  filter: saturate(0.75) brightness(0.85) sepia(0.1) hue-rotate(-5deg);
   z-index: 1;
-}
-
-.testimonial-photo::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(180deg, rgba(70, 80, 72, 0.15) 0%, rgba(42, 58, 50, 0.55) 100%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.testimonial-photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(165deg, rgba(70, 80, 72, 0) 55%, rgba(1, 18, 14, 0.3) 100%);
-  pointer-events: none;
 }
 
 .testimonial-avatar {
@@ -949,18 +929,7 @@ a { color: inherit; text-decoration: none; }
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.55),
     0 0 0 1px rgba(255, 255, 255, 0.15);
-  filter: saturate(0.55) brightness(0.9) sepia(0.25) hue-rotate(-15deg);
   z-index: 2;
-}
-
-.testimonial-avatar::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: linear-gradient(180deg, rgba(70, 80, 72, 0.1) 0%, rgba(42, 58, 50, 0.35) 100%);
-  pointer-events: none;
-  mix-blend-mode: multiply;
 }
 
 .testimonial-slide blockquote {
