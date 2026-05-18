@@ -1301,218 +1301,52 @@ a { color: inherit; text-decoration: none; }
    À PROPOS PAGE
    ============================================================ */
 
-/* ---- Hero — editorial split ---- */
+/* ---- Hero (Figma node 1:960) ---- */
 
 .apropos-hero {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
-  padding: clamp(120px, 14vw, 180px) 0 0;
-  isolation: isolate;
-  overflow: hidden;
-}
-
-.apropos-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(60% 50% at 75% 30%, rgba(244, 234, 208, 0.06) 0%, rgba(1, 18, 14, 0) 70%),
-    radial-gradient(50% 40% at 15% 80%, rgba(106, 124, 129, 0.10) 0%, rgba(1, 18, 14, 0) 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.apropos-hero-inner {
-  position: relative;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 clamp(20px, 4vw, 64px);
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: clamp(32px, 5vw, 80px);
-  align-items: center;
-  z-index: 2;
+  padding: clamp(140px, 16vw, 220px) clamp(20px, 5vw, 80px) clamp(60px, 8vw, 120px);
+  text-align: center;
 }
 
-/* ---- Left column: editorial text ---- */
-
-.apropos-hero-text {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(24px, 3vw, 40px);
-}
-
-.apropos-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
+.apropos-hero-title {
   font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-  margin: 0;
-}
-
-.apropos-eyebrow span {
-  display: inline-block;
-  width: 42px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.apropos-headline {
-  font-family: "Cormorant Garamond", "Playfair Display", serif;
-  font-weight: 400;
-  font-size: clamp(40px, 6.5vw, 92px);
-  line-height: 0.98;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  font-size: clamp(22px, 2.6vw, 32px);
+  letter-spacing: 0.02em;
   color: #fff;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  margin: 0 0 clamp(40px, 5vw, 80px);
+  line-height: 1.3;
 }
 
-.apropos-headline-line {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: apropos-line-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
-.apropos-headline-1 { animation-delay: 0.2s; font-style: italic; color: rgba(255, 255, 255, 0.85); }
-.apropos-headline-2 { animation-delay: 0.45s; }
-.apropos-headline-3 { animation-delay: 0.7s; font-style: italic; font-size: 0.55em; color: rgba(244, 234, 208, 0.8); margin-top: 8px; }
-
-.apropos-headline em {
-  font-style: italic;
-  color: var(--tone-cream, #f4ead0);
-}
-
-@keyframes apropos-line-in {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Formula: Spa + Moon + Soul = Nous */
-
-.apropos-formula {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 14px 18px;
-  font-family: "Poiret One", "Cormorant Garamond", serif;
-  font-size: clamp(20px, 2.2vw, 28px);
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 0.06em;
-  padding: clamp(20px, 2.5vw, 32px) clamp(24px, 3vw, 40px);
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 999px;
-  width: fit-content;
-  max-width: 100%;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: apropos-line-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.95s forwards;
-}
-
-.apropos-formula-word em {
-  font-style: normal;
-  color: var(--accent);
-}
-
-.apropos-formula-op {
-  color: rgba(244, 234, 208, 0.7);
-  font-size: 0.85em;
-}
-
-.apropos-formula-result {
-  font-family: var(--font-body);
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  padding: 4px 14px;
-  border-radius: 999px;
-  background: rgba(244, 234, 208, 0.15);
-  color: #fff;
-}
-
-/* Scroll cue */
-
-.apropos-scroll-cue {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
-  padding: 14px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 999px;
-  width: fit-content;
-  transition: background 0.25s ease, color 0.25s ease,
-              border-color 0.25s ease, gap 0.25s ease, transform 0.2s ease;
-  opacity: 0;
-  animation: apropos-line-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) 1.2s forwards;
-}
-
-.apropos-scroll-cue:hover {
-  background: #fff;
-  color: #1a1a1a;
-  border-color: #fff;
-  gap: 16px;
-  transform: translateY(-1px);
-}
-
-.apropos-arrow {
-  font-size: 18px;
-  letter-spacing: 0;
-  animation: apropos-arrow-bounce 2.2s ease-in-out infinite;
-}
-
-@keyframes apropos-arrow-bounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(4px); }
-}
-
-/* ---- Right column: photo card ---- */
-
-.apropos-hero-media {
+.apropos-hero-stage {
   position: relative;
-  display: grid;
-  place-items: center;
+  width: min(92vw, 900px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  isolation: isolate;
 }
 
-.apropos-hero-card {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: 18px;
-  overflow: hidden;
-  transform: rotate(2.5deg);
-  box-shadow:
-    0 50px 120px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(244, 234, 208, 0.12) inset;
-  animation: apropos-card-float 7s ease-in-out infinite;
-  will-change: transform;
-}
-
-.apropos-hero-card::after {
-  content: "";
+/* Halo behind the photo */
+.apropos-hero-halo {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(1, 18, 14, 0) 50%, rgba(1, 18, 14, 0.55) 100%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 78%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 234, 208, 0.22) 0%, rgba(244, 234, 208, 0) 65%);
+  filter: blur(20px);
   pointer-events: none;
-  z-index: 2;
+  z-index: 1;
 }
 
-.apropos-hero-img {
+/* Photo: square background */
+.apropos-hero-photo {
   position: absolute;
   inset: 0;
   background-color: #2a3a32;
@@ -1521,106 +1355,81 @@ a { color: inherit; text-decoration: none; }
     url("https://images.unsplash.com/photo-1532978879514-6cbe1d2e87a3?w=1400&q=80");
   background-size: cover;
   background-position: center;
-  z-index: 1;
-  animation: apropos-img-zoom 16s ease-in-out infinite alternate;
-  will-change: transform;
+  z-index: 2;
 }
 
-@keyframes apropos-img-zoom {
-  0%   { transform: scale(1); }
-  100% { transform: scale(1.08); }
-}
+/* ---- Venn circles overlay ---- */
 
-.apropos-hero-water {
+.apropos-venn {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 38%;
-  background-image: url("apropos-eau.gif");
-  background-size: cover;
-  background-position: center top;
-  pointer-events: none;
+  inset: 0;
   z-index: 3;
-  mix-blend-mode: screen;
-  opacity: 0.8;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%);
 }
 
-.apropos-hero-caption {
+.apropos-venn-circle {
   position: absolute;
-  left: 24px;
-  bottom: 22px;
+  width: 40%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: rgba(244, 234, 208, 0.22);
+  mix-blend-mode: screen;
+  display: grid;
+  place-items: center;
+}
+
+.apropos-venn-circle > span {
+  display: inline-block;
+  font-family: "Poiret One", "Cormorant Garamond", serif;
+  font-size: clamp(22px, 3.4vw, 48px);
+  color: #fff;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  mix-blend-mode: normal;
+}
+
+.apropos-venn-circle em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* Three circles forming a Venn triangle */
+.apropos-venn-top {
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.apropos-venn-top > span { margin-top: -32%; }
+
+.apropos-venn-left {
+  bottom: 5%;
+  left: 13%;
+}
+.apropos-venn-left > span { margin-left: -32%; }
+
+.apropos-venn-right {
+  bottom: 5%;
+  right: 13%;
+}
+.apropos-venn-right > span { margin-right: -32%; }
+
+.apropos-venn-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0;
+  font-size: clamp(22px, 3vw, 40px);
+  color: #fff;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
   z-index: 4;
 }
 
-@keyframes apropos-card-float {
-  0%, 100% { transform: rotate(2.5deg) translateY(0); }
-  50%      { transform: rotate(2.5deg) translateY(-14px); }
-}
-
-.apropos-hero-deco {
-  position: absolute;
-  top: -10%;
-  right: -8%;
-  font-size: clamp(80px, 10vw, 160px);
-  color: rgba(244, 234, 208, 0.18);
-  pointer-events: none;
-  font-family: serif;
-  z-index: 0;
-  animation: apropos-deco-spin 40s linear infinite;
-}
-
-@keyframes apropos-deco-spin {
-  to { transform: rotate(360deg); }
-}
-
-/* ---- Marquee at the bottom ---- */
-
-.apropos-marquee {
-  position: relative;
-  margin-top: clamp(60px, 8vw, 100px);
-  padding: clamp(20px, 2vw, 28px) 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-}
-
-.apropos-marquee-track {
-  display: flex;
-  gap: clamp(24px, 4vw, 56px);
-  width: max-content;
-  animation: apropos-marquee 32s linear infinite;
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-size: clamp(28px, 4vw, 52px);
-  color: rgba(255, 255, 255, 0.65);
-  white-space: nowrap;
-}
-
-.apropos-marquee-track span:nth-child(even) {
-  color: var(--accent);
-  font-style: normal;
-}
-
-@keyframes apropos-marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@media (max-width: 900px) {
-  .apropos-hero-inner { grid-template-columns: 1fr; gap: clamp(40px, 6vw, 64px); }
-  .apropos-hero-card { max-width: 460px; margin: 0 auto; }
+@media (max-width: 700px) {
+  .apropos-venn-circle { width: 52%; }
+  .apropos-venn-left  { bottom: 8%; left: 4%; }
+  .apropos-venn-right { bottom: 8%; right: 4%; }
 }
 
 /* ---- Team intro card ---- */
