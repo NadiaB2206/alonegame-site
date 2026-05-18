@@ -29,6 +29,9 @@
     { el: document.querySelector(".parallax-stars"), speed: -0.15 },
     { el: document.querySelector(".parallax-moon"), speed: -0.45 },
     { el: document.querySelector(".cosmos-hero-bg"), speed: 0.25 },
+    // À propos page: giant cream moon behind the hero stage drifts slower
+    // than the page (negative speed) for a soft echo-parallax effect.
+    { el: document.querySelector(".apropos-back-moon"), speed: -0.3, baseY: "-38%", baseX: "-50%" },
   ].filter((l) => l.el);
 
   // The signature image drifts inside its circular mask while the section is
@@ -46,8 +49,15 @@
     const y = window.scrollY;
     const vh = window.innerHeight;
 
-    for (const { el, speed } of fixedLayers) {
-      el.style.transform = `translate3d(0, ${(y * speed).toFixed(2)}px, 0)`;
+    for (const layer of fixedLayers) {
+      const { el, speed, baseX, baseY } = layer;
+      const drift = (y * speed).toFixed(2);
+      if (baseX || baseY) {
+        // Element uses translate(-50%, -38%) as its base — preserve it and add the scroll drift.
+        el.style.transform = `translate(${baseX || "0"}, calc(${baseY || "0"} + ${drift}px))`;
+      } else {
+        el.style.transform = `translate3d(0, ${drift}px, 0)`;
+      }
     }
 
     if (signatureImg && signatureFigure) {
