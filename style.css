@@ -1313,30 +1313,10 @@ a { color: inherit; text-decoration: none; }
   isolation: isolate;
 }
 
-/* Cream moon backdrop — full PNG moon on transparent background,
-   positioned as a moonrise above the stage. */
+/* Cream moon backdrop désactivée — le JPG du stage porte déjà la lune,
+   afficher la PNG cream créait un doublon visuel. */
 .apropos-back-moon {
-  position: absolute;
-  top: -13%;
-  left: 50.3%;
-  width: min(760px, 77vw);
-  aspect-ratio: 1 / 1;
-  transform: translate(-50%, 0);
-  background-image: url("apropos-lune.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  filter:
-    sepia(0.18)
-    saturate(1.15)
-    brightness(0.94)
-    hue-rotate(-4deg)
-    drop-shadow(0 0 80px rgba(244, 234, 208, 0.4));
-  pointer-events: none;
-  z-index: 0;
-  will-change: transform;
-  image-rendering: -webkit-optimize-contrast;
+  display: none;
 }
 
 .apropos-hero-text {
