@@ -31,7 +31,7 @@
     { el: document.querySelector(".cosmos-hero-bg"), speed: 0.25 },
     // À propos page: three layers, each scrolling at a different speed for depth.
     // Back-moon drifts slowest (deepest layer), title drifts mid, stage drifts least.
-    { el: document.querySelector(".apropos-back-moon"), speed: -0.55, baseY: "0", baseX: "-50%" },
+    { el: document.querySelector(".apropos-back-moon"), speed: -0.45, baseY: "0", baseX: "-50%" },
     { el: document.querySelector(".apropos-hero-title"), speed: -0.18 },
     { el: document.querySelector(".apropos-hero-stage"), speed: -0.05 },
   ].filter((l) => l.el);
