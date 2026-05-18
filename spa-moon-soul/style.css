@@ -1313,25 +1313,6 @@ a { color: inherit; text-decoration: none; }
   isolation: isolate;
 }
 
-/* Giant cream moon floating behind the hero stage (parallax) */
-.apropos-back-moon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(1100px, 130vw);
-  aspect-ratio: 1 / 1;
-  transform: translate(-50%, -38%);
-  background-image: url("apropos-lune.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.85;
-  filter: drop-shadow(0 0 60px rgba(244, 234, 208, 0.35));
-  pointer-events: none;
-  z-index: 0;
-  will-change: transform;
-}
-
 /* Stylized sparkly-water strip below the hero */
 .apropos-water-strip {
   position: relative;
