@@ -1316,23 +1316,24 @@ a { color: inherit; text-decoration: none; }
 /* Cream moon backdrop — visible au-dessus du stage (lever de lune). */
 .apropos-back-moon {
   position: absolute;
-  top: -13%;
-  left: 50.3%;
-  width: min(760px, 77vw);
+  top: 2%;
+  left: 50%;
+  width: min(480px, 48vw);
   aspect-ratio: 1 / 1;
   transform: translate(-50%, 0);
   background-image: url("apropos-lune.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.92;
+  opacity: 0.55;
   filter:
-    saturate(0.88)
-    brightness(0.86)
+    saturate(0.85)
+    brightness(0.82)
     contrast(0.95)
-    drop-shadow(0 0 60px rgba(244, 234, 208, 0.25));
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, rgba(0, 0, 0, 0) 95%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 70%, rgba(0, 0, 0, 0) 95%);
+    blur(1px)
+    drop-shadow(0 0 80px rgba(244, 234, 208, 0.25));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgba(0, 0, 0, 0) 92%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgba(0, 0, 0, 0) 92%);
   pointer-events: none;
   z-index: 0;
   will-change: transform;
