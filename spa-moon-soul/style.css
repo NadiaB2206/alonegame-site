@@ -1306,9 +1306,12 @@ a { color: inherit; text-decoration: none; }
 .apropos-hero {
   position: relative;
   z-index: 1;
-  padding: clamp(140px, 15vw, 220px) clamp(20px, 4vw, 56px) clamp(60px, 8vw, 120px);
-  max-width: 1400px;
-  margin: 0 auto;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  isolation: isolate;
 }
 
 .apropos-hero-title {
@@ -1318,22 +1321,22 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(24px, 3.4vw, 44px);
   letter-spacing: 0.03em;
   color: #fff;
-  margin: 0 0 clamp(28px, 3.5vw, 48px);
+  margin: 0;
+  padding: clamp(140px, 16vw, 220px) clamp(20px, 4vw, 56px) clamp(24px, 3vw, 40px);
   line-height: 1.25;
+  text-align: center;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 5;
 }
 
 .apropos-hero-stage {
   position: relative;
   width: 100%;
-  margin: 0 auto;
-  aspect-ratio: 16 / 10;
-  border-radius: 12px;
+  flex: 1;
+  min-height: 70vh;
   overflow: hidden;
   isolation: isolate;
-  box-shadow:
-    0 40px 100px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(244, 234, 208, 0.08) inset;
 }
 
 .apropos-hero-bg {
@@ -1345,6 +1348,7 @@ a { color: inherit; text-decoration: none; }
     url("https://images.unsplash.com/photo-1532978879514-6cbe1d2e87a3?w=2000&q=80");
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   z-index: 1;
   animation: apropos-hero-zoom 28s ease-in-out infinite alternate;
   will-change: transform;
