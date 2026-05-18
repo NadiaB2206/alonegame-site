@@ -1318,7 +1318,7 @@ a { color: inherit; text-decoration: none; }
 .apropos-back-moon {
   position: absolute;
   top: -8%;
-  left: 50%;
+  left: 51%;
   width: min(784px, 80vw);
   aspect-ratio: 1 / 1;
   transform: translate(-50%, 0);
