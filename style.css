@@ -1317,7 +1317,7 @@ a { color: inherit; text-decoration: none; }
    positioned as a moonrise above the stage. */
 .apropos-back-moon {
   position: absolute;
-  top: 12%;
+  top: -5%;
   left: 50%;
   width: min(813px, 84vw);
   aspect-ratio: 1 / 1;
@@ -1329,7 +1329,7 @@ a { color: inherit; text-decoration: none; }
   opacity: 1;
   filter: drop-shadow(0 0 80px rgba(244, 234, 208, 0.4));
   pointer-events: none;
-  z-index: 3;
+  z-index: 0;
   will-change: transform;
   image-rendering: -webkit-optimize-contrast;
 }
