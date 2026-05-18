@@ -1340,7 +1340,7 @@ a { color: inherit; text-decoration: none; }
 
 .apropos-hero-text {
   position: absolute;
-  bottom: 4%;
+  bottom: 22%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
