@@ -1327,12 +1327,11 @@ a { color: inherit; text-decoration: none; }
   background-repeat: no-repeat;
   opacity: 1;
   filter:
-    sepia(0.45)
-    saturate(1.35)
-    brightness(0.95)
-    contrast(1.05)
-    hue-rotate(-8deg)
-    drop-shadow(0 0 100px rgba(244, 234, 208, 0.35));
+    sepia(0.15)
+    saturate(0.85)
+    brightness(1.05)
+    contrast(0.95)
+    drop-shadow(0 0 100px rgba(244, 234, 208, 0.3));
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0) 100%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 55%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0) 100%);
   pointer-events: none;
