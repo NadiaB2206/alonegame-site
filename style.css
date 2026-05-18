@@ -311,10 +311,9 @@ a { color: inherit; text-decoration: none; }
 
 .cosmos-cta--lg::after { font-size: 18px; }
 
-.team-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: clamp(32px, 4vw, 56px);
+.team-card-cta {
+  align-self: center;
+  margin-top: 6px;
 }
 
 .cosmos-cta:hover {
