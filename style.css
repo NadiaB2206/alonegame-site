@@ -1716,13 +1716,54 @@ a { color: inherit; text-decoration: none; }
   z-index: 1;
 }
 
-.team-grid {
+.team-carousel {
+  position: relative;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(20px, 2.5vw, 32px);
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 24px);
+}
+
+.team-track {
+  position: relative;
+  height: clamp(440px, 48vw, 560px);
+  perspective: 1200px;
+}
+
+.team-nav {
+  width: clamp(40px, 4vw, 52px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: clamp(16px, 1.4vw, 20px);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 10;
+  transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.team-nav:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: scale(1.06);
+}
+
+.team-nav:focus-visible {
+  outline: 2px solid rgba(244, 234, 208, 0.7);
+  outline-offset: 3px;
 }
 
 .team-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(420px, 80%);
   background: rgba(46, 59, 52, 0.6);
   backdrop-filter: blur(10px) saturate(140%);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
@@ -1735,13 +1776,76 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 20px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 0.4s ease;
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
+    opacity 0.6s ease,
+    filter 0.6s ease;
 }
 
-.team-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+.team-card[data-pos="active"] {
+  z-index: 5;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+  filter: none;
+}
+
+.team-card[data-pos="left"] {
+  z-index: 3;
+  opacity: 0.35;
+  pointer-events: none;
+  transform: translate(calc(-50% - 70%), -50%) scale(0.82);
+  filter: blur(2px);
+}
+
+.team-card[data-pos="right"] {
+  z-index: 3;
+  opacity: 0.35;
+  pointer-events: none;
+  transform: translate(calc(-50% + 70%), -50%) scale(0.82);
+  filter: blur(2px);
+}
+
+.team-card[data-pos="hidden"] {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.6);
+}
+
+.team-dots {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: clamp(20px, 2.5vw, 32px);
+}
+
+.team-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, width 0.25s ease;
+}
+
+.team-dot:hover { background: rgba(255, 255, 255, 0.5); }
+
+.team-dot[aria-selected="true"] {
+  background: rgba(244, 234, 208, 0.9);
+  width: 22px;
+  border-radius: 999px;
+}
+
+.team-dot:focus-visible {
+  outline: 2px solid rgba(244, 234, 208, 0.7);
+  outline-offset: 3px;
 }
 
 .team-photo {
@@ -1796,12 +1900,24 @@ a { color: inherit; text-decoration: none; }
   color: rgba(255, 255, 255, 0.95);
 }
 
-@media (max-width: 1100px) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 600px) {
-  .team-grid { grid-template-columns: 1fr; }
+@media (max-width: 700px) {
+  .team-carousel {
+    grid-template-columns: 1fr;
+  }
+  .team-nav-prev {
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .team-nav-next {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .team-card[data-pos="left"] { transform: translate(calc(-50% - 90%), -50%) scale(0.7); }
+  .team-card[data-pos="right"] { transform: translate(calc(-50% + 90%), -50%) scale(0.7); }
 }
 
 /* ---- Commitments ---- */

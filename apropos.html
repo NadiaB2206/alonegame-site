@@ -61,46 +61,58 @@
 </section>
 
 <section class="team">
-  <div class="team-grid">
-    <article class="team-card reveal">
-      <div class="team-photo" style="background-image: url('equipe-1.jpg');" role="img" aria-label="Léa Moreau"></div>
-      <h3 class="team-name">Léa Moreau<span>—</span></h3>
-      <p class="team-role">Spécialiste en massages suédois et sportifs</p>
-      <p class="team-quote">
-        Sa philosophie :<br />
-        <em>« Un corps en mouvement commence par un esprit apaisé. »</em>
-      </p>
-    </article>
+  <div class="team-carousel" role="region" aria-label="Notre équipe" aria-roledescription="carousel">
+    <button class="team-nav team-nav-prev" type="button" aria-label="Précédent">
+      <span aria-hidden="true">&larr;</span>
+    </button>
 
-    <article class="team-card reveal">
-      <div class="team-photo" style="background-image: url('equipe-2.jpg');" role="img" aria-label="Mathieu Lemoine"></div>
-      <h3 class="team-name">Mathieu Lemoine<span>—</span></h3>
-      <p class="team-role">Expert en soins énergétiques</p>
-      <p class="team-quote">
-        Sa philosophie :<br />
-        <em>« L'énergie circule là où l'attention se pose. »</em>
-      </p>
-    </article>
+    <div class="team-track" data-team-track>
+      <article class="team-card reveal" data-team-card>
+        <div class="team-photo" style="background-image: url('equipe-1.jpg');" role="img" aria-label="Léa Moreau"></div>
+        <h3 class="team-name">Léa Moreau<span>—</span></h3>
+        <p class="team-role">Spécialiste en massages suédois et sportifs</p>
+        <p class="team-quote">
+          Sa philosophie :<br />
+          <em>« Un corps en mouvement commence par un esprit apaisé. »</em>
+        </p>
+      </article>
 
-    <article class="team-card reveal">
-      <div class="team-photo" style="background-image: url('equipe-3.jpg');" role="img" aria-label="Lucas Verdi"></div>
-      <h3 class="team-name">Lucas Verdi<span>—</span></h3>
-      <p class="team-role">Masseur polyvalent et créateur de moments sur-mesure</p>
-      <p class="team-quote">
-        Sa philosophie :<br />
-        <em>« Chaque personne est unique, et chaque soin doit l'être aussi. »</em>
-      </p>
-    </article>
+      <article class="team-card reveal" data-team-card>
+        <div class="team-photo" style="background-image: url('equipe-2.jpg');" role="img" aria-label="Mathieu Lemoine"></div>
+        <h3 class="team-name">Mathieu Lemoine<span>—</span></h3>
+        <p class="team-role">Expert en soins énergétiques</p>
+        <p class="team-quote">
+          Sa philosophie :<br />
+          <em>« L'énergie circule là où l'attention se pose. »</em>
+        </p>
+      </article>
 
-    <article class="team-card reveal">
-      <div class="team-photo" style="background-image: url('equipe-4.jpg');" role="img" aria-label="Camille Dubois"></div>
-      <h3 class="team-name">Camille Dubois<span>—</span></h3>
-      <p class="team-role">Praticienne en soins du visage lunaires</p>
-      <p class="team-quote">
-        Sa philosophie :<br />
-        <em>« La beauté authentique vient d'un équilibre intérieur. »</em>
-      </p>
-    </article>
+      <article class="team-card reveal" data-team-card>
+        <div class="team-photo" style="background-image: url('equipe-3.jpg');" role="img" aria-label="Lucas Verdi"></div>
+        <h3 class="team-name">Lucas Verdi<span>—</span></h3>
+        <p class="team-role">Masseur polyvalent et créateur de moments sur-mesure</p>
+        <p class="team-quote">
+          Sa philosophie :<br />
+          <em>« Chaque personne est unique, et chaque soin doit l'être aussi. »</em>
+        </p>
+      </article>
+
+      <article class="team-card reveal" data-team-card>
+        <div class="team-photo" style="background-image: url('equipe-4.jpg');" role="img" aria-label="Camille Dubois"></div>
+        <h3 class="team-name">Camille Dubois<span>—</span></h3>
+        <p class="team-role">Praticienne en soins du visage lunaires</p>
+        <p class="team-quote">
+          Sa philosophie :<br />
+          <em>« La beauté authentique vient d'un équilibre intérieur. »</em>
+        </p>
+      </article>
+    </div>
+
+    <button class="team-nav team-nav-next" type="button" aria-label="Suivant">
+      <span aria-hidden="true">&rarr;</span>
+    </button>
+
+    <div class="team-dots" data-team-dots role="tablist" aria-label="Choisir un membre"></div>
   </div>
 </section>
 

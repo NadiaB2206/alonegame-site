@@ -204,4 +204,73 @@
     goTo(0);
     restart();
   }
+
+  // ---- Team carousel (apropos page) ----
+  const teamTrack = document.querySelector("[data-team-track]");
+  if (teamTrack) {
+    const cards = Array.from(teamTrack.querySelectorAll("[data-team-card]"));
+    const dotsContainer = document.querySelector("[data-team-dots]");
+    const prevBtn = document.querySelector(".team-nav-prev");
+    const nextBtn = document.querySelector(".team-nav-next");
+    const total = cards.length;
+    let current = 0;
+
+    const dots = cards.map((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "team-dot";
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-label", `Aller à la fiche ${i + 1}`);
+      dot.addEventListener("click", () => goTo(i));
+      dotsContainer.appendChild(dot);
+      return dot;
+    });
+
+    const render = () => {
+      cards.forEach((card, i) => {
+        const diff = (i - current + total) % total;
+        let pos = "hidden";
+        if (diff === 0) pos = "active";
+        else if (diff === 1) pos = "right";
+        else if (diff === total - 1) pos = "left";
+        card.dataset.pos = pos;
+        card.setAttribute("aria-hidden", pos !== "active");
+      });
+      dots.forEach((dot, i) => {
+        dot.setAttribute("aria-selected", i === current);
+      });
+    };
+
+    const goTo = (i) => {
+      current = (i + total) % total;
+      render();
+    };
+    const next = () => goTo(current + 1);
+    const prev = () => goTo(current - 1);
+
+    nextBtn?.addEventListener("click", next);
+    prevBtn?.addEventListener("click", prev);
+
+    document.addEventListener("keydown", (e) => {
+      if (!teamTrack.matches(":hover") && document.activeElement?.closest(".team-carousel") == null) return;
+      if (e.key === "ArrowLeft") { prev(); e.preventDefault(); }
+      if (e.key === "ArrowRight") { next(); e.preventDefault(); }
+    });
+
+    let touchX = 0;
+    teamTrack.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    teamTrack.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+    });
+
+    cards.forEach((card, i) => {
+      card.addEventListener("click", () => {
+        if (card.dataset.pos === "left") prev();
+        else if (card.dataset.pos === "right") next();
+      });
+    });
+
+    render();
+  }
 })();
