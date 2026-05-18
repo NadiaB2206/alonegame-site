@@ -31,7 +31,7 @@
     { el: document.querySelector(".cosmos-hero-bg"), speed: 0.25 },
     // À propos page: giant cream moon behind the hero stage drifts slower
     // than the page (negative speed) for a soft echo-parallax effect.
-    { el: document.querySelector(".apropos-back-moon"), speed: -0.3, baseY: "-38%", baseX: "-50%" },
+    { el: document.querySelector(".apropos-back-moon"), speed: -0.3, baseY: "-42%", baseX: "-50%" },
   ].filter((l) => l.el);
 
   // The signature image drifts inside its circular mask while the section is
