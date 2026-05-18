@@ -1306,19 +1306,21 @@ a { color: inherit; text-decoration: none; }
 .apropos-hero {
   position: relative;
   z-index: 1;
-  padding: clamp(120px, 14vw, 200px) clamp(20px, 4vw, 56px) clamp(60px, 8vw, 120px);
+  padding: clamp(140px, 15vw, 220px) clamp(20px, 4vw, 56px) clamp(60px, 8vw, 120px);
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .apropos-hero-title {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: clamp(20px, 2.6vw, 32px);
-  letter-spacing: 0.02em;
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(24px, 3.4vw, 44px);
+  letter-spacing: 0.03em;
   color: #fff;
-  margin: 0 0 clamp(24px, 3vw, 40px);
-  line-height: 1.3;
+  margin: 0 0 clamp(28px, 3.5vw, 48px);
+  line-height: 1.25;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .apropos-hero-stage {
@@ -1326,10 +1328,12 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   margin: 0 auto;
   aspect-ratio: 16 / 10;
-  border-radius: 6px;
+  border-radius: 12px;
   overflow: hidden;
   isolation: isolate;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(244, 234, 208, 0.08) inset;
 }
 
 .apropos-hero-bg {
@@ -1340,14 +1344,62 @@ a { color: inherit; text-decoration: none; }
   background-size: cover;
   background-position: center;
   z-index: 1;
+  animation: apropos-hero-zoom 28s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 .apropos-hero-bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(1, 18, 14, 0.35) 0%, rgba(1, 18, 14, 0) 30%, rgba(1, 18, 14, 0) 70%, rgba(1, 18, 14, 0.45) 100%);
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(244, 234, 208, 0.08) 0%, rgba(1, 18, 14, 0) 55%),
+    linear-gradient(180deg, rgba(1, 18, 14, 0.05) 0%, rgba(1, 18, 14, 0) 40%, rgba(1, 18, 14, 0.55) 100%);
   pointer-events: none;
+}
+
+@keyframes apropos-hero-zoom {
+  0%   { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.06) translateY(-1%); }
+}
+
+/* Soft cream glow behind the moon */
+.apropos-hero-glow {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 234, 208, 0.18) 0%, rgba(244, 234, 208, 0) 65%);
+  pointer-events: none;
+  z-index: 2;
+  animation: apropos-glow-pulse 6s ease-in-out infinite;
+  filter: blur(20px);
+}
+
+@keyframes apropos-glow-pulse {
+  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.06); }
+}
+
+/* Sparkly water GIF along the bottom */
+.apropos-hero-water {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 38%;
+  background-image: url("apropos-eau.gif");
+  background-size: cover;
+  background-position: center top;
+  pointer-events: none;
+  z-index: 3;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 1) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 1) 100%);
 }
 
 /* ---- Venn diagram overlay ---- */
@@ -1355,28 +1407,40 @@ a { color: inherit; text-decoration: none; }
 .apropos-venn {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 4;
 }
 
 .apropos-venn-circle {
   position: absolute;
-  width: 38%;
+  width: 36%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background: rgba(244, 234, 208, 0.22);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(244, 234, 208, 0.28) 0%, rgba(244, 234, 208, 0.18) 60%, rgba(244, 234, 208, 0.08) 100%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   mix-blend-mode: screen;
   display: grid;
   place-items: center;
+  box-shadow:
+    inset 0 0 60px rgba(255, 255, 255, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: apropos-venn-float 9s ease-in-out infinite;
+  will-change: transform;
 }
 
 .apropos-venn-circle > span {
   display: inline-block;
-  font-family: var(--font-display);
-  font-size: clamp(20px, 3.2vw, 44px);
+  font-family: "Poiret One", "Cormorant Garamond", serif;
+  font-weight: 400;
+  font-size: clamp(22px, 3.4vw, 48px);
   color: #fff;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   line-height: 1;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(244, 234, 208, 0.3);
   mix-blend-mode: normal;
 }
 
@@ -1387,29 +1451,44 @@ a { color: inherit; text-decoration: none; }
 
 /* Three circles centered to form a Venn triangle */
 .apropos-venn-top {
-  top: 8%;
+  top: 6%;
   left: 50%;
   transform: translateX(-50%);
+  animation-delay: 0s;
 }
 .apropos-venn-top > span {
-  margin-top: -32%;
+  margin-top: -34%;
 }
 
 .apropos-venn-left {
-  bottom: 8%;
-  left: 16%;
+  bottom: 6%;
+  left: 18%;
+  animation-delay: -3s;
 }
 .apropos-venn-left > span {
-  margin-left: -32%;
+  margin-left: -34%;
 }
 
 .apropos-venn-right {
-  bottom: 8%;
-  right: 16%;
+  bottom: 6%;
+  right: 18%;
+  animation-delay: -6s;
 }
 .apropos-venn-right > span {
-  margin-right: -32%;
+  margin-right: -34%;
 }
+
+@keyframes apropos-venn-float {
+  0%, 100% { transform: translate(var(--venn-tx, 0), 0); }
+  50%      { transform: translate(var(--venn-tx, 0), -8px); }
+}
+
+.apropos-venn-top { --venn-tx: -50%; }
+@keyframes apropos-venn-float-top {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, -8px); }
+}
+.apropos-venn-top { animation-name: apropos-venn-float-top; }
 
 .apropos-venn-center {
   position: absolute;
@@ -1418,18 +1497,26 @@ a { color: inherit; text-decoration: none; }
   transform: translate(-50%, -50%);
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: clamp(20px, 3vw, 40px);
+  font-size: clamp(22px, 3.2vw, 42px);
   color: #fff;
-  letter-spacing: 0.05em;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-  z-index: 3;
+  letter-spacing: 0.1em;
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(244, 234, 208, 0.45);
+  z-index: 5;
+  animation: apropos-venn-center-pulse 4s ease-in-out infinite;
+}
+
+@keyframes apropos-venn-center-pulse {
+  0%, 100% { opacity: 0.95; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.04); }
 }
 
 @media (max-width: 700px) {
   .apropos-hero-stage { aspect-ratio: 4 / 5; }
   .apropos-venn-circle { width: 50%; }
-  .apropos-venn-left  { bottom: 12%; left: 6%; }
-  .apropos-venn-right { bottom: 12%; right: 6%; }
+  .apropos-venn-left  { bottom: 10%; left: 6%; }
+  .apropos-venn-right { bottom: 10%; right: 6%; }
 }
 
 /* ---- Team intro card ---- */
