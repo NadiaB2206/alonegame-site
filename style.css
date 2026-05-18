@@ -1319,7 +1319,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   top: -5%;
   left: 50%;
-  width: min(751px, 78vw);
+  width: min(789px, 82vw);
   aspect-ratio: 1 / 1;
   transform: translate(-50%, 0);
   background-image: url("apropos-lune.png");
