@@ -1316,17 +1316,17 @@ a { color: inherit; text-decoration: none; }
 /* Giant cream moon behind the hero — top of the moon visible like a moonrise */
 .apropos-back-moon {
   position: absolute;
-  top: 4%;
+  top: -4%;
   left: 50%;
-  width: min(720px, 80vw);
+  width: min(1100px, 105vw);
   aspect-ratio: 1 / 1;
   transform: translate(-50%, 0);
   background-image: url("apropos-lune.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.7;
-  filter: drop-shadow(0 0 100px rgba(244, 234, 208, 0.5));
+  opacity: 0.75;
+  filter: drop-shadow(0 0 120px rgba(244, 234, 208, 0.55));
   pointer-events: none;
   z-index: 0;
   will-change: transform;
@@ -1453,6 +1453,61 @@ a { color: inherit; text-decoration: none; }
     0 8px 24px rgba(0, 0, 0, 0.2);
   animation: apropos-venn-float 9s ease-in-out infinite;
   will-change: transform;
+  cursor: pointer;
+  transition:
+    background 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease,
+    filter 0.5s ease;
+}
+
+/* Hover: full-rotation spin + scale-up + brighter glow.
+   The rotation runs on an inner pseudo so it composes cleanly with the
+   parent's floating animation transform. */
+.apropos-venn-circle::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 1px dashed rgba(244, 234, 208, 0);
+  transition: border-color 0.5s ease, transform 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+
+.apropos-venn-circle:hover {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(244, 234, 208, 0.45) 0%, rgba(244, 234, 208, 0.28) 60%, rgba(244, 234, 208, 0.12) 100%);
+  border-color: rgba(244, 234, 208, 0.55);
+  box-shadow:
+    inset 0 0 80px rgba(255, 255, 255, 0.18),
+    0 16px 48px rgba(244, 234, 208, 0.25),
+    0 0 60px rgba(244, 234, 208, 0.35);
+  filter: brightness(1.15);
+  animation-play-state: paused;
+}
+
+.apropos-venn-circle:hover::before {
+  border-color: rgba(244, 234, 208, 0.4);
+  transform: rotate(360deg);
+}
+
+/* The label inside also reacts: nudge up + brighten + tracking */
+.apropos-venn-circle > span {
+  transition:
+    color 0.4s ease,
+    letter-spacing 0.6s ease,
+    text-shadow 0.4s ease,
+    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.apropos-venn-circle:hover > span {
+  color: #fff;
+  letter-spacing: 0.14em;
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(244, 234, 208, 0.75),
+    0 0 80px rgba(244, 234, 208, 0.4);
+  transform: scale(1.08);
 }
 
 .apropos-venn-circle > span {
