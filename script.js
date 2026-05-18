@@ -273,4 +273,36 @@
 
     render();
   }
+
+  // ---- Mirror/magnifier lens on team photos ----
+  document.querySelectorAll("[data-team-photo]").forEach((photo) => {
+    const lens = photo.querySelector(".team-photo-lens");
+    const img = photo.querySelector(".team-photo-img");
+    if (!lens || !img) return;
+
+    const url = photo.dataset.img;
+    if (url) lens.style.backgroundImage = `url("${url}")`;
+
+    const ZOOM = 2.2;
+
+    const moveLens = (e) => {
+      const rect = photo.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const w = rect.width;
+      const h = rect.height;
+      const lensW = lens.offsetWidth;
+      const lensH = lens.offsetHeight;
+
+      lens.style.left = `${x}px`;
+      lens.style.top = `${y}px`;
+      lens.style.backgroundSize = `${w * ZOOM}px ${h * ZOOM}px`;
+      lens.style.backgroundPosition = `${-(x * ZOOM - lensW / 2)}px ${-(y * ZOOM - lensH / 2)}px`;
+    };
+
+    photo.addEventListener("mousemove", moveLens, { passive: true });
+    photo.addEventListener("touchmove", (e) => {
+      if (e.touches[0]) moveLens(e.touches[0]);
+    }, { passive: true });
+  });
 })();
