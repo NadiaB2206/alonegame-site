@@ -2447,3 +2447,40 @@ body {
   .contact-social-icon img { width: 32px; height: 32px; }
   .contact-faq-map img { min-height: 160px; }
 }
+
+/* ===== RÉSERVATION (Nos aventures) ===== */
+.reservation-section {
+  background: #000;
+  width: 100%;
+  padding: 70px 16px 90px 16px;
+  scroll-margin-top: 90px;
+}
+.reservation-container {
+  display: flex;
+  justify-content: center;
+}
+.reservation-form .contact-form-group select {
+  background: #ececec;
+  border: none;
+  border-radius: 0;
+  padding: 12px 10px;
+  font-size: 1.18rem;
+  font-family: 'Lora', serif;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.reservation-confirm {
+  margin: 22px 0 0 0;
+  padding: 14px 16px;
+  background: #b12b22;
+  color: #fff;
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 1.4;
+}
+@media (max-width: 700px) {
+  .reservation-form .contact-form-row { flex-direction: column; gap: 0; }
+}
