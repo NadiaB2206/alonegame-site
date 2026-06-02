@@ -143,104 +143,95 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    3 CARTES AGENCES
    ========================================================= */
-.agencies { padding: 1.5rem 0 4.5rem; }
+.agencies { padding: 2rem 0 4rem; }
 
-/* ---- Carousel à défilement continu (marquee) ---- */
-.marquee {
-  --visible: 3;          /* nombre de cartes visibles (ajuste en responsive) */
-  --speed: 26s;          /* vitesse du défilement */
-}
-.marquee-viewport { overflow: hidden; }
-.marquee-track {
-  display: flex;
-  list-style: none;
-  margin: 0; padding: 0;
-  width: max-content;
-  animation: marquee-scroll var(--speed) linear infinite;
-}
-.marquee:hover .marquee-track { animation-play-state: paused; }
-
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }   /* défile d'un jeu de cartes -> boucle sans couture */
-}
-
-.agency-card {
-  flex: 0 0 calc((100vw - 3rem) / var(--visible));
-  max-width: calc(var(--maxw) / var(--visible));
-  box-sizing: border-box;
-  padding: 1.5rem 1rem 0;
-  text-align: center;
-}
-
-/* Accessibilité : stoppe l'animation si l'utilisateur la désactive */
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-}
-
-/* Photo immeuble : cadre arrondi + ombre douce */
-.agency-photo {
+/* ============ Parallaxe agences : 3 couches superposees ============ */
+.parallax {
   position: relative;
-  aspect-ratio: 3 / 4;
-  border-radius: 12px;
-  background: var(--c-grey);
+  height: 460px;
   overflow: hidden;
-  box-shadow: 0 22px 40px -18px rgba(20,40,80,.45);
 }
-.agency-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Cercle "famille" superposé en bas, liseré bleu */
-.agency-family {
+.player {
   position: absolute;
-  left: 50%; bottom: 8%;
-  transform: translateX(-50%);
-  width: 62%; aspect-ratio: 1;
+  inset: 0;
+  display: flex;
+  align-items: center;
+}
+.player-cards   { z-index: 1; }
+.player-shapes  { z-index: 2; }
+.player-circles { z-index: 3; }
+
+.ptrack {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  width: max-content;
+  padding: 0 40px;
+  will-change: transform;
+}
+
+/* sens de defilement */
+@keyframes scroll-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+@keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+.player-cards   .ptrack { animation: scroll-left  34s linear infinite; }   /* cartes -> gauche */
+.player-shapes  .ptrack { animation: scroll-right 26s linear infinite; }   /* formes -> droite (sens oppose) */
+.player-circles .ptrack { animation: scroll-left  20s linear infinite; }   /* cercles -> gauche (meme sens) */
+
+.parallax:hover .ptrack { animation-play-state: paused; }
+
+/* Couche 1 : cartes (photos immeubles) */
+.pcard {
+  flex: 0 0 auto;
+  width: 300px; height: 380px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--c-grey);
+  box-shadow: 0 24px 44px -20px rgba(20,40,80,.5);
+}
+.pcard img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Couche 2 : formes geometriques (contour bleu, semi-transparent) */
+.pshape {
+  flex: 0 0 auto;
+  width: 250px; height: 320px;
+  border: 3px solid var(--c-blue);
+  background: rgba(79,143,224,.10);
+}
+.pshape.oval  { border-radius: 50%; }
+.pshape.house { border: none; background: none; }
+.pshape.house svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+/* Couche 3 : cercles (familles) */
+.pcircle {
+  flex: 0 0 auto;
+  width: 210px; height: 210px;
   border-radius: 50%;
   overflow: hidden;
-  background: rgba(255,255,255,.18);
-  border: 3px solid var(--c-blue);
-  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  border: 4px solid var(--c-blue);
+  background: rgba(255,255,255,.25);
+  box-shadow: 0 10px 26px rgba(0,0,0,.20);
 }
-.agency-family img { width: 100%; height: 100%; object-fit: cover; }
+.pcircle img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.agency-name {
-  margin-top: 1.2rem;
+/* Titres fixes dessous */
+.agency-titles {
+  max-width: var(--maxw);
+  margin: 1.8rem auto 0;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+.agency-titles h3 {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--c-black);
 }
 
-/* Flèches */
-.carousel-arrow {
-  flex-shrink: 0;
-  width: 46px; height: 46px;
-  border: 1px solid var(--c-border);
-  background: #fff;
-  border-radius: 50%;
-  font-size: 1.6rem; line-height: 1;
-  color: var(--c-blue-dark);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background .2s, color .2s, box-shadow .2s;
+@media (prefers-reduced-motion: reduce) {
+  .ptrack { animation: none !important; }
 }
-.carousel-arrow:hover { background: var(--c-blue); color: #fff; box-shadow: 0 6px 16px rgba(79,143,224,.4); }
-.carousel-arrow:disabled { opacity: .35; cursor: default; }
-
-/* Points */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: .55rem;
-  margin-top: 2rem;
-}
-.carousel-dots button {
-  width: 10px; height: 10px;
-  border: none; border-radius: 50%;
-  background: var(--c-border);
-  cursor: pointer;
-  transition: background .2s, transform .2s;
-}
-.carousel-dots button.active { background: var(--c-blue); transform: scale(1.25); }
 
 /* =========================================================
    SECTION EXCLUSIVITÉ (fond bleu mer)
