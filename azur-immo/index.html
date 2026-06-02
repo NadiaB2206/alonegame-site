@@ -43,53 +43,58 @@
     <p class="hero-tagline">"Trouvez l'endroit parfait, celui dont vous rêvez, avec AZUR IMMO."</p>
   </section>
 
-  <!-- ============ CAROUSEL AGENCES ============ -->
+  <!-- ============ CAROUSEL AGENCES (defilement continu) ============ -->
   <section class="agencies" id="nos-biens">
-    <div class="carousel" data-carousel>
-      <button class="carousel-arrow prev" type="button" aria-label="Agence précédente">&#8249;</button>
-
-      <div class="carousel-viewport">
-        <ul class="carousel-track">
+    <div class="marquee">
+      <div class="marquee-viewport">
+        <ul class="marquee-track" aria-label="Nos agences">
+          <!-- Jeu 1 -->
           <li class="agency-card">
             <div class="agency-photo">
-              <!-- Remplacer par agence-nantes.jpg -->
               <img src="agence-nantes.jpg" alt="Agence AZUR IMMO Nantes" onerror="this.classList.add('img-fallback')">
-              <span class="agency-family" aria-hidden="true">
-                <!-- Remplacer par famille-nantes.jpg -->
-                <img src="famille-nantes.jpg" alt="" onerror="this.style.display='none'">
-              </span>
+              <span class="agency-family" aria-hidden="true"><img src="famille-nantes.jpg" alt="" onerror="this.style.display='none'"></span>
             </div>
             <h3 class="agency-name">Agence Nantes</h3>
           </li>
-
           <li class="agency-card">
             <div class="agency-photo">
-              <!-- Remplacer par agence-paris.jpg -->
               <img src="agence-paris.jpg" alt="Agence AZUR IMMO Paris" onerror="this.classList.add('img-fallback')">
-              <span class="agency-family" aria-hidden="true">
-                <img src="famille-paris.jpg" alt="" onerror="this.style.display='none'">
-              </span>
+              <span class="agency-family" aria-hidden="true"><img src="famille-paris.jpg" alt="" onerror="this.style.display='none'"></span>
             </div>
             <h3 class="agency-name">Agence Paris</h3>
           </li>
-
           <li class="agency-card">
             <div class="agency-photo">
-              <!-- Remplacer par agence-lyon.jpg -->
               <img src="agence-lyon.jpg" alt="Agence AZUR IMMO Lyon" onerror="this.classList.add('img-fallback')">
-              <span class="agency-family" aria-hidden="true">
-                <img src="famille-lyon.jpg" alt="" onerror="this.style.display='none'">
-              </span>
+              <span class="agency-family" aria-hidden="true"><img src="famille-lyon.jpg" alt="" onerror="this.style.display='none'"></span>
+            </div>
+            <h3 class="agency-name">Agence Lyon</h3>
+          </li>
+          <!-- Jeu 2 (copie pour boucle sans couture) -->
+          <li class="agency-card" aria-hidden="true">
+            <div class="agency-photo">
+              <img src="agence-nantes.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <span class="agency-family" aria-hidden="true"><img src="famille-nantes.jpg" alt="" onerror="this.style.display='none'"></span>
+            </div>
+            <h3 class="agency-name">Agence Nantes</h3>
+          </li>
+          <li class="agency-card" aria-hidden="true">
+            <div class="agency-photo">
+              <img src="agence-paris.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <span class="agency-family" aria-hidden="true"><img src="famille-paris.jpg" alt="" onerror="this.style.display='none'"></span>
+            </div>
+            <h3 class="agency-name">Agence Paris</h3>
+          </li>
+          <li class="agency-card" aria-hidden="true">
+            <div class="agency-photo">
+              <img src="agence-lyon.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <span class="agency-family" aria-hidden="true"><img src="famille-lyon.jpg" alt="" onerror="this.style.display='none'"></span>
             </div>
             <h3 class="agency-name">Agence Lyon</h3>
           </li>
         </ul>
       </div>
-
-      <button class="carousel-arrow next" type="button" aria-label="Agence suivante">&#8250;</button>
     </div>
-
-    <div class="carousel-dots" role="tablist" aria-label="Choisir une agence"></div>
   </section>
 
   <!-- ============ SECTION EXCLUSIVITÉ (fond bleu mer) ============ -->

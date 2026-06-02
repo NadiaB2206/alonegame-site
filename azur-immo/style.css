@@ -143,27 +143,39 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    3 CARTES AGENCES
    ========================================================= */
-.agencies { max-width: var(--maxw); margin: 0 auto; padding: 1.5rem 1.5rem 4.5rem; }
+.agencies { padding: 1.5rem 0 4.5rem; }
 
-/* ---- Carousel ---- */
-.carousel {
+/* ---- Carousel à défilement continu (marquee) ---- */
+.marquee {
   --visible: 3;          /* nombre de cartes visibles (ajuste en responsive) */
-  display: flex;
-  align-items: center;
-  gap: .5rem;
+  --speed: 26s;          /* vitesse du défilement */
 }
-.carousel-viewport { flex: 1; overflow: hidden; }
-.carousel-track {
+.marquee-viewport { overflow: hidden; }
+.marquee-track {
   display: flex;
   list-style: none;
   margin: 0; padding: 0;
-  transition: transform .5s cubic-bezier(.22,.61,.36,1);
+  width: max-content;
+  animation: marquee-scroll var(--speed) linear infinite;
 }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }   /* défile d'un jeu de cartes -> boucle sans couture */
+}
+
 .agency-card {
-  flex: 0 0 calc(100% / var(--visible));
+  flex: 0 0 calc((100vw - 3rem) / var(--visible));
+  max-width: calc(var(--maxw) / var(--visible));
   box-sizing: border-box;
   padding: 1.5rem 1rem 0;
   text-align: center;
+}
+
+/* Accessibilité : stoppe l'animation si l'utilisateur la désactive */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
 }
 
 /* Photo immeuble : cadre arrondi + ombre douce */
