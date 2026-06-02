@@ -61,11 +61,11 @@ a { color: inherit; text-decoration: none; }
 }
 
 .brand { display: flex; align-items: center; gap: .6rem; }
-.brand-logo { width: 56px; height: 56px; }
+.brand-logo { width: 56px; height: 56px; color: var(--c-black); }
 .brand-logo.small { width: 42px; height: 42px; }
 .brand-text { display: flex; flex-direction: column; line-height: 1; }
-.brand-name { font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--c-black); }
-.brand-sub  { font-weight: 500; font-size: .7rem; letter-spacing: .45em; color: var(--c-black); }
+.brand-name { font-weight: 500; font-size: 1.4rem; letter-spacing: .18em; color: var(--c-black); }
+.brand-sub  { font-weight: 400; font-size: .68rem; letter-spacing: .5em; color: var(--c-black); }
 
 .main-nav { display: flex; gap: 1.6rem; }
 .main-nav a {
@@ -160,6 +160,7 @@ a { color: inherit; text-decoration: none; }
 .exclusivity-mini-logo {
   position: absolute; top: 1.4rem; left: 1.6rem;
   width: 46px; height: 46px;
+  color: #fff;
 }
 .exclusivity-title {
   font-size: clamp(1rem, 2vw, 1.35rem);
@@ -167,12 +168,12 @@ a { color: inherit; text-decoration: none; }
   max-width: 720px;
   margin: 0 auto 2rem;
 }
-.exclusivity-logo { display: inline-flex; flex-direction: column; align-items: center; }
+.exclusivity-logo { display: inline-flex; flex-direction: column; align-items: center; color: var(--c-black); }
 .exclusivity-logo svg { width: clamp(160px, 26vw, 260px); height: auto; }
 .exclusivity-name {
-  font-weight: 700;
+  font-weight: 500;
   font-size: clamp(2.5rem, 8vw, 5rem);
-  letter-spacing: .08em;
+  letter-spacing: .12em;
   color: var(--c-black);
   margin-top: -.5rem;
 }
@@ -295,7 +296,7 @@ a { color: inherit; text-decoration: none; }
   gap: 2rem;
 }
 .footer-brand { display: flex; flex-direction: column; align-items: center; gap: .4rem; }
-.footer-logo { width: 70px; height: 70px; }
+.footer-logo { width: 70px; height: 70px; color: var(--c-blue-dark); }
 .footer-brand-text { display: flex; flex-direction: column; line-height: 1; text-align: center; }
 .footer-brand-text .brand-name { color: var(--c-blue-dark); }
 .footer-brand-text .brand-sub  { color: var(--c-blue-dark); }
