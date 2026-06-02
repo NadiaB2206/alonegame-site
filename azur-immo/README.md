@@ -3,19 +3,25 @@
 Intégration HTML/CSS/JS pur de la page d'accueil AZUR IMMO (projet portfolio).
 Destiné à être hébergé sur `azur-immo.nadiaui.fr` puis intégré dans le portfolio WordPress/Elementor.
 
-## Structure
+## Structure — tout dans UN seul dossier (pas de sous-dossier)
 
 ```
 azur-immo/
 ├── index.html      → page d'accueil
 ├── style.css       → styles (palette blanc / bleu ciel / noir)
 ├── script.js       → menu mobile, apparition au scroll, formulaires
-└── assets/         → images (à déposer)
+├── logo-anim.gif   → logo animé (utilisé dans le header)
+├── logo.svg        → logo (favicon)
+├── logo-full.svg   → logo complet (mark + AZUR IMMO)
+└── (images à déposer ici aussi, voir ci-dessous)
 ```
 
-## Assets à déposer dans `assets/`
+> ⚠️ Tous les fichiers sont **au même niveau**, dans le même dossier.
+> `index.html` appelle les fichiers directement (ex. `logo-anim.gif`), sans préfixe de dossier.
 
-Le site fonctionne **sans assets** (logo en SVG inline + placeholders bleus).
+## Images à déposer (même dossier)
+
+Le site fonctionne **sans les photos** (logo présent + placeholders bleus).
 Pour la version finale, dépose les fichiers suivants en gardant ces noms :
 
 | Fichier | Usage |
@@ -25,7 +31,6 @@ Pour la version finale, dépose les fichiers suivants en gardant ces noms :
 | `agence-lyon.jpg`   | Carte agence Lyon |
 | `carte-france.svg`  | Carte interactive des régions |
 | `maison-1.jpg` … `maison-5.jpg` | Bande d'images en bas de page |
-| `logo.svg` *(optionnel)* | Logo officiel si tu veux remplacer le SVG inline |
 
 > Les images manquantes affichent automatiquement un dégradé bleu (placeholder),
 > donc rien ne casse tant que tu n'as pas les visuels.
