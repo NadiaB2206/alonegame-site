@@ -143,43 +143,92 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    3 CARTES AGENCES
    ========================================================= */
-.agencies { max-width: var(--maxw); margin: 0 auto; padding: 1.5rem 1.5rem 5rem; }
-.agencies-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-.agency-card { text-align: center; }
+.agencies { max-width: var(--maxw); margin: 0 auto; padding: 1.5rem 1.5rem 4.5rem; }
 
-/* Photo en forme de maison (pentagone) — allongee */
+/* ---- Carousel ---- */
+.carousel {
+  --visible: 3;          /* nombre de cartes visibles (ajuste en responsive) */
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.carousel-viewport { flex: 1; overflow: hidden; }
+.carousel-track {
+  display: flex;
+  list-style: none;
+  margin: 0; padding: 0;
+  transition: transform .5s cubic-bezier(.22,.61,.36,1);
+}
+.agency-card {
+  flex: 0 0 calc(100% / var(--visible));
+  box-sizing: border-box;
+  padding: 1.5rem 1rem 0;
+  text-align: center;
+}
+
+/* Photo immeuble : cadre arrondi + ombre douce */
 .agency-photo {
   position: relative;
-  aspect-ratio: 3 / 5;
-  /* toit + corps de maison */
-  clip-path: polygon(50% 0, 100% 16%, 100% 100%, 0 100%, 0 16%);
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
   background: var(--c-grey);
   overflow: hidden;
+  box-shadow: 0 22px 40px -18px rgba(20,40,80,.45);
 }
 .agency-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Cercle "famille" superposé au centre */
+/* Cercle "famille" superposé en bas, liseré bleu */
 .agency-family {
   position: absolute;
-  left: 50%; top: 55%;
-  transform: translate(-50%, -50%);
-  width: 58%; aspect-ratio: 1;
+  left: 50%; bottom: 8%;
+  transform: translateX(-50%);
+  width: 62%; aspect-ratio: 1;
   border-radius: 50%;
-  background: rgba(255,255,255,.12);
-  box-shadow: 0 0 0 4px rgba(255,255,255,.45);
-  /* remplacer par une photo "famille" en background si besoin */
+  overflow: hidden;
+  background: rgba(255,255,255,.18);
+  border: 3px solid var(--c-blue);
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
 }
+.agency-family img { width: 100%; height: 100%; object-fit: cover; }
 
 .agency-name {
-  margin-top: 1.1rem;
+  margin-top: 1.2rem;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--c-black);
 }
+
+/* Flèches */
+.carousel-arrow {
+  flex-shrink: 0;
+  width: 46px; height: 46px;
+  border: 1px solid var(--c-border);
+  background: #fff;
+  border-radius: 50%;
+  font-size: 1.6rem; line-height: 1;
+  color: var(--c-blue-dark);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s, color .2s, box-shadow .2s;
+}
+.carousel-arrow:hover { background: var(--c-blue); color: #fff; box-shadow: 0 6px 16px rgba(79,143,224,.4); }
+.carousel-arrow:disabled { opacity: .35; cursor: default; }
+
+/* Points */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: .55rem;
+  margin-top: 2rem;
+}
+.carousel-dots button {
+  width: 10px; height: 10px;
+  border: none; border-radius: 50%;
+  background: var(--c-border);
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.carousel-dots button.active { background: var(--c-blue); transform: scale(1.25); }
 
 /* =========================================================
    SECTION EXCLUSIVITÉ (fond bleu mer)
@@ -421,6 +470,10 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    RESPONSIVE
    ========================================================= */
+@media (max-width: 960px) {
+  .carousel { --visible: 2; }   /* 2 cartes visibles sur tablette */
+}
+
 @media (max-width: 900px) {
   .search-grid { grid-template-columns: 1fr; gap: 2rem; }
   .search-title { text-align: center; }
@@ -445,7 +498,7 @@ a { color: inherit; text-decoration: none; }
   .nav-toggle { display: flex; }
   .site-header { position: relative; }
 
-  .agencies-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+  .carousel { --visible: 1; }   /* 1 carte visible sur mobile */
   .house-band { grid-template-columns: repeat(2, 1fr); }
   .footer-top { grid-template-columns: 1fr; justify-items: center; text-align: center; }
 }
