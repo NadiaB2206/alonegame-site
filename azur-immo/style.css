@@ -66,12 +66,13 @@ a { color: inherit; text-decoration: none; }
   gap: 1.5rem;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: .8rem 1.5rem .8rem 1rem;   /* moins de marge a gauche -> logo plus a gauche */
+  padding: .4rem 1.5rem .4rem 1rem;   /* moins de marge a gauche -> logo plus a gauche */
 }
 
-/* --- Lockup logo --- */
-.brand { display: flex; align-items: center; gap: .75rem; }
-.brand-logo { width: 70px; height: 70px; color: var(--c-black); flex-shrink: 0; }
+/* --- Logo (icone + AZUR IMMO dessous, dans le GIF) --- */
+.brand { display: flex; align-items: center; }
+.brand-logo { height: 104px; width: auto; flex-shrink: 0; object-fit: contain; transition: transform .3s ease; }
+.brand:hover .brand-logo { transform: scale(1.04); }
 .brand-logo.small { width: 42px; height: 42px; }
 .brand-text {
   font-family: var(--font-logo);
@@ -80,10 +81,6 @@ a { color: inherit; text-decoration: none; }
 }
 .brand-name { font-weight: 400; font-size: 1.8rem; letter-spacing: .16em; color: var(--c-black); }
 .brand-sub  { font-weight: 400; font-size: .72rem; letter-spacing: .62em; color: var(--c-black); padding-left: .14em; }
-
-/* Logo anime (GIF) : objet propre + leger zoom au survol */
-.brand-logo { object-fit: contain; transition: transform .3s ease; }
-.brand:hover .brand-logo { transform: scale(1.06); }
 
 /* --- Navigation --- */
 .main-nav { display: flex; align-items: center; gap: 1.8rem; }
