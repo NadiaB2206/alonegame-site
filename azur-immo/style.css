@@ -143,7 +143,7 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    3 CARTES AGENCES
    ========================================================= */
-.agencies { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem 3.5rem; }
+.agencies { max-width: var(--maxw); margin: 0 auto; padding: 1.5rem 1.5rem 5rem; }
 .agencies-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -151,12 +151,12 @@ a { color: inherit; text-decoration: none; }
 }
 .agency-card { text-align: center; }
 
-/* Photo en forme de maison (pentagone) */
+/* Photo en forme de maison (pentagone) — allongee */
 .agency-photo {
   position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 5;
   /* toit + corps de maison */
-  clip-path: polygon(50% 0, 100% 22%, 100% 100%, 0 100%, 0 22%);
+  clip-path: polygon(50% 0, 100% 16%, 100% 100%, 0 100%, 0 16%);
   background: var(--c-grey);
   overflow: hidden;
 }
