@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AZUR IMMO — Trouvez l'endroit parfait</title>
+  <meta name="description" content="AZUR IMMO, agence immobilière : achat, location et gestion. Trouvez l'endroit parfait, celui dont vous rêvez.">
+
+  <!-- Police (placeholder en attendant la typo Figma) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <a href="index.html" class="brand" aria-label="Accueil AZUR IMMO">
+      <!-- Logo hexagonal en SVG inline (remplaçable par assets/logo.svg) -->
+      <svg class="brand-logo" viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="50,5 90,28 90,72 50,95 10,72 10,28" fill="none" stroke="#111" stroke-width="4"/>
+        <path d="M50 28 L68 72 L58 72 L50 50 L42 72 L32 72 Z" fill="#111"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">AZUR</span>
+        <span class="brand-sub">IMMO</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#nos-biens">Nos biens</a>
+      <a href="#contact">Contact</a>
+      <a href="#connexion">Connexion</a>
+    </nav>
+
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ============ HERO / PHRASE D'ACCROCHE ============ -->
+  <section class="hero">
+    <p class="hero-tagline">"Trouvez l'endroit parfait, celui dont vous rêvez, avec AZUR IMMO."</p>
+  </section>
+
+  <!-- ============ 3 CARTES AGENCES ============ -->
+  <section class="agencies" id="nos-biens">
+    <div class="agencies-grid">
+
+      <article class="agency-card reveal">
+        <div class="agency-photo">
+          <!-- Remplacer par assets/agence-nantes.jpg -->
+          <img src="assets/agence-nantes.jpg" alt="Agence AZUR IMMO Nantes" onerror="this.classList.add('img-fallback')">
+          <span class="agency-family" aria-hidden="true"></span>
+        </div>
+        <h2 class="agency-name">Agence Nantes</h2>
+      </article>
+
+      <article class="agency-card reveal">
+        <div class="agency-photo">
+          <!-- Remplacer par assets/agence-paris.jpg -->
+          <img src="assets/agence-paris.jpg" alt="Agence AZUR IMMO Paris" onerror="this.classList.add('img-fallback')">
+          <span class="agency-family" aria-hidden="true"></span>
+        </div>
+        <h2 class="agency-name">Agence Paris</h2>
+      </article>
+
+      <article class="agency-card reveal">
+        <div class="agency-photo">
+          <!-- Remplacer par assets/agence-lyon.jpg -->
+          <img src="assets/agence-lyon.jpg" alt="Agence AZUR IMMO Lyon" onerror="this.classList.add('img-fallback')">
+          <span class="agency-family" aria-hidden="true"></span>
+        </div>
+        <h2 class="agency-name">Agence Lyon</h2>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ SECTION EXCLUSIVITÉ (fond bleu mer) ============ -->
+  <section class="exclusivity" id="apropos">
+    <!-- Petit logo en haut à gauche -->
+    <svg class="exclusivity-mini-logo" viewBox="0 0 100 100" aria-hidden="true">
+      <polygon points="50,5 90,28 90,72 50,95 10,72 10,28" fill="none" stroke="#fff" stroke-width="4"/>
+      <path d="M50 28 L68 72 L58 72 L50 50 L42 72 L32 72 Z" fill="#fff"/>
+    </svg>
+
+    <h2 class="exclusivity-title">En Exclusivité chez AZUR IMMO : Achat, Location, Gestion Immobilière</h2>
+
+    <!-- Gros logo central -->
+    <div class="exclusivity-logo">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="50,4 91,27 91,73 50,96 9,73 9,27" fill="none" stroke="#111" stroke-width="3"/>
+        <path d="M50 26 L70 74 L59 74 L50 50 L41 74 L30 74 Z" fill="#111"/>
+      </svg>
+      <span class="exclusivity-name">AZUR</span>
+      <span class="exclusivity-sub">IMMO</span>
+    </div>
+  </section>
+
+  <!-- ============ CARTE DE FRANCE + RECHERCHE ============ -->
+  <section class="search-section">
+    <header class="section-head">
+      <h2>Découvrir nos biens</h2>
+    </header>
+
+    <div class="search-grid">
+      <!-- Carte interactive de France (placeholder : remplacer par assets/carte-france.svg) -->
+      <div class="france-map" aria-label="Carte interactive des régions de France">
+        <img src="assets/carte-france.svg" alt="Carte des régions de France"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="map-placeholder" style="display:none">
+          <span>🗺️ Carte interactive de France<br><small>(régions cliquables — assets/carte-france.svg)</small></span>
+        </div>
+      </div>
+
+      <div class="search-panel">
+        <h3 class="search-title">"Carte des biens".</h3>
+        <p class="search-intro">
+          Explorez notre carte interactive intégrée, qui vous permet de découvrir tous nos biens
+          immobiliers disponibles sur le marché. Située en bas de cette page, la carte est un outil
+          pratique pour visualiser l'emplacement de chaque propriété.
+        </p>
+
+        <form class="search-form" action="#" method="get">
+          <label class="visually-hidden" for="keyword">Mot clé ou référence</label>
+          <input type="text" id="keyword" name="keyword" placeholder="Mot clé, référence...">
+
+          <label class="visually-hidden" for="location">Localisation</label>
+          <input type="text" id="location" name="location" placeholder="Localisation">
+
+          <label class="visually-hidden" for="type">Type de bien</label>
+          <select id="type" name="type">
+            <option value="" disabled selected>Type de bien</option>
+            <option value="appartement">Appartement</option>
+            <option value="maison">Maison</option>
+            <option value="terrain">Terrain</option>
+            <option value="local">Local commercial</option>
+          </select>
+
+          <label class="visually-hidden" for="budget">Budget</label>
+          <input type="text" id="budget" name="budget" placeholder="Budget">
+
+          <button type="submit" class="btn-search">Rechercher</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BANDE D'IMAGES EN FORME DE MAISONS ============ -->
+  <section class="house-band" aria-label="Galerie de biens">
+    <div class="house-shape"><img src="assets/maison-1.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+    <div class="house-shape"><img src="assets/maison-2.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+    <div class="house-shape"><img src="assets/maison-3.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+    <div class="house-shape"><img src="assets/maison-4.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+    <div class="house-shape"><img src="assets/maison-5.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-top">
+      <!-- Logo + newsletter -->
+      <div class="footer-brand">
+        <svg class="footer-logo" viewBox="0 0 100 100" aria-hidden="true">
+          <polygon points="50,5 90,28 90,72 50,95 10,72 10,28" fill="none" stroke="#2b6cb0" stroke-width="4"/>
+          <path d="M50 28 L68 72 L58 72 L50 50 L42 72 L32 72 Z" fill="#2b6cb0"/>
+        </svg>
+        <span class="footer-brand-text">
+          <span class="brand-name">AZUR</span>
+          <span class="brand-sub">IMMO</span>
+        </span>
+      </div>
+
+      <form class="newsletter" id="connexion" action="#" method="post">
+        <label class="visually-hidden" for="newsletter-email">Adresse e-mail</label>
+        <input type="email" id="newsletter-email" name="email" placeholder="Adresse e-mail" required>
+        <button type="submit" class="btn-connexion">Connexion</button>
+      </form>
+
+      <a href="#faq" class="footer-faq">FAQ</a>
+
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook" class="social-link facebook">f</a>
+        <a href="#" aria-label="Instagram" class="social-link instagram">⌾</a>
+      </div>
+    </div>
+
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h3>Contact</h3>
+      </div>
+      <div class="footer-col">
+        <p>L'agence Azur Immo est située au :</p>
+        <p class="footer-address">184 rue de Belleville,<br>75020 Paris.</p>
+      </div>
+      <div class="footer-col">
+        <p>Les horaires d'ouverture sont les suivants :</p>
+        <ul class="footer-hours">
+          <li>Lundi au Vendredi : 9h00 - 12h30 et 14h00 - 17h30</li>
+          <li>Samedi et Dimanche : Fermé</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer-phone">
+      Si vous souhaitez obtenir plus d'informations, vous pouvez les contacter directement par téléphone : 01 43 54 67 87
+    </p>
+
+    <p class="footer-legal"><a href="#">Mention légale et liens de confidentialité.</a></p>
+
+    <!-- Mini header répété en bas -->
+    <div class="footer-bottom-nav">
+      <svg class="brand-logo small" viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="50,5 90,28 90,72 50,95 10,72 10,28" fill="none" stroke="#111" stroke-width="4"/>
+        <path d="M50 28 L68 72 L58 72 L50 50 L42 72 L32 72 Z" fill="#111"/>
+      </svg>
+      <nav aria-label="Navigation pied de page">
+        <a href="index.html">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#nos-biens">Nos biens</a>
+        <a href="#contact">Contact</a>
+        <a href="#connexion">Connexion</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
