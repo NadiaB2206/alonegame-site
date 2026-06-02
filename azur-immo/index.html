@@ -9,7 +9,7 @@
   <!-- Police (placeholder en attendant la typo Figma) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
   <link rel="stylesheet" href="style.css">
@@ -18,31 +18,33 @@
 
   <!-- ============ HEADER ============ -->
   <header class="site-header">
-    <a href="index.html" class="brand" aria-label="Accueil AZUR IMMO">
-      <!-- Logo hexagonal en SVG inline (remplaçable par assets/logo.svg) -->
-      <svg class="brand-logo" viewBox="0 0 100 100" aria-hidden="true">
-        <polygon points="50,6 88,28 88,72 50,94 12,72 12,28" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
-        <path d="M50 28 L28 74 L72 74 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-        <path d="M34 61 H66" stroke="currentColor" stroke-width="3" fill="none"/>
-        <path d="M50 28 L72 74 L50 74 Z" fill="currentColor"/>
-      </svg>
-      <span class="brand-text">
-        <span class="brand-name">AZUR</span>
-        <span class="brand-sub">IMMO</span>
-      </span>
-    </a>
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Accueil AZUR IMMO">
+        <!-- Logo hexagonal en SVG inline (= assets/logo.svg) -->
+        <svg class="brand-logo" viewBox="0 0 100 100" aria-hidden="true">
+          <polygon points="50,6 88,28 88,72 50,94 12,72 12,28" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
+          <path d="M50 28 L28 74 L72 74 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M34 61 H66" stroke="currentColor" stroke-width="3" fill="none"/>
+          <path d="M50 28 L72 74 L50 74 Z" fill="currentColor"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">AZUR</span>
+          <span class="brand-sub">IMMO</span>
+        </span>
+      </a>
 
-    <nav class="main-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="#apropos">À propos</a>
-      <a href="#nos-biens">Nos biens</a>
-      <a href="#contact">Contact</a>
-      <a href="#connexion">Connexion</a>
-    </nav>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="index.html" class="active">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#nos-biens">Nos biens</a>
+        <a href="#contact">Contact</a>
+        <a href="#connexion" class="nav-cta">Connexion</a>
+      </nav>
 
-    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <!-- ============ HERO / PHRASE D'ACCROCHE ============ -->

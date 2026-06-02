@@ -18,6 +18,7 @@
   --maxw: 1180px;
   --radius: 8px;
   --font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-logo: 'Jost', 'Century Gothic', 'Futura', sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,36 +52,68 @@ a { color: inherit; text-decoration: none; }
    HEADER
    ========================================================= */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--c-border);
+}
+.header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 1.2rem 1.5rem;
+  padding: .9rem 1.5rem;
 }
 
-.brand { display: flex; align-items: center; gap: .6rem; }
-.brand-logo { width: 56px; height: 56px; color: var(--c-black); }
+/* --- Lockup logo --- */
+.brand { display: flex; align-items: center; gap: .65rem; }
+.brand-logo { width: 50px; height: 50px; color: var(--c-black); flex-shrink: 0; }
 .brand-logo.small { width: 42px; height: 42px; }
-.brand-text { display: flex; flex-direction: column; line-height: 1; }
-.brand-name { font-weight: 500; font-size: 1.4rem; letter-spacing: .18em; color: var(--c-black); }
-.brand-sub  { font-weight: 400; font-size: .68rem; letter-spacing: .5em; color: var(--c-black); }
+.brand-text {
+  font-family: var(--font-logo);
+  display: flex; flex-direction: column;
+  line-height: .95;
+}
+.brand-name { font-weight: 400; font-size: 1.5rem; letter-spacing: .16em; color: var(--c-black); }
+.brand-sub  { font-weight: 400; font-size: .62rem; letter-spacing: .62em; color: var(--c-black); padding-left: .12em; }
 
-.main-nav { display: flex; gap: 1.6rem; }
+/* --- Navigation --- */
+.main-nav { display: flex; align-items: center; gap: 1.8rem; }
 .main-nav a {
   font-size: .95rem;
   color: var(--c-text);
   position: relative;
   transition: color .2s;
 }
-.main-nav a::after {
-  content: "|";
-  margin-left: 1.6rem;
-  color: var(--c-border);
+/* soulignement animé au survol */
+.main-nav a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 2px;
+  background: var(--c-blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
 }
-.main-nav a:last-child::after { content: ""; }
-.main-nav a:hover { color: var(--c-blue); }
+.main-nav a:not(.nav-cta):hover { color: var(--c-blue); }
+.main-nav a:not(.nav-cta):hover::after,
+.main-nav a.active::after { transform: scaleX(1); }
+.main-nav a.active { color: var(--c-black); font-weight: 500; }
+
+/* bouton Connexion */
+.nav-cta {
+  padding: .5rem 1.4rem;
+  border: 1px solid var(--c-blue);
+  border-radius: var(--radius);
+  color: var(--c-blue-dark);
+  transition: background .2s, color .2s;
+}
+.nav-cta:hover { background: var(--c-blue); color: #fff; }
 
 .nav-toggle {
   display: none;
