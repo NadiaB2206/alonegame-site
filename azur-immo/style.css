@@ -143,113 +143,68 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    3 CARTES AGENCES
    ========================================================= */
-.agencies { padding: 2rem 0 4rem; }
+.agencies { max-width: var(--maxw); margin: 0 auto; padding: 1.5rem 1.5rem 4.5rem; }
 
-/* ============ Parallaxe agences : 3 couches qui s'emboîtent (mouvement saccadé) ============ */
-.parallax {
-  --pitch: 330px;          /* largeur d'un emplacement : grille commune aux 3 couches */
-  --steps: 6;              /* nb de pas (1 par emplacement) */
+/* ============ Agences : 3 cartes composées (immeuble + logement + famille) ============ */
+.agency-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+}
+.acard { text-align: center; }
+.acard-stack {
   position: relative;
-  height: 470px;
-  overflow: hidden;
-}
-.player { position: absolute; inset: 0; display: flex; align-items: center; }
-.player-cards   { z-index: 1; }
-.player-shapes  { z-index: 2; }
-.player-circles { z-index: 3; }
-
-.ptrack {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-}
-/* chaque élément occupe un emplacement de la grille, contenu centré -> les couches s'alignent */
-.ptrack > * {
-  flex: 0 0 var(--pitch);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  aspect-ratio: 3 / 4.2;
+  margin-bottom: 1.2rem;
 }
 
-/* sens de défilement */
-@keyframes scroll-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
-@keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-
-/* mouvement SACCADÉ : steps() -> avance par à-coups, un emplacement à la fois */
-.player-cards   .ptrack { animation: scroll-left  12s steps(var(--steps)) infinite; }  /* cartes -> gauche */
-.player-shapes  .ptrack { animation: scroll-right 12s steps(var(--steps)) infinite; }  /* formes -> droite (sens opposé) */
-.player-circles .ptrack { animation: scroll-left   6s steps(var(--steps)) infinite; }  /* cercles -> gauche, + rapide */
-
-.parallax:hover .ptrack { animation-play-state: paused; }
-
-/* Couche 1 : cartes (photos immeubles) */
-.pcard img {
-  width: 280px; height: 380px;
-  border-radius: 14px;
-  object-fit: cover;
-  background: var(--c-grey);
-  box-shadow: 0 24px 44px -20px rgba(20,40,80,.5);
-  display: block;
-}
-.pcard img.img-fallback { width: 280px; height: 380px; }
-
-/* Couche 2 : formes géométriques contenant les intérieurs (contour bleu) */
-.pshape .oval {
-  width: 250px; height: 320px;
-  border: 3px solid var(--c-blue);
-  background: rgba(79,143,224,.10);
-  border-radius: 50%;
-  overflow: hidden;
-}
-.pshape .oval img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-.pshape .house {
-  position: relative;
-  width: 250px; height: 330px;
-}
-.pshape .house img {
+/* Fond : immeuble (la ville) */
+.acard-building {
   width: 100%; height: 100%;
   object-fit: cover;
+  border-radius: 16px;
   display: block;
-  /* découpe en forme de maison */
-  clip-path: polygon(50% 0, 100% 26%, 100% 100%, 0 100%, 0 26%);
-  background: rgba(79,143,224,.12);
+  background: var(--c-grey);
+  box-shadow: 0 26px 46px -22px rgba(20,40,80,.55);
 }
-.pshape .house .house-outline {
+
+/* Logement : fenêtre en forme de maison, en haut */
+.acard-home {
+  position: absolute; top: 3%; left: 50%; transform: translateX(-50%);
+  width: 62%; aspect-ratio: 200 / 220;
+}
+.acard-home img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  clip-path: polygon(50% 0, 100% 32%, 100% 100%, 0 100%, 0 32%);
+  background: var(--c-grey);
+}
+.acard-home .house-outline {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  overflow: visible;
-  pointer-events: none;
+  overflow: visible; pointer-events: none;
 }
 
-/* Couche 3 : cercles (familles) */
-.pcircle img {
-  width: 200px; height: 200px;
+/* Famille : cercle, en bas */
+.acard-family {
+  position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%);
+  width: 54%; aspect-ratio: 1;
   border-radius: 50%;
-  object-fit: cover;
+  overflow: hidden;
   border: 4px solid var(--c-blue);
-  background: rgba(255,255,255,.25);
-  box-shadow: 0 10px 26px rgba(0,0,0,.20);
-  display: block;
+  background: var(--c-grey);
+  box-shadow: 0 12px 28px rgba(0,0,0,.22);
 }
+.acard-family img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* Titres fixes dessous */
-.agency-titles {
-  max-width: var(--maxw);
-  margin: 1.8rem auto 0;
-  padding: 0 1.5rem;
-  display: flex;
-  justify-content: space-around;
-  gap: 1rem;
-}
-.agency-titles h3 {
+.acard-title {
   font-weight: 600;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: var(--c-black);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .ptrack { animation: none !important; }
+@media (max-width: 760px) {
+  .agency-cards { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
 }
 
 /* =========================================================

@@ -43,74 +43,50 @@
     <p class="hero-tagline">"Trouvez l'endroit parfait, celui dont vous rêvez, avec AZUR IMMO."</p>
   </section>
 
-  <!-- ============ AGENCES — parallaxe en 3 couches superposees ============ -->
+  <!-- ============ AGENCES — 3 cartes (immeuble + logement + famille) ============ -->
   <section class="agencies" id="nos-biens">
-    <div class="parallax" aria-label="Nos agences">
-
-      <!-- Couche 1 : cartes (photos immeubles) — defile vers la gauche -->
-      <div class="player player-cards">
-        <div class="ptrack">
-          <span class="pcard"><img src="immeuble-1.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcard"><img src="immeuble-2.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcard"><img src="immeuble-3.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcard"><img src="immeuble-4.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcard"><img src="immeuble-5.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcard"><img src="immeuble-6.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <!-- copie pour boucle sans couture -->
-          <span class="pcard" aria-hidden="true"><img src="immeuble-1.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcard" aria-hidden="true"><img src="immeuble-2.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcard" aria-hidden="true"><img src="immeuble-3.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcard" aria-hidden="true"><img src="immeuble-4.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcard" aria-hidden="true"><img src="immeuble-5.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcard" aria-hidden="true"><img src="immeuble-6.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
+    <div class="agency-cards">
+      <article class="acard">
+        <div class="acard-stack">
+          <img class="acard-building" src="immeuble-1.jpg" alt="Immeuble Nantes" onerror="this.classList.add('img-fallback')">
+          <div class="acard-home">
+            <img src="interieur-1.jpg" alt="Logement Nantes" onerror="this.classList.add('img-fallback')">
+            <svg class="house-outline" viewBox="0 0 200 220" preserveAspectRatio="none"><polygon points="100,3 197,70 197,217 3,217 3,70" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family">
+            <img src="famille-1.jpg" alt="Clients Nantes" onerror="this.classList.add('img-fallback')">
+          </div>
         </div>
-      </div>
+        <h3 class="acard-title">Agence Nantes</h3>
+      </article>
 
-      <!-- Couche 2 : formes geometriques (ovale / maison) contenant les INTERIEURS — defile vers la droite -->
-      <div class="player player-shapes" aria-hidden="true">
-        <div class="ptrack">
-          <span class="pshape"><span class="oval"><img src="interieur-1.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span></span>
-          <span class="pshape"><span class="house"><img src="interieur-2.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"><svg class="house-outline" viewBox="0 0 250 330" preserveAspectRatio="none"><polygon points="125,2 248,87 248,328 2,328 2,87" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg></span></span>
-          <span class="pshape"><span class="oval"><img src="interieur-3.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span></span>
-          <span class="pshape"><span class="house"><img src="interieur-4.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"><svg class="house-outline" viewBox="0 0 250 330" preserveAspectRatio="none"><polygon points="125,2 248,87 248,328 2,328 2,87" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg></span></span>
-          <span class="pshape"><span class="oval"><img src="interieur-5.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span></span>
-          <span class="pshape"><span class="house"><img src="interieur-6.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"><svg class="house-outline" viewBox="0 0 250 330" preserveAspectRatio="none"><polygon points="125,2 248,87 248,328 2,328 2,87" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg></span></span>
-          <!-- copie -->
-          <span class="pshape"><span class="oval"><img src="interieur-1.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span></span>
-          <span class="pshape"><span class="house"><img src="interieur-2.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"><svg class="house-outline" viewBox="0 0 250 330" preserveAspectRatio="none"><polygon points="125,2 248,87 248,328 2,328 2,87" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg></span></span>
-          <span class="pshape"><span class="oval"><img src="interieur-3.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span></span>
-          <span class="pshape"><span class="house"><img src="interieur-4.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"><svg class="house-outline" viewBox="0 0 250 330" preserveAspectRatio="none"><polygon points="125,2 248,87 248,328 2,328 2,87" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg></span></span>
-          <span class="pshape"><span class="oval"><img src="interieur-5.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span></span>
-          <span class="pshape"><span class="house"><img src="interieur-6.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"><svg class="house-outline" viewBox="0 0 250 330" preserveAspectRatio="none"><polygon points="125,2 248,87 248,328 2,328 2,87" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg></span></span>
+      <article class="acard">
+        <div class="acard-stack">
+          <img class="acard-building" src="immeuble-2.jpg" alt="Immeuble Paris" onerror="this.classList.add('img-fallback')">
+          <div class="acard-home">
+            <img src="interieur-2.jpg" alt="Logement Paris" onerror="this.classList.add('img-fallback')">
+            <svg class="house-outline" viewBox="0 0 200 220" preserveAspectRatio="none"><polygon points="100,3 197,70 197,217 3,217 3,70" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family">
+            <img src="famille-2.jpg" alt="Clients Paris" onerror="this.classList.add('img-fallback')">
+          </div>
         </div>
-      </div>
+        <h3 class="acard-title">Agence Paris</h3>
+      </article>
 
-      <!-- Couche 3 : cercles (familles) — defile vers la gauche (meme sens que les cartes) -->
-      <div class="player player-circles" aria-hidden="true">
-        <div class="ptrack">
-          <span class="pcircle"><img src="famille-1.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcircle"><img src="famille-2.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcircle"><img src="famille-3.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcircle"><img src="famille-4.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcircle"><img src="famille-5.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcircle"><img src="famille-6.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <!-- copie -->
-          <span class="pcircle"><img src="famille-1.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcircle"><img src="famille-2.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcircle"><img src="famille-3.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcircle"><img src="famille-4.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcircle"><img src="famille-5.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
-          <span class="pcircle"><img src="famille-6.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></span>
+      <article class="acard">
+        <div class="acard-stack">
+          <img class="acard-building" src="immeuble-3.jpg" alt="Immeuble Lyon" onerror="this.classList.add('img-fallback')">
+          <div class="acard-home">
+            <img src="interieur-3.jpg" alt="Logement Lyon" onerror="this.classList.add('img-fallback')">
+            <svg class="house-outline" viewBox="0 0 200 220" preserveAspectRatio="none"><polygon points="100,3 197,70 197,217 3,217 3,70" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family">
+            <img src="famille-3.jpg" alt="Clients Lyon" onerror="this.classList.add('img-fallback')">
+          </div>
         </div>
-      </div>
-
-    </div>
-
-    <!-- Titres fixes dessous -->
-    <div class="agency-titles">
-      <h3>Agence Nantes</h3>
-      <h3>Agence Paris</h3>
-      <h3>Agence Lyon</h3>
+        <h3 class="acard-title">Agence Lyon</h3>
+      </article>
     </div>
   </section>
 
