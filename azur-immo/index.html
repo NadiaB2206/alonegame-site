@@ -43,18 +43,28 @@
     <p class="hero-tagline">"Trouvez l'endroit parfait, celui dont vous rêvez, avec AZUR IMMO."</p>
   </section>
 
-  <!-- ============ AGENCES — 3 cartes (immeuble + logement + famille) ============ -->
+  <!-- ============ AGENCES — 3 cartes superposees, chaque couche = carousel (fondu) ============ -->
   <section class="agencies" id="nos-biens">
     <div class="agency-cards">
       <article class="acard">
         <div class="acard-stack">
-          <img class="acard-building" src="immeuble-1.jpg" alt="Immeuble Nantes" onerror="this.classList.add('img-fallback')">
+          <div class="acard-building xfade">
+              <img src="immeuble-1.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="immeuble-2.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="immeuble-3.jpg" alt="" onerror="this.classList.add('img-fallback')">
+          </div>
           <div class="acard-home">
-            <img src="interieur-1.jpg" alt="Logement Nantes" onerror="this.classList.add('img-fallback')">
+            <div class="home-shape xfade">
+              <img src="interieur-1.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="interieur-2.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="interieur-3.jpg" alt="" onerror="this.classList.add('img-fallback')">
+            </div>
             <svg class="house-outline" viewBox="0 0 200 220" preserveAspectRatio="none"><polygon points="100,3 197,70 197,217 3,217 3,70" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
           </div>
-          <div class="acard-family">
-            <img src="famille-1.jpg" alt="Clients Nantes" onerror="this.classList.add('img-fallback')">
+          <div class="acard-family xfade">
+              <img src="famille-1.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="famille-2.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="famille-3.jpg" alt="" onerror="this.classList.add('img-fallback')">
           </div>
         </div>
         <h3 class="acard-title">Agence Nantes</h3>
@@ -62,13 +72,23 @@
 
       <article class="acard">
         <div class="acard-stack">
-          <img class="acard-building" src="immeuble-2.jpg" alt="Immeuble Paris" onerror="this.classList.add('img-fallback')">
+          <div class="acard-building xfade">
+              <img src="immeuble-4.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="immeuble-5.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="immeuble-6.jpg" alt="" onerror="this.classList.add('img-fallback')">
+          </div>
           <div class="acard-home">
-            <img src="interieur-2.jpg" alt="Logement Paris" onerror="this.classList.add('img-fallback')">
+            <div class="home-shape xfade">
+              <img src="interieur-4.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="interieur-5.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="interieur-6.jpg" alt="" onerror="this.classList.add('img-fallback')">
+            </div>
             <svg class="house-outline" viewBox="0 0 200 220" preserveAspectRatio="none"><polygon points="100,3 197,70 197,217 3,217 3,70" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
           </div>
-          <div class="acard-family">
-            <img src="famille-2.jpg" alt="Clients Paris" onerror="this.classList.add('img-fallback')">
+          <div class="acard-family xfade">
+              <img src="famille-4.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="famille-5.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="famille-6.jpg" alt="" onerror="this.classList.add('img-fallback')">
           </div>
         </div>
         <h3 class="acard-title">Agence Paris</h3>
@@ -76,13 +96,23 @@
 
       <article class="acard">
         <div class="acard-stack">
-          <img class="acard-building" src="immeuble-3.jpg" alt="Immeuble Lyon" onerror="this.classList.add('img-fallback')">
+          <div class="acard-building xfade">
+              <img src="immeuble-1.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="immeuble-4.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="immeuble-5.jpg" alt="" onerror="this.classList.add('img-fallback')">
+          </div>
           <div class="acard-home">
-            <img src="interieur-3.jpg" alt="Logement Lyon" onerror="this.classList.add('img-fallback')">
+            <div class="home-shape xfade">
+              <img src="interieur-1.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="interieur-4.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="interieur-5.jpg" alt="" onerror="this.classList.add('img-fallback')">
+            </div>
             <svg class="house-outline" viewBox="0 0 200 220" preserveAspectRatio="none"><polygon points="100,3 197,70 197,217 3,217 3,70" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
           </div>
-          <div class="acard-family">
-            <img src="famille-3.jpg" alt="Clients Lyon" onerror="this.classList.add('img-fallback')">
+          <div class="acard-family xfade">
+              <img src="famille-1.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="famille-4.jpg" alt="" onerror="this.classList.add('img-fallback')">
+              <img src="famille-5.jpg" alt="" onerror="this.classList.add('img-fallback')">
           </div>
         </div>
         <h3 class="acard-title">Agence Lyon</h3>

@@ -158,24 +158,26 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 1.2rem;
 }
 
-/* Fond : immeuble (la ville) */
+/* Fond : immeuble (la ville) — carousel à fondu */
 .acard-building {
-  width: 100%; height: 100%;
-  object-fit: cover;
+  position: absolute; inset: 0;
   border-radius: 16px;
-  display: block;
+  overflow: hidden;
   background: var(--c-grey);
   box-shadow: 0 26px 46px -22px rgba(20,40,80,.55);
 }
+.acard-building img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
-/* Logement : fenêtre en forme de maison, en haut */
+/* Logement : fenêtre en forme de maison, en haut — carousel à fondu */
 .acard-home {
   position: absolute; top: 3%; left: 50%; transform: translateX(-50%);
   width: 62%; aspect-ratio: 200 / 220;
 }
-.acard-home img {
+.home-shape { position: absolute; inset: 0; }
+.acard-home .home-shape img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; display: block;
+  object-fit: cover;
   clip-path: polygon(50% 0, 100% 32%, 100% 100%, 0 100%, 0 32%);
   background: var(--c-grey);
 }
@@ -185,7 +187,7 @@ a { color: inherit; text-decoration: none; }
   overflow: visible; pointer-events: none;
 }
 
-/* Famille : cercle, en bas */
+/* Famille : cercle, en bas — carousel à fondu */
 .acard-family {
   position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%);
   width: 54%; aspect-ratio: 1;
@@ -195,12 +197,33 @@ a { color: inherit; text-decoration: none; }
   background: var(--c-grey);
   box-shadow: 0 12px 28px rgba(0,0,0,.22);
 }
-.acard-family img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.acard-family img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* ---- Carousel à fondu (3 images empilées qui s'enchaînent) ---- */
+.xfade img {
+  opacity: 0;
+  animation: xfade 12s infinite;
+}
+.xfade img:nth-child(1) { animation-delay: 0s; }
+.xfade img:nth-child(2) { animation-delay: 4s; }
+.xfade img:nth-child(3) { animation-delay: 8s; }
+@keyframes xfade {
+  0%     { opacity: 1; }
+  25%    { opacity: 1; }
+  33.33% { opacity: 0; }
+  91.67% { opacity: 0; }
+  100%   { opacity: 1; }
+}
 
 .acard-title {
   font-weight: 600;
   font-size: 1.2rem;
   color: var(--c-black);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xfade img { animation: none; }
+  .xfade img:first-child { opacity: 1; }
 }
 
 @media (max-width: 760px) {
