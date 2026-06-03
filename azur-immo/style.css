@@ -145,74 +145,73 @@ a { color: inherit; text-decoration: none; }
    ========================================================= */
 .agencies { padding: 2rem 0 4rem; }
 
-/* ============ Parallaxe agences : 3 couches superposees ============ */
+/* ============ Parallaxe agences : 3 couches qui s'emboîtent (mouvement saccadé) ============ */
 .parallax {
+  --pitch: 330px;          /* largeur d'un emplacement : grille commune aux 3 couches */
+  --steps: 6;              /* nb de pas (1 par emplacement) */
   position: relative;
-  height: 460px;
+  height: 470px;
   overflow: hidden;
 }
-.player {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-}
+.player { position: absolute; inset: 0; display: flex; align-items: center; }
 .player-cards   { z-index: 1; }
 .player-shapes  { z-index: 2; }
 .player-circles { z-index: 3; }
 
 .ptrack {
   display: flex;
-  align-items: center;
-  gap: 80px;
   width: max-content;
-  padding: 0 40px;
   will-change: transform;
 }
+/* chaque élément occupe un emplacement de la grille, contenu centré -> les couches s'alignent */
+.ptrack > * {
+  flex: 0 0 var(--pitch);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-/* sens de defilement */
+/* sens de défilement */
 @keyframes scroll-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
 @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-.player-cards   .ptrack { animation: scroll-left  34s linear infinite; }   /* cartes -> gauche */
-.player-shapes  .ptrack { animation: scroll-right 26s linear infinite; }   /* formes -> droite (sens oppose) */
-.player-circles .ptrack { animation: scroll-left  20s linear infinite; }   /* cercles -> gauche (meme sens) */
+/* mouvement SACCADÉ : steps() -> avance par à-coups, un emplacement à la fois */
+.player-cards   .ptrack { animation: scroll-left  12s steps(var(--steps)) infinite; }  /* cartes -> gauche */
+.player-shapes  .ptrack { animation: scroll-right 12s steps(var(--steps)) infinite; }  /* formes -> droite (sens opposé) */
+.player-circles .ptrack { animation: scroll-left   6s steps(var(--steps)) infinite; }  /* cercles -> gauche, + rapide */
 
 .parallax:hover .ptrack { animation-play-state: paused; }
 
 /* Couche 1 : cartes (photos immeubles) */
-.pcard {
-  flex: 0 0 auto;
-  width: 300px; height: 380px;
+.pcard img {
+  width: 280px; height: 380px;
   border-radius: 14px;
-  overflow: hidden;
+  object-fit: cover;
   background: var(--c-grey);
   box-shadow: 0 24px 44px -20px rgba(20,40,80,.5);
+  display: block;
 }
-.pcard img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pcard img.img-fallback { width: 280px; height: 380px; }
 
-/* Couche 2 : formes geometriques (contour bleu, semi-transparent) */
-.pshape {
-  flex: 0 0 auto;
+/* Couche 2 : formes géométriques (contour bleu) */
+.pshape .oval {
   width: 250px; height: 320px;
   border: 3px solid var(--c-blue);
   background: rgba(79,143,224,.10);
+  border-radius: 50%;
 }
-.pshape.oval  { border-radius: 50%; }
-.pshape.house { border: none; background: none; }
-.pshape.house svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.pshape.house svg { width: 250px; height: 330px; display: block; overflow: visible; }
 
 /* Couche 3 : cercles (familles) */
-.pcircle {
-  flex: 0 0 auto;
-  width: 210px; height: 210px;
+.pcircle img {
+  width: 200px; height: 200px;
   border-radius: 50%;
-  overflow: hidden;
+  object-fit: cover;
   border: 4px solid var(--c-blue);
   background: rgba(255,255,255,.25);
   box-shadow: 0 10px 26px rgba(0,0,0,.20);
+  display: block;
 }
-.pcircle img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* Titres fixes dessous */
 .agency-titles {
