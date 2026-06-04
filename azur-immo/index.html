@@ -43,23 +43,142 @@
     <p class="hero-tagline">"Trouvez l'endroit parfait, celui dont vous rêvez, avec AZUR IMMO."</p>
   </section>
 
-  <!-- ============ AGENCES — superposition centree (1 cartes / 2 appartement / 3 personnes) ============ -->
+  <!-- ============ AGENCES — carousel de 6 cartes (3 visibles) ; chaque carte = superposition concentrique ============ -->
   <section class="agencies" id="nos-biens">
-    <div class="super">
-      <!-- 1 : cartes (fond) -->
-      <div class="super-cards">
-        <div class="slide slide-left"><div class="cslide"><img src="immeuble-1.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Nantes</span></div><div class="cslide"><img src="immeuble-2.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Paris</span></div><div class="cslide"><img src="immeuble-3.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Lyon</span></div><div class="cslide"><img src="immeuble-4.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Bordeaux</span></div><div class="cslide"><img src="immeuble-5.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Marseille</span></div><div class="cslide"><img src="immeuble-6.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Toulouse</span></div><div class="cslide"><img src="immeuble-1.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Nantes</span></div><div class="cslide"><img src="immeuble-2.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Paris</span></div><div class="cslide"><img src="immeuble-3.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Lyon</span></div><div class="cslide"><img src="immeuble-4.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Bordeaux</span></div><div class="cslide"><img src="immeuble-5.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Marseille</span></div><div class="cslide"><img src="immeuble-6.jpg" alt="" onerror="this.classList.add('img-fallback')"><span class="cname">Agence Toulouse</span></div></div>
-      </div>
-      <!-- 2 : appartement (milieu) -->
-      <div class="super-apt" aria-hidden="true">
-        <div class="apt-window">
-          <div class="slide slide-right"><img src="interieur-1.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="interieur-2.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="interieur-3.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="interieur-4.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="interieur-5.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="interieur-6.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="interieur-1.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="interieur-2.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="interieur-3.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="interieur-4.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="interieur-5.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="interieur-6.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
-        </div>
-        <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
-      </div>
-      <!-- 3 : personnes (dessus) -->
-      <div class="super-people" aria-hidden="true">
-        <div class="slide slide-left"><img src="famille-1.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="famille-2.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="famille-3.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="famille-4.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="famille-5.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="famille-6.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="famille-1.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="famille-2.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="famille-3.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="famille-4.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="famille-5.jpg" alt="" onerror="this.classList.add('img-fallback')"><img src="famille-6.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+    <div class="carousel">
+      <div class="ctrack">
+        <article class="acard">
+          <div class="acard-building">
+            <img src="immeuble-1.jpg" alt="Immeuble Nantes" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Nantes</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-1.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-1.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
+        <article class="acard">
+          <div class="acard-building">
+            <img src="immeuble-2.jpg" alt="Immeuble Paris" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Paris</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-2.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-2.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
+        <article class="acard">
+          <div class="acard-building">
+            <img src="immeuble-3.jpg" alt="Immeuble Lyon" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Lyon</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-3.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-3.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
+        <article class="acard">
+          <div class="acard-building">
+            <img src="immeuble-4.jpg" alt="Immeuble Bordeaux" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Bordeaux</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-4.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-4.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
+        <article class="acard">
+          <div class="acard-building">
+            <img src="immeuble-5.jpg" alt="Immeuble Marseille" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Marseille</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-5.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-5.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
+        <article class="acard">
+          <div class="acard-building">
+            <img src="immeuble-6.jpg" alt="Immeuble Toulouse" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Toulouse</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-6.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-6.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
+        <article class="acard" aria-hidden="true">
+          <div class="acard-building">
+            <img src="immeuble-1.jpg" alt="Immeuble Nantes" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Nantes</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-1.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-1.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
+        <article class="acard" aria-hidden="true">
+          <div class="acard-building">
+            <img src="immeuble-2.jpg" alt="Immeuble Paris" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Paris</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-2.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-2.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
+        <article class="acard" aria-hidden="true">
+          <div class="acard-building">
+            <img src="immeuble-3.jpg" alt="Immeuble Lyon" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Lyon</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-3.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-3.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
+        <article class="acard" aria-hidden="true">
+          <div class="acard-building">
+            <img src="immeuble-4.jpg" alt="Immeuble Bordeaux" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Bordeaux</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-4.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-4.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
+        <article class="acard" aria-hidden="true">
+          <div class="acard-building">
+            <img src="immeuble-5.jpg" alt="Immeuble Marseille" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Marseille</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-5.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-5.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
+        <article class="acard" aria-hidden="true">
+          <div class="acard-building">
+            <img src="immeuble-6.jpg" alt="Immeuble Toulouse" onerror="this.classList.add('img-fallback')">
+            <span class="cname">Agence Toulouse</span>
+          </div>
+          <div class="acard-home">
+            <div class="home-shape"><img src="interieur-6.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+            <svg class="house-outline" viewBox="0 0 200 250" preserveAspectRatio="none"><polygon points="100,3 197,75 197,247 3,247 3,75" fill="none" stroke="#4f8fe0" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="acard-family"><img src="famille-6.jpg" alt="" onerror="this.classList.add('img-fallback')"></div>
+        </article>
       </div>
     </div>
   </section>

@@ -143,70 +143,72 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    3 CARTES AGENCES
    ========================================================= */
-.agencies {
-  padding: 2rem 1.5rem 4.5rem;
-  display: flex;
-  justify-content: center;   /* bloc centré horizontalement */
-}
+.agencies { padding: 2rem 0 4.5rem; }
 
-/* ============ Agences : UNE superposition centrée (3 couches empilées) ============ */
-.super {
-  position: relative;
-  width: 360px;
-  max-width: 90vw;
-  aspect-ratio: 360 / 470;
+/* ============ Agences : carousel de 6 cartes (3 visibles) qui défilent ============ */
+.carousel {
+  max-width: var(--maxw);
   margin: 0 auto;
+  overflow: hidden;
+}
+.ctrack {
+  display: flex;
+  width: max-content;
+  animation: ctrack-scroll 32s linear infinite;
+}
+.carousel:hover .ctrack { animation-play-state: paused; }
+@keyframes ctrack-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }   /* défile d'un jeu de 6 -> boucle sans couture */
 }
 
-/* tapis roulant commun */
-.slide { display: flex; width: 100%; height: 100%; }
-.slide > * { flex: 0 0 100%; }
-.slide-left  { animation: super-left  28s linear infinite; }
-.slide-right { animation: super-right 28s linear infinite; }
-@keyframes super-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
-@keyframes super-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-.super:hover .slide { animation-play-state: paused; }
+/* Une carte = superposition concentrique (immeuble + appartement + personnes) */
+.acard {
+  position: relative;
+  flex: 0 0 340px;
+  margin-right: 28px;
+  aspect-ratio: 340 / 450;
+}
 
-/* 1) CARTES (fond) : immeuble + nom de la ville dedans */
-.super-cards {
+/* 1) immeuble + nom de la ville */
+.acard-building {
   position: absolute; inset: 0;
   z-index: 1;
   border-radius: 16px;
   overflow: hidden;
   background: var(--c-grey);
-  box-shadow: 0 26px 46px -22px rgba(20,40,80,.55);
+  box-shadow: 0 22px 40px -20px rgba(20,40,80,.5);
 }
-.cslide { position: relative; }
-.cslide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.acard-building img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .cname {
   position: absolute; top: 0; left: 0; right: 0;
-  padding: 16px 18px 30px;
-  background: linear-gradient(to bottom, rgba(17,17,17,.62), rgba(17,17,17,0));
-  color: #fff; font-weight: 600; font-size: 1.2rem;
+  padding: 14px 16px 26px;
+  background: linear-gradient(to bottom, rgba(17,17,17,.6), rgba(17,17,17,0));
+  color: #fff; font-weight: 600; font-size: 1.1rem;
 }
 
-/* 2) APPARTEMENT (milieu) : fenêtre maison, défile à contresens */
-.super-apt {
+/* 2) appartement (maison) — centré */
+.acard-home {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   width: 64%; aspect-ratio: 200 / 250;
   z-index: 2;
 }
-.apt-window {
+.home-shape {
   position: absolute; inset: 0;
   overflow: hidden;
   clip-path: polygon(50% 0, 100% 30%, 100% 100%, 0 100%, 0 30%);
   background: var(--c-grey);
 }
-.apt-window .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.super-apt .house-outline {
+.home-shape img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.acard-home .house-outline {
   position: absolute; inset: 0; width: 100%; height: 100%;
   overflow: visible; pointer-events: none;
 }
 
-/* 3) PERSONNES (dessus) : cercle, même rythme/position que les cartes */
-.super-people {
+/* 3) personnes (cercle) — centré */
+.acard-family {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 52%; aspect-ratio: 1;
+  width: 50%; aspect-ratio: 1;
   z-index: 3;
   border-radius: 50%;
   overflow: hidden;
@@ -214,10 +216,10 @@ a { color: inherit; text-decoration: none; }
   background: var(--c-grey);
   box-shadow: 0 12px 28px rgba(0,0,0,.22);
 }
-.super-people .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.acard-family img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 @media (prefers-reduced-motion: reduce) {
-  .slide { animation: none !important; }
+  .ctrack { animation: none; }
 }
 
 /* =========================================================
