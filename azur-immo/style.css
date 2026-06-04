@@ -143,13 +143,19 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    3 CARTES AGENCES
    ========================================================= */
-.agencies { padding: 2rem 0 4.5rem; }
+.agencies {
+  padding: 3.5rem 0 6rem;
+  min-height: 100vh;                /* la section remplit l'écran -> on ne voit pas la section bleue en dessous */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 /* ============ Agences : 3 couches qui défilent, toutes centrées sur la même ligne ============ */
 .strip {
-  --pitch: 380px;        /* largeur d'un créneau -> ~3 cartes visibles, avec espace */
+  --pitch: 420px;        /* largeur d'un créneau -> ~3 cartes visibles, avec espace */
   position: relative;
-  height: 490px;
+  height: 620px;
   overflow: hidden;
 }
 .layer { position: absolute; inset: 0; display: flex; align-items: center; }  /* TOUT centré verticalement */
@@ -181,13 +187,13 @@ a { color: inherit; text-decoration: none; }
 /* ---- Carte : immeuble + nom de la ville dedans ---- */
 .scard {
   position: relative;
-  width: 320px; height: 430px;
-  border-radius: 16px;
+  width: 360px; height: 520px;
+  border-radius: 18px;
   overflow: hidden;
   background: var(--c-grey);
-  box-shadow: 0 22px 40px -20px rgba(20,40,80,.5);
+  box-shadow: 0 26px 46px -22px rgba(20,40,80,.55);
 }
-.scard img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.scard img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
 .scard-name {
   position: absolute; top: 0; left: 0; right: 0;
   padding: 14px 16px 26px;
@@ -195,8 +201,8 @@ a { color: inherit; text-decoration: none; }
   color: #fff; font-weight: 600; font-size: 1.12rem;
 }
 
-/* ---- Appartement (forme + intérieur), centré ---- */
-.sapt { position: relative; width: 196px; height: 244px; }
+/* ---- Appartement (forme + intérieur), centré, remplit la carte ---- */
+.sapt { position: relative; width: 280px; height: 430px; }
 .sapt.oval {
   border-radius: 50%;
   overflow: hidden;
@@ -215,7 +221,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ---- Personnes (cercle), centré ---- */
 .sper {
-  width: 138px; height: 138px;
+  width: 210px; height: 210px;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid #fff;
