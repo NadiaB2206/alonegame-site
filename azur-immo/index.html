@@ -112,23 +112,23 @@
 
     <h2 class="exclusivity-title">En Exclusivité chez AZUR IMMO : Achat, Location, Gestion Immobilière</h2>
 
-    <!-- Gros logo central -->
-    <div class="exclusivity-logo">
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <polygon points="50,5 89,27 89,73 50,95 11,73 11,27" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M50 27 L27 75 L73 75 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M33 61 H67" stroke="currentColor" stroke-width="2.5" fill="none"/>
-        <path d="M50 27 L73 75 L50 75 Z" fill="currentColor"/>
-      </svg>
-      <span class="exclusivity-name">AZUR</span>
-      <span class="exclusivity-sub">IMMO</span>
-    </div>
-
-    <!-- Carousel des biens (fondu automatique, sans contrôles) -->
+    <!-- Carousel des biens (fondu automatique) — 1er slide = grand logo AZUR -->
     <div class="biens" aria-label="Nos biens en exclusivité">
       <div class="biens-wrap">
         <div class="biens-viewport">
-          <article class="bien active">
+          <article class="bien bien-intro active">
+            <div class="exclusivity-logo">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <polygon points="50,5 89,27 89,73 50,95 11,73 11,27" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M50 27 L27 75 L73 75 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M33 61 H67" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                <path d="M50 27 L73 75 L50 75 Z" fill="currentColor"/>
+              </svg>
+              <span class="exclusivity-name">AZUR</span>
+              <span class="exclusivity-sub">IMMO</span>
+            </div>
+          </article>
+          <article class="bien">
             <div class="bien-card">
               <h3 class="bien-title">Maison Contemporaine — Nantes — 5 Pièces — 180 m²</h3>
               <figure class="bien-ext"><img src="immeuble-1.jpg" alt="Maison Contemporaine à Nantes" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></figure>

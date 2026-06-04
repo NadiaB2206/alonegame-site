@@ -343,6 +343,10 @@ a { color: inherit; text-decoration: none; }
 }
 .bien.active { opacity: 1; visibility: visible; }
 
+/* 1er slide : grand logo AZUR centré (pas de carte) */
+.bien-intro { display: flex; align-items: center; justify-content: center; }
+.bien-intro .exclusivity-logo { margin: 0; }
+
 /* carte verre dépoli (collage) */
 .bien-card {
   position: relative;
