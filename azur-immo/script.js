@@ -109,50 +109,36 @@ document.addEventListener('DOMContentLoaded', function () {
     requestAnimationFrame(render);
   })();
 
-  /* ---- Carousel des biens (fondu enchaîné) ---- */
+  /* ---- Carousel des biens (fondu automatique, sans contrôles) ---- */
   (function () {
     const root = document.querySelector('.biens');
     if (!root) return;
     const panels = Array.from(root.querySelectorAll('.bien'));
     if (!panels.length) return;
-    const prevBtn = root.querySelector('.biens-arrow.prev');
-    const nextBtn = root.querySelector('.biens-arrow.next');
-    const dotsBox = root.querySelector('.biens-dots');
     const N = panels.length;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let idx = 0, timer = null;
-    const DELAY = 6000;
-
-    const dots = panels.map(function (_, i) {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', 'Bien ' + (i + 1));
-      b.addEventListener('click', function () { show(i); restart(); });
-      dotsBox.appendChild(b);
-      return b;
-    });
+    const DELAY = 5000;
 
     function show(i) {
       idx = (i + N) % N;
       panels.forEach((p, k) => p.classList.toggle('active', k === idx));
-      dots.forEach((d, k) => d.classList.toggle('active', k === idx));
     }
     function next() { show(idx + 1); }
-    function prev() { show(idx - 1); }
-    function restart() { if (timer) { clearInterval(timer); start(); } }
-    function start() { if (!reduce) timer = setInterval(next, DELAY); }
+    function start() { if (!reduce && !timer) timer = setInterval(next, DELAY); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
 
-    if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
-    if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
-    root.addEventListener('mouseenter', function () { if (timer) { clearInterval(timer); timer = null; } });
-    root.addEventListener('mouseleave', function () { if (!timer) start(); });
+    // pause au survol
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
 
+    // swipe tactile (optionnel)
     let sx = null;
     root.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
     root.addEventListener('touchend', e => {
       if (sx === null) return;
       const dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); restart(); }
+      if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
       sx = null;
     });
 
