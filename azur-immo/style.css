@@ -151,12 +151,33 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
 }
 
+/* En-tête de section */
+.agencies-head { text-align: center; max-width: var(--maxw); margin: 0 auto 2.5rem; padding: 0 1.5rem; }
+.agencies-eyebrow {
+  display: inline-block;
+  font-family: var(--font-logo);
+  text-transform: uppercase;
+  letter-spacing: .28em;
+  font-size: .8rem;
+  color: var(--c-blue-dark);
+  margin-bottom: .6rem;
+}
+.agencies-head h2 {
+  font-weight: 600;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  color: var(--c-black);
+  line-height: 1.2;
+}
+
 /* ============ Agences : 3 couches qui défilent, toutes centrées sur la même ligne ============ */
 .strip {
   --pitch: 420px;        /* largeur d'un créneau -> ~3 cartes visibles, avec espace */
   position: relative;
   height: 620px;
   overflow: hidden;
+  /* bords en fondu (effet pro) */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
 }
 .layer { position: absolute; inset: 0; display: flex; align-items: center; }  /* TOUT centré verticalement */
 .layer-cards  { z-index: 1; }
@@ -193,12 +214,17 @@ a { color: inherit; text-decoration: none; }
   background: var(--c-grey);
   box-shadow: 0 26px 46px -22px rgba(20,40,80,.55);
 }
+.scard { transition: transform .35s ease, box-shadow .35s ease; }
+.strip:hover .scard:hover { transform: translateY(-8px); box-shadow: 0 34px 60px -24px rgba(20,40,80,.6); }
 .scard img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
 .scard-name {
   position: absolute; top: 0; left: 0; right: 0;
-  padding: 14px 16px 26px;
-  background: linear-gradient(to bottom, rgba(17,17,17,.6), rgba(17,17,17,0));
-  color: #fff; font-weight: 600; font-size: 1.12rem;
+  padding: 18px 20px 34px;
+  background: linear-gradient(to bottom, rgba(15,28,54,.72), rgba(15,28,54,0));
+  color: #fff;
+  font-family: var(--font-logo);
+  font-weight: 500; font-size: 1.18rem;
+  letter-spacing: .06em;
 }
 
 /* ---- Appartement (forme + intérieur), centré, remplit la carte ---- */
@@ -206,10 +232,14 @@ a { color: inherit; text-decoration: none; }
 .sapt.oval {
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid var(--c-blue);
+  border: 2.5px solid var(--c-blue);
   background: var(--c-grey);
+  box-shadow: 0 10px 26px rgba(20,40,80,.22);
 }
 .sapt.oval img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* contour maison affiné + ombre */
+.sapt.house { filter: drop-shadow(0 10px 22px rgba(20,40,80,.22)); }
+.sapt .ho polygon { stroke-width: 2.5px; }
 .sapt.house .sapt-clip {
   position: absolute; inset: 0;
   overflow: hidden;
