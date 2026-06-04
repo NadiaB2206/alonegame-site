@@ -333,7 +333,12 @@ a { color: inherit; text-decoration: none; }
 /* ---- Carousel des biens (fondu, structure collage façon Figma) ---- */
 .biens { margin-top: 3.5rem; }
 .biens-wrap { position: relative; max-width: 1000px; margin: 0 auto; }  /* -15% */
-.biens-viewport { position: relative; aspect-ratio: 16 / 8.6; }
+.biens-viewport {
+  position: relative;
+  aspect-ratio: 16 / 9.2;
+  overflow: hidden;          /* empêche le débordement dans la section suivante */
+  border-radius: 20px;
+}
 
 /* fondu + flou entre les biens (la carte se floute pour laisser place à la suivante) */
 .bien {
