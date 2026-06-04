@@ -143,7 +143,11 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    3 CARTES AGENCES
    ========================================================= */
-.agencies { padding: 2rem 1.5rem 4.5rem; }
+.agencies {
+  padding: 2rem 1.5rem 4.5rem;
+  display: flex;
+  justify-content: center;   /* bloc centré horizontalement */
+}
 
 /* ============ Agences : UNE superposition centrée (3 couches empilées) ============ */
 .super {
