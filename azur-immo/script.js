@@ -109,6 +109,69 @@ document.addEventListener('DOMContentLoaded', function () {
     requestAnimationFrame(render);
   })();
 
+  /* ---- Carousel des biens (1 bien visible, auto lent + flèches/points/swipe) ---- */
+  (function () {
+    const root = document.querySelector('.biens');
+    if (!root) return;
+    const viewport = root.querySelector('.biens-viewport');
+    const track = root.querySelector('.biens-track');
+    const prevBtn = root.querySelector('.biens-arrow.prev');
+    const nextBtn = root.querySelector('.biens-arrow.next');
+    const dotsBox = root.querySelector('.biens-dots');
+    const N = 6;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let pitch = viewport.clientWidth;
+    let setW = pitch * N;
+    let pos = 0, goal = 0, paused = false, last = performance.now();
+    const mod = (v, m) => ((v % m) + m) % m;
+    const activeIndex = () => mod(Math.round(pos / pitch), N);
+
+    const dots = [];
+    for (let i = 0; i < N; i++) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Bien ' + (i + 1));
+      b.addEventListener('click', () => goTo(i));
+      dotsBox.appendChild(b); dots.push(b);
+    }
+    function refreshDots() {
+      const a = activeIndex();
+      dots.forEach((d, i) => d.classList.toggle('active', i === a));
+    }
+    function goTo(i) {
+      const delta = mod(i - activeIndex() + N / 2, N) - N / 2;
+      goal = Math.round(goal / pitch) * pitch + delta * pitch;
+    }
+    function step(d) { goal += d * pitch; }
+    if (nextBtn) nextBtn.addEventListener('click', () => step(1));
+    if (prevBtn) prevBtn.addEventListener('click', () => step(-1));
+    root.addEventListener('mouseenter', () => { paused = true; });
+    root.addEventListener('mouseleave', () => { paused = false; });
+
+    let sx = null, sg = 0;
+    viewport.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sg = goal; paused = true; }, { passive: true });
+    viewport.addEventListener('touchmove', e => { if (sx !== null) goal = sg - (e.touches[0].clientX - sx); }, { passive: true });
+    viewport.addEventListener('touchend', () => { sx = null; goal = Math.round(goal / pitch) * pitch; paused = false; });
+
+    window.addEventListener('resize', () => {
+      const a = activeIndex();
+      pitch = viewport.clientWidth; setW = pitch * N;
+      pos = goal = a * pitch;
+    });
+
+    const AUTO = reduce ? 0 : pitch * 0.12;   // ~1 bien / 8 s
+    function render(now) {
+      const dt = Math.min(0.05, (now - last) / 1000); last = now;
+      if (!paused) goal += (reduce ? 0 : pitch * 0.12) * dt;
+      pos += (goal - pos) * Math.min(1, dt * 5);
+      track.style.transform = 'translateX(' + (-mod(pos, setW)) + 'px)';
+      refreshDots();
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+  })();
+
   /* ---- Formulaire de recherche (placeholder, pas de back-end) ---- */
   const searchForm = document.querySelector('.search-form');
   if (searchForm) {
