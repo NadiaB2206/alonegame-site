@@ -335,8 +335,8 @@ a { color: inherit; text-decoration: none; }
 .biens-wrap { position: relative; max-width: 1000px; margin: 0 auto; }  /* -15% */
 .biens-viewport {
   position: relative;
-  aspect-ratio: 16 / 9.2;
-  overflow: hidden;          /* empêche le débordement dans la section suivante */
+  height: clamp(440px, 50vw, 560px);   /* hauteur DÉFINIE -> les % des photos se calculent correctement */
+  overflow: hidden;                     /* empêche tout débordement */
   border-radius: 20px;
 }
 
@@ -380,6 +380,8 @@ a { color: inherit; text-decoration: none; }
   border-radius: 6px;
   box-shadow: 0 18px 34px -16px rgba(15,40,80,.55);
   margin: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .bien-ext img, .bien-int img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 3px; }
 .bien-ext  { left: 4.5%; top: 17%; width: 31%; height: 70%; }
