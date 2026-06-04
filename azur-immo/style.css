@@ -145,81 +145,81 @@ a { color: inherit; text-decoration: none; }
    ========================================================= */
 .agencies { padding: 2rem 0 4.5rem; }
 
-/* ============ Agences : carousel de 6 cartes (3 visibles) qui défilent ============ */
-.carousel {
-  max-width: var(--maxw);
-  margin: 0 auto;
+/* ============ Agences : 3 couches qui défilent, toutes centrées sur la même ligne ============ */
+.strip {
+  --pitch: 360px;        /* largeur d'un emplacement (cartes & personnes alignées) -> ~3 visibles */
+  position: relative;
+  height: 470px;
   overflow: hidden;
 }
-.ctrack {
-  display: flex;
-  width: max-content;
-  animation: ctrack-scroll 32s linear infinite;
-}
-.carousel:hover .ctrack { animation-play-state: paused; }
-@keyframes ctrack-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }   /* défile d'un jeu de 6 -> boucle sans couture */
-}
+.layer { position: absolute; inset: 0; display: flex; align-items: center; }  /* TOUT centré verticalement */
+.layer-cards  { z-index: 1; }
+.layer-apts   { z-index: 2; }
+.layer-people { z-index: 3; }
 
-/* Une carte = superposition concentrique (immeuble + appartement + personnes) */
-.acard {
+.mtrack { display: flex; width: max-content; }
+.mtrack > * { flex: 0 0 var(--pitch); display: flex; justify-content: center; }
+
+/* sens de défilement */
+@keyframes sc-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+@keyframes sc-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+/* cartes & personnes : MÊME sens, MÊME rythme -> personnes collées/centrées sur les cartes */
+.layer-cards  .mtrack { animation: sc-left 42s linear infinite; }
+.layer-people .mtrack { animation: sc-left 42s linear infinite; }
+/* appartements : sens OPPOSÉ */
+.layer-apts   .mtrack { animation: sc-right 42s linear infinite; }
+
+.strip:hover .mtrack { animation-play-state: paused; }
+
+/* ---- Carte : immeuble + nom de la ville dedans ---- */
+.scard {
   position: relative;
-  flex: 0 0 340px;
-  margin-right: 28px;
-  aspect-ratio: 340 / 450;
-}
-
-/* 1) immeuble + nom de la ville */
-.acard-building {
-  position: absolute; inset: 0;
-  z-index: 1;
+  width: 310px; height: 410px;
   border-radius: 16px;
   overflow: hidden;
   background: var(--c-grey);
   box-shadow: 0 22px 40px -20px rgba(20,40,80,.5);
 }
-.acard-building img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.cname {
+.scard img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.scard-name {
   position: absolute; top: 0; left: 0; right: 0;
   padding: 14px 16px 26px;
   background: linear-gradient(to bottom, rgba(17,17,17,.6), rgba(17,17,17,0));
-  color: #fff; font-weight: 600; font-size: 1.1rem;
+  color: #fff; font-weight: 600; font-size: 1.12rem;
 }
 
-/* 2) appartement (maison) — centré */
-.acard-home {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 64%; aspect-ratio: 200 / 250;
-  z-index: 2;
+/* ---- Appartement (forme + intérieur), centré ---- */
+.sapt { position: relative; width: 232px; height: 290px; }
+.sapt.oval {
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--c-blue);
+  background: var(--c-grey);
 }
-.home-shape {
+.sapt.oval img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sapt.house .sapt-clip {
   position: absolute; inset: 0;
   overflow: hidden;
   clip-path: polygon(50% 0, 100% 30%, 100% 100%, 0 100%, 0 30%);
   background: var(--c-grey);
 }
-.home-shape img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.acard-home .house-outline {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  overflow: visible; pointer-events: none;
-}
+.sapt.house .sapt-clip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sapt.house .ho { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 
-/* 3) personnes (cercle) — centré */
-.acard-family {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 50%; aspect-ratio: 1;
-  z-index: 3;
+/* ---- Personnes (cercle), centré ---- */
+.sper {
+  width: 188px; height: 188px;
   border-radius: 50%;
   overflow: hidden;
   border: 4px solid var(--c-blue);
   background: var(--c-grey);
   box-shadow: 0 12px 28px rgba(0,0,0,.22);
 }
-.acard-family img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sper img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 @media (prefers-reduced-motion: reduce) {
-  .ctrack { animation: none; }
+  .mtrack { animation: none !important; }
 }
 
 /* =========================================================
