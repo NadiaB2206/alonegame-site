@@ -332,16 +332,17 @@ a { color: inherit; text-decoration: none; }
 
 /* ---- Carousel des biens (fondu, structure collage façon Figma) ---- */
 .biens { margin-top: 3.5rem; }
-.biens-wrap { position: relative; max-width: var(--maxw); margin: 0 auto; }
+.biens-wrap { position: relative; max-width: 1000px; margin: 0 auto; }  /* -15% */
 .biens-viewport { position: relative; aspect-ratio: 16 / 8.6; }
 
-/* fondu enchaîné entre les biens */
+/* fondu + flou entre les biens (la carte se floute pour laisser place à la suivante) */
 .bien {
   position: absolute; inset: 0;
   opacity: 0; visibility: hidden;
-  transition: opacity .7s ease, visibility .7s ease;
+  filter: blur(12px);
+  transition: opacity .8s ease, filter .8s ease, visibility .8s ease;
 }
-.bien.active { opacity: 1; visibility: visible; }
+.bien.active { opacity: 1; visibility: visible; filter: blur(0); }
 
 /* 1er slide : grand logo AZUR centré (pas de carte) */
 .bien-intro { display: flex; align-items: center; justify-content: center; }
