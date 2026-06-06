@@ -146,6 +146,26 @@ document.addEventListener('DOMContentLoaded', function () {
     start();
   })();
 
+  /* ---- Carte interactive de France (survol + clic) ---- */
+  (function () {
+    const svg = document.querySelector('.france-svg');
+    if (!svg) return;
+    const loc = document.getElementById('location');
+    const regions = svg.querySelectorAll('.region');
+    regions.forEach(function (r) {
+      r.addEventListener('click', function () {
+        const already = r.classList.contains('is-selected');
+        regions.forEach(x => x.classList.remove('is-selected'));
+        if (!already) {
+          r.classList.add('is-selected');
+          if (loc) loc.value = r.getAttribute('data-nom');
+        } else if (loc) {
+          loc.value = '';
+        }
+      });
+    });
+  })();
+
   /* ---- Formulaire de recherche (placeholder, pas de back-end) ---- */
   const searchForm = document.querySelector('.search-form');
   if (searchForm) {
