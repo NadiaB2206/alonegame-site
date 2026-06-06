@@ -391,24 +391,24 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden; box-sizing: border-box;
 }
 .bien-ext img, .bien-int img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 3px; }
-.bien-ext  { left: 4.5%; top: 23%; width: 35%; height: 70%; z-index: 1; }
-.bien-int1 { left: 40%;  top: 25%; width: 27%; height: 42%; z-index: 2; }
-.bien-int2 { left: 53%;  top: 45%; width: 27%; height: 42%; z-index: 3; }
+.bien-ext  { left: 5%;  top: 23%; width: 34%; height: 70%; z-index: 2; }
+.bien-int1 { left: 40%; top: 22%; width: 27%; height: 36%; z-index: 3; }
+.bien-int2 { left: 53%; top: 33%; width: 27%; height: 36%; z-index: 4; }
 
 /* encadrés sombres */
 .bien-price, .bien-desc {
-  position: absolute; z-index: 4;
-  background: rgba(20,28,44,.88);
+  position: absolute;
+  background: rgba(20,28,44,.9);
   color: #fff; border-radius: 10px;
-  padding: 1rem 1.2rem;
+  padding: .9rem 1.1rem;
   box-shadow: 0 16px 30px -16px rgba(15,40,80,.5);
 }
-.bien-price { top: 11%; right: 4.5%; width: 33%; }
-.bien-price p { margin: .25rem 0; font-size: clamp(.78rem, 1vw, .96rem); }
-.bien-price strong { float: right; font-weight: 600; }
+.bien-price { top: 10%; right: 5%; width: 30%; z-index: 5; }
+.bien-price p { margin: .25rem 0; font-size: clamp(.76rem, .95vw, .94rem); }
+.bien-price strong { font-weight: 600; }
 .bien-desc {
-  left: 40%; right: 4.5%; bottom: 6%;
-  font-size: clamp(.74rem, .95vw, .92rem); line-height: 1.5;
+  left: 40%; right: 5%; bottom: 6%; z-index: 5;
+  font-size: clamp(.74rem, .9vw, .9rem); line-height: 1.5;
 }
 
 /* Flèches */
