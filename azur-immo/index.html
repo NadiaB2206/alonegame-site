@@ -313,13 +313,21 @@
     </div>
   </section>
 
-  <!-- ============ BANDE D'IMAGES EN FORME DE MAISONS ============ -->
+  <!-- ============ CARROUSEL DE MAISONS (défile gauche→droite, bords flous) ============ -->
   <section class="house-band" aria-label="Galerie de biens">
-    <div class="house-shape"><img src="maison-1.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
-    <div class="house-shape"><img src="maison-2.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
-    <div class="house-shape"><img src="maison-3.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
-    <div class="house-shape"><img src="maison-4.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
-    <div class="house-shape"><img src="maison-5.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
+    <div class="house-track">
+      <div class="house-shape"><img src="maison-1.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
+      <div class="house-shape"><img src="maison-2.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
+      <div class="house-shape"><img src="maison-3.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
+      <div class="house-shape"><img src="maison-4.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
+      <div class="house-shape"><img src="maison-5.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
+      <!-- copie pour une boucle sans couture -->
+      <div class="house-shape" aria-hidden="true"><img src="maison-1.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
+      <div class="house-shape" aria-hidden="true"><img src="maison-2.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
+      <div class="house-shape" aria-hidden="true"><img src="maison-3.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
+      <div class="house-shape" aria-hidden="true"><img src="maison-4.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
+      <div class="house-shape" aria-hidden="true"><img src="maison-5.jpg" alt="" onerror="if(this.src.endsWith('.jpg')){this.src=this.src.slice(0,-4)+'.png'}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpeg'}else{this.classList.add('img-fallback')}"></div>
+    </div>
   </section>
 
   <!-- ============ FOOTER ============ -->
