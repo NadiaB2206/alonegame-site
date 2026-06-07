@@ -15,6 +15,39 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle();
   })();
 
+  /* ---- Carousel des bureaux (page À propos) : fondu auto + points ---- */
+  (function () {
+    const root = document.querySelector('.agency-carousel');
+    if (!root) return;
+    const imgs = Array.from(root.querySelectorAll('.ac-track img'));
+    if (imgs.length < 2) return;
+    const dotsBox = root.querySelector('.ac-dots');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0, timer = null;
+    const DELAY = 3500;
+
+    function show(n) {
+      i = (n + imgs.length) % imgs.length;
+      imgs.forEach((im, k) => im.classList.toggle('active', k === i));
+      if (dotsBox) Array.from(dotsBox.children).forEach((d, k) => d.classList.toggle('active', k === i));
+    }
+    if (dotsBox) imgs.forEach((_, k) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Photo ' + (k + 1));
+      b.addEventListener('click', function () { show(k); restart(); });
+      dotsBox.appendChild(b);
+    });
+    function next() { show(i + 1); }
+    function start() { if (!reduce && !timer) timer = setInterval(next, DELAY); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    show(0);
+    start();
+  })();
+
   /* ---- Menu mobile (burger) ---- */
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.main-nav');
