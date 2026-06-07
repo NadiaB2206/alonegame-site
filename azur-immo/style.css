@@ -978,21 +978,22 @@ a { color: inherit; text-decoration: none; }
 .ah-cream     { background: #ece8e1; }
 .ah-dark      { background: #1f1f1f; }
 /* tailles : les colorées (xl) dépassent derrière les crème/photos */
-.a-sm { width: 12vw; }
-.a-md { width: 15.5vw; }
-.a-lg { width: 19vw; }
-.a-xl { width: 22.5vw; }
+.a-sm    { width: 8.5vw; }
+.a-md    { width: 10.5vw; }
+.a-lg    { width: 12.5vw; }
+.a-xl    { width: 14vw; }
+.a-wide  { width: 17vw; }   /* maison du titre, plus large */
 .ah-title {
   font-family: Georgia, 'Times New Roman', serif;
   font-weight: 700;
-  font-size: clamp(.95rem, 1.8vw, 1.7rem);
+  font-size: clamp(.75rem, 1.35vw, 1.35rem);
   letter-spacing: .03em;
   color: #3a3a3a;
   text-align: center;
   line-height: 1.2;
   text-transform: uppercase;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, .15);
-  padding: 0 .4rem;
+  padding: 0 .5rem;
 }
 .about-tagline {
   text-align: center;
