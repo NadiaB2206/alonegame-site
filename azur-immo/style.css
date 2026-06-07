@@ -107,14 +107,29 @@ a { color: inherit; text-decoration: none; }
 .main-nav a.active { color: var(--c-black); font-weight: 500; }
 
 /* bouton Connexion */
-.nav-cta {
-  padding: .5rem 1.4rem;
-  border: 1px solid var(--c-blue);
-  border-radius: var(--radius);
-  color: var(--c-blue-dark);
-  transition: background .2s, color .2s;
+.main-nav a.nav-cta {
+  position: relative;
+  overflow: hidden;
+  padding: .55rem 1.6rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--c-blue), var(--c-blue-dark));
+  color: #fff;
+  font-weight: 600;
+  transition: transform .2s, box-shadow .25s;
 }
-.nav-cta:hover { background: var(--c-blue); color: #fff; }
+.main-nav a.nav-cta::after {
+  content: ""; position: absolute; top: 0; left: -120%;
+  width: 60%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .55), transparent);
+  transform: skewX(-20deg); pointer-events: none;
+}
+.main-nav a.nav-cta:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(73, 160, 221, .35);
+}
+.main-nav a.nav-cta:hover::after { animation: btn-shine .7s ease; }
 
 .nav-toggle {
   display: none;
