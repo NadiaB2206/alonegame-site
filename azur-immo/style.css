@@ -661,6 +661,21 @@ a { color: inherit; text-decoration: none; }
   color: #666;
 }
 
+.footer-gallery {
+  max-width: var(--maxw);
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: .8rem;
+}
+.footer-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
 .footer-bottom-nav {
   max-width: var(--maxw);
   margin: 1.5rem auto 0;
@@ -721,4 +736,5 @@ a { color: inherit; text-decoration: none; }
   .carousel { --visible: 1; }   /* 1 carte visible sur mobile */
   .house-band { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-top { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .footer-gallery { grid-template-columns: repeat(2, 1fr); }
 }
