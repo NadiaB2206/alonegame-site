@@ -71,7 +71,7 @@ a { color: inherit; text-decoration: none; }
 
 /* --- Logo (icone + AZUR IMMO dessous, dans le GIF) --- */
 .brand { display: flex; align-items: center; }
-.brand-logo { height: 120px; width: auto; flex-shrink: 0; object-fit: contain; transition: transform .3s ease; }
+.brand-logo { height: 120px; width: auto; flex-shrink: 0; object-fit: contain; transition: transform .3s ease; mix-blend-mode: multiply; }
 .brand:hover .brand-logo { transform: scale(1.04); }
 .brand-logo.small { height: 64px; width: auto; }
 .brand-text {
@@ -611,7 +611,7 @@ a { color: inherit; text-decoration: none; }
   gap: 2rem;
 }
 .footer-brand { display: flex; flex-direction: column; align-items: center; gap: .4rem; }
-.footer-logo { height: 130px; width: auto; object-fit: contain; }
+.footer-logo { height: 130px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
 .footer-brand-text { display: flex; flex-direction: column; line-height: 1; text-align: center; }
 .footer-brand-text .brand-name { color: var(--c-blue-dark); }
 .footer-brand-text .brand-sub  { color: var(--c-blue-dark); }
