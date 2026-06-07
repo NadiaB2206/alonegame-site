@@ -976,7 +976,7 @@ a { color: inherit; text-decoration: none; }
 /* photo d'équipe : une seule image continue, découpée en 2 maisons */
 .ah-photo2 {
   flex: 0 0 auto;
-  width: 30vw;
+  width: 33vw;
   aspect-ratio: 3 / 2;
   margin-left: -2.4vw;
   overflow: hidden;
@@ -989,11 +989,11 @@ a { color: inherit; text-decoration: none; }
 .ah-cream     { background: #ece8e1; }
 .ah-dark      { background: #1f1f1f; }
 /* tailles : les colorées (xl) dépassent derrière les crème/photos */
-.a-sm    { width: 8.5vw; }
-.a-md    { width: 10.5vw; }
-.a-lg    { width: 12.5vw; }
-.a-xl    { width: 14vw; }
-.a-wide  { width: 20vw; }   /* maison du titre, plus large pour voir tout le texte */
+.a-sm    { width: 9.4vw; }
+.a-md    { width: 11.5vw; }
+.a-lg    { width: 13.7vw; }
+.a-xl    { width: 15.4vw; }
+.a-wide  { width: 22vw; }   /* maison du titre, plus large pour voir tout le texte */
 .ah-title {
   font-family: Georgia, 'Times New Roman', serif;
   font-weight: 700;
