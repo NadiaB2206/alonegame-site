@@ -886,6 +886,14 @@ a { color: inherit; text-decoration: none; }
 .footer-bottom-nav { margin-top: 2rem; }
 .footer-faq { font-weight: 600; letter-spacing: .02em; }
 
+/* footer plus large (sans changer la hauteur) */
+.site-footer { --footer-maxw: 1600px; }
+.footer-top,
+.footer-cols,
+.footer-phone,
+.footer-legal,
+.footer-bottom-nav { max-width: var(--footer-maxw); }
+
 @media (prefers-reduced-motion: reduce) {
   .site-footer::before { animation: none; }
 }
