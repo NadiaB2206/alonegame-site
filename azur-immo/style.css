@@ -566,19 +566,61 @@ a { color: inherit; text-decoration: none; }
    BANDE D'IMAGES EN FORME DE MAISONS
    ========================================================= */
 .house-band {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1rem;
-  align-items: end;
-  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0;
+  /* fondu flou sur les bords : les maisons apparaissent/disparaissent en douceur */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%);
 }
+/* bandes floues aux deux extrémités : les maisons arrivent/partent en flou */
+.house-band::before,
+.house-band::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 16%;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+.house-band::before {
+  left: 0;
+  -webkit-mask-image: linear-gradient(90deg, #000, transparent);
+          mask-image: linear-gradient(90deg, #000, transparent);
+}
+.house-band::after {
+  right: 0;
+  -webkit-mask-image: linear-gradient(270deg, #000, transparent);
+          mask-image: linear-gradient(270deg, #000, transparent);
+}
+.house-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  /* défilement continu de gauche vers la droite */
+  animation: house-scroll 35s linear infinite;
+}
+.house-band:hover .house-track { animation-play-state: paused; }
 .house-shape {
+  flex: 0 0 clamp(180px, 18vw, 240px);
   aspect-ratio: 3 / 4;
   clip-path: polygon(50% 0, 100% 22%, 100% 100%, 0 100%, 0 22%);
   background: var(--c-grey);
   overflow: hidden;
 }
-.house-shape img { width: 100%; height: 100%; object-fit: cover; }
+.house-shape img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: filter .4s ease;
+}
+@keyframes house-scroll {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .house-track { animation: none; }
+}
 
 /* =========================================================
    FOOTER
@@ -778,7 +820,6 @@ a { color: inherit; text-decoration: none; }
   .site-header { position: relative; }
 
   .carousel { --visible: 1; }   /* 1 carte visible sur mobile */
-  .house-band { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-top { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   .footer-carousel { --fper: 1; }
 }
