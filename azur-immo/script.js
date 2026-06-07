@@ -146,6 +146,45 @@ document.addEventListener('DOMContentLoaded', function () {
     start();
   })();
 
+  /* ---- Bande de maisons : cadres fixes, images qui se décalent de maison en maison (flou) ---- */
+  (function () {
+    const imgs = Array.from(document.querySelectorAll('.house-band .house-shape img'));
+    if (imgs.length < 2) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+
+    const srcs = imgs.map(img => img.src);   // pool des photos
+    const N = srcs.length;
+    let offset = 0;
+    let timer = null;
+    const DELAY = 3000;   // temps entre deux décalages
+    const STAGGER = 150;  // décalage en vague (gauche -> droite)
+    const BLUR = 350;     // durée du flou avant le changement d'image
+
+    function shift() {
+      offset = (offset + 1) % N;
+      imgs.forEach(function (img, i) {
+        setTimeout(function () {
+          img.classList.add('shifting');                 // floute
+          setTimeout(function () {
+            img.src = srcs[(i + offset) % N];             // image suivante
+            img.classList.remove('shifting');            // redevient nette
+          }, BLUR);
+        }, i * STAGGER);
+      });
+    }
+
+    function start() { if (!timer) timer = setInterval(shift, DELAY); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    const band = document.querySelector('.house-band');
+    if (band) {
+      band.addEventListener('mouseenter', stop);   // pause au survol
+      band.addEventListener('mouseleave', start);
+    }
+    start();
+  })();
+
   /* ---- Carte interactive de France (survol + clic) ---- */
   (function () {
     const svg = document.querySelector('.france-svg');
