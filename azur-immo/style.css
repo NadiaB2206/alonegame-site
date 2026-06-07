@@ -948,3 +948,85 @@ a { color: inherit; text-decoration: none; }
   .carousel { --visible: 1; }   /* 1 carte visible sur mobile */
   .footer-top { grid-template-columns: 1fr; justify-items: center; text-align: center; }
 }
+
+/* =========================================================
+   PAGE À PROPOS — QUI SOMMES-NOUS
+   ========================================================= */
+.about-hero { padding: 2.5rem 1.5rem 0; }
+.about-houses {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: .8rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.ah-shape {
+  aspect-ratio: 3 / 4;
+  clip-path: polygon(50% 0, 100% 22%, 100% 100%, 0 100%, 0 22%);
+  background: var(--c-grey);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.ah-shape img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ah-shape.ah-logo img { width: 72%; height: auto; object-fit: contain; mix-blend-mode: multiply; }
+.ah-blue      { background: #2b3a8c; }
+.ah-lightblue { background: #9fc0e8; }
+.ah-cream     { background: #ece8e1; }
+.ah-dark      { background: #1f1f1f; }
+.a-sm { flex: 0 0 11%; }
+.a-md { flex: 0 0 14%; }
+.a-lg { flex: 0 0 17%; }
+.a-xl { flex: 0 0 20%; }
+.ah-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 1.7vw, 1.6rem);
+  letter-spacing: .03em;
+  color: #3a3a3a;
+  text-align: center;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+.about-tagline {
+  text-align: center;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-weight: 600;
+  color: var(--c-black);
+  margin: 1.8rem auto 0;
+  padding: 0 1rem;
+}
+
+.about-intro { max-width: 1000px; margin: 3.5rem auto; padding: 0 1.5rem; text-align: center; }
+.about-intro h1 { font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--c-blue-dark); margin-bottom: 1rem; }
+.about-intro > p { font-size: 1.05rem; line-height: 1.7; color: var(--c-text); max-width: 720px; margin: 0 auto 2.5rem; }
+.about-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.value-card {
+  background: #fff; border: 1px solid var(--c-border);
+  border-radius: var(--radius); padding: 1.8rem 1.4rem;
+  transition: transform .25s, box-shadow .25s;
+}
+.value-card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(20, 40, 80, .1); }
+.value-card h3 { color: var(--c-blue-dark); margin-bottom: .6rem; text-transform: uppercase; letter-spacing: .08em; font-size: .95rem; }
+.value-card p { font-size: .92rem; line-height: 1.6; color: var(--c-text); }
+
+.about-team { background: linear-gradient(180deg, #f6f8fa, #eef1f5); padding: 3.5rem 1.5rem; }
+.team-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;
+}
+.team-photo img { width: 100%; border-radius: var(--radius); display: block; box-shadow: 0 18px 40px rgba(20, 40, 80, .15); }
+.team-text h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); color: var(--c-blue-dark); margin-bottom: 1rem; }
+.team-text p { line-height: 1.7; color: var(--c-text); margin-bottom: 1.6rem; }
+.btn-team {
+  display: inline-block; padding: .7rem 1.7rem;
+  border-radius: 999px; background: linear-gradient(135deg, var(--c-blue), var(--c-blue-dark));
+  color: #fff; font-weight: 600; transition: transform .2s, box-shadow .25s;
+}
+.btn-team:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(73, 160, 221, .35); }
+
+@media (max-width: 760px) {
+  .about-values { grid-template-columns: 1fr; }
+  .about-houses { gap: .4rem; }
+  .team-inner { grid-template-columns: 1fr; }
+}
