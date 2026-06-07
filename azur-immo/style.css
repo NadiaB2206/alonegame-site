@@ -566,61 +566,32 @@ a { color: inherit; text-decoration: none; }
    BANDE D'IMAGES EN FORME DE MAISONS
    ========================================================= */
 .house-band {
-  position: relative;
-  overflow: hidden;
-  padding: 2rem 0;
-  /* fondu flou sur les bords : les maisons apparaissent/disparaissent en douceur */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%);
-          mask-image: linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%);
-}
-/* bandes floues aux deux extrémités : les maisons arrivent/partent en flou */
-.house-band::before,
-.house-band::after {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 16%;
-  z-index: 2;
-  pointer-events: none;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-}
-.house-band::before {
-  left: 0;
-  -webkit-mask-image: linear-gradient(90deg, #000, transparent);
-          mask-image: linear-gradient(90deg, #000, transparent);
-}
-.house-band::after {
-  right: 0;
-  -webkit-mask-image: linear-gradient(270deg, #000, transparent);
-          mask-image: linear-gradient(270deg, #000, transparent);
-}
-.house-track {
   display: flex;
-  gap: 1rem;
-  width: max-content;
-  /* défilement continu de gauche vers la droite */
-  animation: house-scroll 35s linear infinite;
+  align-items: flex-end;      /* bas alignés -> sommets décalés comme le Figma */
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 2rem 1.5rem;
 }
-.house-band:hover .house-track { animation-play-state: paused; }
 .house-shape {
-  flex: 0 0 clamp(180px, 18vw, 240px);
   aspect-ratio: 3 / 4;
   clip-path: polygon(50% 0, 100% 22%, 100% 100%, 0 100%, 0 22%);
   background: var(--c-grey);
   overflow: hidden;
 }
-.house-shape img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: filter .4s ease;
-}
-@keyframes house-scroll {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .house-track { animation: none; }
-}
+.house-shape img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* tailles variées (comme le Figma) */
+.house-shape.s1 { flex: 0 0 15%; }
+.house-shape.s2 { flex: 0 0 11%; }
+.house-shape.s3 { flex: 0 0 17%; }
+.house-shape.s4 { flex: 0 0 19%; }
+.house-shape.s5 { flex: 0 0 11%; }
+.house-shape.s6 { flex: 0 0 15%; }
+
+/* maisons en aplat de couleur du site */
+.house-shape.color-blue      { background: var(--c-blue); }
+.house-shape.color-blue-dark { background: var(--c-blue-dark); }
+.house-shape.color-grey      { background: #c9cdd2; }
 
 /* =========================================================
    FOOTER
@@ -703,64 +674,6 @@ a { color: inherit; text-decoration: none; }
   color: #666;
 }
 
-.footer-carousel {
-  --fper: 3;            /* nombre de photos visibles */
-  --fgap: .8rem;
-  max-width: var(--maxw);
-  margin: 2rem auto 0;
-  position: relative;
-}
-.fcar-viewport { overflow: hidden; }
-.fcar-track {
-  display: flex;
-  gap: var(--fgap);
-  transition: transform .5s ease;
-  will-change: transform;
-}
-.fcar-track img {
-  flex: 0 0 calc((100% - (var(--fper) - 1) * var(--fgap)) / var(--fper));
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: var(--radius);
-  display: block;
-}
-.fcar-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  width: 40px; height: 40px;
-  border: 1px solid var(--c-border);
-  background: var(--c-white);
-  color: var(--c-blue-dark);
-  border-radius: 50%;
-  font-size: 1.4rem;
-  line-height: 1;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 14px rgba(0,0,0,.1);
-  transition: .2s;
-}
-.fcar-arrow:hover { background: var(--c-blue); color: #fff; }
-.fcar-arrow.prev { left: -8px; }
-.fcar-arrow.next { right: -8px; }
-.fcar-dots {
-  display: flex;
-  justify-content: center;
-  gap: .5rem;
-  margin-top: 1rem;
-}
-.fcar-dots button {
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  border: none;
-  background: var(--c-border);
-  cursor: pointer;
-  padding: 0;
-  transition: .2s;
-}
-.fcar-dots button.active { background: var(--c-blue); transform: scale(1.25); }
-
 .footer-bottom-nav {
   max-width: var(--maxw);
   margin: 1.5rem auto 0;
@@ -799,7 +712,6 @@ a { color: inherit; text-decoration: none; }
   .search-title { text-align: center; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .footer-cols { grid-template-columns: 1fr; }
-  .footer-carousel { --fper: 2; }
 }
 
 @media (max-width: 680px) {
@@ -821,5 +733,4 @@ a { color: inherit; text-decoration: none; }
 
   .carousel { --visible: 1; }   /* 1 carte visible sur mobile */
   .footer-top { grid-template-columns: 1fr; justify-items: center; text-align: center; }
-  .footer-carousel { --fper: 1; }
 }
