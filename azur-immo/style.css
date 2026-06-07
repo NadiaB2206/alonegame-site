@@ -483,8 +483,8 @@ a { color: inherit; text-decoration: none; }
 
 .france-map {
   display: flex; align-items: center; justify-content: flex-start;
-  /* sort la carte du cadre centre (1180px) pour la coller au bord gauche de l'ecran */
-  margin-left: calc(-1 * (max((100vw - var(--maxw)) / 2, 0px) + 1.5rem));
+  /* leger decalage vers la gauche (pas colle au bord) */
+  margin-left: -2.5rem;
 }
 .france-map img { width: 100%; max-width: 420px; }
 .map-placeholder {
