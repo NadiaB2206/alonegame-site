@@ -1162,3 +1162,60 @@ a { color: inherit; text-decoration: none; }
   .agency-inner { grid-template-columns: 1fr; gap: 2rem; }
   .agency-media { min-height: 70vw; max-width: 460px; width: 100%; margin: 0 auto; }
 }
+
+/* =========================================================
+   À PROPOS — ÉQUIPE (cartes qui se retournent)
+   ========================================================= */
+.team-section { padding: 4.5rem 1.5rem 5rem; background: #fff; }
+.team-head { text-align: center; max-width: 840px; margin: 0 auto 3rem; }
+.team-head h2 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: var(--c-blue-dark); margin-bottom: 1rem; }
+.team-head p { color: var(--c-text); line-height: 1.75; }
+
+.team-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 1080px; margin: 0 auto; }
+.member { width: 300px; height: 440px; perspective: 1200px; outline: none; }
+.member-inner {
+  position: relative; width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+.member:hover .member-inner,
+.member:focus-within .member-inner { transform: rotateY(180deg); }
+
+.member-face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  background: #ece8e1; border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(20, 40, 80, .1);
+  overflow: hidden;
+}
+/* recto */
+.member-front { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.6rem; text-align: center; }
+.member-photo {
+  width: 175px; height: 175px; border-radius: 50%;
+  background: linear-gradient(180deg, #2b6cb0, #c3d8ee);
+  padding: 6px;
+  box-shadow: 0 10px 24px rgba(20, 40, 80, .2);
+}
+.member-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.member-name { margin-top: 1.4rem; font-weight: 700; color: var(--c-black); }
+.member-role { margin-top: .2rem; color: var(--c-blue-dark); font-weight: 600; font-size: .92rem; }
+/* indice "survol" */
+.member-front::after {
+  content: "Survolez";
+  position: absolute; bottom: 14px; left: 0; right: 0;
+  font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--c-blue); opacity: .55;
+}
+/* verso */
+.member-back {
+  transform: rotateY(180deg);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.7rem 1.5rem; text-align: center;
+}
+.member-back p { position: relative; z-index: 1; font-size: .82rem; line-height: 1.55; color: var(--c-text); }
+.member-hex { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: .1; }
+.member-hex svg { width: 78%; height: auto; }
+
+@media (max-width: 520px) {
+  .member { width: 100%; max-width: 330px; }
+}
