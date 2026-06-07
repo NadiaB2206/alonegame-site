@@ -567,8 +567,9 @@ a { color: inherit; text-decoration: none; }
    ========================================================= */
 .house-band {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1rem;
+  align-items: end;
   padding: 2rem 1.5rem;
 }
 .house-shape {
@@ -718,6 +719,6 @@ a { color: inherit; text-decoration: none; }
   .site-header { position: relative; }
 
   .carousel { --visible: 1; }   /* 1 carte visible sur mobile */
-  .house-band { grid-template-columns: repeat(2, 1fr); }
+  .house-band { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-top { grid-template-columns: 1fr; justify-items: center; text-align: center; }
 }
