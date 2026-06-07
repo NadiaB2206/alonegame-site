@@ -813,6 +813,84 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
+   FOOTER — LOOK MODERNE
+   ========================================================= */
+.site-footer {
+  position: relative;
+  background: linear-gradient(180deg, #ffffff 0%, #eef1f5 100%);
+  padding-top: 3.75rem;
+}
+/* fine barre dégradée en haut du footer */
+.site-footer::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--c-blue), var(--c-blue-dark), var(--c-blue));
+  background-size: 200% 100%;
+  animation: footer-accent 6s linear infinite;
+}
+@keyframes footer-accent { to { background-position: 200% 0; } }
+
+/* newsletter : pilule moderne (champ + bouton intégrés) */
+.newsletter {
+  flex-direction: row;
+  align-items: center;
+  gap: .4rem;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: .35rem .35rem .35rem 1.3rem;
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(20, 40, 80, .08);
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.newsletter:focus-within {
+  box-shadow: 0 14px 34px rgba(73, 160, 221, .22);
+  transform: translateY(-2px);
+}
+.newsletter input {
+  flex: 1; width: auto; max-width: none;
+  border: none; background: transparent; padding: .6rem 0;
+}
+.newsletter input:focus { outline: none; box-shadow: none; transform: none; }
+.btn-connexion {
+  flex-shrink: 0;
+  padding: .7rem 1.7rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--c-blue), var(--c-blue-dark));
+  color: #fff;
+  font-weight: 600;
+}
+.btn-connexion:hover {
+  background: linear-gradient(135deg, var(--c-blue-dark), var(--c-blue-dark));
+  color: #fff;
+}
+
+/* réseaux : icônes rondes modernes, alignées */
+.footer-social { flex-direction: row; gap: .7rem; }
+.social-link { width: 44px; height: 44px; border-radius: 50%; font-size: 1.05rem; }
+
+/* micro-titres modernes (majuscules espacées) */
+.footer-col h3 {
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .8rem;
+  color: var(--c-blue-dark);
+}
+
+/* respiration générale */
+.footer-cols { gap: 2.5rem; }
+.footer-bottom-nav { margin-top: 2rem; }
+.footer-faq { font-weight: 600; letter-spacing: .02em; }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer::before { animation: none; }
+}
+
+/* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width: 960px) {
