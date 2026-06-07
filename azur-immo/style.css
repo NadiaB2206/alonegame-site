@@ -976,13 +976,14 @@ a { color: inherit; text-decoration: none; }
 /* photo d'équipe : une seule image continue, découpée en 2 maisons */
 .ah-photo2 {
   flex: 0 0 auto;
-  width: 28vw;
+  width: 30vw;
   aspect-ratio: 3 / 2;
   margin-left: -2.4vw;
   overflow: hidden;
-  clip-path: polygon(0% 22%, 25% 0%, 50% 22%, 75% 0%, 100% 22%, 100% 100%, 0% 100%);
+  /* 2 toits avec un creux PEU profond -> ne coupe pas les têtes */
+  clip-path: polygon(0% 18%, 25% 2%, 50% 11%, 75% 2%, 100% 18%, 100% 100%, 0% 100%);
 }
-.ah-photo2 img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ah-photo2 img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
 .ah-blue      { background: #2b3a8c; }
 .ah-lightblue { background: #9fc0e8; }
 .ah-cream     { background: #ece8e1; }
@@ -992,7 +993,7 @@ a { color: inherit; text-decoration: none; }
 .a-md    { width: 10.5vw; }
 .a-lg    { width: 12.5vw; }
 .a-xl    { width: 14vw; }
-.a-wide  { width: 17vw; }   /* maison du titre, plus large */
+.a-wide  { width: 20vw; }   /* maison du titre, plus large pour voir tout le texte */
 .ah-title {
   font-family: Georgia, 'Times New Roman', serif;
   font-weight: 700;
@@ -1005,8 +1006,10 @@ a { color: inherit; text-decoration: none; }
   text-shadow: 2px 2px 2px rgba(0, 0, 0, .15);
   padding: 0 .5rem;
 }
-/* profondeur : légère ombre portée pour détacher les maisons l'une de l'autre */
-.ah-shape, .ah-photo2 { filter: drop-shadow(0 10px 14px rgba(20, 30, 60, .12)); }
+/* profondeur + couches : les colorées passent DERRIÈRE, les crème/photo DEVANT */
+.ah-shape, .ah-photo2 { position: relative; filter: drop-shadow(0 10px 14px rgba(20, 30, 60, .12)); }
+.about-houses .back  { z-index: 1; }
+.about-houses .front { z-index: 2; }
 
 .about-tagline {
   position: relative;
