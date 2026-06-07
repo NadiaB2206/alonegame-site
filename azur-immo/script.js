@@ -3,6 +3,18 @@
    ========================================================= */
 document.addEventListener('DOMContentLoaded', function () {
 
+  /* ---- Bouton retour en haut (apparait au scroll + défilement doux) ---- */
+  (function () {
+    const btn = document.querySelector('.to-top');
+    if (!btn) return;
+    function toggle() { btn.classList.toggle('show', window.scrollY > 400); }
+    window.addEventListener('scroll', toggle, { passive: true });
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    toggle();
+  })();
+
   /* ---- Menu mobile (burger) ---- */
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.main-nav');
