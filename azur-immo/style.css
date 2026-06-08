@@ -110,9 +110,9 @@ a { color: inherit; text-decoration: none; }
 .main-nav a.nav-cta {
   position: relative;
   overflow: hidden;
-  padding: .55rem 1.6rem;
+  padding: .6rem 2rem;
   border: none;
-  border-radius: 999px;
+  clip-path: polygon(12% 0%, 88% 0%, 100% 50%, 88% 100%, 12% 100%, 0% 50%);
   background: linear-gradient(135deg, var(--c-blue), var(--c-blue-dark));
   color: #fff;
   font-weight: 600;
@@ -872,9 +872,9 @@ a { color: inherit; text-decoration: none; }
 .newsletter input:focus { outline: none; box-shadow: none; transform: none; }
 .btn-connexion {
   flex-shrink: 0;
-  padding: .7rem 1.7rem;
+  padding: .7rem 2rem;
   border: none;
-  border-radius: 999px;
+  clip-path: polygon(12% 0%, 88% 0%, 100% 50%, 88% 100%, 12% 100%, 0% 50%);
   background: linear-gradient(135deg, var(--c-blue), var(--c-blue-dark));
   color: #fff;
   font-weight: 600;
