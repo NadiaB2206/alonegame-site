@@ -1287,16 +1287,16 @@ a { color: inherit; text-decoration: none; }
   filter: drop-shadow(0 14px 16px rgba(60,85,120,.18));
   animation: cloud-drift 30s linear infinite;
 }
-.c1 { --x:-8%; --y:8%; --travel:72vw; width:165px; animation-duration:30s; animation-delay:-2s; }
-.c2 { --x:18%; --y:4%; --travel:66vw; width:120px; animation-duration:26s; animation-delay:-11s; }
-.c3 { --x:52%; --y:10%; --travel:56vw; width:185px; animation-duration:34s; animation-delay:-5s; }
-.c4 { --x:-6%; --y:40%; --travel:76vw; width:110px; animation-duration:28s; animation-delay:-17s; }
-.c5 { --x:38%; --y:46%; --travel:62vw; width:140px; animation-duration:32s; animation-delay:-23s; }
-.c6 { --x:8%; --y:70%; --travel:70vw; width:125px; animation-duration:27s; animation-delay:-8s; }
-.c7 { --x:60%; --y:30%; --travel:50vw; width:95px; animation-duration:24s; animation-delay:-14s; }
-.c8 { --x:24%; --y:58%; --travel:66vw; width:132px; animation-duration:31s; animation-delay:-3s; }
-.c9 { --x:70%; --y:54%; --travel:46vw; width:108px; animation-duration:29s; animation-delay:-20s; }
-.c10 { --x:-10%; --y:22%; --travel:80vw; width:152px; animation-duration:33s; animation-delay:-12s; }
+.c1 { --x:-8%; --y:8%; --travel:72vw; width:214px; animation-duration:30s; animation-delay:-2s; }
+.c2 { --x:18%; --y:4%; --travel:66vw; width:156px; animation-duration:26s; animation-delay:-11s; }
+.c3 { --x:52%; --y:10%; --travel:56vw; width:240px; animation-duration:34s; animation-delay:-5s; }
+.c4 { --x:-6%; --y:40%; --travel:76vw; width:143px; animation-duration:28s; animation-delay:-17s; }
+.c5 { --x:38%; --y:46%; --travel:62vw; width:182px; animation-duration:32s; animation-delay:-23s; }
+.c6 { --x:8%; --y:70%; --travel:70vw; width:162px; animation-duration:27s; animation-delay:-8s; }
+.c7 { --x:60%; --y:30%; --travel:50vw; width:124px; animation-duration:24s; animation-delay:-14s; }
+.c8 { --x:24%; --y:58%; --travel:66vw; width:172px; animation-duration:31s; animation-delay:-3s; }
+.c9 { --x:70%; --y:54%; --travel:46vw; width:140px; animation-duration:29s; animation-delay:-20s; }
+.c10 { --x:-10%; --y:22%; --travel:80vw; width:198px; animation-duration:33s; animation-delay:-12s; }
 @keyframes cloud-drift {
   0%   { transform: translate(0,0);                       opacity: 0; }
   7%   { opacity: 1; }
