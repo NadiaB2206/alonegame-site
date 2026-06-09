@@ -1,0 +1,574 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+
+/* ═══ THÈMES (couleurs AZUR IMMO) ═══ */
+:root,
+[data-theme="light"] {
+  --navy:#1a2a52;
+  --blue:#2b3a8c;
+  --cream:#ece8e1;
+  --gold:#4f8fe0;
+  --bg:#F7F5F0;
+  --txt:#1a2a52;
+  --txt-muted:#1a2a52;
+  --txt-faint:#1a2a52;
+  --border:rgba(26,42,82,0.6);
+  --border-2:rgba(26,42,82,0.25);
+  --border-3:rgba(26,42,82,0.12);
+  --dot-bg:rgba(26,42,82,0.2);
+}
+[data-theme="dark"] {
+  --navy:#F7F5F0;
+  --blue:#8aa9ec;
+  --cream:#1A1208;
+  --gold:#6fa3e6;
+  --bg:#0E0D0B;
+  --txt:#F7F5F0;
+  --txt-muted:#F7F5F0;
+  --txt-faint:#F7F5F0;
+  --border:rgba(247,245,240,0.55);
+  --border-2:rgba(247,245,240,0.2);
+  --border-3:rgba(247,245,240,0.1);
+  --dot-bg:rgba(247,245,240,0.2);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; cursor:none!important; transition:background-color .35s, color .35s, border-color .35s; }
+html,body { background:var(--bg); margin:0; padding:0; width:100%; font-family:'Poppins',sans-serif; color:var(--navy); }
+
+/* ═══ TOGGLE ═══ */
+#nb-theme-toggle {
+  position:fixed; top:20px; right:24px; z-index:9999;
+  width:40px; height:40px; border-radius:50%;
+  border:1px solid var(--border-2);
+  background:var(--bg);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer!important;
+}
+#nb-theme-toggle:hover { border-color:var(--gold); }
+#nb-theme-toggle svg { color:var(--navy); }
+[data-theme="dark"]  .nb-icon-dark  { display:none; }
+[data-theme="dark"]  .nb-icon-light { display:block; }
+[data-theme="light"] .nb-icon-light { display:none; }
+[data-theme="light"] .nb-icon-dark  { display:block; }
+.nb-icon-light,.nb-icon-dark { display:none; }
+@keyframes nb-spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+.nb-spinning svg { animation:nb-spin .4s ease; }
+
+/* ═══ STRUCTURE ═══ */
+.page-wrap { width:100%; background:var(--bg); }
+.split-cols {
+  display:grid; grid-template-columns:1fr 1fr;
+  height:100vh; overflow:hidden;
+  transition:grid-template-columns .65s cubic-bezier(.16,1,.3,1)!important;
+}
+.split-cols:has(.col-L:hover) { grid-template-columns:1.55fr 1fr; }
+.split-cols:has(.col-R:hover) { grid-template-columns:1fr 1.55fr; }
+
+.col-L, .col-R {
+  height:100vh; overflow-y:auto;
+  display:flex; flex-direction:column;
+  background:var(--bg);
+  scrollbar-width:none; -ms-overflow-style:none;
+}
+.col-L::-webkit-scrollbar, .col-R::-webkit-scrollbar { display:none; }
+
+/* Back */
+.back { display:inline-flex; align-items:center; gap:8px; padding:36px 5vw; font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--blue); text-decoration:none; flex-shrink:0; transition:color .3s!important; }
+.back:hover { color:var(--gold)!important; }
+.back svg { width:13px; height:13px; }
+
+/* Hero */
+.hero-txt { margin-top:auto; padding:0 5vw 72px; min-height:calc(100vh - 80px); display:flex; flex-direction:column; justify-content:flex-end; }
+.eyebrow { font-size:12px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--blue); margin-bottom:24px; display:block; opacity:0; animation:up .8s cubic-bezier(.16,1,.3,1) .2s forwards; }
+.h1 { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(60px,7vw,120px); line-height:0.88; letter-spacing:-0.025em; color:var(--navy); margin-bottom:20px; opacity:0; animation:up .9s cubic-bezier(.16,1,.3,1) .35s forwards; }
+.subtitle { font-family:'Clash Display',sans-serif; font-weight:400; font-style:italic; font-size:clamp(26px,3.2vw,50px); line-height:1.1; color:var(--txt-muted); margin-bottom:40px; opacity:0; animation:up .9s cubic-bezier(.16,1,.3,1) .5s forwards; }
+.hero-desc { font-size:17px; font-weight:300; line-height:1.85; color:var(--txt); max-width:420px; margin-bottom:48px; opacity:0; animation:up .9s cubic-bezier(.16,1,.3,1) .65s forwards; }
+.hero-bottom { display:flex; align-items:center; gap:40px; opacity:0; animation:up .9s cubic-bezier(.16,1,.3,1) .8s forwards; }
+.hero-meta { display:flex; gap:28px; }
+.meta-item { display:flex; flex-direction:column; gap:3px; }
+.meta-lbl { font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); }
+.meta-val { font-size:15px; color:var(--navy); }
+
+/* CTA — tailles +20% */
+.cta { position:relative; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; text-decoration:none; background:transparent; }
+.cta--lg { width:127px; height:127px; }
+.cta--sm { width:109px; height:109px; }
+.cta .r { position:absolute; border-radius:50%; transition:border-color .3s!important; }
+.cta .r1 { inset:0; border:1.5px solid var(--border); }
+.cta .r2 { inset:7px; border:1px solid var(--border-2); }
+.cta .r3 { inset:14px; border:1px dashed var(--border-3); }
+.cta .lbl { position:relative; z-index:2; font-size:0.52rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--navy); text-align:center; line-height:1.2; padding:0 6px; pointer-events:none; }
+.cta:hover .lbl { color:var(--gold)!important; }
+.cta:hover .r1 { border-color:var(--gold)!important; }
+.cta:hover .r2 { border-color:rgba(244,188,67,.4)!important; }
+
+/* Sections */
+.section { padding:80px 5vw; }
+.slabel { font-size:11px; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:28px; display:block; }
+.stitle { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(38px,4.5vw,64px); line-height:0.95; letter-spacing:-0.02em; color:var(--navy); margin-bottom:36px; }
+.stitle em { font-style:italic; font-weight:400; color:var(--blue); display:block; }
+.stext { font-size:17px; font-weight:300; line-height:1.88; color:var(--txt); margin-bottom:16px; max-width:520px; }
+
+/* Rows */
+.rows { margin-top:36px; display:flex; flex-direction:column; gap:20px; }
+.row { display:flex; gap:20px; }
+.row-lbl { font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue); min-width:90px; flex-shrink:0; }
+.row-val { font-size:16px; color:var(--navy); line-height:1.6; }
+
+/* Étapes */
+.etapes { margin-top:28px; }
+.etape { display:flex; align-items:center; gap:20px; padding:20px 0; }
+.etape:nth-child(odd):hover .en, .etape:nth-child(odd):hover .ename { color:var(--gold)!important; }
+.etape:nth-child(even):hover .en, .etape:nth-child(even):hover .ename { color:var(--blue)!important; }
+.en { font-size:10px; color:var(--blue); min-width:28px; transition:color .3s!important; }
+.ename { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(22px,2.8vw,38px); line-height:1; color:var(--navy); flex:1; transition:color .3s!important; }
+
+/* Résultats */
+.results { display:grid; grid-template-columns:1fr 1fr; gap:36px; margin:32px 0; }
+.ritem:nth-child(odd):hover .rnum, .ritem:nth-child(odd):hover .rtitle { color:var(--gold)!important; }
+.ritem:nth-child(even):hover .rnum, .ritem:nth-child(even):hover .rtitle { color:var(--blue)!important; }
+.rnum { font-family:'Clash Display',sans-serif; font-size:clamp(36px,5vw,56px); font-weight:700; line-height:0.9; color:var(--navy); display:block; margin-bottom:6px; }
+.ritem:nth-child(even) .rnum { color:var(--blue); }
+.rtitle { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:4px; }
+.rdesc { font-size:14px; font-weight:300; color:var(--txt-faint); }
+.bq { padding-left:20px; border-left:3px solid var(--gold); margin:28px 0; }
+.bq p { font-size:clamp(14px,1.5vw,18px); font-style:italic; font-weight:300; line-height:1.65; color:var(--navy); }
+
+/* Reveal */
+.rvl { opacity:0; transform:translateY(16px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1)!important; }
+.rvl.on { opacity:1!important; transform:translateY(0)!important; }
+.d1{transition-delay:.1s!important;} .d2{transition-delay:.2s!important;} .d3{transition-delay:.3s!important;}
+
+/* Droite */
+.hero-img-wrap { position:relative; height:100vh; overflow:hidden; flex-shrink:0; }
+.hero-img {
+  position:absolute; inset:0;
+  background:url('https://azur-immo.nadiaui.fr/hero-nos-biens.jpg') center/cover no-repeat;
+  transform:scale(1.06); transition:transform 6s ease!important;
+}
+.col-R:hover .hero-img { transform:scale(1.0)!important; }
+.hero-img-bottom { padding:28px 36px 40px; flex-shrink:0; }
+.hero-img-lbl { font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:6px; }
+.hero-img-name { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(28px,3.2vw,48px); line-height:1.0; letter-spacing:-0.02em; color:var(--navy); display:block; }
+
+/* Carousel */
+.car-block { padding:48px 36px 60px; }
+.car-stage { position:relative; width:100%; aspect-ratio:4/3; border-radius:20px; overflow:hidden; background:var(--navy); }
+.car-slide { position:absolute; inset:0; opacity:0; transform:scale(1.05); transition:opacity .95s cubic-bezier(.16,1,.3,1), transform .95s cubic-bezier(.16,1,.3,1)!important; pointer-events:none; }
+.car-slide.active { opacity:1!important; transform:scale(1)!important; pointer-events:auto; }
+.car-slide img { width:100%; height:100%; object-fit:cover; display:block; }
+.car-bar { position:absolute; bottom:0; left:0; height:3px; background:var(--gold); width:0; z-index:10; }
+.car-num { position:absolute; top:16px; right:20px; z-index:10; font-size:11px; font-weight:600; letter-spacing:0.12em; color:rgba(247,245,240,0.7); font-family:'Poppins',sans-serif; }
+.car-footer { margin-top:20px; display:flex; align-items:flex-end; justify-content:space-between; gap:20px; }
+.car-title { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(24px,2.8vw,40px); line-height:0.95; color:var(--navy); }
+.car-title em { font-style:italic; font-weight:400; color:var(--blue); }
+.car-dots { display:flex; gap:6px; align-self:center; }
+.car-dot { width:5px; height:5px; border-radius:50%; background:var(--dot-bg); transition:all .3s!important; }
+.car-dot.on { background:var(--gold); width:18px; border-radius:2.5px; }
+
+/* Carousels horizontaux */
+.c2s-strip { overflow:hidden; flex-shrink:0; width:100%; }
+.c2s-strip img { height:380px; width:auto; display:block; object-fit:cover; border-radius:14px; flex-shrink:0; }
+@keyframes scrollLeft { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+@keyframes up { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+
+/* Nav */
+.nav-full { background:var(--bg); padding:80px 5vw 60px; }
+.nav-full-lbl { font-size:11px; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:24px; }
+.nav-full-item { display:flex; align-items:center; gap:20px; padding:32px 0; text-decoration:none; }
+.nav-arr { font-size:11px; color:var(--blue); flex-shrink:0; width:24px; }
+.nav-full-item em { font-family:'Clash Display',sans-serif; font-weight:700; font-size:clamp(36px,5vw,80px); line-height:1; color:var(--navy); font-style:normal; display:block; transition:color .3s, transform .45s cubic-bezier(.16,1,.3,1)!important; }
+.nav-full-item:hover em { color:var(--gold)!important; transform:translateX(10px); }
+
+/* ═══ NUAGES (page Nos biens) ═══ */
+.pf-sky { position:absolute; inset:0; z-index:3; pointer-events:none; overflow:hidden; }
+.pf-cloud {
+  position:absolute;
+  background-image:url('https://raw.githubusercontent.com/NadiaB2206/alonegame-site/105f5b996ba8df3f95995fef416b7d2740433b9f/azur-immo/nuage.png');
+  background-size:contain; background-repeat:no-repeat; aspect-ratio:1/1;
+  left:var(--x); top:var(--y);
+  filter:drop-shadow(0 14px 16px rgba(40,60,95,.22));
+  animation:pf-drift var(--dur,30s) linear infinite;
+}
+.pf-cloud.k1 { --x:-14%; --y:6%;  --travel:62vw; width:128px; --dur:30s; animation-delay:-2s; }
+.pf-cloud.k2 { --x:22%;  --y:2%;  --travel:56vw; width:96px;  --dur:26s; animation-delay:-11s; }
+.pf-cloud.k3 { --x:54%;  --y:9%;  --travel:48vw; width:140px; --dur:34s; animation-delay:-5s; }
+.pf-cloud.k4 { --x:-8%;  --y:34%; --travel:64vw; width:86px;  --dur:28s; animation-delay:-17s; }
+.pf-cloud.k5 { --x:40%;  --y:42%; --travel:54vw; width:110px; --dur:32s; animation-delay:-23s; }
+.pf-cloud.k6 { --x:10%;  --y:64%; --travel:60vw; width:100px; --dur:27s; animation-delay:-8s; }
+@keyframes pf-drift {
+  0%   { transform:translate(0,0);                        opacity:0; }
+  8%   { opacity:.95; }
+  50%  { transform:translate(calc(var(--travel)/2),-14px); }
+  92%  { opacity:.95; }
+  100% { transform:translate(var(--travel),0);            opacity:0; }
+}
+@media(prefers-reduced-motion:reduce){ .pf-cloud{ animation:none; opacity:.9; } }
+
+/* ═══ LE SITE EST VIVANT ═══ */
+.live-grid { margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.live-card { border:1px solid var(--border-2); border-radius:20px; padding:26px; display:flex; flex-direction:column; gap:16px; transition:border-color .35s!important; }
+.live-card:hover { border-color:var(--gold); }
+.live-tag { font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); }
+.live-card h4 { font-family:'Clash Display',sans-serif; font-weight:700; font-size:22px; color:var(--navy); line-height:1; }
+.live-card p { font-size:14px; font-weight:300; line-height:1.7; color:var(--txt); }
+.live-logo-stage { background:var(--cream); border-radius:14px; padding:22px; display:flex; align-items:center; justify-content:center; min-height:200px; }
+.live-logo-stage img { width:120px; height:auto; display:block; }
+.live-map-stage { background:var(--cream); border-radius:14px; padding:14px; display:flex; align-items:center; justify-content:center; }
+.live-map-stage svg { width:100%; max-width:340px; height:auto; display:block; }
+.france-svg .region { fill:#ece8e1; stroke:#2b2b2b; stroke-width:.8; stroke-linejoin:round; cursor:pointer!important; transition:fill .2s ease!important; }
+.france-svg .region:hover { fill:#9cc1ee; }
+.france-svg .region.is-selected { fill:var(--gold); }
+.france-svg .region-label { font-family:'Poppins',sans-serif; font-size:9px; font-weight:600; text-anchor:middle; fill:#1d1d1d; pointer-events:none; }
+.live-pick { font-size:13px; font-weight:600; color:var(--blue); min-height:18px; }
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1100px){
+  html, body, .page-wrap, .split-cols, .col-L, .col-R { max-width:100vw!important; overflow-x:hidden!important; }
+  .split-cols { grid-template-columns:1fr!important; height:auto; overflow:visible; }
+  .col-L, .col-R { height:auto; overflow-y:visible; overflow-x:hidden; }
+  .hero-img-wrap { height:70vw; max-height:480px; }
+  .hero-txt { min-height:auto!important; padding:40px 6vw 56px; }
+  .eyebrow,.h1,.subtitle,.hero-desc,.hero-bottom { opacity:1!important; transform:none!important; animation:none!important; }
+  .c2s-strip { width:100vw!important; max-width:100vw!important; overflow:hidden!important; }
+  .c2s-strip img { height:180px!important; }
+  .pf-cloud.k1{--travel:80vw;} .pf-cloud.k2{--travel:74vw;} .pf-cloud.k3{--travel:66vw;}
+  .pf-cloud.k4{--travel:82vw;} .pf-cloud.k5{--travel:72vw;} .pf-cloud.k6{--travel:78vw;}
+}
+@media(max-width:640px){
+  .live-grid { grid-template-columns:1fr; }
+}
+@media(max-width:768px){
+  .back { padding:24px 6vw; }
+  .section { padding:56px 6vw; }
+  .nav-full { padding:56px 6vw 48px; }
+  .hero-img-wrap { height:75vw; }
+  .hero-img-bottom { padding:20px 6vw 28px; }
+  .car-block { padding:32px 6vw 40px; }
+  .hero-bottom { flex-direction:column; align-items:flex-start; gap:24px; }
+  .hero-meta { flex-wrap:wrap; gap:16px; }
+  .results { grid-template-columns:1fr 1fr; gap:24px; }
+  .ename { font-size:clamp(18px,5vw,28px); }
+  .nav-full-item em { font-size:clamp(28px,7vw,56px); }
+}
+@media(max-width:480px){
+  .results { grid-template-columns:1fr; }
+  .hero-img-wrap { height:85vw; }
+  .car-block { padding:24px 5vw 32px; }
+  .car-stage { aspect-ratio:4/3; }
+}
+</style>
+
+<button id="nb-theme-toggle" aria-label="Basculer mode clair/sombre">
+  <svg class="nb-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="nb-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="page-wrap">
+<div class="split-cols">
+
+  <!-- ═══ GAUCHE ═══ -->
+  <div class="col-L">
+    <a href="https://nadiaui.fr" class="back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Tous les projets
+    </a>
+
+    <div class="hero-txt">
+      <span class="eyebrow">Agence immobilière · Paris · 2026</span>
+      <h1 class="h1">AZUR<br>IMMO</h1>
+      <p class="subtitle">Du Figma au web,<br>pixel par pixel</p>
+      <p class="hero-desc">Conception et intégration complète du site d'une agence immobilière haut de gamme — de la maquette Figma jusqu'à la mise en ligne sécurisée sur OVH.</p>
+      <div class="hero-bottom">
+        <div class="hero-meta">
+          <div class="meta-item"><span class="meta-lbl">Services</span><span class="meta-val">UI · UX · Intégration · SEO</span></div>
+          <div class="meta-item"><span class="meta-lbl">Outils</span><span class="meta-val">Figma · HTML · CSS · JS</span></div>
+          <div class="meta-item"><span class="meta-lbl">Année</span><span class="meta-val">2026</span></div>
+        </div>
+        <a href="https://azur-immo.nadiaui.fr" target="_blank" class="cta cta--lg" id="cta1">
+          <div class="r r1"></div><div class="r r2"></div><div class="r r3"></div>
+          <span class="lbl">Voir<br>le site</span>
+        </a>
+      </div>
+    </div>
+
+    <div style="padding:0 5vw 0;width:100%;">
+      <img src="https://raw.githubusercontent.com/NadiaB2206/alonegame-site/105f5b996ba8df3f95995fef416b7d2740433b9f/azur-immo/equipe-team.jpg" alt="L'équipe AZUR IMMO" style="width:87%;max-width:560px;display:block;border-radius:20px;object-fit:cover;object-position:center;aspect-ratio:3/2;margin:0 auto;"/>
+    </div>
+
+    <div class="section">
+      <span class="slabel rvl">Le contexte</span>
+      <h2 class="stitle rvl d1">Donner vie<em>à une marque immobilière</em></h2>
+      <p class="stext rvl d2">AZUR IMMO est le site vitrine d'une agence immobilière parisienne. Tout est parti d'une maquette Figma détaillée, que j'ai intégrée fidèlement en code — page par page, du logo hexagonal jusqu'aux moindres détails.</p>
+      <p class="stext rvl d2">L'objectif : un site élégant, <strong style="font-weight:600;color:var(--blue);">vivant et dynamique</strong>. Un logo qui s'anime au chargement, des nuages qui dérivent dans le ciel de la page « Nos biens », une équipe mise en avant, une carte de France interactive et des cartes qui se retournent — le tout cousu d'une identité hexagonale déclinée sur chaque bouton.</p>
+      <div class="rows rvl d3">
+        <div class="row"><span class="row-lbl">Objectif</span><span class="row-val">Un site moderne, fidèle à la maquette, du desktop au mobile</span></div>
+        <div class="row"><span class="row-lbl">Cible</span><span class="row-val">Acheteurs & locataires, web & mobile</span></div>
+        <div class="row"><span class="row-lbl">Livrables</span><span class="row-val">4 pages · Intégration · Mise en ligne · SSL</span></div>
+        <div class="row"><span class="row-lbl">Approche</span><span class="row-val">Intégration pixel-perfect · Animations sur mesure · Itérations</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="slabel rvl">Ma démarche</span>
+      <h2 class="stitle rvl d1">Une intégration<em>fidèle à la maquette</em></h2>
+      <p class="stext rvl d2">Reproduction pixel-perfect du Figma, animations et interactions sur mesure, responsive complet, puis déploiement sécurisé.</p>
+      <div class="etapes rvl d3">
+        <div class="etape"><span class="en">01</span><span class="ename">Lecture de la maquette Figma</span></div>
+        <div class="etape"><span class="en">02</span><span class="ename">Intégration HTML · CSS · JS</span></div>
+        <div class="etape"><span class="en">03</span><span class="ename">Animations & interactions</span></div>
+        <div class="etape"><span class="en">04</span><span class="ename">Déploiement OVH + SSL</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="slabel rvl">Le site est vivant</span>
+      <h2 class="stitle rvl d1">Pas une image figée,<em>un site qui bouge</em></h2>
+      <p class="stext rvl d2">Tout au long du site, des détails s'animent et réagissent : le logo se dessine au chargement, les nuages dérivent dans le ciel, et la carte de France répond au survol et au clic. Survolez, cliquez — c'est interactif.</p>
+      <div class="live-grid rvl d3">
+        <div class="live-card">
+          <span class="live-tag">Le logo, animé</span>
+          <div class="live-logo-stage"><img src="https://azur-immo.nadiaui.fr/logo-anim.gif" alt="Logo AZUR IMMO animé — l'hexagone se dessine"/></div>
+          <h4>L'hexagone se dessine</h4>
+          <p>Au chargement, le logo hexagonal se trace trait par trait avant de se fixer — une petite signature de marque qui donne le ton dès la première seconde.</p>
+        </div>
+        <div class="live-card">
+          <span class="live-tag">Carte interactive</span>
+          <div class="live-map-stage">
+        <svg class="france-svg" viewBox="0 0 560 542" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carte des régions de France">
+<path class="region" data-nom="Île-de-France" d="M294,112 312,111 324,122 327,136 326,150 312,156 297,164 286,154 271,151 261,138 255,122 258,109 273,106 291,109 294,112Z"><title>Île-de-France</title></path>
+<path class="region" data-nom="Centre-Val de Loire" d="M305,198 309,215 312,233 299,242 289,254 273,259 255,261 240,258 231,244 222,229 207,227 198,216 204,198 215,191 225,178 227,162 233,147 231,132 248,127 256,128 264,143 272,156 288,156 297,164 313,168 309,184 306,196 305,198Z"><title>Centre-Val de Loire</title></path>
+<path class="region" data-nom="Bourgogne-Franche-Comté" d="M334,241 319,244 313,230 308,212 307,196 311,184 312,167 314,152 331,153 341,167 354,174 371,170 384,178 392,190 407,189 418,180 430,172 446,175 461,185 467,200 463,209 451,223 441,237 429,250 421,266 406,268 394,256 382,261 374,268 362,271 346,271 346,256 335,244 334,241Z"><title>Bourgogne-Franche-Comté</title></path>
+<path class="region" data-nom="Normandie" d="M153,96 172,97 191,100 208,92 202,80 217,69 236,65 252,58 263,73 264,88 260,104 253,119 242,129 227,136 230,152 222,158 210,147 194,151 183,143 165,146 148,141 136,138 138,131 135,113 129,96 124,79 138,80 146,84 153,96Z"><title>Normandie</title></path>
+<path class="region" data-nom="Hauts-de-France" d="M354,62 354,78 350,94 337,98 333,112 324,122 312,111 293,110 275,104 264,102 262,85 261,68 251,54 254,44 257,30 256,12 273,5 292,1 299,15 313,18 321,31 336,37 349,41 356,53 354,62Z"><title>Hauts-de-France</title></path>
+<path class="region" data-nom="Grand Est" d="M357,63 374,59 379,59 386,72 401,81 414,86 428,90 445,92 454,107 466,108 482,109 498,113 505,125 493,142 487,160 485,177 484,196 470,203 464,187 449,177 434,175 420,177 410,190 395,192 385,183 373,171 357,175 342,172 334,159 326,144 326,130 332,114 335,100 350,94 353,78 357,63Z"><title>Grand Est</title></path>
+<path class="region" data-nom="Pays de la Loire" d="M102,202 116,195 131,188 146,183 156,172 156,154 162,144 178,143 192,147 208,145 219,158 228,168 223,184 211,194 203,206 193,222 178,224 162,229 170,244 174,260 160,262 142,264 127,255 117,240 119,223 110,213 101,205 102,202ZM112,230Z"><title>Pays de la Loire</title></path>
+<path class="region" data-nom="Bretagne" d="M119,140 125,136 139,143 155,143 155,161 151,176 139,183 122,189 109,199 98,196 87,197 84,192 76,196 74,191 68,186 59,184 47,180 39,175 30,179 15,169 33,165 20,157 33,155 34,154 32,148 15,153 20,140 32,135 45,136 59,134 70,125 79,126 90,140 103,135 116,136 119,140ZM73,209 73,209Z"><title>Bretagne</title></path>
+<path class="region" data-nom="Nouvelle-Aquitaine" d="M250,263 266,259 283,261 293,276 288,292 292,308 285,320 276,334 263,342 250,340 242,356 236,370 230,383 217,391 200,395 188,399 186,416 196,428 188,443 182,459 168,454 152,448 140,444 136,435 135,425 142,408 145,389 148,371 156,358 148,356 150,335 152,316 152,301 155,287 150,272 163,264 172,258 168,240 167,228 182,222 195,219 208,227 220,228 231,242 240,256 250,263ZM139,271 138,271 139,271ZM148,291 146,283 148,291Z"><title>Nouvelle-Aquitaine</title></path>
+<path class="region" data-nom="Occitanie" d="M264,473 248,466 232,460 222,465 204,465 188,461 189,446 196,431 191,417 189,403 198,397 213,391 229,387 235,374 240,359 251,345 260,339 275,342 279,359 293,351 305,348 312,350 326,341 338,348 347,363 355,377 370,377 379,392 372,408 362,419 347,419 332,431 316,441 312,459 315,476 302,481 288,483 272,485 264,473Z"><title>Occitanie</title></path>
+<path class="region" data-nom="Auvergne-Rhône-Alpes" d="M378,273 384,255 398,260 411,264 425,262 424,270 435,271 444,260 457,268 462,282 455,295 462,310 466,325 450,331 433,332 435,345 420,352 411,365 406,375 408,386 392,381 378,376 364,375 350,370 343,353 330,348 319,344 310,357 302,344 291,356 278,353 276,336 284,321 292,310 288,294 293,278 284,264 294,253 302,242 317,245 332,242 343,256 345,269 360,273 373,266 378,273ZM382,374 383,373 382,374Z"><title>Auvergne-Rhône-Alpes</title></path>
+<path class="region" data-nom="Provence-Alpes-Côte d'Azur" d="M460,357 459,374 472,385 488,386 482,401 471,413 460,423 447,434 439,442 426,445 413,441 401,435 387,429 377,430 363,424 365,414 373,401 375,387 379,379 394,382 409,383 405,375 411,366 418,353 433,346 433,333 448,333 460,347 460,357ZM391,421 395,424 391,421ZM382,374 381,375 382,374Z"><title>Provence-Alpes-Côte d'Azur</title></path>
+<path class="region" data-nom="Corse" d="M554,513 552,527 543,537 531,525 528,518 524,508 522,495 524,483 534,471 549,466 552,449 556,464 559,482 558,501 554,513Z"><title>Corse</title></path>
+<text class="region-label" x="291.2" y="132.2"><tspan x="291.2" dy="0">Île-de-France</tspan></text>
+<text class="region-label" x="260.0" y="194.7"><tspan x="260.0" dy="0">Centre</tspan><tspan x="260.0" dy="11">Val de Loire</tspan></text>
+<text class="region-label" x="378.9" y="208.6"><tspan x="378.9" dy="0">Bourgogne</tspan><tspan x="378.9" dy="11">Franche-Comté</tspan></text>
+<text class="region-label" x="200.0" y="109.4"><tspan x="200.0" dy="0">Normandie</tspan></text>
+<text class="region-label" x="301.4" y="56.7"><tspan x="301.4" dy="0">Nord-Pas-de-Calais</tspan><tspan x="301.4" dy="11">Picardie</tspan></text>
+<text class="region-label" x="409.6" y="122.3"><tspan x="409.6" dy="0">Alsace</tspan><tspan x="409.6" dy="11">Champagne-Ardenne</tspan><tspan x="409.6" dy="11">Lorraine</tspan></text>
+<text class="region-label" x="164.8" y="195.0"><tspan x="164.8" dy="0">Pays de</tspan><tspan x="164.8" dy="11">la Loire</tspan></text>
+<text class="region-label" x="87.7" y="161.5"><tspan x="87.7" dy="0">Bretagne</tspan></text>
+<text class="region-label" x="203.9" y="315.9"><tspan x="203.9" dy="0">Aquitaine</tspan><tspan x="203.9" dy="11">Limousin</tspan><tspan x="203.9" dy="11">Poitou-Charentes</tspan></text>
+<text class="region-label" x="277.5" y="404.8"><tspan x="277.5" dy="0">Languedoc-Roussillon</tspan><tspan x="277.5" dy="11">Midi-Pyrénées</tspan></text>
+<text class="region-label" x="368.6" y="309.7"><tspan x="368.6" dy="0">Auvergne-Rhône-Alpes</tspan></text>
+<text class="region-label" x="426.7" y="390.7"><tspan x="426.7" dy="0">Provence-Alpes</tspan><tspan x="426.7" dy="11">Côte-d'Azur</tspan></text>
+<text class="region-label" x="542.7" y="496.4"><tspan x="542.7" dy="0">Corse</tspan></text>
+</svg>
+          </div>
+          <h4>Choisir sa région</h4>
+          <p class="live-pick" id="pfPick">Survolez une région, puis cliquez…</p>
+          <p>Une carte de France en SVG, sensible au survol et au clic : chaque région s'allume et alimente la recherche de biens. 100&nbsp;% sur-mesure, sans librairie.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="slabel rvl">Résultats</span>
+      <h2 class="stitle rvl d1">Un site en ligne<em>et sécurisé</em></h2>
+      <div class="results rvl d2">
+        <div class="ritem"><span class="rnum">4</span><div class="rtitle">Pages</div><p class="rdesc">Accueil · À propos · Nos biens · Contact.</p></div>
+        <div class="ritem"><span class="rnum">100%</span><div class="rtitle">Responsive</div><p class="rdesc">Desktop, tablette, mobile.</p></div>
+        <div class="ritem"><span class="rnum">SSL</span><div class="rtitle">Sécurisé</div><p class="rdesc">HTTPS via Let's Encrypt.</p></div>
+        <div class="ritem"><div class="rtitle">En ligne</div><p class="rdesc">Déployé sur OVH.</p></div>
+      </div>
+      <div class="bq rvl d3"><p>"De la première maquette jusqu'au cadenas https — j'ai mené le projet de bout en bout, sans rien lâcher sur les détails."</p></div>
+      <a href="https://azur-immo.nadiaui.fr" target="_blank" class="cta cta--sm" id="cta2" style="margin-top:24px;">
+        <div class="r r1"></div><div class="r r2"></div><div class="r r3"></div>
+        <span class="lbl">Voir<br>le site</span>
+      </a>
+    </div>
+
+    <!-- Carousel L -->
+    <div class="c2s-strip" style="padding-bottom:60px;">
+      <div style="display:flex;gap:0;width:max-content;animation:scrollLeft 60s linear infinite;">
+        <img src="https://azur-immo.nadiaui.fr/interieur-1.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-1.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-2.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-2.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-3.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-3.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-4.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-4.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-5.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-5.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-6.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-6.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-1.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-1.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-2.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-2.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-3.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-3.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-4.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-4.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-5.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-5.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-6.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-6.jpg" draggable="false"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DROITE ═══ -->
+  <div class="col-R">
+    <div class="hero-img-wrap">
+      <div class="hero-img"></div>
+      <div class="pf-sky">
+        <span class="pf-cloud k1"></span><span class="pf-cloud k2"></span><span class="pf-cloud k3"></span>
+        <span class="pf-cloud k4"></span><span class="pf-cloud k5"></span><span class="pf-cloud k6"></span>
+      </div>
+    </div>
+    <div class="hero-img-bottom">
+      <span class="hero-img-lbl">Page « Nos biens » · un ciel qui dérive</span>
+      <span class="hero-img-name">AZUR IMMO</span>
+    </div>
+
+    <div class="car-block" id="carBlock">
+      <div class="car-stage">
+        <div class="car-slide active"><img src="https://azur-immo.nadiaui.fr/hero-nos-biens.jpg" alt="AZUR IMMO — Nos biens"/></div>
+        <div class="car-slide"><img src="https://azur-immo.nadiaui.fr/immeuble-2.jpg" alt="AZUR IMMO — Nos biens"/></div>
+        <div class="car-slide"><img src="https://azur-immo.nadiaui.fr/interieur-2.jpg" alt="AZUR IMMO — Nos biens"/></div>
+        <div class="car-slide"><img src="https://azur-immo.nadiaui.fr/maison-3.jpg" alt="AZUR IMMO — Nos biens"/></div>
+        <div class="car-bar" id="cbar"></div>
+        <span class="car-num" id="cnum">1 / 4</span>
+      </div>
+      <div class="car-footer">
+        <h3 class="car-title">Nos biens<br><em>à Paris</em></h3>
+        <div class="car-dots" id="cdots"></div>
+      </div>
+    </div>
+
+    <!-- Carousel R -->
+    <div class="c2s-strip" style="margin-top:48px;padding-bottom:60px;">
+      <div style="display:flex;gap:0;width:max-content;animation:scrollLeft 60s linear infinite;">
+        <img src="https://azur-immo.nadiaui.fr/immeuble-1.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-1.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-2.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-2.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-3.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-3.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-4.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-4.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-5.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-5.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-6.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-6.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-1.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-1.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-2.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-2.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-3.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-3.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-4.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-4.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-5.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-5.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/immeuble-6.jpg" draggable="false"/>
+        <img src="https://azur-immo.nadiaui.fr/interieur-6.jpg" draggable="false"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Nav pleine largeur -->
+<div class="nav-full">
+  <span class="nav-full-lbl">Autres projets</span>
+  <a href="https://nadiaui.fr/index.php/femme-de-coeur/" class="nav-full-item">
+    <span class="nav-arr">←</span><em>Femme de cœur</em>
+  </a>
+  <a href="https://nadiaui.fr/index.php/sortir-plus/" class="nav-full-item">
+    <span class="nav-arr">→</span><em>Sortir Plus</em>
+  </a>
+</div>
+</div>
+
+<script>
+(function(){
+  /* ─── Toggle thème ─── */
+  var html = document.documentElement;
+  var btn  = document.getElementById('nb-theme-toggle');
+  var KEY  = 'nb-theme';
+  var saved = localStorage.getItem(KEY) || 'light';
+  html.setAttribute('data-theme', saved);
+  btn.addEventListener('click', function(){
+    var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    btn.classList.remove('nb-spinning'); void btn.offsetWidth; btn.classList.add('nb-spinning');
+    btn.addEventListener('animationend', function(){ btn.classList.remove('nb-spinning'); }, {once:true});
+    html.setAttribute('data-theme', next);
+    localStorage.setItem(KEY, next);
+  });
+
+  /* ─── Anneaux ─── */
+  var rings=[],angles=[],spd=[0.28,-0.18,0.12];
+  function addCta(id){ var el=document.getElementById(id); if(!el)return; var i=0; el.querySelectorAll('.r').forEach(function(r){ rings.push({el:r,s:spd[i++%3]}); angles.push(Math.random()*360); }); }
+  function loop(){ rings.forEach(function(r,i){ angles[i]+=r.s; r.el.style.transform='rotate('+angles[i]+'deg)'; }); requestAnimationFrame(loop); }
+  addCta('cta1'); addCta('cta2'); loop();
+
+  /* ─── Reveal : root:null = viewport ─── */
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(x){ if(x.isIntersecting) x.target.classList.add('on'); });
+  }, { root:null, threshold:0.05 });
+  document.querySelectorAll('.rvl').forEach(function(el){ obs.observe(el); });
+
+  /* Fallback 800ms */
+  setTimeout(function(){
+    document.querySelectorAll('.rvl:not(.on)').forEach(function(el){ el.classList.add('on'); });
+    if(window.innerWidth <= 1100){
+      ['eyebrow','h1','subtitle','hero-desc','hero-bottom'].forEach(function(cls){
+        document.querySelectorAll('.'+cls).forEach(function(el){
+          el.style.opacity='1'; el.style.transform='none'; el.style.animation='none';
+        });
+      });
+    }
+  }, 800);
+
+  /* ─── Carousel ─── */
+  var slides=document.querySelectorAll('.car-slide');
+  var bar=document.getElementById('cbar'), num=document.getElementById('cnum'), dotsEl=document.getElementById('cdots');
+  var n=slides.length, cur=0, timer;
+  for(var i=0;i<n;i++){
+    var d=document.createElement('div'); d.className='car-dot'+(i===0?' on':'');
+    (function(idx){ d.onclick=function(){ go(idx); }; })(i);
+    dotsEl.appendChild(d);
+  }
+  function updateDots(){ dotsEl.querySelectorAll('.car-dot').forEach(function(d,i){ d.classList.toggle('on',i===cur); }); }
+  function startBar(){ bar.style.transition='none'; bar.style.width='0%'; requestAnimationFrame(function(){ requestAnimationFrame(function(){ bar.style.transition='width 5.5s linear'; bar.style.width='100%'; }); }); }
+  function go(idx){ slides[cur].classList.remove('active'); cur=(idx+n)%n; slides[cur].classList.add('active'); num.textContent=(cur+1)+' / '+n; updateDots(); startBar(); clearInterval(timer); timer=setInterval(function(){ go(cur+1); },6000); }
+  startBar(); timer=setInterval(function(){ go(cur+1); },6000);
+
+  /* ─── Carte de France interactive ─── */
+  (function(){
+    var svg = document.querySelector('.france-svg');
+    if(!svg) return;
+    var pick = document.getElementById('pfPick');
+    var regions = svg.querySelectorAll('.region');
+    regions.forEach(function(r){
+      r.addEventListener('click', function(){
+        var already = r.classList.contains('is-selected');
+        regions.forEach(function(x){ x.classList.remove('is-selected'); });
+        if(!already){ r.classList.add('is-selected'); if(pick) pick.textContent = '📍 ' + r.getAttribute('data-nom'); }
+        else if(pick){ pick.textContent = 'Survolez une région, puis cliquez…'; }
+      });
+    });
+  })();
+
+  /* ─── Curseur ─── */
+  var c=document.createElement('div');
+  c.style.cssText='position:fixed;top:0;left:0;width:64px;height:64px;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);';
+  var ci=document.createElement('img');
+  ci.src='http://nadiaui.fr/wp-content/uploads/2026/03/SOURIS-ROUAGE-NADIA.B-1-scaled.png';
+  ci.style.cssText='width:64px;height:64px;object-fit:contain;';
+  c.appendChild(ci); document.body.appendChild(c);
+  document.addEventListener('mousemove',function(e){ c.style.left=e.clientX+'px'; c.style.top=e.clientY+'px'; });
+})();
+</script>
