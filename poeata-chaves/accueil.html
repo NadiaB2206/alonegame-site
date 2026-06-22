@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poeata Chaves — Massages & rituels de soins · Paris</title>
+<meta name="description" content="Poeata Chaves, praticienne en soins holistiques à Paris. Massages, réflexologie, soins PSE et ateliers — un accompagnement psycho-corporel pour un retour à soi en douceur.">
+
+<!--
+  ============================================================
+  POEATA CHAVES — ACCUEIL (version améliorée)
+  ------------------------------------------------------------
+  • Tout le CSS est scopé sous .psc  -> aucun conflit avec le thème WordPress
+  • Pour Elementor : copier UNIQUEMENT le bloc <style>…</style>
+    + le <div class="psc">…</div> + le <script>…</script> dans un widget HTML.
+    (Les balises <head>/<link> ci-dessous servent à la prévisualisation locale.)
+  • Curseur personnalisé SUPPRIMÉ (cassait l'usage sur mobile/tactile)
+  • Polices chargées UNE seule fois via preconnect (plus rapide que @import répété)
+  ============================================================
+-->
+
+<!-- Polices : à charger une seule fois pour tout le site -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ===================== BASE (scopée .psc) ===================== */
+.psc,.psc *{margin:0;padding:0;box-sizing:border-box}
+.psc{
+  --noir:#080805;--vert:#121F18;--mauve:#BCA9B7;--sauge:#94BDB7;--creme:#F2F2F2;--txt:#121F18;
+  font-family:'Inter',sans-serif;color:var(--txt);background:var(--creme);
+  overflow-x:hidden;position:relative;width:100%;line-height:1.6;-webkit-font-smoothing:antialiased
+}
+.psc a{color:inherit;text-decoration:none}
+.psc img{max-width:100%;display:block}
+.psc ::selection{background:rgba(188,169,183,0.4)}
+.psc h1,.psc h2,.psc h3{font-family:'Fraunces',serif;font-weight:300;font-variation-settings:'opsz' 144;letter-spacing:-0.02em}
+
+/* ===================== SUNCATCHERS IRIDESCENTS ===================== */
+.psc-iri{position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(70px);mix-blend-mode:multiply;will-change:transform}
+.psc-iri-1{top:-6%;right:-8%;width:520px;height:520px;opacity:.5;
+  background:conic-gradient(from 45deg,#BCA9B7,#94BDB7,#d8c8d4,#f3d9c0,#a8c8c0,#BCA9B7);
+  animation:psc-spin 30s linear infinite}
+.psc-iri-2{bottom:6%;left:-10%;width:440px;height:440px;opacity:.4;
+  background:conic-gradient(from 0deg,#94BDB7,#BCA9B7,#e8d3bf,#a8c8c0,#94BDB7);
+  animation:psc-spin 42s linear infinite reverse}
+.psc-iri-3{top:42%;left:48%;width:360px;height:360px;opacity:.28;
+  background:conic-gradient(from 120deg,#f3d9c0,#BCA9B7,#94BDB7,#f3d9c0);
+  animation:psc-spin 36s linear infinite}
+@keyframes psc-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.psc-iri{animation:none!important}}
+
+/* ===================== SCROLL REVEAL ===================== */
+.psc .reveal{opacity:0;transform:translateY(48px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.psc .reveal.visible{opacity:1;transform:none}
+.psc .d1{transition-delay:.12s}.psc .d2{transition-delay:.24s}.psc .d3{transition-delay:.36s}.psc .d4{transition-delay:.48s}
+@media (prefers-reduced-motion:reduce){.psc .reveal{opacity:1!important;transform:none!important}}
+
+/* ===================== NAV ===================== */
+.psc-nav{position:sticky;top:0;z-index:50;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;
+  background:rgba(242,242,242,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(18,31,24,.08)}
+.psc-nav-logo{font-family:'Fraunces',serif;font-size:21px;font-weight:400;letter-spacing:.02em;color:var(--vert)}
+.psc-nav-logo em{font-style:italic;color:var(--mauve)}
+.psc-nav-links{display:flex;gap:34px;align-items:center;list-style:none}
+.psc-nav-links a{font-size:13px;letter-spacing:.06em;color:var(--vert);transition:color .3s;position:relative}
+.psc-nav-links a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--mauve);transition:width .4s ease}
+.psc-nav-links a:hover{color:var(--mauve)}
+.psc-nav-links a:hover::after{width:100%}
+.psc-nav-cta{padding:11px 24px;border:1px solid var(--vert);border-radius:50px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:all .4s}
+.psc-nav-cta:hover{background:var(--vert);color:var(--creme)}
+.psc-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.psc-burger span{width:24px;height:1.5px;background:var(--vert);transition:.3s}
+
+/* ===================== HERO ===================== */
+.psc-hero{position:relative;min-height:92vh;padding:80px 40px 60px;display:flex;align-items:center;overflow:hidden}
+.psc-hero-bg{position:absolute;inset:0;z-index:0;
+  background:radial-gradient(circle at 70% 30%,rgba(188,169,183,.20),transparent 55%),
+             radial-gradient(circle at 25% 75%,rgba(148,189,183,.18),transparent 55%),var(--creme)}
+/* Anneaux concentriques (motif "rings of light" du moodboard) */
+.psc-rings{position:absolute;top:50%;right:8%;transform:translateY(-50%);width:min(46vw,560px);aspect-ratio:1;z-index:1;pointer-events:none;opacity:.9}
+.psc-rings span{position:absolute;inset:0;border:1px solid rgba(188,169,183,.35);border-radius:50%;animation:psc-pulse 6s ease-in-out infinite}
+.psc-rings span:nth-child(2){inset:11%;border-color:rgba(148,189,183,.30);animation-delay:.6s}
+.psc-rings span:nth-child(3){inset:23%;border-color:rgba(188,169,183,.28);animation-delay:1.2s}
+.psc-rings span:nth-child(4){inset:36%;border-color:rgba(148,189,183,.22);animation-delay:1.8s}
+.psc-rings::after{content:'';position:absolute;inset:30%;border-radius:50%;
+  background:conic-gradient(from 90deg,#BCA9B7,#94BDB7,#f3d9c0,#BCA9B7);filter:blur(28px);opacity:.55;animation:psc-spin 24s linear infinite}
+@keyframes psc-pulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.04);opacity:1}}
+.psc-hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%}
+.psc-eyebrow{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--vert);opacity:.6;margin-bottom:40px}
+.psc-eyebrow::before{content:'';width:40px;height:1px;background:var(--vert);opacity:.5}
+.psc-hero h1{font-size:clamp(52px,9vw,128px);line-height:.98;color:var(--vert);margin-bottom:40px;max-width:14ch}
+.psc-hero h1 em{font-style:italic;color:var(--mauve)}
+.psc-hero-sub{max-width:460px;font-size:17px;line-height:1.75;color:rgba(18,31,24,.72);font-weight:300;margin-bottom:44px}
+.psc-hero-meta{display:flex;gap:36px;flex-wrap:wrap;align-items:center}
+
+/* ===================== BOUTONS ===================== */
+.psc-btn{position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
+  padding:16px 38px;border-radius:60px;border:none;cursor:pointer;font-family:'Inter',sans-serif;
+  font-size:14px;letter-spacing:.04em;color:#fff;background:linear-gradient(135deg,#BCA9B7,#94BDB7);transition:transform .4s,box-shadow .4s}
+.psc-btn span{position:relative;z-index:2}
+.psc-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#94BDB7,#BCA9B7);opacity:0;transition:opacity .4s}
+.psc-btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 18px 44px rgba(188,169,183,.35)}
+.psc-btn:hover::before{opacity:1}
+.psc-link{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--vert);border-bottom:1px solid var(--mauve);padding-bottom:4px;transition:gap .3s,color .3s}
+.psc-link:hover{gap:16px;color:var(--mauve)}
+
+/* ===================== SCROLL INDICATOR ===================== */
+.psc-scroll{position:absolute;bottom:30px;left:40px;display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(18,31,24,.5);z-index:2}
+.psc-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--mauve),transparent);animation:psc-line 2s ease-in-out infinite}
+@keyframes psc-line{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ===================== MARQUEE ===================== */
+.psc-marquee{padding:26px 0;border-top:1px solid rgba(18,31,24,.1);border-bottom:1px solid rgba(18,31,24,.1);overflow:hidden;white-space:nowrap}
+.psc-marquee-track{display:inline-flex;gap:0;animation:psc-marquee 32s linear infinite}
+.psc-marquee-track span{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(20px,3vw,34px);color:var(--vert);opacity:.85;padding:0 28px}
+.psc-marquee-track span em{color:var(--mauve);font-style:normal}
+@keyframes psc-marquee{to{transform:translateX(-50%)}}
+
+/* ===================== SECTIONS GÉNÉRIQUES ===================== */
+.psc-sec{position:relative;z-index:1;padding:120px 40px}
+.psc-sec-inner{max-width:1280px;margin:0 auto}
+.psc-tag{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--mauve);margin-bottom:20px}
+.psc-sec-title{font-size:clamp(34px,5vw,64px);line-height:1.05;color:var(--vert);max-width:18ch}
+.psc-sec-title em{font-style:italic;color:var(--mauve)}
+
+/* PILIERS */
+.psc-piliers{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:64px}
+.psc-pilier{padding:40px 32px;border-radius:24px;background:rgba(255,255,255,.55);border:1px solid rgba(188,169,183,.18);transition:transform .5s,box-shadow .5s,background .5s}
+.psc-pilier:hover{transform:translateY(-6px);background:rgba(255,255,255,.85);box-shadow:0 30px 60px rgba(18,31,24,.08)}
+.psc-pilier-num{font-family:'Fraunces',serif;font-size:14px;color:var(--mauve);margin-bottom:24px}
+.psc-pilier-ic{font-size:26px;margin-bottom:18px}
+.psc-pilier h3{font-size:24px;color:var(--vert);margin-bottom:14px}
+.psc-pilier p{font-size:15px;color:rgba(18,31,24,.65);font-weight:300}
+
+/* SOINS */
+.psc-soins{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:64px}
+.psc-soin{position:relative;overflow:hidden;border-radius:24px;padding:44px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between;
+  background:linear-gradient(135deg,rgba(188,169,183,.16),rgba(148,189,183,.12));border:1px solid rgba(188,169,183,.18);transition:transform .5s}
+.psc-soin:hover{transform:translateY(-6px)}
+.psc-soin-num{font-family:'Fraunces',serif;font-style:italic;font-size:18px;color:var(--mauve)}
+.psc-soin h3{font-size:30px;color:var(--vert);margin:14px 0 18px}
+.psc-soin-list{display:flex;flex-wrap:wrap;gap:10px}
+.psc-soin-list li{list-style:none;font-size:13px;color:var(--vert);background:rgba(255,255,255,.6);border:1px solid rgba(188,169,183,.25);border-radius:50px;padding:7px 16px}
+
+/* À PROPOS */
+.psc-apropos{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:20px}
+.psc-apropos-img{position:relative}
+.psc-apropos-img img{width:100%;border-radius:24px;box-shadow:0 40px 80px rgba(18,31,24,.12)}
+.psc-apropos-imgph{width:100%;aspect-ratio:4/5;border-radius:24px;
+  background:radial-gradient(circle at 60% 35%,rgba(188,169,183,.55),rgba(148,189,183,.4) 60%,rgba(243,217,192,.5));
+  box-shadow:0 40px 80px rgba(18,31,24,.12);display:flex;align-items:flex-end;padding:22px;color:rgba(18,31,24,.5);font-size:12px;letter-spacing:.1em}
+.psc-deco-c1{position:absolute;top:-26px;right:-26px;width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#BCA9B7,#94BDB7);opacity:.14}
+.psc-deco-c2{position:absolute;bottom:-34px;left:-34px;width:160px;height:160px;border-radius:50%;border:1px solid rgba(188,169,183,.25)}
+.psc-apropos-text h2{margin-bottom:24px}
+.psc-apropos-text p{font-size:16px;line-height:1.8;color:rgba(18,31,24,.7);font-weight:300;margin-bottom:24px}
+.psc-quote{font-family:'Fraunces',serif;font-style:italic;font-size:21px;line-height:1.5;color:var(--vert);padding-left:22px;border-left:2px solid var(--mauve);margin-bottom:32px}
+
+/* CONTACT TEASER */
+.psc-contact{text-align:center}
+.psc-contact h2{margin:0 auto 22px}
+.psc-contact-sub{max-width:520px;margin:0 auto 48px;font-size:16px;color:rgba(18,31,24,.65);font-weight:300}
+.psc-contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:840px;margin:0 auto 52px}
+.psc-cc{padding:32px 24px;border-radius:20px;background:rgba(255,255,255,.55);border:1px solid rgba(188,169,183,.18);transition:transform .4s}
+.psc-cc:hover{transform:translateY(-5px)}
+.psc-cc-ic{font-size:24px;margin-bottom:14px}
+.psc-cc-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(18,31,24,.4);margin-bottom:8px}
+.psc-cc-val{font-family:'Fraunces',serif;font-size:17px;color:var(--vert)}
+
+/* FOOTER */
+.psc-footer{position:relative;z-index:1;padding:60px 40px;text-align:center;border-top:1px solid rgba(18,31,24,.1)}
+.psc-footer-logo{font-family:'Fraunces',serif;font-size:22px;color:var(--vert)}
+.psc-footer-logo em{font-style:italic;color:var(--mauve)}
+.psc-footer p{font-size:13px;color:rgba(18,31,24,.5);margin-top:10px}
+
+/* CTA FLOTTANT MOBILE */
+.psc-float{display:none}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width:900px){
+  .psc-nav-links{display:none}
+  .psc-burger{display:flex}
+  .psc-rings{opacity:.4;right:-20%}
+  .psc-piliers{grid-template-columns:1fr}
+  .psc-soins{grid-template-columns:1fr}
+  .psc-apropos{grid-template-columns:1fr;gap:56px}
+  .psc-contact-cards{grid-template-columns:1fr}
+  .psc-sec{padding:84px 24px}
+  .psc-hero{padding:60px 24px}
+  .psc-scroll{display:none}
+  .psc-float{display:flex;position:fixed;bottom:18px;left:18px;right:18px;z-index:60;justify-content:center}
+  .psc-float .psc-btn{width:100%;justify-content:center}
+}
+@media (max-width:520px){
+  .psc-hero-meta{gap:20px}
+  .psc-nav{padding:16px 22px}
+}
+</style>
+</head>
+<body>
+
+<div class="psc">
+
+  <!-- Suncatchers iridescents -->
+  <div class="psc-iri psc-iri-1"></div>
+  <div class="psc-iri psc-iri-2"></div>
+  <div class="psc-iri psc-iri-3"></div>
+
+  <!-- NAV -->
+  <nav class="psc-nav">
+    <a href="#" class="psc-nav-logo">Poeata <em>Chaves</em></a>
+    <ul class="psc-nav-links">
+      <li><a href="#approche">Approche</a></li>
+      <li><a href="#soins">Soins</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="psc-nav-cta">Rendez-vous</a></li>
+    </ul>
+    <button class="psc-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="psc-hero">
+    <div class="psc-hero-bg"></div>
+    <!-- Anneaux concentriques (motif rituel) -->
+    <div class="psc-rings"><span></span><span></span><span></span><span></span></div>
+    <div class="psc-hero-inner">
+      <p class="psc-eyebrow">✦ Massages &amp; rituels de soins · Paris</p>
+      <h1 class="reveal">S'arrêter, respirer, <em>se reconnecter.</em></h1>
+      <p class="psc-hero-sub reveal d1">Accompagnement psycho-corporel pour un retour à soi en douceur. Une parenthèse sensorielle pensée pour apaiser le corps et l'esprit, à votre rythme.</p>
+      <div class="psc-hero-meta reveal d2">
+        <a href="#contact" class="psc-btn"><span>Prendre rendez-vous →</span></a>
+        <a href="#apropos" class="psc-link">Découvrir l'approche</a>
+      </div>
+    </div>
+    <div class="psc-scroll"><span class="psc-scroll-line"></span> Scroll</div>
+  </header>
+
+  <!-- MARQUEE -->
+  <div class="psc-marquee">
+    <div class="psc-marquee-track">
+      <span>Essayez d'être un <em>arc-en-ciel</em> dans le nuage de quelqu'un ✦ 'ia ora na — Pour un retour à soi en douceur ✦&nbsp;</span>
+      <span>Essayez d'être un <em>arc-en-ciel</em> dans le nuage de quelqu'un ✦ 'ia ora na — Pour un retour à soi en douceur ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- APPROCHE / PILIERS -->
+  <section class="psc-sec" id="approche">
+    <div class="psc-sec-inner">
+      <p class="psc-tag reveal">Mon approche</p>
+      <h2 class="psc-sec-title reveal">Le bien-être est un <em>voyage intérieur</em>, pas une destination.</h2>
+      <div class="psc-piliers">
+        <div class="psc-pilier reveal d1">
+          <div class="psc-pilier-num">01</div>
+          <div class="psc-pilier-ic">♡</div>
+          <h3>Holistique</h3>
+          <p>Corps, esprit et émotions dans une approche globale et bienveillante.</p>
+        </div>
+        <div class="psc-pilier reveal d2">
+          <div class="psc-pilier-num">02</div>
+          <div class="psc-pilier-ic">✦</div>
+          <h3>Sur-mesure</h3>
+          <p>Chaque soin est adapté à votre histoire, vos besoins, votre rythme.</p>
+        </div>
+        <div class="psc-pilier reveal d3">
+          <div class="psc-pilier-num">03</div>
+          <div class="psc-pilier-ic">✿</div>
+          <h3>Certifiée PSE</h3>
+          <p>Diplômée en Psycho-Socio-Esthétique pour accompagner les plus fragiles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOINS -->
+  <section class="psc-sec" id="soins">
+    <div class="psc-sec-inner">
+      <p class="psc-tag reveal">Mes soins</p>
+      <h2 class="psc-sec-title reveal">Un <em>univers</em> de soins.</h2>
+      <div class="psc-soins">
+        <div class="psc-soin reveal d1">
+          <div class="psc-soin-num">01</div>
+          <h3>Massages</h3>
+          <ul class="psc-soin-list"><li>Relaxant</li><li>Californien</li><li>Deep Tissue</li><li>Ayurvédique</li><li>Pierres Chaudes</li></ul>
+        </div>
+        <div class="psc-soin reveal d2">
+          <div class="psc-soin-num">02</div>
+          <h3>Réflexologie</h3>
+          <ul class="psc-soin-list"><li>Plantaire</li><li>Palmaire</li><li>Crânienne</li><li>Bols Tibétains</li></ul>
+        </div>
+        <div class="psc-soin reveal d3">
+          <div class="psc-soin-num">03</div>
+          <h3>Soins PSE</h3>
+          <ul class="psc-soin-list"><li>Bien-Être</li><li>Post-Trauma</li><li>Réconfortant</li></ul>
+        </div>
+        <div class="psc-soin reveal d4">
+          <div class="psc-soin-num">04</div>
+          <h3>Ateliers</h3>
+          <ul class="psc-soin-list"><li>Relaxation</li><li>Auto-massage</li><li>Stress</li><li>Cosmétiques</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section class="psc-sec" id="apropos">
+    <div class="psc-sec-inner">
+      <div class="psc-apropos">
+        <div class="psc-apropos-img reveal">
+          <div class="psc-deco-c1"></div>
+          <div class="psc-deco-c2"></div>
+          <!-- TODO : remplacer par une vraie photo de Poeata Chaves -->
+          <!-- <img src="poeata-portrait.jpg" alt="Poeata Chaves, praticienne en soins holistiques"> -->
+          <div class="psc-apropos-imgph">Votre portrait ici</div>
+        </div>
+        <div class="psc-apropos-text">
+          <p class="psc-tag reveal">À propos</p>
+          <h2 class="psc-sec-title reveal d1">Poeata <em>Chaves</em></h2>
+          <p class="reveal d2">Praticienne en soins holistiques basée à Paris. Formée en psycho-socio-esthétique, réflexologie, sonothérapie et sophrologie, j'accompagne chaque personne avec bienveillance vers un mieux-être global.</p>
+          <p class="psc-quote reveal d2">« Les processus d'auto-guérison se réalisent tous seuls, mais pas sans notre total consentement. »</p>
+          <a href="apropos.html" class="psc-link reveal d3">Découvrir mon parcours →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE 2 -->
+  <div class="psc-marquee">
+    <div class="psc-marquee-track">
+      <span>Massage Relaxant ✦ Réflexologie ✦ Deep Tissue ✦ Bols Tibétains ✦ Pierres Chaudes ✦ Ayurvédique ✦ Sonothérapie ✦ PSE ✦&nbsp;</span>
+      <span>Massage Relaxant ✦ Réflexologie ✦ Deep Tissue ✦ Bols Tibétains ✦ Pierres Chaudes ✦ Ayurvédique ✦ Sonothérapie ✦ PSE ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- CONTACT TEASER -->
+  <section class="psc-sec psc-contact" id="contact">
+    <div class="psc-sec-inner">
+      <p class="psc-tag reveal">Contact</p>
+      <h2 class="psc-sec-title reveal" style="margin-left:auto;margin-right:auto;text-align:center">Prêt·e pour <em>une pause&nbsp;?</em></h2>
+      <p class="psc-contact-sub reveal d1">Chaque soin est une parenthèse de douceur. Prenons le temps d'en discuter ensemble.</p>
+      <div class="psc-contact-cards">
+        <!-- TODO : remplacer +689 (indicatif Tahiti) par votre numéro parisien +33 -->
+        <a href="tel:+68987314622" class="psc-cc reveal d1">
+          <div class="psc-cc-ic">📞</div><div class="psc-cc-label">Téléphone</div><div class="psc-cc-val">+689 87 31 46 22</div>
+        </a>
+        <!-- TODO : idéalement une adresse pro contact@poeata-chaves.fr -->
+        <a href="mailto:poeatacha@hotmail.fr" class="psc-cc reveal d2">
+          <div class="psc-cc-ic">✉️</div><div class="psc-cc-label">Email</div><div class="psc-cc-val">poeatacha@hotmail.fr</div>
+        </a>
+        <div class="psc-cc reveal d3">
+          <div class="psc-cc-ic">📍</div><div class="psc-cc-label">Localisation</div><div class="psc-cc-val">Paris, France</div>
+        </div>
+      </div>
+      <a href="contact.html" class="psc-btn reveal d3"><span>Prendre rendez-vous →</span></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="psc-footer">
+    <div class="psc-footer-logo">Poeata <em>Chaves</em></div>
+    <p>Massages &amp; rituels de soins · Paris, France</p>
+  </footer>
+
+  <!-- CTA flottant (mobile) -->
+  <div class="psc-float"><a href="#contact" class="psc-btn"><span>Prendre rendez-vous</span></a></div>
+
+</div>
+
+<script>
+(function(){
+  // Scroll reveal
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.psc .reveal').forEach(function(el){ obs.observe(el); });
+
+  // Parallax doux sur les suncatchers
+  var iris = document.querySelectorAll('.psc-iri');
+  window.addEventListener('scroll', function(){
+    var s = window.scrollY;
+    iris.forEach(function(el,i){ el.style.transform = 'translateY(' + (s * (0.04 + i*0.02)) + 'px)'; });
+  }, { passive:true });
+})();
+</script>
+
+</body>
+</html>
