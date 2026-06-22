@@ -69,10 +69,25 @@
 
 /* 1. HERO */
 .psc-hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:center;overflow:hidden}
-.psc-hero-media{position:absolute;inset:-8% 0;z-index:0;will-change:transform;background:linear-gradient(135deg,#BCA9B7,#94BDB7 50%,#e8d3bf)}
-.psc-hero-media video{filter:saturate(1.05) brightness(.9);height:116%;animation:kenburns 24s ease-in-out infinite alternate}
-@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12)}}
-@media(prefers-reduced-motion:reduce){.psc-hero-media video{animation:none}}
+/* HERO = lumière iridescente (attrape-soleil) animée, full CSS */
+.psc-hero-media{position:absolute;inset:-8% 0;z-index:0;will-change:transform;overflow:hidden;background:radial-gradient(circle at 30% 30%,#1c2e26,#121F18 70%)}
+.psc-light{position:absolute;inset:-30%;pointer-events:none}
+/* rayons prismatiques en arc-en-ciel */
+.l-rays{background:repeating-linear-gradient(115deg,transparent 0 60px,rgba(188,169,183,.55) 70px,rgba(148,189,183,.5) 90px,rgba(243,217,192,.55) 110px,rgba(168,200,192,.5) 130px,transparent 140px 210px);
+  filter:blur(34px);mix-blend-mode:screen;opacity:.55;animation:rays 26s linear infinite}
+/* halo arc-en-ciel qui tourne */
+.l-rainbow{background:conic-gradient(from 0deg,rgba(188,169,183,.6),rgba(148,189,183,.55),rgba(243,217,192,.6),rgba(168,200,192,.5),rgba(216,200,212,.6),rgba(188,169,183,.6));
+  filter:blur(70px);mix-blend-mode:screen;opacity:.6;animation:spin 40s linear infinite,floaty 16s ease-in-out infinite}
+/* taches de lumière (bokeh) */
+.l-bokeh{background:
+  radial-gradient(circle at 20% 30%,rgba(243,217,192,.5),transparent 9%),
+  radial-gradient(circle at 70% 25%,rgba(148,189,183,.5),transparent 8%),
+  radial-gradient(circle at 80% 65%,rgba(188,169,183,.55),transparent 10%),
+  radial-gradient(circle at 35% 75%,rgba(216,200,212,.5),transparent 9%);
+  filter:blur(8px);mix-blend-mode:screen;opacity:.7;animation:floaty 12s ease-in-out infinite alternate}
+@keyframes rays{to{transform:translateX(-210px)}}
+@keyframes floaty{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(3%,-3%) scale(1.06)}}
+@media(prefers-reduced-motion:reduce){.l-rays,.l-rainbow,.l-bokeh{animation:none}}
 .psc-hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(8,8,5,.4),rgba(18,31,24,.35))}
 .psc-hero-in{position:relative;z-index:3;max-width:1320px;margin:0 auto;width:100%;padding:0 48px;color:#fff;text-align:center}
 .psc-hero-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:50px}
@@ -184,9 +199,11 @@
   <!-- 1. HERO -->
   <header class="psc-hero">
     <div class="psc-hero-media" id="heroMedia">
-      <video autoplay muted loop playsinline poster="https://images.pexels.com/photos/9336024/pexels-photo-9336024.jpeg?auto=compress&cs=tinysrgb&w=1920">
-        <source src="https://videos.pexels.com/video-files/4974438/4974438-uhd_2732_1440_25fps.mp4" type="video/mp4">
-      </video>
+      <!-- Lumière iridescente animée (attrape-soleil). Pour mettre TA vidéo plus tard :
+           remplace ce bloc par <video autoplay muted loop playsinline poster="..."><source src="TON-LIEN.mp4" type="video/mp4"></video> -->
+      <div class="psc-light l-rainbow"></div>
+      <div class="psc-light l-rays"></div>
+      <div class="psc-light l-bokeh"></div>
     </div>
     <div class="psc-iri-ov"></div>
     <div class="psc-hero-ov"></div>
