@@ -70,7 +70,9 @@
 /* 1. HERO */
 .psc-hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:center;overflow:hidden}
 .psc-hero-media{position:absolute;inset:-8% 0;z-index:0;will-change:transform;background:linear-gradient(135deg,#BCA9B7,#94BDB7 50%,#e8d3bf)}
-.psc-hero-media video{filter:saturate(1.05) brightness(.9);height:116%}
+.psc-hero-media video{filter:saturate(1.05) brightness(.9);height:116%;animation:kenburns 24s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12)}}
+@media(prefers-reduced-motion:reduce){.psc-hero-media video{animation:none}}
 .psc-hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(8,8,5,.4),rgba(18,31,24,.35))}
 .psc-hero-in{position:relative;z-index:3;max-width:1320px;margin:0 auto;width:100%;padding:0 48px;color:#fff;text-align:center}
 .psc-hero-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:50px}
@@ -182,8 +184,8 @@
   <!-- 1. HERO -->
   <header class="psc-hero">
     <div class="psc-hero-media" id="heroMedia">
-      <video autoplay muted loop playsinline poster="https://images.pexels.com/photos/6663367/pexels-photo-6663367.jpeg?auto=compress&cs=tinysrgb&w=1920">
-        <source src="https://videos.pexels.com/video-files/4974438/4974438-uhd_2732_1440_25fps.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline poster="https://images.pexels.com/photos/9336024/pexels-photo-9336024.jpeg?auto=compress&cs=tinysrgb&w=1920">
+        <source src="https://videos.pexels.com/video-files/6629950/6629950-uhd_2560_1440_30fps.mp4" type="video/mp4">
       </video>
     </div>
     <div class="psc-iri-ov"></div>
@@ -196,7 +198,6 @@
       <h1 id="heroTitle">Un retour à soi, <em>en douceur.</em></h1>
       <p class="psc-hero-sub rv d2">S'arrêter, respirer, se reconnecter. Mon intention est simple : prendre soin de vous, à votre rythme.</p>
     </div>
-    <div class="psc-scroll"><span>Scroll</span><i></i></div>
   </header>
 
   <!-- 2. ABOUT -->
@@ -204,7 +205,7 @@
     <div class="psc-about-in">
       <h2 class="rv">Je crée des <em>rituels de soins sur-mesure</em> pour vous reconnecter à votre corps et à vos émotions.</h2>
       <div class="psc-about-row">
-        <div class="psc-about-img clip rv"><img src="https://images.pexels.com/photos/6663367/pexels-photo-6663367.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Soin du visage" onerror="this.style.display='none'"></div>
+        <div class="psc-about-img clip rv"><img src="https://images.pexels.com/photos/6560266/pexels-photo-6560266.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Massage aux pierres chaudes" onerror="this.style.display='none'"></div>
         <div class="rv d1">
           <p class="psc-tag">Mon espace</p>
           <p>Du massage relaxant aux soins psycho-socio-esthétiques, en passant par la réflexologie et la sonothérapie, je façonne une expérience personnalisée, adaptée à vos besoins uniques — sans jugement, sans précipitation.</p>
@@ -215,9 +216,9 @@
 
   <!-- 3. MISSION : On accueille + mots + 3 images -->
   <section class="psc-mission">
-    <div class="psc-mi psc-mi1 clip rv par" data-speed="-14"><img src="https://images.pexels.com/photos/2661255/pexels-photo-2661255.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Douceur" onerror="this.style.display='none'"></div>
-    <div class="psc-mi psc-mi2 clip rv par" data-speed="16"><img src="https://images.pexels.com/photos/4974360/pexels-photo-4974360.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Reflet iridescent" onerror="this.style.display='none'"></div>
-    <div class="psc-mi psc-mi3 clip rv par" data-speed="-10"><img src="https://images.pexels.com/photos/15327096/pexels-photo-15327096.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Bien-être" onerror="this.style.display='none'"></div>
+    <div class="psc-mi psc-mi1 clip rv par" data-speed="-14"><img src="https://images.pexels.com/photos/7700/pexels-photo-7700.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Massage du dos aux fleurs" onerror="this.style.display='none'"></div>
+    <div class="psc-mi psc-mi2 clip rv par" data-speed="16"><img src="https://images.pexels.com/photos/9336024/pexels-photo-9336024.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Massage du corps" onerror="this.style.display='none'"></div>
+    <div class="psc-mi psc-mi3 clip rv par" data-speed="-10"><img src="https://images.pexels.com/photos/6628700/pexels-photo-6628700.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Réflexologie plantaire" onerror="this.style.display='none'"></div>
     <h2 class="rv">On accueille<br>
       <span class="rot" id="rot"><span class="on">la douceur</span><span>le soin</span><span>l'écoute</span><span>vous</span></span>
     </h2>
@@ -227,8 +228,8 @@
   <section class="psc-member" id="membre">
     <div class="psc-member-in">
       <div class="psc-member-imgs">
-        <div class="ph clip rv"><img src="https://images.pexels.com/photos/15327096/pexels-photo-15327096.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Accompagnement" onerror="this.style.display='none'"></div>
-        <div class="ph clip rv d1"><img src="https://images.pexels.com/photos/2661255/pexels-photo-2661255.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Présence bienveillante" onerror="this.style.display='none'"></div>
+        <div class="ph clip rv"><img src="https://images.pexels.com/photos/6663367/pexels-photo-6663367.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Soin du visage" onerror="this.style.display='none'"></div>
+        <div class="ph clip rv d1"><img src="https://images.pexels.com/photos/9336024/pexels-photo-9336024.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Massage du corps" onerror="this.style.display='none'"></div>
       </div>
       <div class="psc-member-txt">
         <p class="psc-tag rv">À propos</p>
@@ -248,19 +249,19 @@
       </div>
       <div class="psc-shop-grid">
         <a href="#news" class="psc-prod rv">
-          <div class="psc-prod-img clip"><img src="https://images.pexels.com/photos/6663367/pexels-photo-6663367.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Massages" onerror="this.style.display='none'"></div>
+          <div class="psc-prod-img clip"><img src="https://images.pexels.com/photos/9336024/pexels-photo-9336024.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Massages" onerror="this.style.display='none'"></div>
           <h3>Massages</h3><div class="psc-prod-meta">Relaxant · Californien · Ayurvédique <b>sur RDV</b></div>
         </a>
         <a href="#news" class="psc-prod rv d1">
-          <div class="psc-prod-img clip"><img src="https://images.pexels.com/photos/2661255/pexels-photo-2661255.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Réflexologie" onerror="this.style.display='none'"></div>
+          <div class="psc-prod-img clip"><img src="https://images.pexels.com/photos/6628700/pexels-photo-6628700.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Réflexologie" onerror="this.style.display='none'"></div>
           <h3>Réflexologie</h3><div class="psc-prod-meta">Plantaire · Palmaire · Crânienne <b>sur RDV</b></div>
         </a>
         <a href="#news" class="psc-prod rv d2">
-          <div class="psc-prod-img clip"><img src="https://images.pexels.com/photos/4974360/pexels-photo-4974360.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Soins PSE" onerror="this.style.display='none'"></div>
+          <div class="psc-prod-img clip"><img src="https://images.pexels.com/photos/6663367/pexels-photo-6663367.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Soins PSE" onerror="this.style.display='none'"></div>
           <h3>Soins PSE</h3><div class="psc-prod-meta">Bien-Être · Post-Trauma <b>sur RDV</b></div>
         </a>
         <a href="#news" class="psc-prod rv d3">
-          <div class="psc-prod-img clip"><img src="https://images.pexels.com/photos/15327096/pexels-photo-15327096.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Ateliers" onerror="this.style.display='none'"></div>
+          <div class="psc-prod-img clip"><img src="https://images.pexels.com/photos/7700/pexels-photo-7700.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Ateliers" onerror="this.style.display='none'"></div>
           <h3>Ateliers</h3><div class="psc-prod-meta">Relaxation · Auto-massage <b>sur RDV</b></div>
         </a>
       </div>
