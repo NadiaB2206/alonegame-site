@@ -25,7 +25,7 @@
 .psc ::selection{background:rgba(188,169,183,.4)}
 /* attrape-soleil */
 .psc-suns{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.psc-sun{position:absolute;border-radius:50%;filter:blur(70px);mix-blend-mode:multiply;opacity:.5;will-change:transform}
+.psc-sun{position:absolute;border-radius:50%;filter:blur(70px);mix-blend-mode:multiply;opacity:.62;will-change:transform}
 .psc-sun.s1{top:-6%;right:-4%;width:46vw;height:46vw;background:conic-gradient(from 30deg,#BCA9B7,#94BDB7,#d8c8d4,#f3d9c0,#a8c8c0,#BCA9B7);animation:drift1 26s ease-in-out infinite,spin 40s linear infinite}
 .psc-sun.s2{bottom:2%;left:-8%;width:40vw;height:40vw;background:conic-gradient(from 0deg,#94BDB7,#BCA9B7,#e8d3bf,#94BDB7);animation:drift2 32s ease-in-out infinite,spin 52s linear infinite reverse;opacity:.42}
 .psc-sun.s3{top:42%;left:44%;width:32vw;height:32vw;background:conic-gradient(from 120deg,#f3d9c0,#BCA9B7,#94BDB7,#f3d9c0);animation:drift3 38s ease-in-out infinite,spin 60s linear infinite;opacity:.28}
@@ -49,15 +49,15 @@
 /* nav */
 .psc-nav{position:fixed;top:0;left:0;width:100%;z-index:60;padding:26px 48px;display:flex;justify-content:space-between;align-items:center;transition:all .5s}
 .psc-nav.scr{background:rgba(242,242,242,.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:16px 48px;border-bottom:1px solid rgba(18,31,24,.08)}
-.psc-logo{font-family:'Fraunces',serif;font-size:23px;color:#fff;transition:color .5s}
+.psc-logo{font-family:'Fraunces',serif;font-size:23px;color:var(--vert);transition:color .5s}
 .psc-nav.scr .psc-logo{color:var(--vert)}.psc-logo em{font-style:italic;color:var(--mauve)}
 .psc-links{display:flex;gap:40px;align-items:center;list-style:none}
-.psc-links a{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fff;transition:color .3s}
+.psc-links a{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--vert);transition:color .3s}
 .psc-nav.scr .psc-links a{color:var(--vert)}.psc-links a:hover{color:var(--mauve)}
-.psc-cta{padding:12px 28px;border:1px solid rgba(255,255,255,.6);border-radius:50px}
+.psc-cta{padding:12px 28px;border:1px solid rgba(18,31,24,.3);border-radius:50px}
 .psc-nav.scr .psc-cta{border-color:var(--vert)}.psc-cta:hover{background:var(--mauve);border-color:var(--mauve)!important;color:#fff!important}
 .psc-burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer}
-.psc-burger span{width:26px;height:1.5px;background:#fff}.psc-nav.scr .psc-burger span{background:var(--vert)}
+.psc-burger span{width:26px;height:1.5px;background:var(--vert)}.psc-nav.scr .psc-burger span{background:var(--vert)}
 /* boutons */
 .psc-btn{position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;padding:16px 40px;border-radius:60px;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:14px;letter-spacing:.04em;color:#fff;background:linear-gradient(135deg,#BCA9B7,#94BDB7);transition:transform .4s,box-shadow .4s}
 .psc-btn span{position:relative;z-index:2}
@@ -70,31 +70,31 @@
 /* 1. HERO */
 .psc-hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:center;overflow:hidden}
 /* HERO = lumière iridescente (attrape-soleil) animée, full CSS */
-.psc-hero-media{position:absolute;inset:-8% 0;z-index:0;will-change:transform;overflow:hidden;background:radial-gradient(circle at 30% 30%,#1c2e26,#121F18 70%)}
+.psc-hero-media{position:absolute;inset:-8% 0;z-index:0;will-change:transform;overflow:hidden;background:radial-gradient(circle at 60% 35%,#ffffff,#F2F2F2 55%,#eae4ea)}
 .psc-light{position:absolute;inset:-30%;pointer-events:none}
-/* rayons prismatiques en arc-en-ciel */
-.l-rays{background:repeating-linear-gradient(115deg,transparent 0 60px,rgba(188,169,183,.55) 70px,rgba(148,189,183,.5) 90px,rgba(243,217,192,.55) 110px,rgba(168,200,192,.5) 130px,transparent 140px 210px);
-  filter:blur(34px);mix-blend-mode:screen;opacity:.55;animation:rays 26s linear infinite}
+/* rayons prismatiques (lumière d'attrape-soleil sur mur crème) */
+.l-rays{background:repeating-linear-gradient(118deg,transparent 0 48px,rgba(188,169,183,.7) 60px,rgba(148,189,183,.65) 82px,rgba(243,205,180,.7) 104px,rgba(170,200,225,.6) 126px,rgba(216,190,215,.65) 148px,transparent 162px 230px);
+  filter:blur(26px);mix-blend-mode:multiply;opacity:.7;animation:rays 26s linear infinite}
 /* halo arc-en-ciel qui tourne */
-.l-rainbow{background:conic-gradient(from 0deg,rgba(188,169,183,.6),rgba(148,189,183,.55),rgba(243,217,192,.6),rgba(168,200,192,.5),rgba(216,200,212,.6),rgba(188,169,183,.6));
-  filter:blur(70px);mix-blend-mode:screen;opacity:.6;animation:spin 40s linear infinite,floaty 16s ease-in-out infinite}
+.l-rainbow{background:conic-gradient(from 0deg,rgba(188,169,183,.75),rgba(148,189,183,.7),rgba(243,205,180,.7),rgba(170,200,225,.6),rgba(216,190,215,.7),rgba(188,169,183,.75));
+  filter:blur(70px);mix-blend-mode:multiply;opacity:.6;animation:spin 40s linear infinite,floaty 16s ease-in-out infinite}
 /* taches de lumière (bokeh) */
 .l-bokeh{background:
-  radial-gradient(circle at 20% 30%,rgba(243,217,192,.5),transparent 9%),
-  radial-gradient(circle at 70% 25%,rgba(148,189,183,.5),transparent 8%),
-  radial-gradient(circle at 80% 65%,rgba(188,169,183,.55),transparent 10%),
-  radial-gradient(circle at 35% 75%,rgba(216,200,212,.5),transparent 9%);
-  filter:blur(8px);mix-blend-mode:screen;opacity:.7;animation:floaty 12s ease-in-out infinite alternate}
-@keyframes rays{to{transform:translateX(-210px)}}
+  radial-gradient(circle at 20% 30%,rgba(243,205,180,.6),transparent 9%),
+  radial-gradient(circle at 70% 22%,rgba(148,189,183,.6),transparent 8%),
+  radial-gradient(circle at 82% 64%,rgba(188,169,183,.6),transparent 10%),
+  radial-gradient(circle at 35% 78%,rgba(170,200,225,.55),transparent 9%);
+  filter:blur(6px);mix-blend-mode:multiply;opacity:.7;animation:floaty 12s ease-in-out infinite alternate}
+@keyframes rays{to{transform:translateX(-230px)}}
 @keyframes floaty{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(3%,-3%) scale(1.06)}}
 @media(prefers-reduced-motion:reduce){.l-rays,.l-rainbow,.l-bokeh{animation:none}}
-.psc-hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(8,8,5,.4),rgba(18,31,24,.35))}
-.psc-hero-in{position:relative;z-index:3;max-width:1320px;margin:0 auto;width:100%;padding:0 48px;color:#fff;text-align:center}
+.psc-hero-ov{position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 50% 60%,rgba(242,242,242,.35),transparent 70%)}
+.psc-hero-in{position:relative;z-index:3;max-width:1320px;margin:0 auto;width:100%;padding:0 48px;color:var(--vert);text-align:center}
 .psc-hero-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:50px}
-.psc-hero-label{font-size:12px;letter-spacing:.28em;text-transform:uppercase;opacity:.85}
-.psc-hero h1{font-size:clamp(50px,9vw,150px);line-height:.95;color:#fff;margin:0 auto 40px;max-width:14ch}
-.psc-hero h1 em,.psc-hero .wr.em>span{font-style:italic;color:#e8d3df}
-.psc-hero-sub{max-width:560px;margin:0 auto;font-size:18px;line-height:1.7;font-weight:300;color:rgba(255,255,255,.92)}
+.psc-hero-label{font-size:12px;letter-spacing:.28em;text-transform:uppercase;opacity:.7}
+.psc-hero h1{font-size:clamp(50px,9vw,150px);line-height:.95;color:var(--vert);margin:0 auto 40px;max-width:14ch}
+.psc-hero h1 em,.psc-hero .wr.em>span{font-style:italic;color:var(--mauve)}
+.psc-hero-sub{max-width:560px;margin:0 auto;font-size:18px;line-height:1.7;font-weight:300;color:rgba(18,31,24,.72)}
 .psc-scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 .psc-scroll i{width:1px;height:42px;background:linear-gradient(#fff,transparent);animation:ln 2s ease-in-out infinite}
 @keyframes ln{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
@@ -210,7 +210,7 @@
     <div class="psc-hero-in">
       <div class="psc-hero-top">
         <span class="psc-hero-label rv">Massages &amp; rituels de soins · Paris</span>
-        <a href="#about" class="psc-link rv" style="color:#fff;border-color:#e8d3df">Découvrir →</a>
+        <a href="#about" class="psc-link rv">Découvrir →</a>
       </div>
       <h1 id="heroTitle">Un retour à soi, <em>en douceur.</em></h1>
       <p class="psc-hero-sub rv d2">S'arrêter, respirer, se reconnecter. Mon intention est simple : prendre soin de vous, à votre rythme.</p>
