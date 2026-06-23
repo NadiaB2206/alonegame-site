@@ -33,23 +33,20 @@
 .psc-btn-o:hover{background:var(--vert);color:var(--creme);border-color:var(--vert)}
 .psc-btn-o.light{color:#fff}.psc-btn-o.light:hover{background:#fff;color:var(--vert);border-color:#fff}
 .psc-tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mauve);margin-bottom:22px}
-/* AURA IRIDESCENTE LUMINEUSE (attrape-soleil) */
-.psc-aura{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(440px,56vw,820px);aspect-ratio:1/1.05;border-radius:50%;z-index:0;pointer-events:none;
-  background:radial-gradient(circle at 50% 52%,
-    rgba(255,255,255,.95) 6%,
-    rgba(247,228,186,.75) 20%,
-    rgba(207,234,210,.62) 36%,
-    rgba(191,225,236,.58) 52%,
-    rgba(220,200,234,.5) 68%,
-    rgba(246,201,212,.38) 82%,
-    transparent 92%);
-  filter:blur(22px);mix-blend-mode:multiply;animation:aura 7s ease-in-out infinite}
-.psc-aura::after{content:'';position:absolute;inset:18%;border-radius:50%;
-  background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.9),rgba(255,247,235,.4) 45%,transparent 70%);
-  filter:blur(8px);animation:auraCore 4.5s ease-in-out infinite}
-@keyframes aura{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1) rotate(0)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06) rotate(8deg)}}
-@keyframes auraCore{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
-@media(prefers-reduced-motion:reduce){.psc-aura,.psc-aura::after{animation:none}}
+/* AURA IRIDESCENTE LUMINEUSE (attrape-soleil) — dynamique + grain */
+.psc-aura{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:clamp(380px,46vw,680px);height:clamp(520px,64vw,900px);border-radius:50%;z-index:0;pointer-events:none;overflow:hidden;mix-blend-mode:multiply;filter:blur(6px);animation:auraBreath 8s ease-in-out infinite}
+.psc-aura::before{content:'';position:absolute;inset:-18%;
+  background:radial-gradient(circle at 50% 58%,
+    rgba(255,255,255,.96) 4%,rgba(250,238,196,.9) 13%,rgba(245,208,178,.84) 24%,
+    rgba(240,198,210,.82) 34%,rgba(214,194,230,.76) 46%,rgba(188,206,232,.74) 60%,
+    rgba(186,222,224,.7) 74%,rgba(190,210,236,.62) 88%,transparent 96%);
+  animation:auraSpin 34s linear infinite,auraHue 16s linear infinite}
+.psc-aura::after{content:'';position:absolute;inset:0;opacity:.4;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes auraBreath{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-52%) scale(1.07)}}
+@keyframes auraSpin{to{transform:rotate(360deg)}}
+@keyframes auraHue{to{filter:hue-rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.psc-aura,.psc-aura::before{animation:none}}
 /* NAV */
 .psc-nav{position:fixed;top:0;left:0;width:100%;z-index:60;padding:26px 48px;display:flex;justify-content:space-between;align-items:center;transition:all .5s}
 .psc-nav.scr{background:rgba(242,242,242,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:16px 48px;border-bottom:1px solid rgba(18,31,24,.08)}
