@@ -6,18 +6,24 @@
 .psl,.psl *{margin:0;padding:0;box-sizing:border-box}
 .psl{position:relative;display:inline-block;font-family:'Inter',sans-serif}
 
-/* DISQUE = bulle (vidéo), derrière le carré, dépasse à droite */
+/* DISQUE = bille qui tourne, derrière le carré, dépasse à droite */
 .psl-disc{position:absolute;z-index:1;top:50%;left:100%;transform:translate(-50%,-50%);
   width:clamp(170px,21vw,240px);aspect-ratio:1;border-radius:50%;overflow:hidden;
-  /* secours si la vidéo ne charge pas : le dégradé pastel qui tourne */
-  background:conic-gradient(from 200deg, #f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,#f6d4e0);
-  filter:saturate(1.5);
-  box-shadow:0 18px 44px rgba(150,160,200,.26);
-  animation:psl-spin 14s linear infinite}
-/* TA VIDÉO de bulle en rotation */
-.psl-bubble-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;z-index:1}
-@keyframes psl-spin{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.psl-disc{animation:none}}
+  box-shadow:0 18px 44px rgba(150,160,200,.28)}
+/* TEXTURE DE COULEURS qui DÉFILE autour de la sphère (= rotation 3D) */
+.psl-tex{position:absolute;top:-2%;left:0;height:104%;width:300%;
+  background:linear-gradient(90deg,
+    #f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,
+    #f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,
+    #f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,#f6d4e0);
+  filter:saturate(1.55);
+  animation:psl-roll 9s linear infinite}
+@keyframes psl-roll{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
+/* VOLUME 3D (sphère) — sans reflet glossy : juste l'ombre des bords + une lumière douce */
+.psl-vol{position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 50% 38%, rgba(255,255,255,.16), rgba(255,255,255,0) 60%);
+  box-shadow:inset -12px -16px 34px rgba(120,130,185,.42), inset 10px 12px 26px rgba(255,255,255,.2)}
+@media(prefers-reduced-motion:reduce){.psl-tex{animation:none}}
 
 /* CARRÉ EN VERRE (glassmorphism) + nom */
 .psl-card{position:relative;z-index:2;width:clamp(230px,28vw,320px);aspect-ratio:1;border-radius:16px;
@@ -34,10 +40,8 @@
 <div class="psl-wrap">
   <a href="#" class="psl" style="text-decoration:none">
     <div class="psl-disc">
-      <!-- 👉 Remplace l'URL par celle de TA vidéo (médiathèque WordPress) -->
-      <video class="psl-bubble-vid" autoplay muted loop playsinline>
-        <source src="URL_DE_TA_VIDEO.mp4" type="video/mp4">
-      </video>
+      <div class="psl-tex"></div>
+      <div class="psl-vol"></div>
     </div>
     <div class="psl-card">
       <div class="psl-name">
