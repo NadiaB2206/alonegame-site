@@ -1,46 +1,39 @@
-<!-- ============ POEATA CHAVES — LOGO (carré, mesh dégradé centré qui morphe + nom) ============ -->
+<!-- ====== POEATA CHAVES — LOGO façon vinyle : carré (nom) + disque iridescent qui dépasse à droite et tourne ====== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-.psl-wrap{display:flex;justify-content:center;width:100%}
+.psl-wrap{display:flex;justify-content:center;width:100%;padding:40px 0}
 .psl,.psl *{margin:0;padding:0;box-sizing:border-box}
-/* CARRÉ (centré) */
-.psl{position:relative;width:clamp(220px,28vw,320px);max-width:100%;aspect-ratio:1/1;overflow:hidden;border-radius:4px;
-  background:#efe8e2;display:grid;place-items:center;font-family:'Inter',sans-serif}
-/* MESH DÉGRADÉ centré, qui remplit le carré et morphe SUR PLACE (sans partir d'un côté) */
-.psl-aura{position:absolute;inset:-15%;z-index:0;
+.psl{position:relative;display:inline-block;font-family:'Inter',sans-serif}
+
+/* DISQUE (cercle) : derrière le carré, dépasse à droite, et TOURNE */
+.psl-disc{position:absolute;z-index:1;top:50%;left:100%;transform:translate(-52%,-50%);
+  width:clamp(160px,20vw,230px);aspect-ratio:1;border-radius:50%;overflow:hidden;
+  box-shadow:0 12px 34px rgba(120,90,180,.3)}
+.psl-disc::before{content:'';position:absolute;inset:-22%;
+  background:conic-gradient(from 0deg,#ff9a3d,#ff2f9e,#a94dff,#5b63ff,#57c7ff,#9ff5c0,#ff7ac0,#ff9a3d);
+  animation:psl-spin 12s linear infinite}
+.psl-disc::after{content:'';position:absolute;inset:0;border-radius:50%;pointer-events:none;
   background:
-    radial-gradient(40% 40% at 30% 32%, #5b63ff 0%, transparent 68%),
-    radial-gradient(38% 36% at 56% 22%, #ff9a3d 0%, transparent 66%),
-    radial-gradient(46% 44% at 56% 50%, #ff2f9e 0%, transparent 66%),
-    radial-gradient(42% 42% at 30% 60%, #a94dff 0%, transparent 68%),
-    radial-gradient(40% 40% at 70% 70%, #ff7ac0 0%, transparent 68%),
-    #ece6e2;
-  filter:blur(13px);
-  animation:psl-move 14s ease-in-out infinite, psl-hue 22s linear infinite}
-@keyframes psl-move{
-  0%,100%{transform:translate(0,0) scale(1.06)}
-  25%    {transform:translate(2%,-2%) scale(1.12)}
-  50%    {transform:translate(-1%,2%) scale(1.06)}
-  75%    {transform:translate(-2%,-1%) scale(1.12)}
-}
-@keyframes psl-hue{to{filter:blur(13px) hue-rotate(360deg)}}
-/* voile qui estompe les bords en crème (comme la pochette) */
-.psl-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(circle at 50% 50%, transparent 40%, rgba(239,232,226,.5) 76%, #efe8e2 100%)}
-@media(prefers-reduced-motion:reduce){.psl-aura{animation:none}}
-/* NOM (lettres espacées noires) */
-.psl-name{position:relative;z-index:2;text-align:center;color:#11110f}
-.psl-name .l{display:block;font-size:clamp(24px,3.6vw,38px);font-weight:400;letter-spacing:.3em;text-transform:uppercase;text-indent:.3em}
-.psl-name .sub{display:block;margin-top:14px;font-size:9px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:rgba(17,17,15,.7);text-indent:.4em}
+    radial-gradient(circle at 36% 30%,rgba(255,255,255,.75),rgba(255,255,255,0) 42%),
+    radial-gradient(circle at 70% 78%,rgba(20,10,40,.28),transparent 55%)}
+@keyframes psl-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.psl-disc::before{animation:none}}
+
+/* CARRÉ TRANSPARENT + NOM (même typo que la pochette : sans-serif, lettres espacées) */
+.psl-card{position:relative;z-index:2;width:clamp(230px,28vw,320px);aspect-ratio:1;border-radius:4px;
+  background:rgba(240,234,228,.5);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  display:grid;place-items:center}
+.psl-name{text-align:center;color:#11110f}
+.psl-name .l{display:block;font-size:clamp(26px,3.6vw,42px);font-weight:400;letter-spacing:.36em;text-transform:uppercase;text-indent:.36em;line-height:1.15}
+.psl-name .sub{display:block;margin-top:16px;font-size:9px;font-weight:500;letter-spacing:.42em;text-transform:uppercase;color:rgba(17,17,15,.65);text-indent:.42em}
 </style>
 
 <div class="psl-wrap">
-  <a href="#" style="text-decoration:none">
-    <div class="psl">
-      <div class="psl-aura"></div>
-      <div class="psl-veil"></div>
+  <a href="#" class="psl" style="text-decoration:none">
+    <div class="psl-disc"></div>
+    <div class="psl-card">
       <div class="psl-name">
         <span class="l">Poeata</span>
         <span class="l">Chaves</span>
