@@ -6,29 +6,34 @@
 .psl,.psl *{margin:0;padding:0;box-sizing:border-box}
 .psl{position:relative;display:inline-block;font-family:'Inter',sans-serif}
 
-/* DISQUE = bulle de verre, derrière le carré, dépasse à droite */
+/* DISQUE = bille 3D, derrière le carré, dépasse à droite */
 .psl-disc{position:absolute;z-index:1;top:50%;left:100%;transform:translate(-50%,-50%);
-  width:clamp(170px,21vw,240px);aspect-ratio:1}
-/* BULLE : verre — couleurs VIVES qui tournent à travers le verre (version + punchy) */
-.psl-bubble{position:absolute;inset:0;border-radius:50%;z-index:1;overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 46%, rgba(255,255,255,.45), rgba(255,255,255,.12) 52%, rgba(255,255,255,0) 78%),
-    conic-gradient(from 200deg, #ff6db5,#ffcf5a,#5cf0c4,#5ab0ff,#c46dff,#ff6db5);
+  width:clamp(180px,22vw,250px);aspect-ratio:1}
+/* BILLE DE VERRE GLOSSY : couleurs iridescentes qui TOURNENT dans la sphère */
+.psl-bubble{position:absolute;inset:0;border-radius:50%;z-index:1;overflow:hidden}
+.psl-bubble-color{position:absolute;inset:-12%;border-radius:50%;
+  background:conic-gradient(from 220deg,
+    #ffd6ec 0deg,#7ac0ff 52deg,#3a6bff 104deg,#7a3df0 150deg,
+    #c43df0 188deg,#ff3da0 224deg,#ff7a3d 280deg,#ff9ec6 322deg,#ffd6ec 360deg);
   filter:saturate(1.25);
-  animation:psl-spin 16s linear infinite}
-/* RENDU VERRE FIXE : reflets vifs + liseré + profondeur 3D marquée + ombre */
-.psl-bubble-gloss{position:absolute;inset:0;border-radius:50%;z-index:2;pointer-events:none;
+  animation:psl-spin 13s linear infinite}
+/* swirl de lumière (bande claire courbée qui tourne plus lentement) */
+.psl-bubble-swirl{position:absolute;inset:0;border-radius:50%;z-index:2;pointer-events:none;mix-blend-mode:screen;
+  background:radial-gradient(58% 40% at 42% 30%, rgba(255,255,255,.85), rgba(255,255,255,0) 55%);
+  animation:psl-spin 19s linear infinite reverse}
+/* VOLUME 3D + reflets glossy (fixe, par-dessus) */
+.psl-bubble-gloss{position:absolute;inset:0;border-radius:50%;z-index:3;pointer-events:none;
   background:
-    radial-gradient(64% 44% at 34% 21%, rgba(255,255,255,.98), rgba(255,255,255,0) 58%),
-    radial-gradient(26% 16% at 29% 15%, #ffffff, transparent 70%),
-    radial-gradient(circle at 50% 6%, rgba(255,255,255,.9), transparent 22%);
+    radial-gradient(70% 52% at 36% 20%, rgba(255,255,255,.95), rgba(255,255,255,0) 56%),
+    radial-gradient(26% 16% at 31% 14%, #ffffff, transparent 70%),
+    radial-gradient(120% 80% at 50% 118%, rgba(255,255,255,.35), transparent 52%);
   box-shadow:
-    inset 0 0 0 1.5px rgba(255,255,255,.75),
-    inset 10px 12px 24px rgba(255,255,255,.65),
-    inset -13px -17px 36px rgba(80,92,150,.5),
-    0 24px 52px rgba(110,120,180,.42)}
+    inset 0 0 0 1px rgba(255,255,255,.45),
+    inset 12px 14px 30px rgba(255,255,255,.4),
+    inset -16px -22px 48px rgba(40,20,80,.5),
+    0 26px 56px rgba(120,90,190,.5)}
 @keyframes psl-spin{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.psl-bubble{animation:none}}
+@media(prefers-reduced-motion:reduce){.psl-bubble-color,.psl-bubble-swirl{animation:none}}
 
 /* CARRÉ EN VERRE (glassmorphism) + nom */
 .psl-card{position:relative;z-index:2;width:clamp(230px,28vw,320px);aspect-ratio:1;border-radius:16px;
@@ -45,7 +50,10 @@
 <div class="psl-wrap">
   <a href="#" class="psl" style="text-decoration:none">
     <div class="psl-disc">
-      <div class="psl-bubble"></div>
+      <div class="psl-bubble">
+        <div class="psl-bubble-color"></div>
+        <div class="psl-bubble-swirl"></div>
+      </div>
       <div class="psl-bubble-gloss"></div>
     </div>
     <div class="psl-card">
