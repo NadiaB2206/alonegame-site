@@ -33,6 +33,23 @@
 .psc-btn-o:hover{background:var(--vert);color:var(--creme);border-color:var(--vert)}
 .psc-btn-o.light{color:#fff}.psc-btn-o.light:hover{background:#fff;color:var(--vert);border-color:#fff}
 .psc-tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mauve);margin-bottom:22px}
+/* AURA IRIDESCENTE LUMINEUSE (attrape-soleil) */
+.psc-aura{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(440px,56vw,820px);aspect-ratio:1/1.05;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 52%,
+    rgba(255,255,255,.95) 6%,
+    rgba(247,228,186,.75) 20%,
+    rgba(207,234,210,.62) 36%,
+    rgba(191,225,236,.58) 52%,
+    rgba(220,200,234,.5) 68%,
+    rgba(246,201,212,.38) 82%,
+    transparent 92%);
+  filter:blur(22px);mix-blend-mode:multiply;animation:aura 7s ease-in-out infinite}
+.psc-aura::after{content:'';position:absolute;inset:18%;border-radius:50%;
+  background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.9),rgba(255,247,235,.4) 45%,transparent 70%);
+  filter:blur(8px);animation:auraCore 4.5s ease-in-out infinite}
+@keyframes aura{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1) rotate(0)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06) rotate(8deg)}}
+@keyframes auraCore{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+@media(prefers-reduced-motion:reduce){.psc-aura,.psc-aura::after{animation:none}}
 /* NAV */
 .psc-nav{position:fixed;top:0;left:0;width:100%;z-index:60;padding:26px 48px;display:flex;justify-content:space-between;align-items:center;transition:all .5s}
 .psc-nav.scr{background:rgba(242,242,242,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:16px 48px;border-bottom:1px solid rgba(18,31,24,.08)}
@@ -59,8 +76,8 @@
 .psc-hero h1 em{font-style:italic;color:#e8d3df}
 .psc-hero-sub{max-width:460px;margin:0 auto 36px;font-size:16px;line-height:1.7;font-weight:300;color:rgba(255,255,255,.85)}
 /* STATEMENT */
-.psc-state{padding:160px 48px;text-align:center}
-.psc-state-in{max-width:1000px;margin:0 auto}
+.psc-state{position:relative;overflow:hidden;padding:180px 48px;text-align:center}
+.psc-state-in{position:relative;z-index:2;max-width:1000px;margin:0 auto}
 .psc-state p{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(30px,4.4vw,62px);line-height:1.18;color:var(--vert)}
 .psc-state p em{font-style:italic;color:var(--mauve)}
 /* ABOUT (panneau foncé) */
@@ -161,6 +178,7 @@
 
   <!-- STATEMENT -->
   <section class="psc-state">
+    <div class="psc-aura"></div>
     <div class="psc-state-in">
       <p class="rv">Apaisant, enveloppant, comme une <em>étreinte chaleureuse</em>. Mon intention est simple : prendre soin de vous.</p>
     </div>
@@ -183,6 +201,7 @@
 
   <!-- MISSION serif géant -->
   <section class="psc-mission">
+    <div class="psc-aura"></div>
     <div class="psc-mi psc-mi1 clip rv"><img src="https://images.pexels.com/photos/7700/pexels-photo-7700.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Massage aux fleurs" onerror="this.style.display='none'"></div>
     <div class="psc-mi psc-mi2 clip rv d1"><img src="https://images.pexels.com/photos/6560266/pexels-photo-6560266.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Pierres chaudes" onerror="this.style.display='none'"></div>
     <h2 class="rv">On accueille<br><span class="rot" id="rot"><span class="on">la douceur</span><span>le soin</span><span>l'écoute</span><span>vous</span></span></h2>
@@ -250,8 +269,11 @@
 (function(){
   var nav=document.getElementById('nav');
   window.addEventListener('scroll',function(){nav.classList.toggle('scr',window.scrollY>60)},{passive:true});
-  var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.15});
-  document.querySelectorAll('.psc .rv,.psc .clip').forEach(function(el){obs.observe(el)});
+  var els=document.querySelectorAll('.psc .rv,.psc .clip');
+  var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){obs.observe(el)});
+  // sécurité : tout révéler après 2,5s au cas où
+  setTimeout(function(){els.forEach(function(el){el.classList.add('v')})},2500);
   var rot=document.getElementById('rot');
   if(rot){var w=rot.querySelectorAll('span'),i=0;setInterval(function(){var c=w[i];c.classList.remove('on');c.classList.add('out');i=(i+1)%w.length;var n=w[i];n.classList.remove('out');setTimeout(function(){c.classList.remove('out')},600);n.classList.add('on');},2200);}
 })();
