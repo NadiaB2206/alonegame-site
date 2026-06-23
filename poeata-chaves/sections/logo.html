@@ -1,47 +1,51 @@
-<!-- ============ POEATA CHAVES — LOGO (carré, mesh dégradé animé façon VIOLENTS + nom) ============ -->
+<!-- ============ POEATA CHAVES — LOGO (carré, mesh dégradé centré qui morphe + nom) ============ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+.psl-wrap{display:flex;justify-content:center;width:100%}
 .psl,.psl *{margin:0;padding:0;box-sizing:border-box}
-/* CARRÉ */
-.psl{position:relative;width:clamp(220px,28vw,320px);aspect-ratio:1/1;overflow:hidden;border-radius:4px;
+/* CARRÉ (centré) */
+.psl{position:relative;width:clamp(220px,28vw,320px);max-width:100%;aspect-ratio:1/1;overflow:hidden;border-radius:4px;
   background:#efe8e2;display:grid;place-items:center;font-family:'Inter',sans-serif}
-/* MESH DÉGRADÉ qui remplit tout le carré et qui bouge */
-.psl-aura{position:absolute;inset:-35%;z-index:0;
+/* MESH DÉGRADÉ centré, qui remplit le carré et morphe SUR PLACE (sans partir d'un côté) */
+.psl-aura{position:absolute;inset:-15%;z-index:0;
   background:
-    radial-gradient(42% 42% at 30% 30%, #5b63ff 0%, transparent 70%),
-    radial-gradient(40% 38% at 62% 22%, #ff9a3d 0%, transparent 66%),
-    radial-gradient(48% 46% at 66% 56%, #ff2f9e 0%, transparent 68%),
-    radial-gradient(44% 44% at 36% 64%, #a94dff 0%, transparent 70%),
-    radial-gradient(40% 40% at 80% 80%, #ff7ac0 0%, transparent 70%),
+    radial-gradient(40% 40% at 30% 32%, #5b63ff 0%, transparent 68%),
+    radial-gradient(38% 36% at 56% 22%, #ff9a3d 0%, transparent 66%),
+    radial-gradient(46% 44% at 56% 50%, #ff2f9e 0%, transparent 66%),
+    radial-gradient(42% 42% at 30% 60%, #a94dff 0%, transparent 68%),
+    radial-gradient(40% 40% at 70% 70%, #ff7ac0 0%, transparent 68%),
     #ece6e2;
-  filter:blur(12px);
-  animation:psl-move 18s ease-in-out infinite}
+  filter:blur(13px);
+  animation:psl-move 14s ease-in-out infinite, psl-hue 22s linear infinite}
 @keyframes psl-move{
-  0%   {transform:rotate(0deg)   scale(1.15)}
-  50%  {transform:rotate(180deg) scale(1.35)}
-  100% {transform:rotate(360deg) scale(1.15)}
+  0%,100%{transform:translate(0,0) scale(1.06)}
+  25%    {transform:translate(2%,-2%) scale(1.12)}
+  50%    {transform:translate(-1%,2%) scale(1.06)}
+  75%    {transform:translate(-2%,-1%) scale(1.12)}
 }
+@keyframes psl-hue{to{filter:blur(13px) hue-rotate(360deg)}}
 /* voile qui estompe les bords en crème (comme la pochette) */
 .psl-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(circle at 50% 48%, transparent 38%, rgba(239,232,226,.55) 74%, #efe8e2 100%)}
+  background:radial-gradient(circle at 50% 50%, transparent 40%, rgba(239,232,226,.5) 76%, #efe8e2 100%)}
 @media(prefers-reduced-motion:reduce){.psl-aura{animation:none}}
 /* NOM (lettres espacées noires) */
 .psl-name{position:relative;z-index:2;text-align:center;color:#11110f}
-.psl-name .l{display:block;font-size:clamp(24px,3.6vw,40px);font-weight:400;letter-spacing:.34em;text-transform:uppercase}
-.psl-name .l span{margin-left:-.34em}/* compense l'espacement à droite pour centrer */
-.psl-name .sub{display:block;margin-top:14px;font-size:9px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:rgba(17,17,15,.7)}
+.psl-name .l{display:block;font-size:clamp(24px,3.6vw,38px);font-weight:400;letter-spacing:.3em;text-transform:uppercase;text-indent:.3em}
+.psl-name .sub{display:block;margin-top:14px;font-size:9px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:rgba(17,17,15,.7);text-indent:.4em}
 </style>
 
-<a href="#" style="text-decoration:none">
-  <div class="psl">
-    <div class="psl-aura"></div>
-    <div class="psl-veil"></div>
-    <div class="psl-name">
-      <span class="l"><span>Poeata</span></span>
-      <span class="l"><span>Chaves</span></span>
-      <span class="sub"><span>Massages &amp; soins</span></span>
+<div class="psl-wrap">
+  <a href="#" style="text-decoration:none">
+    <div class="psl">
+      <div class="psl-aura"></div>
+      <div class="psl-veil"></div>
+      <div class="psl-name">
+        <span class="l">Poeata</span>
+        <span class="l">Chaves</span>
+        <span class="sub">Massages &amp; soins</span>
+      </div>
     </div>
-  </div>
-</a>
+  </a>
+</div>
