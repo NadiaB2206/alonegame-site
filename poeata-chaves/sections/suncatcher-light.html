@@ -1,30 +1,29 @@
-<!-- ====== POEATA CHAVES — LUMIÈRE ATTRAPE-SOLEIL (effet plein écran) ======
-  À placer UNE fois sur la page (ex. tout en haut, ou en HTML global / arrière-plan).
-  Couche fixe, derrière le contenu : projette des reflets iridescents qui dérivent
-  doucement sur toute la page, comme la lumière d'un attrape-soleil. -->
+<!-- ====== POEATA CHAVES — LUMIÈRE ATTRAPE-SOLEIL VIVE (plein écran, holographique) ======
+  À placer UNE fois sur la page. Couche fixe derrière le contenu : reflets iridescents
+  SATURÉS qui dérivent sur toute la page. -->
 <style>
-.psun{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;mix-blend-mode:multiply}
-.psun b{position:absolute;border-radius:50%;filter:blur(80px);will-change:transform,opacity}
-/* grands halos arc-en-ciel qui dérivent */
-.psun .b1{top:-10%;left:-5%;width:48vw;height:48vw;opacity:.5;
-  background:conic-gradient(from 30deg,#ffd6a8,#ffb0cf,#d9b8f0,#aacbf2,#bdeede,#ffd6a8);
-  animation:psun-d1 32s ease-in-out infinite, psun-spin 60s linear infinite}
-.psun .b2{bottom:-12%;right:-6%;width:44vw;height:44vw;opacity:.45;
-  background:conic-gradient(from 200deg,#bdeede,#aacbf2,#d9b8f0,#ffb0cf,#ffd6a8,#bdeede);
-  animation:psun-d2 38s ease-in-out infinite, psun-spin 80s linear infinite reverse}
-.psun .b3{top:35%;left:42%;width:36vw;height:36vw;opacity:.32;
-  background:conic-gradient(from 120deg,#ffe7b0,#ffc0d6,#c8d8f5,#cdeede,#ffe7b0);
-  animation:psun-d3 46s ease-in-out infinite, psun-spin 70s linear infinite}
-/* rayons prismatiques diagonaux qui balaient (les "reflets" projetés) */
-.psun .rays{position:absolute;inset:-20%;mix-blend-mode:screen;opacity:.4;
-  background:repeating-linear-gradient(115deg,transparent 0 70px,
-    rgba(255,180,205,.5) 84px,rgba(255,225,150,.45) 104px,
-    rgba(150,225,210,.45) 124px,rgba(170,200,240,.45) 144px,transparent 160px 250px);
-  filter:blur(30px);animation:psun-rays 40s linear infinite}
+.psun{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.psun b{position:absolute;border-radius:50%;filter:blur(66px) saturate(1.7);mix-blend-mode:multiply;will-change:transform}
+/* grands halos arc-en-ciel VIFS qui dérivent et tournent */
+.psun .b1{top:-12%;left:-8%;width:56vw;height:56vw;opacity:.62;
+  background:conic-gradient(from 30deg,#5b63ff,#a94dff,#ff2f9e,#ff7a3d,#ffd23d,#3dd7ff,#5b63ff);
+  animation:psun-d1 30s ease-in-out infinite, psun-spin 55s linear infinite}
+.psun .b2{bottom:-14%;right:-10%;width:52vw;height:52vw;opacity:.55;
+  background:conic-gradient(from 200deg,#3dd7ff,#5b63ff,#a94dff,#ff2f9e,#ff9a3d,#3dd7ff);
+  animation:psun-d2 36s ease-in-out infinite, psun-spin 72s linear infinite reverse}
+.psun .b3{top:32%;left:40%;width:42vw;height:42vw;opacity:.45;
+  background:conic-gradient(from 120deg,#ffd23d,#ff5db0,#a94dff,#3dd7ff,#7af0c0,#ffd23d);
+  animation:psun-d3 44s ease-in-out infinite, psun-spin 64s linear infinite}
+/* rayons prismatiques diagonaux SATURÉS qui balaient */
+.psun .rays{position:absolute;inset:-25%;mix-blend-mode:screen;opacity:.6;
+  background:repeating-linear-gradient(115deg,transparent 0 54px,
+    rgba(255,60,150,.7) 70px,rgba(255,180,40,.6) 92px,
+    rgba(60,210,255,.65) 114px,rgba(140,80,255,.6) 136px,transparent 156px 250px);
+  filter:blur(22px) saturate(1.5);animation:psun-rays 34s linear infinite}
 @keyframes psun-spin{to{transform:rotate(360deg)}}
-@keyframes psun-d1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8vw,6vh) scale(1.15)}}
-@keyframes psun-d2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7vw,-5vh) scale(1.2)}}
-@keyframes psun-d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-6vw,7vh) scale(1.18)}}
+@keyframes psun-d1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(9vw,7vh) scale(1.18)}}
+@keyframes psun-d2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-8vw,-6vh) scale(1.22)}}
+@keyframes psun-d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7vw,8vh) scale(1.2)}}
 @keyframes psun-rays{to{transform:translateX(-250px)}}
 @media(prefers-reduced-motion:reduce){.psun b,.psun .rays{animation:none}}
 </style>
