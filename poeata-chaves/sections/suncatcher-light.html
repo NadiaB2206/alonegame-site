@@ -1,36 +1,44 @@
-<!-- ====== POEATA CHAVES — LUMIÈRE ATTRAPE-SOLEIL VIVE (plein écran, holographique) ======
-  À placer UNE fois sur la page. Couche fixe derrière le contenu : reflets iridescents
-  SATURÉS qui dérivent sur toute la page. -->
+<!-- ====== POEATA CHAVES — ATTRAPE-SOLEIL : éclats de prisme arc-en-ciel dispersés ======
+  Coin lumineux en haut-gauche + dizaines de mini-reflets iridescents qui scintillent,
+  comme la lumière du soleil à travers un film attrape-soleil. À placer UNE fois sur la page. -->
 <style>
-.psun{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.psun b{position:absolute;border-radius:50%;filter:blur(66px) saturate(1.7);mix-blend-mode:multiply;will-change:transform}
-/* grands halos arc-en-ciel VIFS qui dérivent et tournent */
-.psun .b1{top:-12%;left:-8%;width:56vw;height:56vw;opacity:.62;
-  background:conic-gradient(from 30deg,#5b63ff,#a94dff,#ff2f9e,#ff7a3d,#ffd23d,#3dd7ff,#5b63ff);
-  animation:psun-d1 30s ease-in-out infinite, psun-spin 55s linear infinite}
-.psun .b2{bottom:-14%;right:-10%;width:52vw;height:52vw;opacity:.55;
-  background:conic-gradient(from 200deg,#3dd7ff,#5b63ff,#a94dff,#ff2f9e,#ff9a3d,#3dd7ff);
-  animation:psun-d2 36s ease-in-out infinite, psun-spin 72s linear infinite reverse}
-.psun .b3{top:32%;left:40%;width:42vw;height:42vw;opacity:.45;
-  background:conic-gradient(from 120deg,#ffd23d,#ff5db0,#a94dff,#3dd7ff,#7af0c0,#ffd23d);
-  animation:psun-d3 44s ease-in-out infinite, psun-spin 64s linear infinite}
-/* rayons prismatiques diagonaux SATURÉS qui balaient */
-.psun .rays{position:absolute;inset:-25%;mix-blend-mode:screen;opacity:.6;
-  background:repeating-linear-gradient(115deg,transparent 0 54px,
-    rgba(255,60,150,.7) 70px,rgba(255,180,40,.6) 92px,
-    rgba(60,210,255,.65) 114px,rgba(140,80,255,.6) 136px,transparent 156px 250px);
-  filter:blur(22px) saturate(1.5);animation:psun-rays 34s linear infinite}
-@keyframes psun-spin{to{transform:rotate(360deg)}}
-@keyframes psun-d1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(9vw,7vh) scale(1.18)}}
-@keyframes psun-d2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-8vw,-6vh) scale(1.22)}}
-@keyframes psun-d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7vw,8vh) scale(1.2)}}
-@keyframes psun-rays{to{transform:translateX(-250px)}}
-@media(prefers-reduced-motion:reduce){.psun b,.psun .rays{animation:none}}
+.psun2{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+/* source de lumière (coin haut-gauche) */
+.psun2 .glow{position:absolute;top:-18%;left:-14%;width:70vw;height:70vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.9),rgba(255,255,255,.4) 32%,transparent 64%);
+  filter:blur(18px)}
+/* éclats de prisme (générés en JS) */
+.psun2 .fleck{position:absolute;border-radius:50%;
+  background:linear-gradient(120deg,#ff3da0 0%,#ffd23d 26%,#7af0c0 50%,#3dd7ff 74%,#a94dff 100%);
+  filter:blur(.6px) saturate(1.9);mix-blend-mode:screen;
+  animation-name:psun2-tw;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
+@keyframes psun2-tw{
+  0%,100%{opacity:.12;transform:rotate(var(--r)) scaleX(var(--sx)) scale(.6)}
+  50%    {opacity:1;  transform:rotate(var(--r)) scaleX(var(--sx)) scale(1.2)}
+}
+@media(prefers-reduced-motion:reduce){.psun2 .fleck{animation:none;opacity:.7}}
 </style>
 
-<div class="psun" aria-hidden="true">
-  <div class="rays"></div>
-  <b class="b1"></b>
-  <b class="b2"></b>
-  <b class="b3"></b>
-</div>
+<div class="psun2" aria-hidden="true"><div class="glow"></div></div>
+
+<script>
+(function(){
+  var c=document.querySelector('.psun2'); if(!c) return;
+  var N=34;
+  for(var i=0;i<N;i++){
+    var f=document.createElement('span'); f.className='fleck';
+    // densité plus forte vers le coin haut-gauche
+    var bias=Math.pow(Math.random(),1.5);
+    var x=(bias*70 + Math.random()*30);          // %
+    var y=(bias*60 + Math.random()*40);           // %
+    var size=(4+Math.random()*16).toFixed(1);     // px
+    var rot=(100+Math.random()*45).toFixed(1);    // diagonale
+    var sx=(1.6+Math.random()*2.6).toFixed(2);    // étirement (streak)
+    var dur=(3.5+Math.random()*6).toFixed(2);
+    var delay=(Math.random()*9).toFixed(2);
+    f.style.cssText='left:'+x+'%;top:'+y+'%;width:'+size+'px;height:'+size+'px;'
+      +'--r:'+rot+'deg;--sx:'+sx+';animation-duration:'+dur+'s;animation-delay:-'+delay+'s';
+    c.appendChild(f);
+  }
+})();
+</script>
