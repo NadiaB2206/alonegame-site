@@ -2,13 +2,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-.psl-wrap{display:flex;justify-content:center;width:100%;padding:48px 0}
+.psl-wrap{display:flex;justify-content:center;width:100%;padding:60px 0}
 .psl,.psl *{margin:0;padding:0;box-sizing:border-box}
 .psl{position:relative;display:inline-block;font-family:'Inter',sans-serif}
 
-/* DISQUE = bulle de verre, derrière le carré, dépasse à droite */
+/* DISQUE = bulle de verre + halo, derrière le carré, dépasse à droite */
 .psl-disc{position:absolute;z-index:1;top:50%;left:100%;transform:translate(-50%,-50%);
   width:clamp(170px,21vw,240px);aspect-ratio:1}
+/* GROS HALO coloré autour de la bulle (jaune en haut, rose à gauche, pêche à droite) */
+.psl-halo{position:absolute;inset:-42%;border-radius:50%;z-index:0;
+  background:
+    radial-gradient(46% 40% at 50% 16%, #ffe79a, transparent 62%),
+    radial-gradient(42% 44% at 20% 60%, #ff9ec6, transparent 60%),
+    radial-gradient(46% 46% at 80% 54%, #ffce8a, transparent 62%),
+    radial-gradient(42% 40% at 56% 90%, #ffd6a0, transparent 60%),
+    radial-gradient(36% 36% at 28% 28%, #eaf0a0, transparent 60%),
+    radial-gradient(40% 40% at 74% 24%, #f7d8ef, transparent 62%);
+  filter:blur(30px);opacity:.92;animation:psl-halo 20s ease-in-out infinite}
+@keyframes psl-halo{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.14)}100%{transform:rotate(360deg) scale(1)}}
 /* BULLE : tes couleurs pastel qui DÉFILENT (= rotation 3D de la sphère) */
 .psl-bubble{position:absolute;inset:0;border-radius:50%;z-index:1;overflow:hidden}
 .psl-tex{position:absolute;top:-2%;left:0;height:104%;width:300%;
@@ -18,7 +29,7 @@
     #f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,#f6d4e0);
   animation:psl-roll 14s linear infinite}
 @keyframes psl-roll{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
-/* RENDU VERRE FIXE (inchangé) : corps translucide + liseré + reflet courbé + profondeur 3D + ombre */
+/* RENDU VERRE FIXE : corps translucide + liseré + reflet courbé + profondeur 3D + ombre */
 .psl-bubble-gloss{position:absolute;inset:0;border-radius:50%;z-index:2;pointer-events:none;
   background:
     radial-gradient(circle at 50% 48%, rgba(250,250,253,.5), rgba(250,250,253,.18) 55%, rgba(250,250,253,0) 80%),
@@ -30,8 +41,7 @@
     inset 7px 9px 20px rgba(255,255,255,.55),
     inset -9px -13px 30px rgba(150,160,200,.34),
     0 20px 46px rgba(150,160,200,.26)}
-@keyframes psl-spin{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.psl-tex{animation:none}}
+@media(prefers-reduced-motion:reduce){.psl-tex,.psl-halo{animation:none}}
 
 /* CARRÉ EN VERRE (glassmorphism) + nom */
 .psl-card{position:relative;z-index:2;width:clamp(230px,28vw,320px);aspect-ratio:1;border-radius:16px;
@@ -48,6 +58,7 @@
 <div class="psl-wrap">
   <a href="#" class="psl" style="text-decoration:none">
     <div class="psl-disc">
+      <div class="psl-halo"></div>
       <div class="psl-bubble"><div class="psl-tex"></div></div>
       <div class="psl-bubble-gloss"></div>
     </div>
