@@ -2,30 +2,37 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-.psl-wrap{display:flex;justify-content:center;width:100%;padding:60px 0}
+.psl-wrap{display:flex;justify-content:center;width:100%;padding:48px 0}
 .psl,.psl *{margin:0;padding:0;box-sizing:border-box}
 .psl{position:relative;display:inline-block;font-family:'Inter',sans-serif}
 
-/* DISQUE = sphère de verre 3D + halo, derrière le carré, dépasse à droite */
+/* DISQUE = bulle de verre, derrière le carré, dépasse à droite */
 .psl-disc{position:absolute;z-index:1;top:50%;left:100%;transform:translate(-50%,-50%);
-  width:clamp(180px,22vw,250px);aspect-ratio:1}
-/* GROS HALO coloré derrière la sphère */
-.psl-halo{position:absolute;inset:-40%;border-radius:50%;z-index:0;
+  width:clamp(170px,21vw,240px);aspect-ratio:1}
+/* BULLE : tes couleurs pastel qui DÉFILENT (= rotation 3D de la sphère) */
+.psl-bubble{position:absolute;inset:0;border-radius:50%;z-index:1;overflow:hidden}
+.psl-tex{position:absolute;top:-2%;left:0;height:104%;width:300%;
+  background:linear-gradient(90deg,
+    #f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,
+    #f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,
+    #f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,#f6d4e0);
+  animation:psl-roll 14s linear infinite}
+@keyframes psl-roll{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
+/* RENDU VERRE FIXE (inchangé) : corps translucide + liseré + reflet courbé + profondeur 3D + ombre */
+.psl-bubble-gloss{position:absolute;inset:0;border-radius:50%;z-index:2;pointer-events:none;
   background:
-    radial-gradient(46% 40% at 50% 16%, #ffe79a, transparent 62%),
-    radial-gradient(42% 44% at 20% 60%, #ff9ec6, transparent 60%),
-    radial-gradient(46% 46% at 80% 54%, #ffce8a, transparent 62%),
-    radial-gradient(42% 40% at 56% 90%, #ffd6a0, transparent 60%),
-    radial-gradient(36% 36% at 28% 28%, #eaf0a0, transparent 60%),
-    radial-gradient(40% 40% at 74% 24%, #f7d8ef, transparent 62%);
-  filter:blur(30px);opacity:.9;animation:psl-halo 20s ease-in-out infinite}
-@keyframes psl-halo{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.14)}100%{transform:rotate(360deg) scale(1)}}
-/* canvas 3D */
-.psl-disc canvas{position:relative;z-index:1;width:100%!important;height:100%!important;display:block;
-  filter:drop-shadow(0 20px 44px rgba(150,160,200,.3))}
-/* secours si la 3D ne charge pas */
-.psl-disc.fallback{border-radius:50%;background:conic-gradient(from 200deg,#f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,#f6d4e0);box-shadow:inset -10px -14px 30px rgba(150,160,200,.3),0 20px 44px rgba(150,160,200,.3)}
-@media(prefers-reduced-motion:reduce){.psl-halo{animation:none}}
+    radial-gradient(circle at 50% 48%, rgba(250,250,253,.5), rgba(250,250,253,.18) 55%, rgba(250,250,253,0) 80%),
+    radial-gradient(65% 45% at 35% 22%, rgba(255,255,255,.95), rgba(255,255,255,0) 60%),
+    radial-gradient(28% 18% at 30% 16%, rgba(255,255,255,.98), transparent 70%),
+    radial-gradient(circle at 50% 7%, rgba(255,255,255,.8), transparent 22%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.55),
+    inset 7px 9px 20px rgba(255,255,255,.55),
+    inset -9px -13px 30px rgba(150,160,200,.34),
+    0 20px 46px rgba(150,160,200,.26)}
+/* CERCLE 3D (sphère de verre WebGL) PAR-DESSUS */
+.psl-disc canvas{position:absolute;inset:0;z-index:3;width:100%!important;height:100%!important;display:block}
+@media(prefers-reduced-motion:reduce){.psl-tex{animation:none}}
 
 /* CARRÉ EN VERRE (glassmorphism) + nom */
 .psl-card{position:relative;z-index:2;width:clamp(230px,28vw,320px);aspect-ratio:1;border-radius:16px;
@@ -41,8 +48,9 @@
 
 <div class="psl-wrap">
   <a href="#" class="psl" style="text-decoration:none">
-    <div class="psl-disc" id="pslDisc">
-      <div class="psl-halo"></div>
+    <div class="psl-disc">
+      <div class="psl-bubble"><div class="psl-tex"></div></div>
+      <div class="psl-bubble-gloss"></div>
       <canvas id="pslCanvas"></canvas>
     </div>
     <div class="psl-card">
@@ -71,17 +79,12 @@ try{
     iridescence:1,iridescenceIOR:1.3,iridescenceThicknessRange:[140,520],clearcoat:1,clearcoatRoughness:0.1,
     envMapIntensity:1.4,transparent:true});
   const ball=new THREE.Mesh(geo,mat);scene.add(ball);
-  // lumières dans TA palette pastel
   const add=(h,i,x,y,z)=>{const p=new THREE.PointLight(h,i,20);p.position.set(x,y,z);scene.add(p);};
-  add(0xf6d4e0,4,-3,1,3);     // rose
-  add(0xd2eede,4,3,-1,3);     // menthe
-  add(0xcfe0f5,4,0,-3,3);     // bleu
-  add(0xecd9f3,3,2,2,2);      // lavande
-  add(0xfde7c2,3,-2,-2,2);    // crème
+  add(0xf6d4e0,4,-3,1,3); add(0xd2eede,4,3,-1,3); add(0xcfe0f5,4,0,-3,3); add(0xecd9f3,3,2,2,2); add(0xfde7c2,3,-2,-2,2);
   scene.add(new THREE.AmbientLight(0xffffff,0.5));
   const dir=new THREE.DirectionalLight(0xffffff,1.2);dir.position.set(-2.5,3,4);scene.add(dir);
   function resize(){const s=canvas.clientWidth||240;renderer.setSize(s,s,false);}
   resize();window.addEventListener('resize',resize);
   (function loop(t){ball.rotation.y=t*0.00025;ball.rotation.x=Math.sin(t*0.0003)*0.12;renderer.render(scene,camera);requestAnimationFrame(loop);})(0);
-}catch(e){ document.getElementById('pslDisc').classList.add('fallback'); }
+}catch(e){}
 </script>
