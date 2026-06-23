@@ -15,16 +15,22 @@
 .psch-logo{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:22px;color:#fff;transition:color .5s}
 .psch-nav.scr .psch-logo{color:var(--vert)}
 .psch-logo em{font-style:italic;color:var(--mauve)}
-/* ORBE LOGO iridescent (bille dégradée brillante) */
-.psch-orb{position:relative;width:34px;height:34px;flex:none;border-radius:50%;overflow:hidden;
-  box-shadow:inset -2px -3px 7px rgba(0,0,0,.22),inset 2px 2px 6px rgba(255,255,255,.35),0 3px 10px rgba(0,0,0,.18)}
-.psch-orb::before{content:'';position:absolute;inset:-25%;
-  background:conic-gradient(from 0deg,#ff7a3d,#ff5db0,#b15cff,#5b8cff,#57c7ff,#9ff5c0,#ffd27a,#ff7a3d);
-  animation:psch-spin 14s linear infinite,psch-hue 11s linear infinite}
-.psch-orb::after{content:'';position:absolute;inset:0;border-radius:50%;
-  background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.9),rgba(255,255,255,0) 44%)}
+/* LOGO = aura douce (façon VIOLENTS) + roue-soleil qui tourne derrière (attrape-soleil) */
+.psch-orb{position:relative;width:42px;height:42px;flex:none;display:grid;place-items:center}
+/* roue-soleil rayonnante qui tourne derrière */
+.psch-orb::before{content:'';position:absolute;width:158%;height:158%;border-radius:50%;z-index:0;
+  background:conic-gradient(from 0deg,#ffd27a,#ff7a3d,#ff5db0,#b15cff,#5b8cff,#57c7ff,#9ff5c0,#ffd27a);
+  filter:blur(4px);opacity:.6;animation:psch-spin 9s linear infinite}
+/* aura douce brumeuse au centre */
+.psch-orb-core{position:relative;z-index:1;width:100%;height:100%;border-radius:50%;overflow:hidden;
+  background:
+    radial-gradient(circle at 37% 40%,rgba(91,140,255,.92),transparent 52%),
+    radial-gradient(circle at 64% 44%,rgba(255,93,176,.95),transparent 52%),
+    radial-gradient(circle at 54% 72%,rgba(255,122,61,.85),transparent 50%),
+    radial-gradient(circle at 50% 28%,rgba(177,92,255,.72),transparent 55%),
+    #f1ece7;
+  filter:blur(1.5px);box-shadow:0 2px 9px rgba(0,0,0,.14)}
 @keyframes psch-spin{to{transform:rotate(360deg)}}
-@keyframes psch-hue{to{filter:hue-rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.psch-orb::before{animation:none}}
 .psch-links{display:flex;gap:36px;align-items:center;list-style:none}
 .psch-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff;transition:color .3s}
@@ -65,7 +71,7 @@
 
 <div class="psc-h">
   <nav class="psch-nav" id="pschNav">
-    <a href="#" class="psch-logo"><span class="psch-orb"></span>Poeata <em>Chaves</em></a>
+    <a href="#" class="psch-logo"><span class="psch-orb"><span class="psch-orb-core"></span></span>Poeata <em>Chaves</em></a>
     <ul class="psch-links">
       <li><a href="#approche">Approche</a></li>
       <li><a href="#soins">Soins</a></li>
