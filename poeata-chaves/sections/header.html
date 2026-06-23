@@ -12,9 +12,20 @@
 /* NAV */
 .psch-nav{position:fixed;top:0;left:0;width:100%;z-index:60;padding:26px 48px;display:flex;justify-content:space-between;align-items:center;transition:all .5s}
 .psch-nav.scr{background:rgba(242,242,242,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:16px 48px;border-bottom:1px solid rgba(18,31,24,.08)}
-.psch-logo{font-family:'Fraunces',serif;font-size:22px;color:#fff;transition:color .5s}
+.psch-logo{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:22px;color:#fff;transition:color .5s}
 .psch-nav.scr .psch-logo{color:var(--vert)}
 .psch-logo em{font-style:italic;color:var(--mauve)}
+/* ORBE LOGO iridescent (bille dégradée brillante) */
+.psch-orb{position:relative;width:34px;height:34px;flex:none;border-radius:50%;overflow:hidden;
+  box-shadow:inset -2px -3px 7px rgba(0,0,0,.22),inset 2px 2px 6px rgba(255,255,255,.35),0 3px 10px rgba(0,0,0,.18)}
+.psch-orb::before{content:'';position:absolute;inset:-25%;
+  background:conic-gradient(from 0deg,#ff7a3d,#ff5db0,#b15cff,#5b8cff,#57c7ff,#9ff5c0,#ffd27a,#ff7a3d);
+  animation:psch-spin 14s linear infinite,psch-hue 11s linear infinite}
+.psch-orb::after{content:'';position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.9),rgba(255,255,255,0) 44%)}
+@keyframes psch-spin{to{transform:rotate(360deg)}}
+@keyframes psch-hue{to{filter:hue-rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.psch-orb::before{animation:none}}
 .psch-links{display:flex;gap:36px;align-items:center;list-style:none}
 .psch-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff;transition:color .3s}
 .psch-nav.scr .psch-links a{color:var(--vert)}
@@ -54,7 +65,7 @@
 
 <div class="psc-h">
   <nav class="psch-nav" id="pschNav">
-    <a href="#" class="psch-logo">Poeata <em>Chaves</em></a>
+    <a href="#" class="psch-logo"><span class="psch-orb"></span>Poeata <em>Chaves</em></a>
     <ul class="psch-links">
       <li><a href="#approche">Approche</a></li>
       <li><a href="#soins">Soins</a></li>
