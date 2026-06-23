@@ -1,0 +1,37 @@
+<!-- ====== POEATA CHAVES — LUMIÈRE ATTRAPE-SOLEIL (effet plein écran) ======
+  À placer UNE fois sur la page (ex. tout en haut, ou en HTML global / arrière-plan).
+  Couche fixe, derrière le contenu : projette des reflets iridescents qui dérivent
+  doucement sur toute la page, comme la lumière d'un attrape-soleil. -->
+<style>
+.psun{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;mix-blend-mode:multiply}
+.psun b{position:absolute;border-radius:50%;filter:blur(80px);will-change:transform,opacity}
+/* grands halos arc-en-ciel qui dérivent */
+.psun .b1{top:-10%;left:-5%;width:48vw;height:48vw;opacity:.5;
+  background:conic-gradient(from 30deg,#ffd6a8,#ffb0cf,#d9b8f0,#aacbf2,#bdeede,#ffd6a8);
+  animation:psun-d1 32s ease-in-out infinite, psun-spin 60s linear infinite}
+.psun .b2{bottom:-12%;right:-6%;width:44vw;height:44vw;opacity:.45;
+  background:conic-gradient(from 200deg,#bdeede,#aacbf2,#d9b8f0,#ffb0cf,#ffd6a8,#bdeede);
+  animation:psun-d2 38s ease-in-out infinite, psun-spin 80s linear infinite reverse}
+.psun .b3{top:35%;left:42%;width:36vw;height:36vw;opacity:.32;
+  background:conic-gradient(from 120deg,#ffe7b0,#ffc0d6,#c8d8f5,#cdeede,#ffe7b0);
+  animation:psun-d3 46s ease-in-out infinite, psun-spin 70s linear infinite}
+/* rayons prismatiques diagonaux qui balaient (les "reflets" projetés) */
+.psun .rays{position:absolute;inset:-20%;mix-blend-mode:screen;opacity:.4;
+  background:repeating-linear-gradient(115deg,transparent 0 70px,
+    rgba(255,180,205,.5) 84px,rgba(255,225,150,.45) 104px,
+    rgba(150,225,210,.45) 124px,rgba(170,200,240,.45) 144px,transparent 160px 250px);
+  filter:blur(30px);animation:psun-rays 40s linear infinite}
+@keyframes psun-spin{to{transform:rotate(360deg)}}
+@keyframes psun-d1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8vw,6vh) scale(1.15)}}
+@keyframes psun-d2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7vw,-5vh) scale(1.2)}}
+@keyframes psun-d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-6vw,7vh) scale(1.18)}}
+@keyframes psun-rays{to{transform:translateX(-250px)}}
+@media(prefers-reduced-motion:reduce){.psun b,.psun .rays{animation:none}}
+</style>
+
+<div class="psun" aria-hidden="true">
+  <div class="rays"></div>
+  <b class="b1"></b>
+  <b class="b2"></b>
+  <b class="b3"></b>
+</div>
