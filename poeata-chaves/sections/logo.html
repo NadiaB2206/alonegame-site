@@ -6,33 +6,17 @@
 .psl,.psl *{margin:0;padding:0;box-sizing:border-box}
 .psl{position:relative;display:inline-block;font-family:'Inter',sans-serif}
 
-/* DISQUE = bulle de verre, derrière le carré, dépasse à droite */
+/* DISQUE = bulle, derrière le carré, dépasse à droite */
 .psl-disc{position:absolute;z-index:1;top:50%;left:100%;transform:translate(-50%,-50%);
   width:clamp(170px,21vw,240px);aspect-ratio:1}
-/* BULLE : mêmes couleurs pastel, mais + colorées (saturées) qui tournent dans le verre */
+/* BULLE : juste les couleurs pastel qui TOURNENT (aucun reflet glossy) */
 .psl-bubble{position:absolute;inset:0;border-radius:50%;z-index:1;overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 48%, rgba(255,255,255,.3), rgba(255,255,255,.08) 55%, rgba(255,255,255,0) 78%),
-    conic-gradient(from 200deg, #f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,#f6d4e0);
-  filter:saturate(1.65);
-  animation:psl-spin 16s linear infinite}
-/* swirl de lumière (rend la bille + glossy) */
-.psl-bubble-swirl{position:absolute;inset:0;border-radius:50%;z-index:2;pointer-events:none;mix-blend-mode:screen;
-  background:radial-gradient(56% 38% at 42% 30%, rgba(255,255,255,.8), rgba(255,255,255,0) 55%);
-  animation:psl-spin 20s linear infinite reverse}
-/* RENDU VERRE GLOSSY : gros reflets + volume 3D marqué + ombre */
-.psl-bubble-gloss{position:absolute;inset:0;border-radius:50%;z-index:3;pointer-events:none;
-  background:
-    radial-gradient(68% 50% at 35% 20%, rgba(255,255,255,.97), rgba(255,255,255,0) 56%),
-    radial-gradient(26% 16% at 30% 14%, #ffffff, transparent 70%),
-    radial-gradient(120% 80% at 50% 118%, rgba(255,255,255,.32), transparent 52%);
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.55),
-    inset 10px 12px 26px rgba(255,255,255,.5),
-    inset -14px -20px 44px rgba(95,105,165,.5),
-    0 24px 52px rgba(140,150,200,.4)}
+  background:conic-gradient(from 200deg, #f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,#f6d4e0);
+  filter:saturate(1.5);
+  box-shadow:0 18px 44px rgba(150,160,200,.26);
+  animation:psl-spin 14s linear infinite}
 @keyframes psl-spin{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.psl-bubble,.psl-bubble-swirl{animation:none}}
+@media(prefers-reduced-motion:reduce){.psl-bubble{animation:none}}
 
 /* CARRÉ EN VERRE (glassmorphism) + nom */
 .psl-card{position:relative;z-index:2;width:clamp(230px,28vw,320px);aspect-ratio:1;border-radius:16px;
@@ -50,8 +34,6 @@
   <a href="#" class="psl" style="text-decoration:none">
     <div class="psl-disc">
       <div class="psl-bubble"></div>
-      <div class="psl-bubble-swirl"></div>
-      <div class="psl-bubble-gloss"></div>
     </div>
     <div class="psl-card">
       <div class="psl-name">
