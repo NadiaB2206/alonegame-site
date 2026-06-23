@@ -6,17 +6,18 @@
 .psl,.psl *{margin:0;padding:0;box-sizing:border-box}
 .psl{position:relative;display:inline-block;font-family:'Inter',sans-serif}
 
-/* DISQUE = bulle, derrière le carré, dépasse à droite */
+/* DISQUE = bulle (vidéo), derrière le carré, dépasse à droite */
 .psl-disc{position:absolute;z-index:1;top:50%;left:100%;transform:translate(-50%,-50%);
-  width:clamp(170px,21vw,240px);aspect-ratio:1}
-/* BULLE : juste les couleurs pastel qui TOURNENT (aucun reflet glossy) */
-.psl-bubble{position:absolute;inset:0;border-radius:50%;z-index:1;overflow:hidden;
+  width:clamp(170px,21vw,240px);aspect-ratio:1;border-radius:50%;overflow:hidden;
+  /* secours si la vidéo ne charge pas : le dégradé pastel qui tourne */
   background:conic-gradient(from 200deg, #f6d4e0,#fde7c2,#d2eede,#cfe0f5,#ecd9f3,#f6d4e0);
   filter:saturate(1.5);
   box-shadow:0 18px 44px rgba(150,160,200,.26);
   animation:psl-spin 14s linear infinite}
+/* TA VIDÉO de bulle en rotation */
+.psl-bubble-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;z-index:1}
 @keyframes psl-spin{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.psl-bubble{animation:none}}
+@media(prefers-reduced-motion:reduce){.psl-disc{animation:none}}
 
 /* CARRÉ EN VERRE (glassmorphism) + nom */
 .psl-card{position:relative;z-index:2;width:clamp(230px,28vw,320px);aspect-ratio:1;border-radius:16px;
@@ -33,7 +34,10 @@
 <div class="psl-wrap">
   <a href="#" class="psl" style="text-decoration:none">
     <div class="psl-disc">
-      <div class="psl-bubble"></div>
+      <!-- 👉 Remplace l'URL par celle de TA vidéo (médiathèque WordPress) -->
+      <video class="psl-bubble-vid" autoplay muted loop playsinline>
+        <source src="URL_DE_TA_VIDEO.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="psl-card">
       <div class="psl-name">
