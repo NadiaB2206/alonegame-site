@@ -10,32 +10,21 @@
 /* DISQUE = bulle de verre + halo, derrière le carré, dépasse à droite */
 .psl-disc{position:absolute;z-index:1;top:50%;left:100%;transform:translate(-50%,-50%);
   width:clamp(170px,21vw,240px);aspect-ratio:1}
-/* GROS HALO iridescent coloré autour de la bulle (façon image) — plus d'effet */
-.psl-halo{position:absolute;inset:-42%;border-radius:50%;z-index:0;
-  background:
-    radial-gradient(46% 40% at 50% 16%, #ffe79a, transparent 62%),
-    radial-gradient(42% 44% at 20% 60%, #ff9ec6, transparent 60%),
-    radial-gradient(46% 46% at 80% 54%, #ffce8a, transparent 62%),
-    radial-gradient(42% 40% at 56% 90%, #ffd6a0, transparent 60%),
-    radial-gradient(36% 36% at 28% 28%, #eaf0a0, transparent 60%),
-    radial-gradient(40% 40% at 74% 24%, #f7d8ef, transparent 62%);
-  filter:blur(30px);opacity:.92;animation:psl-halo 20s ease-in-out infinite}
-@keyframes psl-halo{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.14)}100%{transform:rotate(360deg) scale(1)}}
-/* BULLE DE VERRE (fixe) : corps pâle translucide + anneau de lumière au bord (cyan/jaune/rose) */
+/* BULLE DE VERRE (sans halo) : corps translucide + anneau de lumière au bord (cyan/jaune/rose) */
 .psl-bubble{position:absolute;inset:0;border-radius:50%;z-index:1;overflow:hidden;
   background:
-    radial-gradient(circle at 50% 46%, rgba(227,231,241,.97) 0%, rgba(227,231,241,.9) 50%, rgba(227,231,241,.45) 70%, rgba(227,231,241,0) 80%),
-    radial-gradient(circle at 50% 92%, rgba(92,226,224,.95), transparent 30%),
-    radial-gradient(circle at 78% 78%, rgba(192,236,150,.85), transparent 26%),
-    radial-gradient(circle at 90% 55%, rgba(255,210,140,.85), transparent 28%),
-    radial-gradient(circle at 13% 52%, rgba(255,180,212,.85), transparent 30%),
-    radial-gradient(circle at 40% 10%, rgba(255,202,222,.7), transparent 26%),
-    #e6eaf1;
+    radial-gradient(circle at 50% 46%, rgba(229,233,242,.92) 0%, rgba(229,233,242,.78) 48%, rgba(229,233,242,.32) 70%, rgba(229,233,242,0) 80%),
+    radial-gradient(circle at 50% 92%, rgba(92,226,224,.95), transparent 32%),
+    radial-gradient(circle at 78% 78%, rgba(192,236,150,.88), transparent 28%),
+    radial-gradient(circle at 90% 55%, rgba(255,210,140,.88), transparent 30%),
+    radial-gradient(circle at 13% 52%, rgba(255,180,212,.88), transparent 32%),
+    radial-gradient(circle at 40% 10%, rgba(255,202,222,.72), transparent 28%),
+    #e7ebf2;
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.5),
-    inset 7px 9px 20px rgba(255,255,255,.55),
-    inset -9px -13px 30px rgba(150,160,200,.32),
-    0 22px 48px rgba(150,160,200,.26)}
+    inset 0 0 0 1px rgba(255,255,255,.55),
+    inset 8px 10px 22px rgba(255,255,255,.6),
+    inset -10px -14px 32px rgba(150,160,200,.34),
+    0 24px 50px rgba(150,160,200,.28)}
 /* REFLETS FIXES : liseré blanc en haut + gros reflet courbé en haut-gauche */
 .psl-bubble-gloss{position:absolute;inset:0;border-radius:50%;z-index:2;pointer-events:none;
   background:
@@ -43,7 +32,7 @@
     radial-gradient(28% 18% at 30% 16%, rgba(255,255,255,.98), transparent 70%),
     radial-gradient(circle at 50% 7%, rgba(255,255,255,.85), transparent 22%)}
 @keyframes psl-spin{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.psl-halo,.psl-bubble{animation:none}}
+@media(prefers-reduced-motion:reduce){.psl-bubble{animation:none}}
 
 /* CARRÉ EN VERRE (glassmorphism) + nom */
 .psl-card{position:relative;z-index:2;width:clamp(230px,28vw,320px);aspect-ratio:1;border-radius:16px;
@@ -60,7 +49,6 @@
 <div class="psl-wrap">
   <a href="#" class="psl" style="text-decoration:none">
     <div class="psl-disc">
-      <div class="psl-halo"></div>
       <div class="psl-bubble"></div>
       <div class="psl-bubble-gloss"></div>
     </div>
