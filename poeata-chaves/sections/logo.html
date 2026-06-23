@@ -10,10 +10,17 @@
 /* DISQUE = bulle de verre + halo, derrière le carré, dépasse à droite */
 .psl-disc{position:absolute;z-index:1;top:50%;left:100%;transform:translate(-50%,-50%);
   width:clamp(170px,21vw,240px);aspect-ratio:1}
-/* HALO iridescent doux qui tourne lentement (bien visible) */
-.psl-halo{position:absolute;inset:-16%;border-radius:50%;z-index:0;
-  background:conic-gradient(from 0deg,#fde7c2,#f9d3e2,#ecd9f3,#cfe0f5,#d2eede,#fde7c4,#f8d8e6,#fde7c2);
-  filter:blur(20px);opacity:.7;animation:psl-spin 18s linear infinite}
+/* GROS HALO iridescent coloré autour de la bulle (façon image) — plus d'effet */
+.psl-halo{position:absolute;inset:-42%;border-radius:50%;z-index:0;
+  background:
+    radial-gradient(46% 40% at 50% 16%, #ffe79a, transparent 62%),
+    radial-gradient(42% 44% at 20% 60%, #ff9ec6, transparent 60%),
+    radial-gradient(46% 46% at 80% 54%, #ffce8a, transparent 62%),
+    radial-gradient(42% 40% at 56% 90%, #ffd6a0, transparent 60%),
+    radial-gradient(36% 36% at 28% 28%, #eaf0a0, transparent 60%),
+    radial-gradient(40% 40% at 74% 24%, #f7d8ef, transparent 62%);
+  filter:blur(30px);opacity:.92;animation:psl-halo 20s ease-in-out infinite}
+@keyframes psl-halo{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.14)}100%{transform:rotate(360deg) scale(1)}}
 /* BULLE : verre translucide — les couleurs pastel TOURNENT à travers le verre */
 .psl-bubble{position:absolute;inset:0;border-radius:50%;z-index:1;overflow:hidden;
   background:
