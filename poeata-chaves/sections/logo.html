@@ -1,0 +1,46 @@
+<!-- ============ POEATA CHAVES — LOGO (carré transparent + nom + cercle dégradé animé) ============ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500&display=swap" rel="stylesheet">
+<style>
+.psl,.psl *{margin:0;padding:0;box-sizing:border-box}
+/* CARRÉ TRANSPARENT */
+.psl{position:relative;width:clamp(200px,26vw,280px);aspect-ratio:1/1;display:grid;place-items:center;
+  background:transparent;overflow:hidden;border-radius:6px}
+/* CERCLE DE DÉGRADÉ QUI BOUGE (façon VIOLENTS) */
+.psl-aura{position:absolute;width:88%;height:88%;border-radius:50%;overflow:hidden;z-index:0;
+  filter:blur(16px);opacity:.95}
+.psl-aura::before{content:'';position:absolute;inset:-45%;
+  background:
+    radial-gradient(circle at 30% 34%,#5b6cff 0%,transparent 46%),
+    radial-gradient(circle at 72% 28%,#ff9a3d 0%,transparent 44%),
+    radial-gradient(circle at 68% 64%,#ff3da0 0%,transparent 46%),
+    radial-gradient(circle at 34% 70%,#b15cff 0%,transparent 46%),
+    radial-gradient(circle at 52% 50%,#ffe0cf 0%,transparent 30%),
+    #efe9ee;
+  animation:psl-move 16s ease-in-out infinite}
+@keyframes psl-move{
+  0%   {transform:rotate(0deg)   scale(1.12)}
+  25%  {transform:rotate(90deg)  scale(1.28)}
+  50%  {transform:rotate(180deg) scale(1.15)}
+  75%  {transform:rotate(270deg) scale(1.3)}
+  100% {transform:rotate(360deg) scale(1.12)}
+}
+@media(prefers-reduced-motion:reduce){.psl-aura::before{animation:none}}
+/* NOM */
+.psl-name{position:relative;z-index:2;text-align:center;font-family:'Fraunces',serif;color:#121F18;line-height:1.05;letter-spacing:.02em}
+.psl-name .l1{display:block;font-size:clamp(26px,4vw,40px);font-weight:400}
+.psl-name .l2{display:block;font-size:clamp(26px,4vw,40px);font-weight:400;font-style:italic;color:#3a4d40}
+.psl-name .sub{display:block;margin-top:8px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:rgba(18,31,24,.55)}
+</style>
+
+<a href="#" style="text-decoration:none">
+  <div class="psl">
+    <div class="psl-aura"></div>
+    <div class="psl-name">
+      <span class="l1">Poeata</span>
+      <span class="l2">Chaves</span>
+      <span class="sub">Massages &amp; soins</span>
+    </div>
+  </div>
+</a>
