@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poeata Chaves — Massages & rituels de soins · Paris</title>
+<meta name="description" content="Poeata Chaves, praticienne en soins holistiques à Paris.">
+<!-- POEATA CHAVES — copie fidèle de la structure HALO, couleurs Poeata.
+     Sections: Hero / Statement / About(foncé) / "On accueille"(serif géant) /
+     Membre(image+panneau foncé) / Soins(cartes) / Newsletter / Footer.
+     Médias Pexels libres de droit. ELEMENTOR: coller <style>+<div.psc>+<script>. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+.psc,.psc *{margin:0;padding:0;box-sizing:border-box}
+.psc{--noir:#080805;--vert:#121F18;--mauve:#BCA9B7;--sauge:#94BDB7;--creme:#F2F2F2;
+  font-family:'Inter',sans-serif;color:var(--vert);background:var(--creme);overflow-x:hidden;position:relative;width:100%;line-height:1.6;-webkit-font-smoothing:antialiased}
+.psc a{color:inherit;text-decoration:none}
+.psc img{display:block;width:100%;height:100%;object-fit:cover}
+.psc h1,.psc h2,.psc .serif{font-family:'Fraunces',serif;font-weight:300;letter-spacing:-.02em;font-variation-settings:'opsz' 144}
+.psc ::selection{background:rgba(188,169,183,.4)}
+/* reveal */
+.psc .rv{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.psc .rv.v{opacity:1;transform:none}
+.psc .d1{transition-delay:.12s}.psc .d2{transition-delay:.24s}.psc .d3{transition-delay:.36s}
+.psc .clip{overflow:hidden}
+.psc .clip>img{clip-path:inset(100% 0 0 0);transform:scale(1.12);transition:clip-path 1.2s cubic-bezier(.16,1,.3,1),transform 1.5s cubic-bezier(.16,1,.3,1)}
+.psc .clip.v>img{clip-path:inset(0 0 0 0);transform:scale(1)}
+@media(prefers-reduced-motion:reduce){.psc .rv,.psc .clip>img{opacity:1!important;transform:none!important;clip-path:none!important}}
+/* boutons ovales contour */
+.psc-btn-o{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 40px;border:1px solid currentColor;border-radius:50px;font-size:13px;letter-spacing:.04em;transition:all .4s;background:transparent}
+.psc-btn-o:hover{background:var(--vert);color:var(--creme);border-color:var(--vert)}
+.psc-btn-o.light{color:#fff}.psc-btn-o.light:hover{background:#fff;color:var(--vert);border-color:#fff}
+.psc-tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mauve);margin-bottom:22px}
+/* AURA IRIDESCENTE LUMINEUSE (attrape-soleil) — dynamique + grain */
+.psc-aura{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:clamp(380px,46vw,680px);height:clamp(520px,64vw,900px);border-radius:50%;z-index:0;pointer-events:none;overflow:hidden;mix-blend-mode:multiply;filter:blur(6px);animation:auraBreath 8s ease-in-out infinite}
+.psc-aura::before{content:'';position:absolute;inset:-18%;
+  background:radial-gradient(circle at 50% 58%,
+    rgba(255,255,255,.96) 4%,rgba(250,238,196,.9) 13%,rgba(245,208,178,.84) 24%,
+    rgba(240,198,210,.82) 34%,rgba(214,194,230,.76) 46%,rgba(188,206,232,.74) 60%,
+    rgba(186,222,224,.7) 74%,rgba(190,210,236,.62) 88%,transparent 96%);
+  animation:auraSpin 34s linear infinite,auraHue 16s linear infinite}
+.psc-aura::after{content:'';position:absolute;inset:0;opacity:.4;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes auraBreath{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-52%) scale(1.07)}}
+@keyframes auraSpin{to{transform:rotate(360deg)}}
+@keyframes auraHue{to{filter:hue-rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.psc-aura,.psc-aura::before{animation:none}}
+/* NAV */
+.psc-nav{position:fixed;top:0;left:0;width:100%;z-index:60;padding:26px 48px;display:flex;justify-content:space-between;align-items:center;transition:all .5s}
+.psc-nav.scr{background:rgba(242,242,242,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:16px 48px;border-bottom:1px solid rgba(18,31,24,.08)}
+.psc-logo{font-family:'Fraunces',serif;font-size:22px;color:#fff;transition:color .5s}
+.psc-nav.scr .psc-logo{color:var(--vert)}.psc-logo em{font-style:italic;color:var(--mauve)}
+.psc-links{display:flex;gap:36px;align-items:center;list-style:none}
+.psc-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff;transition:color .3s}
+.psc-nav.scr .psc-links a{color:var(--vert)}.psc-links a:hover{color:var(--mauve)}
+.psc-burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer}
+.psc-burger span{width:26px;height:1.5px;background:#fff}.psc-nav.scr .psc-burger span{background:var(--vert)}
+/* HERO */
+.psc-hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:var(--vert)}
+.psc-hero-media{position:absolute;inset:-6% 0;z-index:0}
+.psc-hero-media img{width:100%;height:112%;animation:ken 24s ease-in-out infinite alternate}
+@keyframes ken{from{transform:scale(1)}to{transform:scale(1.1)}}
+.psc-prism{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen;opacity:.85;
+  background:linear-gradient(101deg,transparent 41%,rgba(255,90,90,.55) 45%,rgba(255,215,90,.55) 48%,rgba(120,235,150,.5) 50.5%,rgba(110,185,255,.55) 53%,rgba(205,135,255,.55) 56%,transparent 60%);
+  filter:blur(2px);animation:prism 9s ease-in-out infinite}
+@keyframes prism{0%,100%{transform:translateX(-5%)}50%{transform:translateX(5%)}}
+@media(prefers-reduced-motion:reduce){.psc-hero-media img,.psc-prism{animation:none}}
+.psc-hero-ov{position:absolute;inset:0;z-index:2;background:linear-gradient(rgba(8,8,5,.28),rgba(18,31,24,.36))}
+.psc-hero-in{position:relative;z-index:3;max-width:900px;padding:0 28px;color:#fff}
+.psc-hero h1{font-size:clamp(44px,6.5vw,92px);line-height:1.02;color:#fff;margin-bottom:34px}
+.psc-hero h1 em{font-style:italic;color:#e8d3df}
+.psc-hero-sub{max-width:460px;margin:0 auto 36px;font-size:16px;line-height:1.7;font-weight:300;color:rgba(255,255,255,.85)}
+/* STATEMENT */
+.psc-state{position:relative;overflow:hidden;padding:180px 48px;text-align:center}
+.psc-state-in{position:relative;z-index:2;max-width:1000px;margin:0 auto}
+.psc-state p{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(30px,4.4vw,62px);line-height:1.18;color:var(--vert)}
+.psc-state p em{font-style:italic;color:var(--mauve)}
+/* ABOUT (panneau foncé) */
+.psc-about{position:relative;padding:130px 48px;background:var(--vert);color:#fff;min-height:90vh}
+.psc-about-in{max-width:1320px;margin:0 auto;position:relative}
+.psc-about h2{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.25;max-width:11ch;color:#fff}
+.psc-about-r{margin-left:auto;width:min(560px,100%);margin-top:-40px}
+.psc-about-imgs{position:relative;height:440px;margin-bottom:28px}
+.psc-about-imgs .a1{position:absolute;top:0;left:8%;width:62%;aspect-ratio:16/10;border-radius:4px;overflow:hidden;z-index:1}
+.psc-about-imgs .a2{position:absolute;top:22%;right:0;width:78%;aspect-ratio:4/3;border-radius:4px;overflow:hidden;z-index:2}
+.psc-about-r p{font-size:14px;line-height:1.8;color:rgba(255,255,255,.7);font-weight:300;margin-bottom:30px;max-width:460px}
+.psc-about-r .psc-btn-o{color:#fff}
+/* MISSION serif géant */
+.psc-mission{position:relative;padding:150px 48px;min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.psc-mission h2{position:relative;z-index:2;font-size:clamp(56px,12vw,190px);line-height:.92;color:var(--vert)}
+.psc-mission .rot{display:block;position:relative;height:1.05em;overflow:hidden}
+.psc-mission .rot span{position:absolute;left:0;right:0;font-style:italic;color:var(--mauve);opacity:0;transform:translateY(60%);transition:opacity .6s,transform .6s}
+.psc-mission .rot span.on{opacity:1;transform:none}.psc-mission .rot span.out{opacity:0;transform:translateY(-60%)}
+.psc-mi{position:absolute;z-index:1;border-radius:4px;overflow:hidden}
+.psc-mi1{bottom:16%;left:7%;width:150px;aspect-ratio:3/4}
+.psc-mi2{bottom:20%;right:8%;width:170px;aspect-ratio:4/3}
+/* MEMBER */
+.psc-member{display:grid;grid-template-columns:1fr 1fr;min-height:80vh}
+.psc-member-img{position:relative;overflow:hidden;min-height:60vh}
+.psc-member-txt{background:var(--vert);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;text-align:right;padding:90px 64px}
+.psc-member-txt h2{font-size:clamp(34px,4.6vw,60px);line-height:1.05;color:#fff;margin-bottom:24px}
+.psc-member-txt h2 em{font-style:italic;color:#e8d3df}
+.psc-member-txt p{font-size:14px;line-height:1.8;color:rgba(255,255,255,.7);font-weight:300;max-width:400px;margin-bottom:30px}
+.psc-member-txt .psc-btn-o{color:#fff}
+/* SHOP / SOINS */
+.psc-shop{padding:150px 48px 130px;text-align:center}
+.psc-shop-in{max-width:1320px;margin:0 auto}
+.psc-shop>.psc-shop-in>h2{font-size:clamp(40px,6vw,80px);color:var(--vert);margin-bottom:70px}
+.psc-shop h2 em{font-style:italic;color:var(--mauve)}
+.psc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:left;margin-bottom:64px}
+.psc-prod-img{position:relative;aspect-ratio:1/1;border-radius:4px;overflow:hidden;margin-bottom:18px;background:linear-gradient(135deg,#e7dbe3,#d7e6e1)}
+.psc-prod-img>img{transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.psc-prod:hover .psc-prod-img>img{transform:scale(1.05)}
+.psc-prod-row{display:flex;justify-content:space-between;align-items:baseline}
+.psc-prod h3{font-family:'Inter',sans-serif;font-weight:500;font-size:24px;color:var(--vert)}
+.psc-prod .cat{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:rgba(18,31,24,.55);margin-top:2px}
+.psc-prod .price{font-size:12px;letter-spacing:.12em;color:rgba(18,31,24,.45)}
+/* NEWSLETTER */
+.psc-news{padding:40px 48px 140px}
+.psc-news-in{max-width:1320px;margin:0 auto}
+.psc-news h2{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(34px,5vw,64px);line-height:1.05;color:var(--vert);margin-bottom:40px;display:flex;align-items:center;gap:18px}
+.psc-news-ico{flex:none;width:54px;height:34px;border-radius:50%;border:1.5px solid var(--vert);position:relative}
+.psc-news-ico::before{content:'';position:absolute;inset:6px 14px;border-radius:50%;border:1.5px solid var(--vert)}
+.psc-news-form{display:flex;border:1px solid rgba(18,31,24,.25)}
+.psc-news-form input{flex:1;padding:24px 26px;border:none;background:transparent;font-family:'Inter',sans-serif;font-size:16px;color:var(--vert)}
+.psc-news-form input:focus{outline:none}
+.psc-news-form button{padding:0 56px;border:none;background:var(--vert);color:var(--creme);font-family:'Inter',sans-serif;font-size:15px;cursor:pointer;transition:background .3s}
+.psc-news-form button:hover{background:#1c3026}
+/* FOOTER */
+.psc-ft{background:#ece9e4;padding:50px 48px}
+.psc-ft-in{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.psc-ft-logo{font-family:'Fraunces',serif;font-size:24px;color:var(--vert)}
+.psc-ft-logo em{font-style:italic;color:var(--mauve)}
+.psc-ft-links{display:flex;gap:26px;list-style:none;flex-wrap:wrap}
+.psc-ft-links a{font-size:13px;color:var(--vert)}.psc-ft-links a:hover{color:var(--mauve)}
+.psc-ft-copy{max-width:1320px;margin:30px auto 0;font-size:12px;color:rgba(18,31,24,.5)}
+/* RESPONSIVE */
+@media(max-width:900px){
+  .psc-nav{padding:18px 22px}.psc-nav.scr{padding:13px 22px}
+  .psc-links{display:none}.psc-burger{display:flex}
+  .psc-state,.psc-about,.psc-mission,.psc-shop,.psc-news{padding-left:22px;padding-right:22px}
+  .psc-about-r{margin-top:30px;width:100%}
+  .psc-member{grid-template-columns:1fr}.psc-member-txt{align-items:flex-start;text-align:left;padding:64px 26px}
+  .psc-grid{grid-template-columns:1fr;gap:36px}
+  .psc-mi{display:none}.psc-mission{min-height:auto;padding:110px 22px}
+  .psc-news-form{flex-direction:column}.psc-news-form button{padding:18px}
+}
+</style>
+</head>
+<body>
+<div class="psc">
+
+  <nav class="psc-nav" id="nav">
+    <a href="#" class="psc-logo">Poeata <em>Chaves</em></a>
+    <ul class="psc-links">
+      <li><a href="#about">Approche</a></li><li><a href="#soins">Soins</a></li>
+      <li><a href="#membre">À propos</a></li><li><a href="#news">Contact</a></li>
+    </ul>
+    <button class="psc-burger" aria-label="Menu"><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="psc-hero">
+    <div class="psc-hero-media"><img src="https://images.pexels.com/photos/4974360/pexels-photo-4974360.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Lumière iridescente sur le visage" onerror="this.style.display='none'"></div>
+    <div class="psc-prism"></div>
+    <div class="psc-hero-ov"></div>
+    <div class="psc-hero-in">
+      <h1 class="rv">Un rituel de soin<br><em>pour chacun·e</em></h1>
+      <p class="psc-hero-sub rv d1">Massages &amp; rituels de soins à Paris. Un retour à soi, en douceur.</p>
+      <a href="#about" class="psc-btn-o light rv d2">Découvrir</a>
+    </div>
+  </header>
+
+  <!-- STATEMENT -->
+  <section class="psc-state">
+    <div class="psc-aura"></div>
+    <div class="psc-state-in">
+      <p class="rv">Apaisant, enveloppant, comme une <em>étreinte chaleureuse</em>. Mon intention est simple : prendre soin de vous.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT (panneau foncé) -->
+  <section class="psc-about" id="about">
+    <div class="psc-about-in">
+      <h2 class="rv">Je crée des rituels de soins pour vous reconnecter à vous-même.</h2>
+      <div class="psc-about-r">
+        <div class="psc-about-imgs">
+          <div class="a1 clip rv"><img src="https://images.pexels.com/photos/6663367/pexels-photo-6663367.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Soin du visage" onerror="this.style.display='none'"></div>
+          <div class="a2 clip rv d1"><img src="https://images.pexels.com/photos/9336024/pexels-photo-9336024.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="Massage du corps" onerror="this.style.display='none'"></div>
+        </div>
+        <p class="rv d1">Du massage relaxant aux soins psycho-socio-esthétiques, en passant par la réflexologie et la sonothérapie, je façonne une expérience personnalisée, adaptée à vos besoins uniques.</p>
+        <a href="#soins" class="psc-btn-o rv d2">Mon univers</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION serif géant -->
+  <section class="psc-mission">
+    <div class="psc-aura"></div>
+    <div class="psc-mi psc-mi1 clip rv"><img src="https://images.pexels.com/photos/7700/pexels-photo-7700.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Massage aux fleurs" onerror="this.style.display='none'"></div>
+    <div class="psc-mi psc-mi2 clip rv d1"><img src="https://images.pexels.com/photos/6560266/pexels-photo-6560266.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Pierres chaudes" onerror="this.style.display='none'"></div>
+    <h2 class="rv">On accueille<br><span class="rot" id="rot"><span class="on">la douceur</span><span>le soin</span><span>l'écoute</span><span>vous</span></span></h2>
+  </section>
+
+  <!-- MEMBER -->
+  <section class="psc-member" id="membre">
+    <div class="psc-member-img clip rv"><img src="https://images.pexels.com/photos/6628700/pexels-photo-6628700.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Soin réflexologie" onerror="this.style.display='none'"></div>
+    <div class="psc-member-txt">
+      <p class="psc-tag rv">À propos</p>
+      <h2 class="rv d1">Un accompagnement <em>privilégié</em></h2>
+      <p class="rv d2">Originaire de Tahiti, praticienne en soins holistiques à Paris. Diplômée en psycho-socio-esthétique, réflexologie, sonothérapie et sophrologie, je vous accompagne vers un mieux-être global — pour que chaque rencontre soit aussi douce que ressourçante.</p>
+      <a href="#news" class="psc-btn-o light rv d2">Mon parcours</a>
+    </div>
+  </section>
+
+  <!-- SHOP / SOINS -->
+  <section class="psc-shop" id="soins">
+    <div class="psc-shop-in">
+      <h2 class="rv">Mes <em>soins</em></h2>
+      <div class="psc-grid">
+        <a href="#news" class="psc-prod rv">
+          <div class="psc-prod-img clip"><img src="https://images.pexels.com/photos/9336024/pexels-photo-9336024.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Massages" onerror="this.style.display='none'"></div>
+          <div class="psc-prod-row"><div><h3>Massages</h3><div class="cat">Corps</div></div><div class="price">SUR RDV</div></div>
+        </a>
+        <a href="#news" class="psc-prod rv d1">
+          <div class="psc-prod-img clip"><img src="https://images.pexels.com/photos/6628700/pexels-photo-6628700.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Réflexologie" onerror="this.style.display='none'"></div>
+          <div class="psc-prod-row"><div><h3>Réflexologie</h3><div class="cat">Plantaire</div></div><div class="price">SUR RDV</div></div>
+        </a>
+        <a href="#news" class="psc-prod rv d2">
+          <div class="psc-prod-img clip"><img src="https://images.pexels.com/photos/6663367/pexels-photo-6663367.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Soins PSE" onerror="this.style.display='none'"></div>
+          <div class="psc-prod-row"><div><h3>Soins PSE</h3><div class="cat">Bien-être</div></div><div class="price">SUR RDV</div></div>
+        </a>
+      </div>
+      <a href="#news" class="psc-btn-o rv">Voir tous les soins</a>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="psc-news" id="news">
+    <div class="psc-news-in">
+      <h2 class="rv"><span class="psc-news-ico"></span>Recevez un peu de douceur dans votre boîte mail.</h2>
+      <form class="psc-news-form rv d1" onsubmit="return false">
+        <input type="email" placeholder="Email" aria-label="Email">
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="psc-ft">
+    <div class="psc-ft-in">
+      <div class="psc-ft-logo">Poeata <em>Chaves</em></div>
+      <ul class="psc-ft-links">
+        <li><a href="#about">Approche</a></li><li><a href="#soins">Soins</a></li>
+        <li><a href="#membre">À propos</a></li><li><a href="#news">Contact</a></li>
+      </ul>
+    </div>
+    <!-- TODO : +689 (Tahiti) -> ton +33 ? · email pro ? -->
+    <div class="psc-ft-copy">© Poeata Chaves — Massages &amp; rituels de soins · Paris · +689 87 31 46 22 · poeatacha@hotmail.fr</div>
+  </footer>
+
+</div>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scr',window.scrollY>60)},{passive:true});
+  var els=document.querySelectorAll('.psc .rv,.psc .clip');
+  var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){obs.observe(el)});
+  // sécurité : tout révéler après 2,5s au cas où
+  setTimeout(function(){els.forEach(function(el){el.classList.add('v')})},2500);
+  var rot=document.getElementById('rot');
+  if(rot){var w=rot.querySelectorAll('span'),i=0;setInterval(function(){var c=w[i];c.classList.remove('on');c.classList.add('out');i=(i+1)%w.length;var n=w[i];n.classList.remove('out');setTimeout(function(){c.classList.remove('out')},600);n.classList.add('on');},2200);}
+})();
+</script>
+</body>
+</html>

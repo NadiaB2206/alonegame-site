@@ -1,0 +1,81 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.psl-wrap{display:flex;justify-content:center;width:100%;padding:48px 0}
+.psl,.psl *{margin:0;padding:0;box-sizing:border-box}
+.psl{position:relative;display:inline-block;font-family:'Inter',sans-serif}
+
+/* DISQUE = bulle, derrière le carré, dépasse à droite */
+.psl-disc{position:absolute;z-index:1;top:50%;left:100%;transform:translate(-50%,-50%);
+  width:clamp(170px,21vw,240px);aspect-ratio:1}
+
+/* HALO coloré flou DERRIÈRE la sphère (plus grand qu'elle) */
+.psl-halo{position:absolute;left:50%;top:50%;width:175%;aspect-ratio:1;z-index:1;
+  transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+  background:
+    radial-gradient(circle at 38% 32%, rgba(246,212,224,.85), rgba(246,212,224,0) 60%),
+    radial-gradient(circle at 70% 38%, rgba(253,231,194,.8), rgba(253,231,194,0) 62%),
+    radial-gradient(circle at 64% 72%, rgba(210,238,222,.8), rgba(210,238,222,0) 62%),
+    radial-gradient(circle at 30% 70%, rgba(207,224,245,.85), rgba(207,224,245,0) 62%),
+    radial-gradient(circle at 50% 50%, rgba(236,217,243,.7), rgba(236,217,243,0) 66%);
+  filter:blur(26px);opacity:.9;animation:psl-halo 16s linear infinite}
+@keyframes psl-halo{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+/* SPHÈRE 3D (verre WebGL) — la seule bulle visible */
+.psl-disc canvas{position:absolute;inset:0;z-index:2;width:100%!important;height:100%!important;display:block}
+@media(prefers-reduced-motion:reduce){.psl-halo{animation:none}}
+
+/* CARRÉ EN VERRE (glassmorphism) + nom */
+.psl-card{position:relative;z-index:3;width:clamp(230px,28vw,320px);aspect-ratio:1;border-radius:16px;
+  background:rgba(255,255,255,.22);
+  backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 10px 36px rgba(120,130,170,.2),inset 0 1px 1px rgba(255,255,255,.7);
+  display:grid;place-items:center}
+.psl-name{text-align:center;color:#11110f}
+.psl-name .l{display:block;font-size:clamp(26px,3.6vw,42px);font-weight:400;letter-spacing:.36em;text-transform:uppercase;text-indent:.36em;line-height:1.15}
+.psl-name .sub{display:block;margin-top:16px;font-size:9px;font-weight:500;letter-spacing:.42em;text-transform:uppercase;color:rgba(17,17,15,.6);text-indent:.42em}
+</style>
+
+<div class="psl-wrap">
+  <a href="#" class="psl" style="text-decoration:none">
+    <div class="psl-disc">
+      <div class="psl-halo"></div>
+      <canvas id="pslCanvas"></canvas>
+    </div>
+    <div class="psl-card">
+      <div class="psl-name">
+        <span class="l">Poeata</span>
+        <span class="l">Chaves</span>
+        <span class="sub">Massages &amp; soins</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+<script type="module">
+import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+import { RoomEnvironment } from 'https://unpkg.com/three@0.160.0/examples/jsm/environments/RoomEnvironment.js';
+try{
+  const canvas=document.getElementById('pslCanvas');
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(34,1,0.1,100);camera.position.set(0,0,5);
+  const pmrem=new THREE.PMREMGenerator(renderer);
+  scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
+  const geo=new THREE.SphereGeometry(1.4,128,128);
+  const mat=new THREE.MeshPhysicalMaterial({roughness:0.08,metalness:0,transmission:1,thickness:1.3,ior:1.4,
+    iridescence:1,iridescenceIOR:1.3,iridescenceThicknessRange:[140,520],clearcoat:1,clearcoatRoughness:0.1,
+    envMapIntensity:1.4,transparent:true});
+  const ball=new THREE.Mesh(geo,mat);scene.add(ball);
+  const add=(h,i,x,y,z)=>{const p=new THREE.PointLight(h,i,20);p.position.set(x,y,z);scene.add(p);};
+  add(0xf6d4e0,4,-3,1,3); add(0xd2eede,4,3,-1,3); add(0xcfe0f5,4,0,-3,3); add(0xecd9f3,3,2,2,2); add(0xfde7c2,3,-2,-2,2);
+  scene.add(new THREE.AmbientLight(0xffffff,0.5));
+  const dir=new THREE.DirectionalLight(0xffffff,1.2);dir.position.set(-2.5,3,4);scene.add(dir);
+  function resize(){const s=canvas.clientWidth||240;renderer.setSize(s,s,false);}
+  resize();window.addEventListener('resize',resize);
+  (function loop(t){ball.rotation.y=t*0.00025;ball.rotation.x=Math.sin(t*0.0003)*0.12;renderer.render(scene,camera);requestAnimationFrame(loop);})(0);
+}catch(e){}
+</script>
